@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     screens: {
-      'lg': '972px'
+      'lg': '992px'
     },
     extend: {
       keyframes: {
