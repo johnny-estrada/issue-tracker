@@ -9,30 +9,49 @@ import FilterButton from "../components/ui/FilterButton";
 import Details from "../components/ui/Details";
 import SelectorList from "../components/ui/SelectorList";
 import ListMenu from "../components/ui/ListMenu";
+import { ListIcon } from "lucide-react";
 
 interface Props {
-  data: object[];
+  projects: object[];
+  tasks: object[];
 }
 
-function Projects({ data }: Props) {
-  const [projects, setProject] = useState(data);
+function Projects({ projects, tasks }: Props) {
+  const [projects1, setProject] = useState(projects);
+  const [tasks1, setTasks] = useState(tasks);
   const [index, setIndex] = useState(0);
 
   function toggleProjects(e) {
-    let index = e.currentTarget.id;
-    setIndex(index)
-    console.log(index)
+    const i = e.currentTarget.id;
+    setIndex(i);
   }
 
-  const projectList = projects.map((project, index) => (
+  const projectList = projects.map((project, idx) => (
     <SelectorList
-      index={index}
+      key={idx}
+      index={idx}
+      id={idx}
       client={project.client}
       tasks={project.tasks}
       overdue={project.overdue}
       startDate={project.startDate}
       targetDate={project.targetDate}
-      key={project.id}
+      active={Number(index) === idx}
+      onClick={toggleProjects}
+    />
+  ));
+
+  const taskList = tasks.map((task, idx) => (
+    <SelectorList
+      key={idx}
+      index={idx}
+      id={idx}
+      client={task.client}
+      tasks={task.tasks}
+      overdue={task.overdue}
+      startDate={task.startDate}
+      targetDate={task.targetDate}
+      active={Number(index) === idx}
       onClick={toggleProjects}
     />
   ));
@@ -66,12 +85,25 @@ function Projects({ data }: Props) {
 
             <div>
               {/* right-col Output */}
-              <Details
-                client={projects[index].client}
-                startDate={projects[index].startDate}
-                targetDate={projects[index].targetDate}
-                key={projects[index].id}
-              />
+              <section aria-labelledby="projects">
+                <Details
+                  client={projects[index].client}
+                  title={projects[index].title}
+                  description={projects[index].description}
+                  startDate={projects[index].startDate}
+                  targetDate={projects[index].targetDate}
+                />
+              </section>
+              <section aria-labelledby="projects">
+                <h2 className="sr-only" id="projects">
+                  Tasks
+                </h2>
+                <div className="flex  justify-between">
+                  <h2 className="text-xl pb-4">Tasks</h2>
+                  <ListMenu />
+                </div>
+                <SelectorList />
+              </section>
             </div>
           </TwoColumns>
         </Main>
