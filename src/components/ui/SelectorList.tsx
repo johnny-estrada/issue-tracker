@@ -7,8 +7,6 @@ interface Props {
 }
 
 export default function SelectorList({ children, id, active, onClick }: Props) {
- 
-
   return (
     <>
       {children.length === 0 && <p>No items found</p>}

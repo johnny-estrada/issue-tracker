@@ -13,9 +13,12 @@ const Notifications = () => {
       </Header>
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 lg:grid-cols-3">
         <div className="px-4 sm:px-0">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
+          <h2 className="text-base font-semibold leading-7 text-gray-900">
+            Notifications
+          </h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+            We'll always let you know about important changes, but you pick what
+            else you want to hear about.
           </p>
         </div>
 
@@ -23,7 +26,9 @@ const Notifications = () => {
           <div className="px-4 py-6 sm:p-8">
             <div className="max-w-2xl space-y-10">
               <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">By Email</legend>
+                <legend className="text-sm font-semibold leading-6 text-gray-900">
+                  By Email
+                </legend>
                 <div className="mt-6 space-y-6">
                   <div className="relative flex gap-x-3">
                     <div className="flex h-6 items-center">
@@ -35,10 +40,15 @@ const Notifications = () => {
                       />
                     </div>
                     <div className="text-sm leading-6">
-                      <label htmlFor="comments" className="font-medium text-gray-900">
+                      <label
+                        htmlFor="comments"
+                        className="font-medium text-gray-900"
+                      >
                         Comments
                       </label>
-                      <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
+                      <p className="text-gray-500">
+                        Get notified when someones posts a comment on a posting.
+                      </p>
                     </div>
                   </div>
                   <div className="relative flex gap-x-3">
@@ -51,10 +61,15 @@ const Notifications = () => {
                       />
                     </div>
                     <div className="text-sm leading-6">
-                      <label htmlFor="candidates" className="font-medium text-gray-900">
+                      <label
+                        htmlFor="candidates"
+                        className="font-medium text-gray-900"
+                      >
                         Candidates
                       </label>
-                      <p className="text-gray-500">Get notified when a candidate applies for a job.</p>
+                      <p className="text-gray-500">
+                        Get notified when a candidate applies for a job.
+                      </p>
                     </div>
                   </div>
                   <div className="relative flex gap-x-3">
@@ -67,16 +82,24 @@ const Notifications = () => {
                       />
                     </div>
                     <div className="text-sm leading-6">
-                      <label htmlFor="offers" className="font-medium text-gray-900">
+                      <label
+                        htmlFor="offers"
+                        className="font-medium text-gray-900"
+                      >
                         Offers
                       </label>
-                      <p className="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+                      <p className="text-gray-500">
+                        Get notified when a candidate accepts or rejects an
+                        offer.
+                      </p>
                     </div>
                   </div>
                 </div>
               </fieldset>
               <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">Push Notifications</legend>
+                <legend className="text-sm font-semibold leading-6 text-gray-900">
+                  Push Notifications
+                </legend>
                 <p className="mt-1 text-sm leading-6 text-gray-600">
                   These are delivered via SMS to your mobile phone.
                 </p>
@@ -88,7 +111,10 @@ const Notifications = () => {
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                      htmlFor="push-everything"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       Everything
                     </label>
                   </div>
@@ -99,7 +125,10 @@ const Notifications = () => {
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                      htmlFor="push-email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       Same as email
                     </label>
                   </div>
@@ -110,7 +139,10 @@ const Notifications = () => {
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                      htmlFor="push-nothing"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       No push notifications
                     </label>
                   </div>
@@ -119,7 +151,10 @@ const Notifications = () => {
             </div>
           </div>
           <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-            <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+            <button
+              type="button"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
               Cancel
             </button>
             <button
