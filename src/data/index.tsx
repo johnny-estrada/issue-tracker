@@ -10,7 +10,7 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
-export const lineChartData = [
+export const lineChart = [
   {
     name: "Jul 6",
     uv: 8,
@@ -49,7 +49,7 @@ export const lineChartData = [
   },
 ];
 
-export const barChartData = [
+export const barChart = [
   {
     name: "Page A",
     uv: 4000,
@@ -154,6 +154,70 @@ export const stats = [
 export const projects = [
   {
     id: 1,
+    title: "Project Flinstone",
+    description:
+      "Somethig about the projecmt somehgih abou the projhe som erphawj projegt",
+    client: "Flinstone",
+    startDate: "Jan 21",
+    targetDate: "Oct 20",
+    members: [],
+    hoursThisWeek: 32,
+    priority: ["low", "medium", "high"],
+    tasksList: [
+      {
+        id: 1,
+        title: "First Tasks",
+        description:
+          "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        href: "#",
+        priority: "high",
+        status: "active",
+        dateTime: "2023-01-23T22:34Z",
+        team: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          {
+            id: 6,
+            name: "Tom Cook",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: "Reports",
+        description:
+          "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        href: "#",
+        priority: "high",
+        status: "active",
+        dateTime: "2023-01-23T22:34Z",
+        team: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          {
+            id: 6,
+            name: "Tom Cook",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
+      },
+    ],
+    overdue: 1,
+    status: ["active", "closed", "on hold"],
+  },
+  {
+    id: 1,
     title: "Project for Luminous Group",
     description:
       "Somethig about the projecmt somehgih abou the projhe som erphawj projegt",
@@ -163,26 +227,58 @@ export const projects = [
     members: [],
     hoursThisWeek: 32,
     priority: ["low", "medium", "high"],
-    tasks: 12,
-    overdue: 4,
+    tasksList: [
+      {
+        id: 1,
+        title: "Tasks",
+        description:
+          "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        href: "#",
+        priority: "high",
+        status: "active",
+        dateTime: "2023-01-23T22:34Z",
+        team: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          {
+            id: 6,
+            name: "Tom Cook",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: "Second tasks",
+        description:
+          "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        href: "#",
+        priority: "high",
+        status: "active",
+        dateTime: "2023-01-23T22:34Z",
+        team: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          {
+            id: 6,
+            name: "Tom Cook",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
+      },
+    ],
+    overdue: 1,
     status: ["active", "closed", "on hold"],
-    isActive: true,
-  },
-  {
-    id: 2,
-    title: "Burger King Project",
-    description:
-      "Somethig about the projecmt somehgih abou the projhe som erphawj projegt",
-    client: "Burger King Corp.",
-    startDate: "Jul 17",
-    targetDate: "Sep 24",
-    members: [],
-    hoursThisWeek: 32,
-    priority: ["low", "medium", "high"],
-    tasks: 12,
-    overdue: 4,
-    status: ["active", "closed", "on hold"],
-    isActive: false,
   },
   {
     id: 3,
@@ -195,20 +291,35 @@ export const projects = [
     members: [],
     hoursThisWeek: 32,
     priority: ["low", "medium", "high"],
-    tasks: 12,
-    overdue: 4,
+    tasksList: [
+      {
+        id: 1,
+        title: "Tasks",
+        description:
+          "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        href: "#",
+        priority: "high",
+        status: "active",
+        dateTime: "2023-01-23T22:34Z",
+        team: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+          {
+            id: 6,
+            name: "Tom Cook",
+            imageUrl:
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
+      },
+    ],
+    tasks: 18,
+    overdue: 6,
     status: ["active", "closed", "on hold"],
-    isActive: false,
-  },
-  {
-    id: 4,
-    name: "Tom",
-    email: "tom.cook@example.com",
-    role: "Director of Product",
-    imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    href: "#",
-    lastSeen: null,
   },
 ];
 
@@ -239,7 +350,7 @@ export const tasks = [
   },
   {
     id: 2,
-    title: "Reports animation",
+    title: "Reports UI",
     description:
       "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
     href: "#",
@@ -263,7 +374,7 @@ export const tasks = [
   },
   {
     id: 3,
-    title: "Reports animation",
+    title: "Reports defects",
     description:
       "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
     href: "#",
