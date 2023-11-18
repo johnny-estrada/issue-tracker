@@ -1,14 +1,17 @@
 import Navigation from "../components/ui/Navigation";
 import Logo from "./ui/Logo";
 
+import { navigation } from "../data/index";
+
 export default function Sidebar() {
   return (
     <>
-      <div className="fixed bottom-0 w-full">
-        <div className="flex flex-col lg:h-screen bg-stone-800 lg:w-72 px-4">
+      <div className="fixed bottom-0 z-10 w-full lg:h-full lg:w-72 bg-stone-800">
+        <div className="lg:mt-16 lg:pl-8">
           <Logo />
-
-          <Navigation />
+        </div>
+        <div>
+          <Navigation navigation={navigation} />
         </div>
       </div>
     </>
