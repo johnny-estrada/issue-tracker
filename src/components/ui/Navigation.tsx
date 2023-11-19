@@ -1,79 +1,45 @@
-import {
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-} from "@heroicons/react/24/outline";
-
-const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: false },
-  {
-    name: "Projects",
-    href: "#",
-    icon: FolderIcon,
-  },
-  {
-    name: "Tasks",
-    href: "#",
-    icon: DocumentDuplicateIcon,
-    current: false,
-  },
-  // { name: "Notifications", href: "#", icon: ChartPieIcon, count: "12", current: false },
-  { name: "Profile", href: "#", icon: UsersIcon, count: "12", current: false },
-];
+import { NavLink } from "react-router-dom";
+import DropDown from "./DropDown";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navigation() {
+interface Props {
+  navigation: object[];
+}
+
+export default function Navigation({ navigation }: Props) {
   return (
     <>
-      <nav className="">
-        <ul
-          role="list"
-          className="flex justify-around lg:justify-between lg:flex-col"
-        >
+      <nav className="lg:px-0 lg:pt-12">
+        <ul className="flex justify-evenly lg:justify-between lg:flex-col">
           {navigation.map((item) => (
-            <li key={item.name} className="flex">
-              <a
-                href={item.href}
-                className={classNames(
-                  item.current
-                    ? "bg-indigo-700 text-white"
-                    : "text-indigo-200 hover:text-white hover:bg-indigo-700",
-                  "group lg:flex m-2 lg:w-full text-sm leading-6 font-semibold"
-                )}
+            <li key={item.name} className="flex py-1">
+              <NavLink
+                to={item.href}
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "lg:bg-gray-600 text-white hover:text-white hover:bg-orange-500 group lg:flex lg:w-full text-xs lg:text-sm leading-6 font-semibold p-4 pl-8 pointer-events-none"
+                    : "text-gray-400 hover:text-white hover:bg-orange-500 group lg:flex lg:w-full text-xs lg:text-sm leading-6 font-semibold p-4 pl-8"
+                }
               >
                 <item.icon
                   className={classNames(
                     item.current
                       ? "text-white"
-                      : "text-indigo-200 group-hover:text-white",
-                    "h-6 w-6 shrink-0 m-auto lg:mr-4 lg:ml-0"
+                      : "text-gray-400 group-hover:text-white",
+                    "h-6 w-6 shrink-0 m-auto lg:mr-4 lg:ml-0",
                   )}
-                  aria-hidden="true"
                 />
                 {item.name}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
-
-        <li className="hidden lg:block ml-4 mt-80">
-          <a
-            href="#"
-            className="text-sm font-semibold leading-6 text-white hover:bg-indigo-700"
-          >
-            <img
-              className="h-8 w-8 rounded-full bg-indigo-700"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-            <span className="sr-only">Your profile</span>
-            <span aria-hidden="true">Tom Cook</span>
-          </a>
-        </li>
+        <DropDown />
       </nav>
     </>
   );
