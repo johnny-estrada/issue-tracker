@@ -80,7 +80,7 @@ const Dashboard = ({
               <BarCharts width={430} height={450} data={barChart} />
             </>
 
-            <ul className="flex flex-col gap-2 overflow-hidden rounded-lg px-1 py-4">
+            <ul className="flex flex-col gap-3 overflow-hidden rounded-lg px-1 py-4">
               {projectList}
             </ul>
           </TwoColumnsFull>
