@@ -161,12 +161,11 @@ function Projects({ projectData, taskData }: Props) {
                     view all
                   </Link>
                 </div>
-                {/* {taskList} */}
 
                 {projects[projectIndex].tasksList.map((item, i) => (
                   <div
                     key={i}
-                    className="flex cursor-pointer justify-between gap-x-6 px-4 py-4 hover:bg-white sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5"
+                    className="flex cursor-pointer justify-between mb-3 gap-x-6 px-4 py-4 hover:bg-white sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5"
                   >
                     <div className="flex min-w-0 gap-x-4">
                       <div className="min-w-0 flex-auto">
