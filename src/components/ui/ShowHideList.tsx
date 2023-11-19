@@ -1,17 +1,28 @@
+import {useState} from 'react'
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import FlatBadge from "./FlatBadge";
 
 interface Props {
-  tasks: object[];
+  projectData: object[];
+  projectIndex: number;
 }
 
-export default function TasksList({ tasks }: Props) {
+export default function TasksList({ projectData, projectIndex }: Props) {
+  const [projects, setProject] = useState(projectData);
+ 
+
+  // function toggleProjects(e) {
+  //   const i = Number(e.currentTarget.id);
+  //   setProjectIndex(i);
+  // }
+
   return (
     <ul>
-      {tasks.map((task) => (
+      {projects[projectIndex].tasksList.map((task, i) => (
         <li
-          key={task.id}
+          key={i}
+       
           className="flex flex-col flex-wrap justify-between gap-y-4 p-4 mb-2 sm:flex-nowrap bg-gray-100 rounded-lg"
         >
           <div>
@@ -26,9 +37,7 @@ export default function TasksList({ tasks }: Props) {
               {({ open }) => (
                 <div>
                   <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 z-10">
-                    If you're unhappy with your purchase for any reason, email
-                    us within 90 days and we'll refund you in full, no questions
-                    asked.
+                    {task.description}
                   </Disclosure.Panel>
 
                   <Disclosure.Button className="flex w-full justify-between rounded-lg bg-gray-100 px-4 py-2 text-left text-sm font-medium text-black hover: hover:bg-stone-800 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 z-10">
@@ -48,7 +57,7 @@ export default function TasksList({ tasks }: Props) {
                       </div>
                       <div className="flex w-16 gap-x-2.5"></div>
                     </dl>
-                    <p>Jul 2 - Jul 16</p>
+                    <p>{task.startDate} - {task.targetDate}</p>
                     <ChevronDownIcon
                       className={`${
                         open ? "rotate-180 transform" : ""
