@@ -67,11 +67,11 @@ const Tasks = ({ projectData }: Props) => {
             <div className="flex  justify-between">
               <h2 className="text-xl pb-4">{title}</h2>
               <div className="flex gap-5 items-center">
-                <a href="#">
+                <a href="#" className="hover:bg-gray-100 rounded-full p-3">
                   <span className="sr-only">Previous</span>
                   <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
                 </a>
-                <a href="#">
+                <a href="#" className="hover:bg-gray-100 rounded-full p-3">
                   <span className="sr-only">Next</span>
                   <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
                 </a>
