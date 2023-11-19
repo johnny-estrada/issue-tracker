@@ -25,16 +25,22 @@ const Dashboard = ({
   barChartData,
 }: Props) => {
   const [projects, setProjects] = useState(projectData);
+  const [projectIndex, setProjectIndex] = useState(0);
   const [tasks, setTasks] = useState(taskData);
   const [lineChart, setLineChart] = useState(lineChartData);
   const [barChart, setBarChart] = useState(barChartData);
+
+  function toggleProjects(e) {
+    const i = Number(e.currentTarget.id);
+    setProjectIndex(i);
+  }
 
   const projectList = projects.map((project, idx) => (
     <SelectorList
       key={idx}
       id={idx}
-      // active={Number(projectIndex) === idx}
-      // onClick={toggleProjects}
+      active={projectIndex === idx}
+      onClick={toggleProjects}
     >
       <div className="flex min-w-0 gap-x-4">
         <div className="flex h-12 w-12 justify-center items-center rounded-full bg-white text-black">
@@ -64,16 +70,19 @@ const Dashboard = ({
       <SplitScreen>
         <Header>
           <HeaderTitle title={title} />
-          <DataDisplay projects={projects} />
+          <DataDisplay project={projects} />
         </Header>
         <Main>
           <TwoColumnsFull>
-            <ShowHideList tasks={tasks} />
+            <ShowHideList projectIndex={projectIndex} projectData={projects} />
             <>
               <LineChart width={430} height={450} data={lineChart} />
               <BarCharts width={430} height={450} data={barChart} />
             </>
-            {projectList}
+
+            <ul className="flex flex-col gap-2 overflow-hidden rounded-lg px-1 py-4">
+              {projectList}
+            </ul>
           </TwoColumnsFull>
         </Main>
       </SplitScreen>
