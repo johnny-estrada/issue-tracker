@@ -16,8 +16,8 @@ export default function SelectorList({ children, id, active, onClick }: Props) {
           id={id}
           className={
             active
-              ? "flex justify-between gap-x-6 px-4 py-4 sm:px-6 bg-stone-800  rounded-lg shadow ring-1 ring-gray-900/5 text-white"
-              : "flex cursor-pointer justify-between gap-x-6 px-4 py-4 hover:bg-white sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5"
+              ? "flex justify-between gap-x-6 px-4 py-4 sm:px-6 bg-stone-800  rounded-lg shadow ring-1 ring-gray-900/5 text-white mb-3"
+              : "flex cursor-pointer justify-between gap-x-6 px-4 py-4 hover:bg-white sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5 mb-3"
           }
           onClick={onClick}
         >
