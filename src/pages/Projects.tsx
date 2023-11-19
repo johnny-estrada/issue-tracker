@@ -11,7 +11,6 @@ import TwoColumns from "../layout/TwoColumns";
 import FilterButton from "../components/ui/FilterButton";
 import Details from "../components/ui/Details";
 import SelectorList from "../components/ui/SelectorList";
-import ListMenu from "../components/ui/ListMenu";
 import AvatarGroup from "../components/ui/AvatarGroup";
 import FlatBadge from "../components/ui/FlatBadge";
 
@@ -119,17 +118,22 @@ function Projects({ projectData, taskData }: Props) {
               <div className="flex  justify-between">
                 <h2 className="text-xl pb-4">{title}</h2>
                 <div className="flex gap-5 items-center">
-                  <a href="#">
+                  <a href="#" className="hover:bg-gray-100 rounded-full p-3">
                     <span className="sr-only">Previous</span>
                     <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
                   </a>
-                  <a href="#">
+                  <a href="#" className="hover:bg-gray-100 rounded-full p-3">
                     <span className="sr-only">Next</span>
-                    <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+                    <ChevronRightIcon
+                      className="w-5 h-5 hover:bg-gray-100 rounded-full"
+                      aria-hidden="true"
+                    />
                   </a>
                 </div>
               </div>
-              {projectList}
+              <ul className="flex flex-col gap-2 overflow-hidden rounded-lg px-1 py-4">
+                {projectList}
+              </ul>
             </section>
 
             <div>
