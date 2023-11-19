@@ -11,7 +11,7 @@ export default function SelectorList({ children, id, active, onClick }: Props) {
     <>
       {children.length === 0 && <p>No items found</p>}
 
-      <ul className="flex flex-col gap-2 overflow-hidden rounded-lg px-1 py-4">
+    
         <li
           id={id}
           className={
@@ -23,7 +23,7 @@ export default function SelectorList({ children, id, active, onClick }: Props) {
         >
           {children}
         </li>
-      </ul>
+      
     </>
   );
 }
