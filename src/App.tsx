@@ -40,7 +40,7 @@ function App() {
           path="/projects"
           element={<Projects projectData={projects} taskData={tasks} />}
         />
-        <Route path="/tasks" element={<Tasks taskData={tasks} />} />
+        <Route path="/tasks" element={<Tasks projectData={projects} />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
