@@ -169,6 +169,8 @@ export const projects = [
         title: "First Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        startDate: "Jan 21",
+        targetDate: "Oct 20",
         href: "#",
         priority: "high",
         status: "active",
@@ -193,6 +195,8 @@ export const projects = [
         title: "Reports",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        startDate: "Jan 21",
+        targetDate: "Oct 20",
         href: "#",
         priority: "high",
         status: "active",
@@ -233,6 +237,8 @@ export const projects = [
         title: "Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        startDate: "Jan 21",
+        targetDate: "Oct 20",
         href: "#",
         priority: "high",
         status: "active",
@@ -257,6 +263,8 @@ export const projects = [
         title: "Second tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        startDate: "Jan 21",
+        targetDate: "Oct 20",
         href: "#",
         priority: "high",
         status: "active",
@@ -297,6 +305,8 @@ export const projects = [
         title: "Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
+        startDate: "Jan 21",
+        targetDate: "Oct 20",
         href: "#",
         priority: "high",
         status: "active",
