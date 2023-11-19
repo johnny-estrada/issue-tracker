@@ -77,13 +77,13 @@ const Tasks = ({ projectData }: Props) => {
                 </a>
               </div>
             </div>
-            <ul>
+            <ul className="flex flex-col gap-3">
               {projects.map((project) => (
                 <Fragment key={project.id}>
                   {project.tasksList.map((task) => (
                     <SelectorList key={task.id}>
-                      <div className="flex min-w-0 gap-x-4">
-                        <div className="min-w-0 flex-auto">
+                      <div className="flex">
+                        <div>
                           <p className=" mt-1 flex text-xs leading-5 text-gray-400">
                             <span className="inset-x-0 -top-px bottom-0" />
                             ID PL-{task.id}
