@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SplitScreen from "../layout/SplitScreen";
 import Header from "../layout/Header";
@@ -11,32 +11,40 @@ import Details from "../components/ui/Details";
 import SelectorList from "../components/ui/SelectorList";
 import FlatBadge from "../components/ui/FlatBadge";
 
-// data
-import { tasks } from "../data/index";
+interface Props {
+  projectData: object[];
+}
 
-const Tasks = () => {
-  const [tasks1, setTasks] = useState(tasks);
+const Tasks = ({ projectData }: Props) => {
+  const [projects, setProject] = useState(projectData);
   const [taskIndex, setTaskIndex] = useState(0);
 
-  const taskList = tasks1.map((task, idx) => (
-    <SelectorList key={idx} id={idx}>
-      <div className="flex min-w-0 gap-x-4">
-        <div className="min-w-0 flex-auto">
-          <p className=" mt-1 flex text-xs leading-5 text-gray-400">
-            <span className="inset-x-0 -top-px bottom-0" />
-            ID PL-{task.id}
-          </p>
-          <p className="text-sm font-semibold leading-6">{task.title}</p>
-        </div>
-      </div>
-      <div className="flex shrink-0 items-center gap-x-4">
-        <FlatBadge />
-        <p className="text-gray-400">
-          <ChevronRightIcon className="h-5 w-5" />
-        </p>
-      </div>
-    </SelectorList>
-  ));
+  function toggleTasks(e) {
+    const i = Number(e.currentTarget.id);
+    setTaskIndex(i);
+  }
+
+  // const taskList = projects.map((project) => (
+  //   project.tasksList.map((task, idx) => (
+
+  //   <SelectorList key={idx} id={idx}>
+  //     <div className="flex min-w-0 gap-x-4">
+  //       <div className="min-w-0 flex-auto">
+  //         <p className=" mt-1 flex text-xs leading-5 text-gray-400">
+  //           <span className="inset-x-0 -top-px bottom-0" />
+  //           ID PL-{task.id}
+  //         </p>
+  //         <p className="text-sm font-semibold leading-6">{task.title}</p>
+  //       </div>
+  //     </div>
+  //     <div className="flex shrink-0 items-center gap-x-4">
+  //       <FlatBadge />
+  //       <p className="text-gray-400">
+  //         <ChevronRightIcon className="h-5 w-5" />
+  //       </p>
+  //     </div>
+  //   </SelectorList>
+  // )))
 
   const title = "Tasks";
 
@@ -69,14 +77,40 @@ const Tasks = () => {
                 </a>
               </div>
             </div>
-            {taskList}
+            <ul>
+              {projects.map((project) => (
+                <Fragment key={project.id}>
+                  {project.tasksList.map((task) => (
+                    <SelectorList key={task.id}>
+                      <div className="flex min-w-0 gap-x-4">
+                        <div className="min-w-0 flex-auto">
+                          <p className=" mt-1 flex text-xs leading-5 text-gray-400">
+                            <span className="inset-x-0 -top-px bottom-0" />
+                            ID PL-{task.id}
+                          </p>
+                          <p className="text-sm font-semibold leading-6">
+                            {task.title}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-x-4">
+                        <FlatBadge />
+                        <p className="text-gray-400">
+                          <ChevronRightIcon className="h-5 w-5" />
+                        </p>
+                      </div>
+                    </SelectorList>
+                  ))}
+                </Fragment>
+              ))}
+            </ul>
           </section>
 
           <div>
-            <Details
-              id={tasks1[taskIndex].id}
-              title={tasks1[taskIndex].title}
-            />
+            {/* <Details
+              id={tasks[taskIndex].id}
+              title={tasks[taskIndex].title}
+            /> */}
           </div>
         </TwoColumns>
       </Main>
