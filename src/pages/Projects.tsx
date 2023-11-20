@@ -16,25 +16,18 @@ import FlatBadge from "../components/ui/FlatBadge";
 
 interface Props {
   projectData: object[];
-  taskData: object[];
+
 }
 
-function Projects({ projectData, taskData }: Props) {
+function Projects({ projectData }: Props) {
   const [projects, setProject] = useState(projectData);
-  // const [tasks, setTasks] = useState(taskData);
   const [projectIndex, setProjectIndex] = useState(0);
-  const [taskIndex, setTaskIndex] = useState(0);
 
   const title = "Projects";
 
   function toggleProjects(e) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
-  }
-
-  function toggleTasks(e) {
-    const i = Number(e.currentTarget.id);
-    setTaskIndex(i);
   }
 
   const projectList = projects.map((project, idx) => (
@@ -64,38 +57,6 @@ function Projects({ projectData, taskData }: Props) {
       </div>
     </SelectorList>
   ));
-
-  // const taskList = projects.map((project, idx) => (
-  //   <SelectorList
-  //     key={idx}
-  //     id={idx}
-  //     active={taskIndex === idx}
-  //     onClick={toggleTasks}
-  //   >
-  //     <></>
-  //     <div>
-  //     <div className="flex min-w-0 gap-x-4">
-  //       <div className="min-w-0 flex-auto">
-  //         <p className=" mt-1 flex text-xs leading-5 text-gray-400">
-  //           <span className="inset-x-0 -top-px bottom-0" />
-
-  //           ID PL-{projects[projectIndex].tasksList[taskIndex].id}
-  //         </p>
-  //         <p className="text-sm font-semibold leading-6">
-  //           {projects[projectIndex].tasksList[taskIndex].title}
-  //         </p>
-  //       </div>
-  //     </div>
-  //     <div className="flex shrink-0 items-center gap-x-4">
-  //       <FlatBadge />
-  //       <p className="text-gray-400">
-  //         <ChevronRightIcon className="h-5 w-5" />
-  //       </p>
-  //     </div>
-  //     </div>
-
-  //   </SelectorList>
-  // ));
 
   return (
     <>
@@ -175,7 +136,7 @@ function Projects({ projectData, taskData }: Props) {
                           {item.id}
                         </p>
                         <p className="text-sm font-semibold leading-6">
-                          {item.title}
+                          {item.name}
                         </p>
                       </div>
                     </div>
