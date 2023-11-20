@@ -1,11 +1,11 @@
-export default function FlatBadge() {
+export default function FlatBadge(props) {
   return (
     <>
       {/* <span className="inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
         Badge
       </span> */}
       <span className="inline-flex items-center rounded-md bg-red-100 px-5 py-0.5 text-xs font-medium text-red-700 h-8">
-        high
+        {props.priority}
       </span>
       {/* <span className="inline-flex items-center rounded-md bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800">
         Badge
