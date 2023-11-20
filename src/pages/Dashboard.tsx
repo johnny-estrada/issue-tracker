@@ -17,11 +17,7 @@ interface Props {
   barChartData: object[];
 }
 
-const Dashboard = ({
-  projectData,
-  lineChartData,
-  barChartData,
-}: Props) => {
+const Dashboard = ({ projectData, lineChartData, barChartData }: Props) => {
   const [projects, setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import FlatBadge from "./FlatBadge";
@@ -10,7 +10,6 @@ interface Props {
 
 export default function TasksList({ projectData, projectIndex }: Props) {
   const [projects, setProject] = useState(projectData);
- 
 
   // function toggleProjects(e) {
   //   const i = Number(e.currentTarget.id);
@@ -22,7 +21,6 @@ export default function TasksList({ projectData, projectIndex }: Props) {
       {projects[projectIndex].tasksList.map((task, i) => (
         <li
           key={i}
-       
           className="flex flex-col flex-wrap justify-between gap-y-4 p-4 mb-2 sm:flex-nowrap bg-gray-100 rounded-lg"
         >
           <div>
@@ -57,7 +55,9 @@ export default function TasksList({ projectData, projectIndex }: Props) {
                       </div>
                       <div className="flex w-16 gap-x-2.5"></div>
                     </dl>
-                    <p>{task.startDate} - {task.targetDate}</p>
+                    <p>
+                      {task.startDate} - {task.targetDate}
+                    </p>
                     <ChevronDownIcon
                       className={`${
                         open ? "rotate-180 transform" : ""

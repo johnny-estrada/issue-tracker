@@ -49,7 +49,9 @@ const TwoColumnsFull = ({ children }) => {
               <div className="px-10 hidden lg:block">
                 <div>
                   <h2 className="text-xl pt-8">Statistics</h2>
-                  <p className="mb-5 text-sm font-semibold text-gray-500">tasks created vs tasks completed</p>
+                  <p className="mb-5 text-sm font-semibold text-gray-500">
+                    tasks created vs tasks completed
+                  </p>
                   <div className="flex h-58">{right}</div>
                   <h2 className="sr-only" id="projects">
                     My projects

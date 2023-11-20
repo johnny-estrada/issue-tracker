@@ -16,13 +16,12 @@ import FlatBadge from "../components/ui/FlatBadge";
 
 interface Props {
   projectData: object[];
-
 }
 
 function Projects({ projectData }: Props) {
   const [projects, setProject] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
-  const [todaysDate, setTodaysDate] = useState('May 1');
+  const [todaysDate, setTodaysDate] = useState("May 1");
 
   const title = "Projects";
 
@@ -46,7 +45,8 @@ function Projects({ projectData }: Props) {
           <p className="text-sm font-semibold leading-6">{project.client}</p>
           <p className=" mt-1 flex text-xs leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />
-            {project.tasksList.length} tasks &#x2022; {project.tasksList.targetDate < todaysDate ? 'hello' : 0} overdue
+            {project.tasksList.length} tasks &#x2022;{" "}
+            {project.tasksList.targetDate < todaysDate ? "hello" : 0} overdue
           </p>
         </div>
       </div>
