@@ -13,20 +13,18 @@ import AvatarGroup from "../components/ui/AvatarGroup";
 
 interface Props {
   projectData: object[];
-  taskData: object[];
   lineChartData: object[];
   barChartData: object[];
 }
 
 const Dashboard = ({
   projectData,
-  taskData,
   lineChartData,
   barChartData,
 }: Props) => {
   const [projects, setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
-  const [tasks, setTasks] = useState(taskData);
+
   const [lineChart, setLineChart] = useState(lineChartData);
   const [barChart, setBarChart] = useState(barChartData);
 
