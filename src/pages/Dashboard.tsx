@@ -48,7 +48,7 @@ const Dashboard = ({
           <p className="text-sm font-semibold leading-6">{project.client}</p>
           <p className=" mt-1 flex text-xs leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />
-            {project.tasks} tasks &#x2022; {project.overdue} overdue
+            {project.tasksList.length} tasks &#x2022; {project.overdue} overdue
           </p>
         </div>
       </div>
@@ -68,7 +68,7 @@ const Dashboard = ({
       <SplitScreen>
         <Header>
           <HeaderTitle title={title} />
-          <DataDisplay project={projects} />
+          <DataDisplay projects={projects} />
         </Header>
         <Main>
           <TwoColumnsFull>
