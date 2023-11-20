@@ -11,6 +11,7 @@ import FilterButton from "../components/ui/FilterButton";
 import SelectorList from "../components/ui/SelectorList";
 import ListMenu from "../components/ui/ListMenu";
 import FlatBadge from "../components/ui/FlatBadge";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 
 interface Props {
   projectData: object[];
@@ -23,19 +24,21 @@ const Tasks = ({ projectData }: Props) => {
 
   function toggleTasks(e) {
     const taskId = Number(e.currentTarget.id);
-    const foundTask = projects.reduce((acc, project) => {
+
+    const foundTask = projects.reduce((accumulator, project) => {
       const taskIndex = project.tasksList.findIndex(
         (task) => task.id === taskId,
       );
       if (taskIndex !== -1) {
         return { project, taskIndex };
       }
-      return acc;
-    }, null);
+      return accumulator;
+    }, -1);
 
     if (foundTask) {
       const { project, taskIndex } = foundTask;
       const projectIndex = projects.indexOf(project);
+
       setProjectIndex(projectIndex);
       setTaskIndex(taskIndex);
     }
@@ -94,8 +97,10 @@ const Tasks = ({ projectData }: Props) => {
                         </div>
                       </div>
                       <div className="flex shrink-0 items-center gap-x-4">
+                        <FlatBadge priority={task.priority} />
                         <AvatarGroup />
-                        {/* Other components */}
+                        <p>Tomorrow</p>
+                        <ChevronRightIcon className="w-5 h-5" />
                       </div>
                     </SelectorList>
                   ))}
@@ -110,7 +115,18 @@ const Tasks = ({ projectData }: Props) => {
             </h2>
             <div className="flex justify-between">
               <h2 className="text-xl pb-4">Task Details</h2>
-              <ListMenu />
+
+              <a href="#" className="rounded-full hover:bg-gray-100 w-11 p-2">
+                <span className="sr-only">Expand Task Details</span>
+                <ArrowRightIcon
+                  className="w-4 h-4 mx-auto transform -rotate-45 origin-top"
+                  aria-hidden="true"
+                />
+                <ArrowLeftIcon
+                  className="w-4 h-4 mx-auto transform -rotate-45 origin-bottom-left"
+                  aria-hidden="true"
+                />
+              </a>
             </div>
             <ul className="w-2/3">
               {projects.length > 0 &&
@@ -129,7 +145,11 @@ const Tasks = ({ projectData }: Props) => {
                   <li className="flex flex-wrap justify-between py-2">
                     <h4>Priority</h4>
                     <p>
-                      <FlatBadge />
+                      <FlatBadge
+                        priority={
+                          projects[projectIndex].tasksList[taskIndex].priority
+                        }
+                      />
                       {/* {projects[projectIndex].tasksList[taskIndex].priority} */}
                     </p>
                   </li>
@@ -141,7 +161,7 @@ const Tasks = ({ projectData }: Props) => {
                         src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
-                      <p>Jeniffer S</p>
+                      <p>Fred S</p>
                     </div>
                   </li>
                   <li className="flex flex-wrap justify-between py-2">
