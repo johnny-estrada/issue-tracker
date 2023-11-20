@@ -22,6 +22,7 @@ interface Props {
 function Projects({ projectData }: Props) {
   const [projects, setProject] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
+  const [todaysDate, setTodaysDate] = useState('May 1');
 
   const title = "Projects";
 
@@ -45,7 +46,7 @@ function Projects({ projectData }: Props) {
           <p className="text-sm font-semibold leading-6">{project.client}</p>
           <p className=" mt-1 flex text-xs leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />
-            {/* {tasks.length} tasks &#x2022; {project.overdue} overdue */}
+            {project.tasksList.length} tasks &#x2022; {project.tasksList.targetDate < todaysDate ? 'hello' : 0} overdue
           </p>
         </div>
       </div>
@@ -141,7 +142,7 @@ function Projects({ projectData }: Props) {
                       </div>
                     </div>
                     <div className="flex shrink-0 items-center gap-x-4">
-                      <FlatBadge />
+                      <FlatBadge priority={item.priority} />
                       <p className="text-gray-400">
                         <ChevronRightIcon className="h-5 w-5" />
                       </p>
