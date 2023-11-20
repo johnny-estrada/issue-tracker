@@ -28,7 +28,7 @@ export default function TasksList({ projectData, projectIndex }: Props) {
           <div>
             <h3>ID RA - {task.id}</h3>
             <p className="text-sm font-semibold leading-6 text-gray-900">
-              {task.title}
+              {task.name}
             </p>
           </div>
 
