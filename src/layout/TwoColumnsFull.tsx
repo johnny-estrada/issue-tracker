@@ -1,5 +1,6 @@
 import Tabs from "../components/ui/Tabs";
 import ListMenu from "../components/ui/ListMenu";
+import { projects, lineChart, barChart } from "../data/index";
 
 const TwoColumnsFull = ({ children }) => {
   const [left, right, bottom] = children;
@@ -8,7 +9,8 @@ const TwoColumnsFull = ({ children }) => {
     <div>
       {/* Main 3 column grid */}
       <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-0 mt-11 bg-white">
-        {/* <Tabs data={lineChartData} tasks={tasks} projects={projects} /> */}
+        <Tabs data={lineChart} projectData={projects} />
+
         {/* column-1 */}
         <div>
           <section aria-labelledby="tasks">
