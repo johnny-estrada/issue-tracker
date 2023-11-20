@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Tabs from "../components/ui/Tabs";
 import ListMenu from "../components/ui/ListMenu";
 import { projects, lineChart, barChart } from "../data/index";
@@ -20,7 +21,16 @@ const TwoColumnsFull = ({ children }) => {
             <div className="overflow-hidden">
               <div className="px-6 hidden lg:block">
                 <div className="hidden lg:flex justify-between pt-8 pb-5">
-                  <h2 className="text-xl font-regular">My tasks</h2>
+                  <div className="flex items-baseline gap-3">
+                    <h2 className="text-xl font-regular">My tasks</h2>
+                    <Link
+                      to="/tasks"
+                      className="underline text-sm text-orange-400 hover:text-orange-500"
+                    >
+                      view all
+                    </Link>
+                  </div>
+
                   <ListMenu />
                 </div>
                 {left}
@@ -38,13 +48,23 @@ const TwoColumnsFull = ({ children }) => {
             <div className="overflow-hidden rounded-lg">
               <div className="px-10 hidden lg:block">
                 <div>
-                  <h2 className="text-xl pt-8 pb-6">Statistics</h2>
+                  <h2 className="text-xl pt-8">Statistics</h2>
+                  <p className="mb-5 text-sm font-semibold text-gray-500">tasks created vs tasks completed</p>
                   <div className="flex h-58">{right}</div>
                   <h2 className="sr-only" id="projects">
                     My projects
                   </h2>
                   <div className="flex  justify-between">
-                    <h2 className="text-xl pb-4">My projects</h2>
+                    <div className="flex items-baseline gap-3">
+                      <h2 className="text-xl pb-4">My projects</h2>
+                      <Link
+                        to="/projects"
+                        className="underline text-sm text-orange-400 hover:text-orange-500"
+                      >
+                        view all
+                      </Link>
+                    </div>
+
                     <ListMenu />
                   </div>
                   {bottom}
