@@ -166,15 +166,14 @@ export const projects = [
     tasksList: [
       {
         id: 1,
-        title: "First Tasks",
+        name: "First Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
         targetDate: "Oct 20",
-        href: "#",
         priority: "high",
         status: "active",
-        dateTime: "2023-01-23T22:34Z",
+        asignee: [{}],
         team: [
           {
             id: 12,
@@ -192,15 +191,14 @@ export const projects = [
       },
       {
         id: 2,
-        title: "Reports",
+        name: "Reports",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
         targetDate: "Oct 20",
-        href: "#",
         priority: "high",
         status: "active",
-        dateTime: "2023-01-23T22:34Z",
+        asignee: [{}],
         team: [
           {
             id: 12,
@@ -217,11 +215,9 @@ export const projects = [
         ],
       },
     ],
-    overdue: 1,
-    status: ["active", "closed", "on hold"],
   },
   {
-    id: 1,
+    id: 2,
     title: "Project for Luminous Group",
     description:
       "Somethig about the projecmt somehgih abou the projhe som erphawj projegt",
@@ -233,8 +229,8 @@ export const projects = [
     priority: ["low", "medium", "high"],
     tasksList: [
       {
-        id: 1,
-        title: "Tasks",
+        id: 3,
+        name: "Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
@@ -242,7 +238,7 @@ export const projects = [
         href: "#",
         priority: "high",
         status: "active",
-        dateTime: "2023-01-23T22:34Z",
+        asignee: [{}],
         team: [
           {
             id: 12,
@@ -259,16 +255,15 @@ export const projects = [
         ],
       },
       {
-        id: 2,
-        title: "Second tasks",
+        id: 4,
+        name: "Second tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
         targetDate: "Oct 20",
-        href: "#",
         priority: "high",
         status: "active",
-        dateTime: "2023-01-23T22:34Z",
+        asignee: [{}],
         team: [
           {
             id: 12,
@@ -285,8 +280,6 @@ export const projects = [
         ],
       },
     ],
-    overdue: 1,
-    status: ["active", "closed", "on hold"],
   },
   {
     id: 3,
@@ -301,16 +294,22 @@ export const projects = [
     priority: ["low", "medium", "high"],
     tasksList: [
       {
-        id: 1,
-        title: "Tasks",
+        id: 5,
+        name: "Tasks",
         description:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
         targetDate: "Oct 20",
-        href: "#",
         priority: "high",
         status: "active",
-        dateTime: "2023-01-23T22:34Z",
+        asignee: [
+          {
+            id: 1,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
         team: [
           {
             id: 12,
@@ -327,9 +326,6 @@ export const projects = [
         ],
       },
     ],
-    tasks: 18,
-    overdue: 6,
-    status: ["active", "closed", "on hold"],
   },
 ];
 
