@@ -7,45 +7,38 @@ import {
   ListBulletIcon,
   Squares2X2Icon,
   Cog6ToothIcon,
-  ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
 export const lineChart = [
   {
     name: "Jul 6",
-    uv: 8,
-    pv: 10,
-    amt: 10,
+    created: 8,
+    completed: 10,
   },
   {
     name: "Jul 8",
-    uv: 15,
-    pv: 7,
-    amt: 20,
+    created: 15,
+    completed: 7,
   },
   {
     name: "Jul 10",
-    uv: 5,
-    pv: 12,
-    amt: 30,
+    created: 5,
+    completed: 12,
   },
   {
     name: "Jul 12",
-    uv: 15,
-    pv: 28,
-    amt: 40,
+    created: 15,
+    completed: 28,
   },
   {
     name: "Jul 14",
-    uv: 20,
-    pv: 45,
-    amt: 50,
+    created: 20,
+    completed: 45,
   },
   {
     name: "Jul 16",
-    uv: 15,
-    pv: 15,
-    amt: 60,
+    created: 15,
+    completed: 15,
   },
 ];
 
