@@ -40,7 +40,7 @@ function LineChart({ width, height, data }: Props) {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" />
-          <YAxis dataKey="amt" />
+          <YAxis dataKey="completed" />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Area
