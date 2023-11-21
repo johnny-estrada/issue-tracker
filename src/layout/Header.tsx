@@ -1,6 +1,6 @@
 import SearchBar from "../components/ui/SearchBar";
 
-import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/outline";
 
 export default function Header({ children }) {
   const [title, display, other] = children;
