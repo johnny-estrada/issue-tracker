@@ -39,7 +39,7 @@ function LineChart({ width, height, data }: Props) {
               <stop offset="95%" stopColor="#FF7A50" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" />
+          <XAxis dataKey="date" />
           <YAxis dataKey="completed" />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
