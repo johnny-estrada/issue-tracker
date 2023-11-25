@@ -20,6 +20,7 @@
     "clsx": "^2.0.0",
     "lucide-react": "^0.274.0",
     "react": "^18.2.0",
+    "react-datepicker": "^4.23.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
     "recharts": "^2.10.1",
