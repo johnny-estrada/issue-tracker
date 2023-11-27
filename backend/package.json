@@ -2,8 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
