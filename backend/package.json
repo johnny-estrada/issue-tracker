@@ -5,8 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx}\""
   },
   "keywords": [],
   "author": "",
