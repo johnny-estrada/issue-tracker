@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import RegisterForm from "../components/form/RegisterForm";
+import SignUpForm from "../components/form/SignUpForm";
 
-export default function Register() {
+export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ export default function Register() {
             </div>
 
             <div className="mt-10">
-              <RegisterForm onSubmit={submitHandler} />
+              <SignUpForm onSubmit={submitHandler} />
 
               <div className="mt-10">
                 <div className="relative">
