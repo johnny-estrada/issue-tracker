@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const port = process.env.PORT || 5001;
@@ -11,6 +13,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Allows us to send form data
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 
