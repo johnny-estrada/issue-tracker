@@ -6,6 +6,7 @@ import Tasks from "./pages/Tasks";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 // const user = [{ name: 'Johnny', isAdmin: true }];
 
@@ -14,28 +15,24 @@ import { projects, tasks, lineChart, barChart } from "./data/index";
 
 function App() {
   const [user, setUser] = useState({ name: "Johnny", isAdmin: true });
-  const isLoggedIn = true;
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
+          index={true}
           path="/"
           element={
-            <>
-              {isLoggedIn ? (
-                <Dashboard
-                  projectData={projects}
-                  taskData={tasks}
-                  lineChartData={lineChart}
-                  barChartData={barChart}
-                />
-              ) : (
-                <Login />
-              )}
-            </>
+            <Dashboard
+              projectData={projects}
+              taskData={tasks}
+              lineChartData={lineChart}
+              barChartData={barChart}
+            />
           }
         />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/projects"
           element={<Projects projectData={projects} taskData={tasks} />}
