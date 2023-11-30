@@ -1,4 +1,4 @@
-const RegisterForm = (props) => {
+const SignUpForm = (props) => {
   return (
     <div>
       <form
@@ -104,4 +104,4 @@ const RegisterForm = (props) => {
   );
 };
 
-export default RegisterForm;
+export default SignUpForm;
