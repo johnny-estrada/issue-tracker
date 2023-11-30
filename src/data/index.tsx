@@ -11,32 +11,32 @@ import {
 
 export const lineChart = [
   {
-    name: "Jul 6",
+    date: "Jul 6",
     created: 8,
     completed: 10,
   },
   {
-    name: "Jul 8",
+    date: "Jul 8",
     created: 15,
     completed: 7,
   },
   {
-    name: "Jul 10",
+    date: "Jul 10",
     created: 5,
     completed: 12,
   },
   {
-    name: "Jul 12",
+    date: "Jul 12",
     created: 15,
     completed: 28,
   },
   {
-    name: "Jul 14",
+    date: "Jul 14",
     created: 20,
     completed: 45,
   },
   {
-    name: "Jul 16",
+    date: "Jul 16",
     created: 15,
     completed: 15,
   },
@@ -100,13 +100,6 @@ export const users = [
   },
 ];
 
-export const pageData = [
-  {
-    pageTitle: "Dashboard",
-    isLoggedIn: false,
-  },
-];
-
 export const navigation = [
   { name: "Dashboard", href: "/", icon: Squares2X2Icon, current: true },
   {
@@ -153,20 +146,42 @@ export const projects = [
     client: "Flinstone",
     startDate: "Jan 21",
     targetDate: "Oct 20",
-    members: [],
+    team: [
+      {
+        id: 12,
+        name: "Emma Dorsey",
+        imageUrl:
+          "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        id: 6,
+        name: "Tom Cook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
     hoursThisWeek: 32,
-    priority: ["low", "medium", "high"],
+    priority: "low",
+    status: "active",
     tasksList: [
       {
         id: 1,
         name: "First Tasks",
-        description:
+        details:
           "Create storyboards that depict the script and narration. Craft a dynamic portfolio and reel.",
         startDate: "Jan 21",
         targetDate: "Oct 20",
         priority: "high",
-        status: "active",
-        asignee: [{}],
+        status: "In progress",
+        attachments: [],
+        asignee: [
+          {
+            id: 12,
+            name: "Emma Dorsey",
+            imageUrl:
+              "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          },
+        ],
         team: [
           {
             id: 12,
@@ -332,20 +347,6 @@ export const tasks = [
     priority: "high",
     status: "active",
     dateTime: "2023-01-23T22:34Z",
-    team: [
-      {
-        id: 12,
-        name: "Emma Dorsey",
-        imageUrl:
-          "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-      {
-        id: 6,
-        name: "Tom Cook",
-        imageUrl:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-    ],
   },
   {
     id: 2,
