@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import store from "./redux/store";
+import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import Tasks from "./pages/Tasks";
@@ -25,27 +26,31 @@ function App() {
       <Provider store={store}>
         <ToastContainer />
         <Routes>
-          <Route
-            index={true}
-            path="/"
-            element={
-              <Dashboard
-                projectData={projects}
-                taskData={tasks}
-                lineChartData={lineChart}
-                barChartData={barChart}
-              />
-            }
-          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route
-            path="/projects"
-            element={<Projects projectData={projects} taskData={tasks} />}
-          />
-          <Route path="/tasks" element={<Tasks projectData={projects} />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/settings" element={<Settings />} />
+
+          {/* Private Routes */}
+          <Route path="" element={<PrivateRoute />}>
+            <Route
+              index={true}
+              path="/"
+              element={
+                <Dashboard
+                  projectData={projects}
+                  taskData={tasks}
+                  lineChartData={lineChart}
+                  barChartData={barChart}
+                />
+              }
+            />
+            <Route
+              path="/projects"
+              element={<Projects projectData={projects} taskData={tasks} />}
+            />
+            <Route path="/tasks" element={<Tasks projectData={projects} />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Routes>
       </Provider>
     </BrowserRouter>
