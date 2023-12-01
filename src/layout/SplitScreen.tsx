@@ -6,7 +6,7 @@ export default function SplitScreen({ children }) {
   return (
     <>
       {/* container */}
-      <div className="bg-gray-100">
+      <div className="bg-gray-100 h-screen">
         {/* Sidebar col-1 */}
         <Sidebar />
 
