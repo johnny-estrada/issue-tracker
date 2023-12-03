@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
@@ -12,8 +11,6 @@ import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-
-// const user = [{ name: 'Johnny', isAdmin: true }];
 
 // data
 import { projects, tasks, lineChart, barChart } from "./data/index";
