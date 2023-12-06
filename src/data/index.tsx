@@ -162,7 +162,6 @@ export const projects = [
       },
     ],
     hoursThisWeek: 32,
-    priority: "low",
     status: "active",
     tasksList: [
       {
