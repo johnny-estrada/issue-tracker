@@ -8,7 +8,7 @@ const errorHandler = (err, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = err.message;
 
-  if (err.name === "CastError" && err.kind === "objectId") {
+  if (err.name === "CastError" && err.kind === "objectID") {
     statusCode = 404;
     message = "Resource not found";
   }
