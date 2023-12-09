@@ -14,6 +14,22 @@ const User = sequelize.define(
       allowNull: false,
       unique: true,
     },
+    photo: {
+      type: DataTypes.STRING,
+    },
+    role: {
+      type: DataTypes.ENUM,
+      values: ["user", "admin", "manager", "developer"],
+      defaultValue: "user",
+    },
+    title: {
+      type: DataTypes.STRING,
+    },
+    status: {
+      type: DataTypes.ENUM,
+      values: ['active', 'inactive'],
+      defaultValue: 'active'
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,10 +61,12 @@ User.prototype.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// User.sync().then(() => {
-//     console.log('User table created successfully!');
-// }).catch((error) => {
-//     console.error('Unable to create table : ', error);
-// });
+User.sync()
+  .then(() => {
+    console.log("User table created successfully!");
+  })
+  .catch((error) => {
+    console.error("Unable to create table : ", error);
+  });
 
 export default User;
