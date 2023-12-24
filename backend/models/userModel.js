@@ -27,8 +27,8 @@ const User = sequelize.define(
     },
     status: {
       type: DataTypes.ENUM,
-      values: ['active', 'inactive'],
-      defaultValue: 'active'
+      values: ["active", "inactive"],
+      defaultValue: "active",
     },
     password: {
       type: DataTypes.STRING,
