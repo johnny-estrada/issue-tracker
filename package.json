@@ -9,7 +9,7 @@
     "server": "npm run server --prefix backend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\" \"backend/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"backend/**/*.js\" --quiet",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" \"backend/**/*.{js,ts,tsx}\" --quiet",
     "preview": "vite preview"
   },
   "dependencies": {
