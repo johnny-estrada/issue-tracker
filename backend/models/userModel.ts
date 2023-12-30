@@ -16,10 +16,11 @@ const User = sequelize.define(
     },
     photo: {
       type: DataTypes.STRING,
+      defaultValue: "",
     },
     role: {
       type: DataTypes.ENUM,
-      values: ["user", "admin", "manager", "developer"],
+      values: ["user", "member", "manager", "admin"],
       defaultValue: "user",
     },
     title: {
