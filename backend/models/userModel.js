@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 import bcrypt from "bcrypt";
+import Project from "./projectModel.js";
 
 const User = sequelize.define(
   "User",
@@ -69,5 +70,13 @@ User.sync()
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
+
+const setupAssociations = () => {
+  User.hasMany(Project, { foreignKey: 'userId' });
+};
+
+setupAssociations();
+
+export { setupAssociations };
 
 export default User;
