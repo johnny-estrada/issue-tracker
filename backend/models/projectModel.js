@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
+import User from "./userModel.js";
 
 const Project = sequelize.define(
   "Project",
@@ -40,6 +41,10 @@ const Project = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     timestamps: true,
@@ -55,3 +60,9 @@ Project.sync()
   });
 
 export default Project;
+
+const setupAssociations = () => {
+  Project.belongsTo(User, { foreignKey: 'userId' });
+};
+
+export { setupAssociations };
