@@ -2,18 +2,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import store from "./redux/store";
-import PrivateRoute from "./components/PrivateRoute";
-import Dashboard from "./pages/Dashboard";
-import Projects from "./pages/Projects";
-import Tasks from "./pages/Tasks";
-import Notifications from "./pages/Notifications";
-import Settings from "./pages/Settings";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import store from "./store";
+import PrivateRoute from "../components/PrivateRoute";
+import Dashboard from "../pages/Dashboard";
+import Projects from "../pages/Projects";
+import Tasks from "../pages/Tasks";
+import Notifications from "../pages/Notifications";
+import Settings from "../pages/Settings";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
 // data
-import { projects, tasks, lineChart, barChart } from "./data/index";
+import { projects, tasks, lineChart, barChart, people } from "../data/index";
 
 function App() {
   // const [user, setUser] = useState({ name: "Johnny", isAdmin: true });
@@ -46,7 +46,10 @@ function App() {
             />
             <Route path="/tasks" element={<Tasks projectData={projects} />} />
             <Route path="/notifications" element={<Notifications />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route
+              path="/settings"
+              element={<Settings peopleData={people} />}
+            />
           </Route>
         </Routes>
       </Provider>
