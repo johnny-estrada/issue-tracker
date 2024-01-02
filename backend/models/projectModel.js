@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 import User from "./userModel.js";
+import Task from './taskModel.js'
 
 const Project = sequelize.define(
   "Project",
@@ -29,13 +30,14 @@ const Project = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    hoursThisWeek: {
+    hours: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
     status: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ENUM,
+      values: ["active", 'closed', "on hold"],
+      defaultValue: "active",
     },
     tasks: {
       type: DataTypes.STRING,
@@ -51,6 +53,13 @@ const Project = sequelize.define(
   }
 );
 
+const setupAssociations = () => {
+  Project.belongsTo(User, { foreignKey: 'userId' });
+  Project.hasMany(Task, { foreignKey: 'projectId' })
+};
+
+export { setupAssociations };
+
 Project.sync()
   .then(() => {
     console.log("Project table created successfully!");
@@ -60,9 +69,3 @@ Project.sync()
   });
 
 export default Project;
-
-const setupAssociations = () => {
-  Project.belongsTo(User, { foreignKey: 'userId' });
-};
-
-export { setupAssociations };
