@@ -16,13 +16,10 @@ app.use(cors());
 app.use(express.json());
 // Allows us to send form data
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
-
-// app.get("/", (req, res) => res.send("Server is ready"));
 
 // Custom error handler
 app.use(notFound);
