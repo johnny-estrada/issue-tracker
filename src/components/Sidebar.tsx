@@ -1,4 +1,4 @@
-import Navigation from "../components/ui/Navigation";
+import Navigation from "./ui/Navigation";
 import Logo from "./ui/Logo";
 
 import { navigation } from "../data/index";
