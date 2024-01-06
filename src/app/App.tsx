@@ -6,6 +6,7 @@ import store from "./store";
 import PrivateRoute from "../components/PrivateRoute";
 import Dashboard from "../pages/Dashboard";
 import Projects from "../pages/Projects";
+import EditProject from "../pages/manager/EditProject";
 import Tasks from "../pages/Tasks";
 import Notifications from "../pages/Notifications";
 import Settings from "../pages/Settings";
@@ -16,8 +17,6 @@ import SignUp from "../pages/SignUp";
 import { projects, tasks, lineChart, barChart, people } from "../data/index";
 
 function App() {
-  // const [user, setUser] = useState({ name: "Johnny", isAdmin: true });
-
   return (
     <BrowserRouter>
       <Provider store={store}>
@@ -44,6 +43,7 @@ function App() {
               path="/projects"
               element={<Projects projectData={projects} taskData={tasks} />}
             />
+            <Route path="/projects/:id/edit" element={<EditProject />}></Route>
             <Route path="/tasks" element={<Tasks projectData={projects} />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route
