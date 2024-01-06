@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useRegisterMutation } from "../slices/usersApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { useRegisterMutation } from "../redux/slices/usersApiSlice";
+import { setCredentials } from "../redux/slices/authSlice";
 import { toast } from "react-toastify";
 import Loader from "../components/ui/Loader";
 // import SignUpForm from "../components/form/SignUpForm";
