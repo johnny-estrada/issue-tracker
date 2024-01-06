@@ -1,5 +1,9 @@
+import { useSelector, useDispatch } from "react-redux";
+
 const Greeting = () => {
-  const userName = "Johnny";
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const userName = userInfo.name;
   const date = new Date();
   const hours = date.getHours();
   let timeOfDay;
