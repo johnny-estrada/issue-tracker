@@ -42,7 +42,7 @@ const SearchBar = (props) => {
         </div>
         <button
           type="button"
-          className="hidden lg:ml-3 lg:block lg:py-3 rounded-md bg-orange-400 hover:bg-orange-500 px-10 text-md font-semibold text-white shadow-sm z-10"
+          className="hidden lg:ml-3 lg:block lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-md font-semibold text-white shadow-sm z-10"
         >
           + Create
         </button>
@@ -50,7 +50,7 @@ const SearchBar = (props) => {
         {/* Mobile create button */}
         <button
           type="button"
-          className="lg:hidden fixed bottom-28 right-8 bg-orange-400 w-10 h-10 rounded-full drop-shadow-lg text-white text-3xl flex justify-center hover:drop-shadow-2xl hover:bg-orange-500 cursor-pointer z-10"
+          className="lg:hidden fixed bottom-28 right-8 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-3xl flex justify-center hover:drop-shadow-2xl hover:bg-orange-400 cursor-pointer z-10"
         >
           +
         </button>
