@@ -1,8 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Datepicker = ({startDate, setStartDate}) => {
-
+const Datepicker = ({ startDate, setStartDate }) => {
   return (
     <DatePicker
       showIcon
