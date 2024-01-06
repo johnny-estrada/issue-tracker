@@ -16,25 +16,10 @@ const EditingTemplate = () => {
   const [client, setClient] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [targetDate, setTargetDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [targetDate, setTargetDate] = useState(new Date());
   const [hours, setHours] = useState("");
   const [members, setMembers] = useState("");
-
-  const [formattedDate1, setFormattedDate1] = useState("");
-  const [formattedDate2, setFormattedDate2] = useState("");
-
-  useEffect(() => {
-    const date1 = startDate;
-    const options1 = { year: "numeric", month: "short", day: "numeric" };
-    const formatted1 = formatDate(date1, options1);
-    setFormattedDate1(formatted1);
-
-    const date2 = targetDate;
-    const options2 = { year: "numeric", month: "short", day: "numeric" };
-    const formatted2 = formatDate(date2, options2);
-    setFormattedDate2(formatted2);
-  }, [startDate, targetDate]);
 
   const customId = "custom-id-yes";
 
@@ -91,8 +76,8 @@ const EditingTemplate = () => {
       setClient(project.client);
       setDescription(project.description);
       setStatus(project.status);
-      setStartDate(project.startDate);
-      setTargetDate(project.targetDate);
+      setStartDate(new Date(project.startDate));
+      setTargetDate(new Date(project.targetDate));
       setHours(project.hours);
       setMembers(project.members);
     }
@@ -119,10 +104,6 @@ const EditingTemplate = () => {
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Title
-                  <br />
-                  {startDate}
-                  <br />
-                  {formattedDate1}
                 </label>
                 <div className="mt-2">
                   <input
@@ -210,20 +191,23 @@ const EditingTemplate = () => {
                 </label>
                 <div className="mt-2">
                   <Datepicker
-                    startDate={new Date()}
+                    startDate={startDate}
                     setStartDate={setStartDate}
                   />
                 </div>
 
-                {/* <label
+                <label
                   htmlFor="target-date"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Target date
                 </label>
                 <div className="mt-2">
-                  <Datepicker startDate={targetDate} setStartDate={setTargetDate} />
-                </div> */}
+                  <Datepicker
+                    startDate={targetDate}
+                    setStartDate={setTargetDate}
+                  />
+                </div>
               </div>
 
               <div className="sm:col-span-2">
