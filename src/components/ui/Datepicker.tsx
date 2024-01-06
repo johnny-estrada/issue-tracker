@@ -1,15 +1,14 @@
-import { useState } from "react";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
-const Datepicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const Datepicker = ({startDate, setStartDate}) => {
+
   return (
     <DatePicker
       showIcon
       selected={startDate}
       onChange={(date) => setStartDate(date)}
+      dateFormat="MM/dd/yyyy"
       icon={
         <svg
           xmlns="http://www.w3.org/2000/svg"
