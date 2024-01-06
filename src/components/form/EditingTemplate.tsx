@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import Loader from "../ui/Loader";
 import Datepicker from "../ui/Datepicker";
 import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
-import { formatDate } from "../../utils/formatting";
 
 const EditingTemplate = () => {
   const { id: projectId } = useParams();
@@ -174,7 +173,6 @@ const EditingTemplate = () => {
                     onChange={handleStatusChange}
                     className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
-                    <option value="-">-</option>
                     <option value="Active">Active</option>
                     <option value="Closed">Closed</option>
                     <option value="On hold">On hold</option>
