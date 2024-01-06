@@ -3,7 +3,7 @@ function TwoColumns({ children }) {
 
   return (
     <>
-      <div className="lg:flex lg:gap-0 mt-11 bg-white h-screen">
+      <div className="lg:flex lg:gap-0 mt-11 bg-white">
         <main className="flex-1">
           <div className="xl:pr-96">
             <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
