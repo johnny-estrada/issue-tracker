@@ -1,8 +1,15 @@
+import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
+import { NavLink } from "react-router-dom";
+import EditProject from "../../pages/manager/EditProject";
 
-export default function DropDown() {
+export default function DropDown({
+  id,
+  onCancelEdit,
+  onAddProject,
+  onEditProject,
+}) {
   return (
     <div>
       <Menu as="div">
@@ -28,6 +35,7 @@ export default function DropDown() {
                     className={`${
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    onClick={onAddProject}
                   >
                     Create
                   </button>
@@ -35,24 +43,14 @@ export default function DropDown() {
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <NavLink
+                    to={`/projects/${id + 1}/edit`}
                     className={`${
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Edit
-                  </button>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-orange-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    Duplicate
-                  </button>
+                  </NavLink>
                 )}
               </Menu.Item>
               <Menu.Item>
