@@ -44,7 +44,7 @@ export default function DropDown({
               <Menu.Item>
                 {({ active }) => (
                   <NavLink
-                    to={`/projects/${id + 1}/edit`}
+                    to={`/projects/${id}/edit`}
                     className={`${
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
