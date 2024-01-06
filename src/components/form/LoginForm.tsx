@@ -1,12 +1,7 @@
-const LoginForm = (props) => {
+const LoginForm = () => {
   return (
     <div>
-      <form
-        action="#"
-        method="POST"
-        className="space-y-6"
-        onSubmit={props.submitHandler}
-      >
+      <form method="POST" className="space-y-6" onSubmit={submitHandler}>
         <div>
           <label
             htmlFor="email"
@@ -20,8 +15,8 @@ const LoginForm = (props) => {
               name="email"
               type="email"
               autoComplete="email"
-              value={props.email}
-              onChange={(e) => props.setEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
               className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -41,8 +36,8 @@ const LoginForm = (props) => {
               name="password"
               type="password"
               autoComplete="current-password"
-              value={props.password}
-              onChange={(e) => props.setPassword(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
               className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
