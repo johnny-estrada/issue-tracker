@@ -1,9 +1,11 @@
+import { Image } from "cloudinary-react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLogoutMutation } from "../../slices/usersApiSlice";
-import { logout } from "../../slices/authSlice";
+import { useLogoutMutation } from "../../redux/slices/usersApiSlice";
+import { logout } from "../../redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
@@ -31,10 +33,10 @@ export default function DropDown() {
         <div>
           <Menu.Button className="hidden lg:flex w-full flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-orange-500">
             {userInfo.photo ? (
-              <img
-                className="h-8 w-8 rounded-full ml-4"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
+              <Image
+                style={{ width: 50, borderRadius: 50 }}
+                cloudName="dm1cbmiwq"
+                publicId={userInfo.photo}
               />
             ) : (
               <UserCircleIcon
@@ -71,7 +73,8 @@ export default function DropDown() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <Link to="/settings"
+                  <Link
+                    to="/settings"
                     className={`${
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
