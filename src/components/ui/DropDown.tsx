@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useLogoutMutation } from "../../redux/slices/usersApiSlice";
-import { logout } from "../../redux/slices/authSlice";
+import { useLogoutMutation } from "../../services/state/redux/slices/usersApiSlice";
+import { logout } from "../../services/state/redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
