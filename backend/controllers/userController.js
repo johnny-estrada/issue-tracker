@@ -4,7 +4,7 @@ import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 
 // @desc Auth user/set token
-// route POST /api/users/auth
+// @route POST /api/users/auth
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -21,7 +21,7 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 // @desc Register a new user
-// route POST /api/users
+// @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -46,7 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // @desc Logout user
-// route POST /api/users/logout
+// @route POST /api/users/logout
 // @access Public
 const logoutUser = asyncHandler(async (req, res) => {
   res.cookie("jwt", "", {
@@ -59,7 +59,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 // @desc Get user profile
-// route GET /api/users/profile
+// @route GET /api/users/profile
 // @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = {
@@ -72,7 +72,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc Update user profile
-// route PUT /api/users/settings
+// @route PUT /api/users/settings
 // @access Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.user.id);
@@ -100,10 +100,27 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc Get all users
+// @route PUT /api/users/settings
+// @access Private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.findAll({})
+  res.json(users)
+})
+
+// @desc Get user by Id
+// @route PUT /api/users/settings/:id
+// @access Private/Admin
+
+// @desc Delete user
+// @route PUT /api/users/settings/:id
+// @access Private/Admin
+
 export {
   authUser,
   registerUser,
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  getUsers,
 };
