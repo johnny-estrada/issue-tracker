@@ -1,17 +1,23 @@
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    department: "Optimization",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  // More people...
-];
+import { toast } from "react-toastify";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { Image } from "cloudinary-react";
 
-export default function Users() {
+
+
+export default function Users({users}) {
+  const customId = "custom-id-yes";
+
+  const notify = () => {
+    if (!toast.isActive(customId)) {
+      toast({
+        toastId: customId,
+      });
+    }
+  };
+
+
+  const cloud_name = "dm1cbmiwq";
+
   return (
     <>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -63,31 +69,38 @@ export default function Users() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
+                  {users?.map((user?) => (
+                    <tr key={user.email}>
                       <td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                         <div className="flex items-center">
                           <div className="h-11 w-11 flex-shrink-0">
-                            <img
-                              className="h-11 w-11 rounded-full"
-                              src={person.image}
-                              alt=""
-                            />
+                             {user.photo ? (
+                              <Image
+                                style={{ width: 80, borderRadius: 50 }}
+                                cloudName={cloud_name}
+                                publicId={user.photo}
+                              />
+                            ) : (
+                              <UserCircleIcon
+                                className="h-12 w-12 text-gray-300"
+                                aria-hidden="true"
+                              />
+                            )}
                           </div>
                           <div className="ml-4">
                             <div className="font-medium text-gray-900">
-                              {person.name}
+                              {user.name}
                             </div>
                             <div className="mt-1 text-gray-500">
-                              {person.email}
+                              {user.email}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                        <div className="text-gray-900">{person.title}</div>
+                        <div className="text-gray-900">{user.title}</div>
                         <div className="mt-1 text-gray-500">
-                          {person.department}
+                          {user.department}
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
@@ -96,14 +109,20 @@ export default function Users() {
                         </span>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                        {person.role}
+                        {user.role}
                       </td>
                       <td className="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <a
                           href="#"
+                          className="text-indigo-600 hover:text-indigo-900 mr-5"
+                        >
+                          Edit<span className="sr-only">, {user.name}</span>
+                        </a>
+                        <a
+                          href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {person.name}</span>
+                          Delete<span className="sr-only">, {user.name}</span>
                         </a>
                       </td>
                     </tr>
