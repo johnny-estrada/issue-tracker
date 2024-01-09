@@ -125,7 +125,7 @@ const deleteProject = asyncHandler(async (req, res) => {
   if (project) {
     await Project.destroy({ where: { id: project.id } });
 
-    res.json({ message: "Project deleted" });
+    res.status(200).json({ message: "Project deleted" });
   } else {
     res.status(404);
     throw new Error("Project not found");
