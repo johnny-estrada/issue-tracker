@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 import User from "./userModel.js";
-import Task from './taskModel.js'
+import Task from "./taskModel.js";
 
 const Project = sequelize.define(
   "Project",
@@ -27,7 +27,7 @@ const Project = sequelize.define(
       allowNull: false,
     },
     team: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: true,
     },
     hours: {
@@ -36,11 +36,11 @@ const Project = sequelize.define(
     },
     status: {
       type: DataTypes.ENUM,
-      values: ["active", 'closed', "on hold"],
+      values: ["active", "closed", "on hold"],
       defaultValue: "active",
     },
     tasks: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: true,
     },
     userId: {
@@ -54,8 +54,8 @@ const Project = sequelize.define(
 );
 
 const setupAssociations = () => {
-  Project.belongsTo(User, { foreignKey: 'userId' });
-  Project.hasMany(Task, { foreignKey: 'projectId' })
+  Project.belongsTo(User, { foreignKey: "userId" });
+  Project.hasMany(Task, { foreignKey: "projectId" });
 };
 
 export { setupAssociations };
