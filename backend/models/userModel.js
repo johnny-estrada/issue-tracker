@@ -21,8 +21,8 @@ const User = sequelize.define(
     },
     role: {
       type: DataTypes.ENUM,
-      values: ["user", "member", "manager", "admin"],
-      defaultValue: "admin",
+      values: ["user", "developer", "manager", "admin"],
+      defaultValue: "user",
     },
     title: {
       type: DataTypes.STRING,
@@ -63,6 +63,12 @@ User.prototype.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+const setupAssociations = () => {
+  User.hasMany(Project, { foreignKey: "userId" });
+};
+
+export { setupAssociations };
+
 User.sync()
   .then(() => {
     console.log("User table created successfully!");
@@ -70,13 +76,5 @@ User.sync()
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
-
-const setupAssociations = () => {
-  User.hasMany(Project, { foreignKey: 'userId' });
-};
-
-setupAssociations();
-
-export { setupAssociations };
 
 export default User;
