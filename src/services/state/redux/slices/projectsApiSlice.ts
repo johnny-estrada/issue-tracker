@@ -36,7 +36,6 @@ export const projectsApiSlice = apiSlice.injectEndpoints({
         url: `${PROJECT_URL}/${projectId}`,
         method: "DELETE",
       }),
-      providesTags: ["Project"],
     }),
   }),
 });
