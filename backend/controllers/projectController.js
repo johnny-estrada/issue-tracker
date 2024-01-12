@@ -42,7 +42,6 @@ const createProject = asyncHandler(async (req, res) => {
     targetDate,
     team,
     hours,
-    status,
     tasks,
   } = req.body;
 
@@ -53,25 +52,14 @@ const createProject = asyncHandler(async (req, res) => {
     startDate,
     targetDate,
     team,
-    hours,
-    status,
+    hours: hours || 0,
+    status: "Active",
     tasks,
     userId: req.user.id,
   });
 
   if (project) {
-    res.status(201).json({
-      id: project.id,
-      title: project.title,
-      description: project.description,
-      client: project.client,
-      startDate: project.startDate,
-      targetDate: project.targetDate,
-      team: project.team,
-      hours: project.hours,
-      status: project.status,
-      tasks: project.tasks,
-    });
+    res.status(201).json(project);
   } else {
     res.status(400);
     throw new Error("Invalid project data");
