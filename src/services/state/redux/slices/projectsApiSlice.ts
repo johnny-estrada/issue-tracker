@@ -17,9 +17,10 @@ export const projectsApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     createProject: builder.mutation({
-      query: () => ({
+      query: (data) => ({
         url: `${PROJECT_URL}`,
         method: "POST",
+        body: data,
       }),
       invalidatesTags: ["Project"],
     }),
