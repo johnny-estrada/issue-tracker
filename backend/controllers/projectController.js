@@ -30,7 +30,7 @@ const getProjectById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Create a project
+// @desc Create project
 // @route POST /api/projects
 // @access Private/Manager
 const createProject = asyncHandler(async (req, res) => {
@@ -66,7 +66,7 @@ const createProject = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Update a project
+// @desc Update project
 // @route PUT /api/projects/:id
 // @access Private/Manager
 const updateProject = asyncHandler(async (req, res) => {
@@ -104,7 +104,7 @@ const updateProject = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Delete a project
+// @desc Delete project
 // @route DELETE /api/projects/:id
 // @access Private/Manager
 const deleteProject = asyncHandler(async (req, res) => {
@@ -121,9 +121,9 @@ const deleteProject = asyncHandler(async (req, res) => {
 });
 
 export {
-  createProject,
   getProjects,
   getProjectById,
+  createProject,
   updateProject,
   deleteProject,
 };
