@@ -34,16 +34,8 @@ const getProjectById = asyncHandler(async (req, res) => {
 // @route POST /api/projects
 // @access Private/Manager
 const createProject = asyncHandler(async (req, res) => {
-  const {
-    title,
-    description,
-    client,
-    startDate,
-    targetDate,
-    team,
-    hours,
-    tasks,
-  } = req.body;
+  const { title, description, client, startDate, targetDate, team, hours } =
+    req.body;
 
   const project = await Project.create({
     title,
@@ -54,7 +46,6 @@ const createProject = asyncHandler(async (req, res) => {
     team,
     hours: hours || 0,
     status: "Active",
-    tasks,
     userId: req.user.id,
   });
 
@@ -79,7 +70,6 @@ const updateProject = asyncHandler(async (req, res) => {
     team,
     hours,
     status,
-    tasks,
   } = req.body;
 
   const project = await Project.findByPk(req.params.id);
@@ -93,7 +83,6 @@ const updateProject = asyncHandler(async (req, res) => {
     project.team = team;
     project.hours = hours;
     project.status = status;
-    project.tasks = tasks;
 
     const updateProject = await project.save();
 
