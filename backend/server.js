@@ -10,7 +10,6 @@ import morgan from "morgan";
 import fs from "fs";
 import path from "path";
 
-
 dotenv.config();
 
 const port = process.env.PORT || 5001;
