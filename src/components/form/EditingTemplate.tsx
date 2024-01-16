@@ -3,11 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProjectDetailsQuery,
   useUpdateProjectMutation,
-} from "../../redux/slices/projectsApiSlice";
+} from "../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../ui/Loader";
-import Datepicker from "../ui/Datepicker";
-import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
+import Datepicker from "./ui/Datepicker";
+
+import PeoplePicker from "./ui/PeoplePicker";
 
 const EditingTemplate = () => {
   const { id: projectId } = useParams();
@@ -18,7 +19,7 @@ const EditingTemplate = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [targetDate, setTargetDate] = useState(new Date());
   const [hours, setHours] = useState("");
-  const [members, setMembers] = useState("");
+  const [members, setMembers] = useState([]);
 
   const customId = "custom-id-yes";
 
@@ -55,7 +56,7 @@ const EditingTemplate = () => {
         startDate,
         targetDate,
         hours,
-        members,
+        team: members,
       }).unwrap();
       toast.success("Project updated successfully");
       refetch();
@@ -78,7 +79,7 @@ const EditingTemplate = () => {
       setStartDate(new Date(project.startDate));
       setTargetDate(new Date(project.targetDate));
       setHours(project.hours);
-      setMembers(project.members);
+      setMembers(project.team);
     }
   }, [project]);
 
@@ -92,7 +93,7 @@ const EditingTemplate = () => {
         <p>error</p>
       ) : (
         <form
-          className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 w-1/3 ml-60"
+          className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 w-1/3 ml-60 mb-60"
           onSubmit={handleSubmit}
         >
           <div className="px-4 py-6 sm:p-8">
@@ -234,33 +235,12 @@ const EditingTemplate = () => {
                 >
                   Members
                 </label>
-                <div className="mt-2 flex rounded-md shadow-sm">
-                  <div className="relative flex flex-grow items-stretch focus-within:z-10">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <UsersIcon
-                        className="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="block w-full rounded-none rounded-l-md border-0 py-1.5 px-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      placeholder="John Smith"
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    <BarsArrowUpIcon
-                      className="-ml-0.5 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                    Sort
-                  </button>
-                </div>
+                <PeoplePicker
+                  members={members}
+                  onChange={(updatedSelectedPeople) =>
+                    setMembers(updatedSelectedPeople)
+                  }
+                />
               </div>
             </div>
           </div>
