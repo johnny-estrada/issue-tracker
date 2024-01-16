@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { Image } from "cloudinary-react";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 import AvatarGroup from "./AvatarGroup";
 import { formatDate } from "../../utils/formatting";
 
-const Details = ({ description, client, startDate, targetDate }) => {
+const Details = ({ description, client, startDate, targetDate, members }) => {
   const [formattedDate1, setFormattedDate1] = useState("");
   const [formattedDate2, setFormattedDate2] = useState("");
 
@@ -36,7 +38,16 @@ const Details = ({ description, client, startDate, targetDate }) => {
         </li>
         <li className="flex flex-wrap justify-between py-2">
           <h4>Members</h4>
-          <AvatarGroup />
+          <div className="flex -space-x-2 overflow-hidden p-1">
+            {members ? (
+              <AvatarGroup members={members} />
+            ) : (
+              <UserCircleIcon
+                className="h-12 w-12 text-gray-300"
+                aria-hidden="true"
+              />
+            )}
+          </div>
         </li>
       </ul>
     </section>
