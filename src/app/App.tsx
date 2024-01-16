@@ -5,8 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import store from "./store";
 import PrivateRoute from "../components/PrivateRoute";
 import Dashboard from "../pages/Dashboard";
-import Projects from "../pages/Projects";
+import Projects from "../pages/manager/Projects";
 import EditProject from "../pages/manager/EditProject";
+import CreateProject from "../pages/manager/CreateProject";
+import CreateTask from "../pages/CreateTask";
 import Tasks from "../pages/Tasks";
 import Notifications from "../pages/Notifications";
 import Settings from "../pages/Settings";
@@ -14,7 +16,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 
 // data
-import { projects, tasks, lineChart, barChart, people } from "../data/index";
+import { lineChart, barChart } from "../data/index";
 
 function App() {
   return (
@@ -31,25 +33,16 @@ function App() {
               index={true}
               path="/"
               element={
-                <Dashboard
-                  projectData={projects}
-                  taskData={tasks}
-                  lineChartData={lineChart}
-                  barChartData={barChart}
-                />
+                <Dashboard lineChartData={lineChart} barChartData={barChart} />
               }
             />
-            <Route
-              path="/projects"
-              element={<Projects projectData={projects} taskData={tasks} />}
-            />
-            <Route path="/projects/:id/edit" element={<EditProject />}></Route>
-            <Route path="/tasks" element={<Tasks projectData={projects} />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/create" element={<CreateProject />} />
+            <Route path="/projects/:id/edit" element={<EditProject />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/tasks/create" element={<CreateTask />} />
             <Route path="/notifications" element={<Notifications />} />
-            <Route
-              path="/settings"
-              element={<Settings peopleData={people} />}
-            />
+            <Route path="/settings" element={<Settings />} />
           </Route>
         </Routes>
       </Provider>
