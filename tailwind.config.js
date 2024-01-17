@@ -1,4 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+
+import plugin from 'tailwindcss/plugin';
+
+const shapeRendering = plugin(function ({ addUtilities }) {
+  const newUtilities = {
+    '.shape-auto': {
+      'shape-rendering': 'auto',
+    },
+    '.shape-optimize-speed': {
+      'shape-rendering': 'optimizeSpeed',
+    },
+    '.shape-crisp-edges': {
+      'shape-rendering': 'crispEdges',
+    },
+    '.shape-geometric-precision': {
+      'shape-rendering': 'geometricPrecision',
+    },
+  }
+
+  addUtilities(newUtilities)
+})
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -6,7 +28,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -35,5 +57,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), shapeRendering]
 }
