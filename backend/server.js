@@ -18,7 +18,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// Allows us to send form data
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
@@ -26,14 +25,26 @@ app.use(cookieParser());
 const logFilePath = path.join(process.cwd(), "logs", "morgan.log");
 const logStream = fs.createWriteStream(logFilePath, { flags: "a" });
 
-// Morgan middleware for logging to a file
-app.use(morgan("combined", { stream: logStream }));
+// Rotate logs daily
+morgan.token("date", (req, res, tz) => {
+  return new Date().toISOString();
+});
+
+const logFormat =
+  ":date[web] :method :url :status :response-time ms - :res[content-length]\n";
+
+app.use(
+  morgan(logFormat, {
+    stream: logStream,
+    skip: (req, res) => res.statusCode < 400,
+    interval: "1d",
+  })
+);
 
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 
-// Custom error handler
 app.use(notFound);
 app.use(errorHandler);
 
