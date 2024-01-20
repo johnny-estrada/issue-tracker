@@ -24,7 +24,7 @@ export const tasksApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Tasks"],
     }),
-    updateProject: builder.mutation({
+    updateTask: builder.mutation({
       query: (data) => ({
         url: `${TASK_URL}/${data.taskId}`,
         method: "PUT",
@@ -32,7 +32,7 @@ export const tasksApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Tasks"],
     }),
-    deleteProject: builder.mutation({
+    deleteTask: builder.mutation({
       query: (taskId) => ({
         url: `${TASK_URL}/${taskId}`,
         method: "DELETE",
@@ -44,5 +44,7 @@ export const tasksApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetTaskQuery,
   useGetTaskDetailsQuery,
+  useUpdateTaskMutation,
   useCreateTaskMutation,
+  useDeleteTaskMutation,
 } = tasksApiSlice;
