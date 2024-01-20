@@ -10,6 +10,7 @@ import {
 import { protect, admin } from "../middleware/authMiddleware.js";
 
 router.route("/").get(protect, getTasks).post(protect, admin, createTask);
+
 router
   .route("/:id")
   .get(protect, getTaskById)
