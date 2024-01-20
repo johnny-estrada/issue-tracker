@@ -9,11 +9,14 @@ import Projects from "../pages/manager/Projects";
 import EditProject from "../pages/manager/EditProject";
 import CreateProject from "../pages/manager/CreateProject";
 import CreateTask from "../pages/CreateTask";
+import EditTask from "../pages/EditTask";
+import TaskDetails from "../pages/TaskDetails";
 import Tasks from "../pages/Tasks";
 import Notifications from "../pages/Notifications";
 import Settings from "../pages/Settings";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import EditProfile from "../pages/EditProfile";
 
 // data
 import { lineChart, barChart } from "../data/index";
@@ -36,13 +39,26 @@ function App() {
                 <Dashboard lineChartData={lineChart} barChartData={barChart} />
               }
             />
+
             <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/create" element={<CreateProject />} />
-            <Route path="/projects/:id/edit" element={<EditProject />} />
+            <Route
+              path="/projects/create-project"
+              element={<CreateProject />}
+            />
+            <Route
+              path="/projects/edit-project/:id"
+              element={<EditProject />}
+            />
+
             <Route path="/tasks" element={<Tasks />} />
-            <Route path="/tasks/create" element={<CreateTask />} />
+            <Route path="/tasks/:id" element={<TaskDetails />} />
+            <Route path="/tasks/create-task" element={<CreateTask />} />
+            <Route path="/tasks/edit-task/:id" element={<EditTask />} />
+
             <Route path="/notifications" element={<Notifications />} />
+
             <Route path="/settings" element={<Settings />} />
+            <Route path="/settings/edit-profile" element={<EditProfile />} />
           </Route>
         </Routes>
       </Provider>
