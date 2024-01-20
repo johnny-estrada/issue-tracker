@@ -2,9 +2,7 @@ import { toast } from "react-toastify";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { Image } from "cloudinary-react";
 
-
-
-export default function Users({users}) {
+export default function Users({ users }) {
   const customId = "custom-id-yes";
 
   const notify = () => {
@@ -14,7 +12,6 @@ export default function Users({users}) {
       });
     }
   };
-
 
   const cloud_name = "dm1cbmiwq";
 
@@ -74,7 +71,7 @@ export default function Users({users}) {
                       <td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                         <div className="flex items-center">
                           <div className="h-11 w-11 flex-shrink-0">
-                             {user.photo ? (
+                            {user.photo ? (
                               <Image
                                 style={{ width: 80, borderRadius: 50 }}
                                 cloudName={cloud_name}
@@ -105,7 +102,7 @@ export default function Users({users}) {
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                         <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                          Active
+                          active
                         </span>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
