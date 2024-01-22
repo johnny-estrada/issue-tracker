@@ -1,3 +1,27 @@
 @tailwind base;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins-medium.ttf") format("truetype");
+  src: url("../fonts/poppins-medium.ttf") format("truetype");
+  src: url("../fonts/poppins-medium.ttf") format("truetype");
+  /* Add other font properties if needed */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
 @tailwind components;
 @tailwind utilities;
