@@ -37,6 +37,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      custom: ['Poppins', 'sans-serif']
+    },
     screens: {
       'lg': '992px'
     },
