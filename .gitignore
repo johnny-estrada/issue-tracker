@@ -26,5 +26,8 @@ dist-ssr
 
 
 # Temp ignored files
-hooks/*.ts
-utils/helpers.ts
+helpers.ts
+useDebounce.ts
+useEffectAfterMount.ts
+userCountDown.ts
+userCurrentUser.ts
