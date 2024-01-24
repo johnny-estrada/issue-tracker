@@ -1,4 +1,4 @@
-import SearchBar from "../components/ui/SearchBar";
+import SearchBar from "./ui/SearchBar";
 
 import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/outline";
 
@@ -11,7 +11,7 @@ export default function Header({ children }) {
 
   return (
     <>
-      <header className="px-4 lg:px-10 z-10">
+      <header className="px-4 lg:px-10 z-10 bg-slate-200 lg:ml-[288px] pt-5 pb-7">
         {/* Mobile Top Nav */}
         <div className="flex gap-4 text-gray-900 justify-end z-10">
           <button className="">

@@ -1,7 +1,7 @@
 function Main({ children }) {
   return (
     <>
-      <main>{children}</main>
+      <main className="flex ">{children}</main>
     </>
   );
 }
