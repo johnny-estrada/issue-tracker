@@ -38,7 +38,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      custom: ['Poppins', 'sans-serif']
+      custom: ['Gilroy', 'sans-serif']
     },
     screens: {
       'lg': '992px'
