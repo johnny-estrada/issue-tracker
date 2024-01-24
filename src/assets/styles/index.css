@@ -1,15 +1,16 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
-  font-family: "Poppins";
-  src: url("../fonts/poppins-medium.ttf") format("truetype");
-  src: url("../fonts/poppins-medium.ttf") format("truetype");
-  src: url("../fonts/poppins-medium.ttf") format("truetype");
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Medium.ttf") format("truetype");
+  src: url("../fonts/Gilroy-SemiBold.ttf") format("truetype");
   /* Add other font properties if needed */
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Gilroy", sans-serif;
 }
 
 input[type="file"] {
@@ -22,6 +23,3 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
 }
-
-@tailwind components;
-@tailwind utilities;
