@@ -37,9 +37,6 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    fontFamily: {
-      custom: ['Gilroy', 'sans-serif']
-    },
     screens: {
       'lg': '992px'
     },
