@@ -24,10 +24,6 @@ body {
   font-family: "Gilroy Medium", sans-serif;
 }
 
-h4 {
-  font-family: "Gilroy Semibold", sans-serif;
-}
-
 input[type="file"] {
   display: none;
 }
