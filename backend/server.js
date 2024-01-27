@@ -25,9 +25,18 @@ app.use(cookieParser());
 const logFilePath = path.join(process.cwd(), "logs", "morgan.log");
 const logStream = fs.createWriteStream(logFilePath, { flags: "a" });
 
-// Rotate logs daily
-morgan.token("date", (req, res, tz) => {
-  return new Date().toISOString();
+morgan.token("date", (req, res) => {
+  const pacificOptions = {
+    timeZone: "America/Los_Angeles",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  };
+  return new Date().toLocaleString("en-US", pacificOptions);
 });
 
 const logFormat =
@@ -37,9 +46,11 @@ app.use(
   morgan(logFormat, {
     stream: logStream,
     skip: (req, res) => res.statusCode < 400,
-    interval: "1d",
   })
 );
+
+// Add log rotation functionality
+// have to install a package
 
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
