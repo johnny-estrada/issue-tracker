@@ -28,6 +28,13 @@ input[type="file"] {
   display: none;
 }
 
+.scroll {
+  overflow-x: scroll;
+  overflow-x: hidden;
+  scrollbar-color: fff #ececec;
+  scrollbar-width: thin;
+}
+
 .custom-file-upload {
   border: 1px solid #ccc;
 
