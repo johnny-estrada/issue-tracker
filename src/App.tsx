@@ -2,24 +2,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import store from "./store";
-import PrivateRoute from "../components/PrivateRoute";
-import Dashboard from "../pages/Dashboard";
-import Projects from "../pages/Projects";
-import EditProject from "../pages/EditProject";
-import CreateProject from "../pages/CreateProject";
-import CreateTask from "../pages/CreateTask";
-import EditTask from "../pages/EditTask";
-import TaskDetails from "../pages/TaskDetails";
-import Tasks from "../pages/Tasks";
-import Notifications from "../pages/Notifications";
-import Settings from "../pages/Settings";
-import Login from "../pages/Login";
-import SignUp from "../pages/SignUp";
-import EditProfile from "../pages/EditProfile";
+import store from "./services/state/redux/store";
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Projects from "./pages/projects/Projects";
+import EditProject from "./pages/projects/EditProject";
+import CreateProject from "./pages/projects/CreateProject";
+import CreateTask from "./pages/tasks/CreateTask";
+import EditTask from "./pages/tasks/EditTask";
+import TaskDetails from "./pages/tasks/TaskDetails";
+import Tasks from "./pages/tasks/Tasks";
+import Notifications from "./pages/Notifications";
+import Settings from "./pages/Settings";
+import Login from "./pages/authentication/Login";
+import SignUp from "./pages/authentication/SignUp";
 
 // data
-import { lineChart, barChart } from "../data/index";
+import { lineChart, barChart } from "./data/index";
 
 function App() {
   return (
@@ -58,7 +57,6 @@ function App() {
             <Route path="/notifications" element={<Notifications />} />
 
             <Route path="/settings" element={<Settings />} />
-            <Route path="/settings/edit-profile" element={<EditProfile />} />
           </Route>
         </Routes>
       </Provider>
