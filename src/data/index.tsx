@@ -146,8 +146,8 @@ export const navigation = [
 
 export const stats = [
   { name: "Hours this week", stat: "32", icon: ClockIcon },
-  { name: "Project completed", stat: "78%", icon: FolderIcon },
-  { name: "Tasks due", stat: "32%", icon: ClipboardDocumentCheckIcon },
+  { name: "Project completed", stat: "78", icon: FolderIcon },
+  { name: "Tasks due", stat: "32", icon: ClipboardDocumentCheckIcon },
   { name: "Assigned to me", stat: "42", icon: ListBulletIcon },
 ];
 
