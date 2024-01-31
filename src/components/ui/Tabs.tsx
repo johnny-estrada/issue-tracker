@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
-import LineChart from "./charts/LineChart";
-import ShowHideList from "../ui/ShowHideList";
+import LineChart from "../../pages/dashboard/components/LineChart";
+import ShowHideList from "../../pages/dashboard/components/ShowHideList";
 import SelectorList from "../ui/SelectorList";
 import AvatarGroup from "./AvatarGroup";
 
@@ -67,11 +67,11 @@ export default function Tabs({
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm font-semibold leading-5 text-stone-800",
+                "w-full py-2.5 text-sm border-neutral-300",
                 selected
-                  ? "border-stone-800"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium",
+                  ? "border-gray-400 text-gray-500"
+                  : " text-neutral-300 hover:border-gray-300 hover:text-gray-600",
+                "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
           >
@@ -80,11 +80,11 @@ export default function Tabs({
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm font-semibold leading-5 text-stone-800",
+                "w-full py-2.5 text-sm text-stone-800",
                 selected
-                  ? "border-stone-800"
+                  ? "border-gray-400"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium",
+                "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
           >
@@ -93,11 +93,11 @@ export default function Tabs({
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm font-semibold leading-5 text-stone-800",
+                "lg:w-full py-2.5 text-sm text-stone-800",
                 selected
-                  ? "border-stone-800"
+                  ? "border-gray-400"
                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                "whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium",
+                "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
           >
@@ -105,10 +105,10 @@ export default function Tabs({
           </Tab>
         </Tab.List>
 
-        <Tab.Panels className="mt-2">
+        <Tab.Panels>
           <Tab.Panel
             className={classNames(
-              " p-3",
+
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >

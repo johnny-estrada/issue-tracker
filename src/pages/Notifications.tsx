@@ -1,12 +1,13 @@
-import SplitScreen from "../layout/SplitScreen";
-import Header from "../layout/Header";
-
-import HeaderTitle from "../components/ui/HeaderTitle";
+import Header from "../components/header/Header";
+import HeaderTitle from "../components/header/HeaderTitle";
+import Sidebar from "../components/sidebar/Sidebar";
 
 const Notifications = () => {
   const title = "Notifications";
   return (
-    <SplitScreen>
+    <>
+      <Sidebar />
+
       <Header>
         <HeaderTitle title={title} />
         <></>
@@ -150,23 +151,17 @@ const Notifications = () => {
               </fieldset>
             </div>
           </div>
-          <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-            <button
-              type="button"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Cancel
-            </button>
+          <div className="flex items-center justify-end gap-x-6 border border-gray-900/10 px-4 py-4 sm:px-8">
             <button
               type="submit"
-              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
             </button>
           </div>
         </form>
       </div>
-    </SplitScreen>
+    </>
   );
 };
 

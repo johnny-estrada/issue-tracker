@@ -1,29 +1,14 @@
 export default function FlatBadge(props) {
   return (
     <>
-      {/* <span className="inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
-        Badge
-      </span> */}
-      <span className="inline-flex items-center rounded-md bg-red-100 px-5 py-0.5 text-xs font-medium text-red-700 h-8">
+      <span className="inline-flex items-center rounded-md bg-green-50 px-3 text-xs font-medium text-green-800 h-8 w-fit">
         {props.priority}
       </span>
-      {/* <span className="inline-flex items-center rounded-md bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800">
-        Badge
+      {/* <span className="inline-flex items-center rounded-md bg-red-50 px-3 text-xs font-medium text-red-800 h-8 w-fit">
+        high
       </span>
-      <span className="inline-flex items-center rounded-md bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-blue-100 px-1.5 py-0.5 text-xs font-medium text-blue-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-indigo-100 px-1.5 py-0.5 text-xs font-medium text-indigo-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-purple-100 px-1.5 py-0.5 text-xs font-medium text-purple-700">
-        Badge
-      </span>
-      <span className="inline-flex items-center rounded-md bg-pink-100 px-1.5 py-0.5 text-xs font-medium text-pink-700">
-        Badge
+      <span className="inline-flex items-center rounded-md bg-orange-50 px-3 text-xs font-medium text-orange-800 h-8 w-fit">
+        medium
       </span> */}
     </>
   );
