@@ -5,7 +5,7 @@ const Greeting = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const userName = userInfo.name;
-  const firstName = formatName(userName)
+  const firstName = formatName(userName);
 
   const date = new Date();
   const hours = date.getHours();

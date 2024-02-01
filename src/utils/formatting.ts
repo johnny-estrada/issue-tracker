@@ -6,7 +6,7 @@ export const formatDate = (dateString, options) => {
   return date.toLocaleDateString("en-US", options);
 };
 
-export const formatName= (fullName) => {
-const firstName = fullName.split(" ")
-return firstName[0]
-}
+export const formatName = (fullName) => {
+  const firstName = fullName.split(" ");
+  return firstName[0];
+};
