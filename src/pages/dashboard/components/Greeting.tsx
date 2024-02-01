@@ -1,9 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
+import { formatName } from "../../../utils/formatting";
 
 const Greeting = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const userName = userInfo.name;
+  const firstName = formatName(userName)
+
   const date = new Date();
   const hours = date.getHours();
   let timeOfDay;
@@ -15,7 +18,7 @@ const Greeting = () => {
   return (
     <div>
       <h3 className="lg:text-sm text-[11px] text-neutral-500">
-        {`Good ${timeOfDay}, ${userName}!`}
+        {`Good ${timeOfDay}, ${firstName}!`}
       </h3>
     </div>
   );
