@@ -45,7 +45,7 @@ const Notifications = () => {
                   </h2>
 
                   <h2 className="text-xl p-1">
-                    Active projects
+                    Notifications
                   </h2>
                   <button className="text-xs text-orange-400 hover:text-orange-500 p-1">
                     mark all as read
