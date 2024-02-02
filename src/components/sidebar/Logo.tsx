@@ -11,7 +11,7 @@ export default function Logo() {
             <rect opacity=".5" x="18" width="6" height="25" rx="2" />
           </g>
         </svg>
-        <span className="text-white text-xl">Kanban</span>
+        <span className="text-white text-2xl tracking-wide">Klarity</span>
       </div>
     </NavLink>
   );
