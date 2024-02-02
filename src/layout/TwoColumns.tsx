@@ -5,7 +5,6 @@ import Sidebar from "../components/sidebar/Sidebar";
 const Layout = ({ children }) => {
   const [headerTop, headerBottom, mainLeft, mainRight] = children;
 
-  const title = "Notifications";
   return (
     <>
       <Sidebar />
