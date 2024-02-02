@@ -15,7 +15,7 @@ import Header from "../components/header/Header";
 import HeaderTitle from "../components/header/HeaderTitle";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import Users from "./admin/components/Users";
-import ProfileDetails from "./profile/components/ProfileDetails";
+import ProfileDetails from "./ProfileDetails";
 import Sidebar from "../components/sidebar/Sidebar";
 
 function classNames(...classes) {
