@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useGetTaskQuery } from "../../../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../../../services/state/redux/slices/projectsApiSlice";
+import { useGetTaskQuery } from "../services/state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../services/state/redux/slices/projectsApiSlice";
 
-import FlatBadge from "../../../components/ui/FlatBadge";
-import ListMenu from "../../../components/ui/ListMenu";
-import Loader from "../../../components/ui/Loader";
+import FlatBadge from "../components/ui/FlatBadge";
+import ListMenu from "../components/ui/ListMenu";
+import Loader from "../components/ui/Loader";
 import Axios from "axios";
 import { Image } from "cloudinary-react";
 
@@ -15,17 +15,17 @@ import { toast } from "react-toastify";
 import {
   useUpdateUserMutation,
   useGetUsersQuery,
-} from "../../../services/state/redux/slices/usersApiSlice";
-import { setCredentials } from "../../../services/state/redux/slices/authSlice";
+} from "../services/state/redux/slices/usersApiSlice";
+import { setCredentials } from "../services/state/redux/slices/authSlice";
 import { Tab } from "@headlessui/react";
 import SplitScreen from "../layout/SplitScreen";
-import Header from "../../../components/header/Header";
-import HeaderTitle from "../../../components/header/HeaderTitle";
+import Header from "../components/header/Header";
+import HeaderTitle from "../components/header/HeaderTitle";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import Users from "../../admin/components/Users";
+import Users from "./admin/components/Users";
 import TwoColumns from "../layout/TwoColumns";
-import Sidebar from "../../../components/sidebar/Sidebar";
-import Details from "../../../components/ui/Details";
+import Sidebar from "../components/sidebar/Sidebar";
+import Details from "../components/ui/Details";
 
 const ProfileDetails = () => {
   const { id } = useParams();
