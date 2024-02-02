@@ -8,15 +8,17 @@ const Layout = ({ children }) => {
   const title = "Notifications";
   return (
     <>
-      <Sidebar />
-      <div className="grid grid-cols-1 lg:flex flex-col lg:h-screen lg:ml-[288px]">
+      <div className="grid grid-cols-1 overflow-hidden lg:flex flex-col lg:h-screen lg:ml-[288px]">
+        <Sidebar />
         <Header>
           {headerTop}
           {headerBottom}
         </Header>
-        <main className="lg:flex lg:h-screen hidden">
-          <div className="flex-1 px-14 pt-10 mb-auto">{mainLeft}</div>
-          <div className="flex-1 px-14 pt-10 border-l border-gray-200">
+        <main className="lg:flex lg:h-screen">
+          <div className="lg:block lg:flex-1 lg:px-14 lg:pt-10 lg:mb-auto">
+            {mainLeft}
+          </div>
+          <div className="lg:block lg:flex-1 lg:px-14 lg:pt-10 border-l border-gray-200 hidden">
             {mainRight}
           </div>
         </main>
