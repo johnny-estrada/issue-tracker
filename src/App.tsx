@@ -26,6 +26,7 @@ function App() {
       <Provider store={store}>
         <ToastContainer />
         <Routes>
+           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
 
