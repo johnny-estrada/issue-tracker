@@ -8,7 +8,16 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 
-const MyProjects= ({ id, projectIndex, projects, tasks, dates, refetch, toggleProjects, formattedDates }) => {
+const MyProjects = ({
+  id,
+  projectIndex,
+  projects,
+  tasks,
+  dates,
+  refetch,
+  toggleProjects,
+  formattedDates,
+}) => {
   const NAV = [
     {
       name: "Create project",

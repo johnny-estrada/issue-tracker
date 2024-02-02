@@ -6,9 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useDeleteProjectMutation } from "../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
-import {
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 export default function Menu1({ navigation, id, refetch, delete1 }) {
   return (
