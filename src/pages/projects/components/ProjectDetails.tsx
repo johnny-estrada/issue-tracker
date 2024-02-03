@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Details from "../../components/ui/Details";
-import Menu1 from "../../components/ui/Menu1";
+import Details from "../../../components/ui/Details";
+import Menu1 from "../../../components/ui/Menu1";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import FlatBadge from "../../components/ui/FlatBadge";
+import FlatBadge from "../../../components/ui/FlatBadge";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const ProjectDetails = ({ projects, projectIndex, id, refetch, tasks }) => {

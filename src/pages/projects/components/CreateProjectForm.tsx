@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateProjectMutation } from "../../services/state/redux/slices/projectsApiSlice";
+import { useCreateProjectMutation } from "../../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 
-import Header from "../../components/header/Header";
-import Loader from "../../components/ui/Loader";
-import Datepicker from "../../components/ui/Datepicker";
-import PeoplePicker from "../../components/ui/PeoplePicker";
+import Header from "../../../components/header/Header";
+import Loader from "../../../components/ui/Loader";
+import Datepicker from "../../../components/ui/Datepicker";
+import PeoplePicker from "../../../components/ui/PeoplePicker";
 import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../../components/header/HeaderTitle";
 
 const CreateProjectForm = () => {
   const [title, setTitle] = useState("");

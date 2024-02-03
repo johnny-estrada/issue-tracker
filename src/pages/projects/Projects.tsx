@@ -8,8 +8,8 @@ import ButtonGroup from "../../components/header/ButtonGroup";
 import FilterButton from "../../components/header/FilterButton";
 import Loader from "../../components/ui/Loader";
 import TwoColumns from "../../layout/TwoColumns";
-import ProjectList from "./ProjectList";
-import ProjectDetails from "./ProjectDetails";
+import ProjectList from "./components/ProjectList";
+import ProjectDetails from "./components/ProjectDetails";
 
 function Projects() {
   const { data: projects, refetch, isLoading, error } = useGetProjectsQuery();
