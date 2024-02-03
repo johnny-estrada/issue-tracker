@@ -1,7 +1,7 @@
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
-const Layout = ({ children }) => {
+const TwoColumns = ({ children }) => {
   const [headerTop, headerBottom, mainLeft, mainRightTop, mainRightBottom] =
     children;
 
@@ -27,4 +27,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default TwoColumns;
