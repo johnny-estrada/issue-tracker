@@ -1,9 +1,9 @@
 import Header from "../components/header/Header";
-
 import Sidebar from "../components/sidebar/Sidebar";
 
 const Layout = ({ children }) => {
-  const [headerTop, headerBottom, mainLeft, mainRight] = children;
+  const [headerTop, headerBottom, mainLeft, mainRightTop, mainRightBottom] =
+    children;
 
   return (
     <>
@@ -18,7 +18,8 @@ const Layout = ({ children }) => {
             {mainLeft}
           </div>
           <div className="lg:flex-1 lg:px-14 lg:pt-10 border-l border-gray-200 lg:block hidden">
-            {mainRight}
+            {mainRightTop}
+            {mainRightBottom}
           </div>
         </main>
       </div>
