@@ -12,7 +12,7 @@ import CreateTask from "./pages/tasks/components/CreateTask";
 import EditTask from "./pages/tasks/components/EditTask";
 import TaskInformation from "./pages/tasks/TaskInformation";
 import Tasks from "./pages/tasks/Tasks";
-import Notifications from "./pages/Notifications";
+import Notifications from "./pages/notifications/Notifications";
 import Settings from "./pages/Settings";
 import Login from "./pages/authentication/Login";
 import SignUp from "./pages/authentication/SignUp";
