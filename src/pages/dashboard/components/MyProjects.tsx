@@ -13,7 +13,6 @@ const MyProjects = ({
   projectIndex,
   projects,
   tasks,
-  dates,
   refetch,
   toggleProjects,
   formattedDates,
