@@ -10,7 +10,7 @@ import EditProject from "./pages/projects/EditProject";
 import CreateProject from "./pages/projects/CreateProject";
 import CreateTask from "./pages/tasks/CreateTask";
 import EditTask from "./pages/tasks/EditTask";
-import TaskDetails from "./pages/tasks/TaskDetails";
+import TaskInformation from "./pages/tasks/TaskInformation";
 import Tasks from "./pages/tasks/Tasks";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
@@ -51,7 +51,7 @@ function App() {
             />
 
             <Route path="/tasks" element={<Tasks />} />
-            <Route path="/tasks/:id" element={<TaskDetails />} />
+            <Route path="/tasks/:id" element={<TaskInformation />} />
             <Route path="/tasks/create-task" element={<CreateTask />} />
             <Route path="/tasks/edit-task/:id" element={<EditTask />} />
 
