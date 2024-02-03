@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetTaskDetailsQuery,
   useUpdateTaskMutation,
-} from "../../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
+} from "../../../services/state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
-import Loader from "../../components/ui/Loader";
-import Datepicker from "../../components/ui/Datepicker";
+import Loader from "../../../components/ui/Loader";
+import Datepicker from "../../../components/ui/Datepicker";
 
-import PeoplePicker from "../../components/ui/PeoplePicker";
+import PeoplePicker from "../../../components/ui/PeoplePicker";
 
 const EditTaskForm = () => {
   const { id: taskId } = useParams();

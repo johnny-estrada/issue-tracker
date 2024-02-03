@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
-import FlatBadge from "../../components/ui/FlatBadge";
+import FlatBadge from "../../../components/ui/FlatBadge";
 
 const TaskDetails = ({
   tasks,

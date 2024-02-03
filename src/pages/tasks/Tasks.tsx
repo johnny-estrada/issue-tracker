@@ -6,8 +6,8 @@ import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";
 import FilterButton from "../../components/header/FilterButton";
 import TwoColumns from "../../layout/TwoColumns";
-import TaskList from "./TaskList";
-import TaskDetails from "./TaskDetails";
+import TaskList from "./components/TaskList";
+import TaskDetails from "./components/TaskDetails";
 
 const Tasks = () => {
   const [taskIndex, setTaskIndex] = useState(0);

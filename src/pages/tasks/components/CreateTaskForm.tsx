@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateTaskMutation } from "../../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
+import { useCreateTaskMutation } from "../../../services/state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
-import Loader from "../../components/ui/Loader";
-import Datepicker from "../../components/ui/Datepicker";
-import PeoplePicker from "../../components/ui/PeoplePicker";
+import Loader from "../../../components/ui/Loader";
+import Datepicker from "../../../components/ui/Datepicker";
+import PeoplePicker from "../../../components/ui/PeoplePicker";
 import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
 
 const CreateTaskForm = () => {

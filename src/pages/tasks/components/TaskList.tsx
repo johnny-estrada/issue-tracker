@@ -1,6 +1,6 @@
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
-import SelectorList from "../../components/ui/SelectorList";
-import FlatBadge from "../../components/ui/FlatBadge";
+import SelectorList from "../../../components/ui/SelectorList";
+import FlatBadge from "../../../components/ui/FlatBadge";
 
 const TaskList = ({ tasks, taskIndex, toggleTasks, formattedDates }) => {
   return (
