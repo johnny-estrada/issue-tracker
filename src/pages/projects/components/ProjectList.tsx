@@ -17,18 +17,24 @@ function ProjectList({
     >
       <div className="flex min-w-0 gap-x-4">
         <div className="min-w-0 flex-auto">
-          <h4 className="text-sm leading-6">{project.client}</h4>
-          <p className="flex text-xs leading-5 text-gray-400">
+          <h4 className="text-sm lg:text-base leading-6">{project.client}</h4>
+          <p className="flex text-xs lg:text-sm leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />9 tasks &#x2022; 2
             overdue
           </p>
         </div>
       </div>
-      <div className="flex shrink-0 items-center gap-x-4">
-        <AvatarGroup members={project.team} />
-        <p className="text-gray-400 text-xs">
-          {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
-        </p>
+      <div>
+        <div className="hidden lg:flex shrink-0 items-center gap-x-4">
+          <AvatarGroup members={project.team} />
+          <p className="text-gray-400 text-xs">
+            {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
+          </p>
+        </div>
+        <div className="flex justify-center mt-2.5">
+        <ChevronRightIcon className="w-5 h-5 lg:hidden text-gray-400" />
+        </div>
+
       </div>
     </SelectorList>
   ));
@@ -41,23 +47,28 @@ function ProjectList({
             All Projects
           </h2>
 
-          <h2 className="text-xl pb-4">Active projects</h2>
-          <div className="flex items-center">
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
+          <h2 className="text-xl lg:text-2xl px-4 pb-4 pt-4 lg:pt-0 lg:px-0">
+            Active projects
+          </h2>
+          <div className="hidden lg:flex items-center">
+            <button className="hover:bg-gray-50 rounded-full p-3">
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
-            </a>
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
+            </button>
+            <button className="hover:bg-gray-50 rounded-full p-3">
               <span className="sr-only">Next</span>
               <ChevronRightIcon
                 className="w-4 h-4 hover:bg-gray-100 rounded-full"
                 aria-hidden="true"
               />
-            </a>
+            </button>
           </div>
         </header>
 
         <div className="lg:flex flex-col gap-2 overflow-hidden rounded-lg px-1 py-4 hidden">
+          {projectList}
+        </div>
+        <div className="flex flex-col gap-2 overflow-hidden rounded-lg px-4 lg:px-1 py-4 lg:hidden">
           {projectList}
         </div>
       </section>

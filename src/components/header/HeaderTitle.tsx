@@ -11,7 +11,7 @@ const HeaderTitle = ({ title }: Props) => {
     <>
       <div>
         {title === "Dashboard" ? <Greeting /> : <Breadcrumbs />}
-        <h1 className="text-2xl lg:text-4xl text-gray-900">{title}</h1>
+        <h1 className="text-3xl lg:text-4xl text-gray-900">{title}</h1>
       </div>
     </>
   );
