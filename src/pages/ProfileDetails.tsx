@@ -125,14 +125,14 @@ const ProfileDetails = () => {
   };
   return (
     <main className="flex flex-col-reverse  lg:flex-row mb-36 lg:mb-0">
-      <div className="flex-1 p-12 mb-auto max-w-96">
+      <div className="flex-1 p-4 lg:p-12 mb-auto max-w-96">
         <section aria-labelledby="profile">
           <header className="flex justify-between">
             <h2 className="sr-only" id="profile">
               Profile
             </h2>
 
-            <h2 className="text-2xl">Profile</h2>
+            <h2 className="text-xl lg:text-2xl pb-4">Profile</h2>
           </header>
           <form method="PUT" onSubmit={submitHandler} className="bg-white mb-5">
             <div className="py-6 sm:p-8">
@@ -151,7 +151,7 @@ const ProfileDetails = () => {
                       />
                     ) : (
                       <UserCircleIcon
-                        className="h-12 w-12 text-gray-300"
+                        className="h-8 w-8 lg:h-12 lg:w-12 text-gray-300"
                         aria-hidden="true"
                       />
                     )}
@@ -234,7 +234,7 @@ const ProfileDetails = () => {
               Security
             </h2>
 
-            <h2 className="text-2xl pb-4">Security</h2>
+            <h2 className="text-xl lg:text-2xl pb-4">Security</h2>
           </header>
           <form method="PUT" onSubmit={submitHandler} className="bg-white">
             <div className="py-4 sm:p-8">
@@ -295,14 +295,16 @@ const ProfileDetails = () => {
           </form>
         </section>
       </div>
-      <div className="flex-1 px-14 pt-10 border-l border-gray-200">
+      <div className="flex-1 px-4  lg:px-14 pt-4  lg:pt-10 border-l border-gray-200">
         <section>
           <header className="flex justify-between">
             <h2 className="sr-only" id="account">
               Account details
             </h2>
 
-            <h2 className="text-2xl pb-4">Account details</h2>
+            <h2 id="account" className="text-xl lg:text-2xl pb-4">
+              Account details
+            </h2>
             <ListMenu />
           </header>
           <Details />
