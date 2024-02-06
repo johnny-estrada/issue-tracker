@@ -17,7 +17,8 @@ const TwoColumns = ({ children }) => {
           <div className="lg:flex-1 lg:px-14 lg:pt-10 lg:mb-auto">
             {mainLeft}
           </div>
-          <div className="lg:flex-1 lg:px-14 lg:pt-10 border-l border-gray-200 lg:block hidden">
+
+          <div className="flex-1 lg:px-14 lg:pt-10 border-l border-gray-200">
             {mainRightTop}
             {mainRightBottom}
           </div>
