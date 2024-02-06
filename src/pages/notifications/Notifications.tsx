@@ -5,9 +5,7 @@ import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";
 import FilterButton from "../../components/header/FilterButton";
 import Column from "../../layout/Column";
-import NotificationsList from "./components/NotificationsList"
-
-
+import NotificationsList from "./components/NotificationsList";
 
 const Notifications = () => {
   const { data: projects, refetch, isLoading, error } = useGetProjectsQuery();
@@ -32,7 +30,11 @@ const Notifications = () => {
           <FilterButton />
         </div>
 
-        <NotificationsList projects={projects} projectIndex={projectIndex} toggleProjects={toggleProjects} />
+        <NotificationsList
+          projects={projects}
+          projectIndex={projectIndex}
+          toggleProjects={toggleProjects}
+        />
       </Column>
     </>
   );
