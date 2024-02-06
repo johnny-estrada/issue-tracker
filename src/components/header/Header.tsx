@@ -12,9 +12,9 @@ export default function Header({ children }) {
 
   return (
     <>
-      <header className="py-5 px-4 lg:px-14 lg:pt-12 z-10 bg-gray-100">
+      <header className="py-4 lg:py-0 px-4 lg:px-14 lg:pt-12 z-10 bg-gray-100">
         {/* Mobile Top Nav */}
-        <div className="flex gap-4 text-gray-900 justify-end z-10">
+        <div className="flex gap-4 text-gray-900 justify-end z-10 mb-2">
           <button className="">
             <MagnifyingGlassIcon className="w-5 h-5 lg:hidden" />
           </button>
