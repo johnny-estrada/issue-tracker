@@ -10,7 +10,7 @@ export default function Sidebar() {
         <div className="lg:mt-20 lg:pl-8">
           <Logo />
         </div>
-        <div className="lg:px-0 lg:pt-14">
+        <div className="lg:px-0 lg:mt-8">
           <Navigation navigation={navigation} />
         </div>
       </aside>
