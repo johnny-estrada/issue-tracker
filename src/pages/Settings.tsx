@@ -124,7 +124,7 @@ function Settings() {
         </Header>
 
         <Tab.Group>
-          <Tab.List className="flex rounded-xl bg-gray-100 pb-8">
+          <Tab.List className="flex rounded-xl bg-gray-100 pb-4 lg:pb-8">
             <Tab
               className={({ selected }) =>
                 classNames(
