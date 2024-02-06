@@ -48,7 +48,7 @@ const Details = ({ description, client, startDate, targetDate, members }) => {
                 <AvatarGroup members={members} />
               ) : (
                 <UserCircleIcon
-                  className="h-12 w-12 text-gray-300"
+                  className="w-8 h-8 lg:h-12 lg:w-12 text-gray-300"
                   aria-hidden="true"
                 />
               )}
