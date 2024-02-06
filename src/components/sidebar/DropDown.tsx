@@ -13,6 +13,7 @@ import {
   Cog8ToothIcon,
   BellIcon,
   UserIcon,
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 
 export default function DropDown() {
@@ -83,11 +84,11 @@ export default function DropDown() {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute -right-32 -top-28 mt-2 w-56 p-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
-            <div className="px-1 py-1 ">
+            <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    to="/settings"
+                    to="/setting"
                     className={`${
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -97,21 +98,6 @@ export default function DropDown() {
                   </Link>
                 )}
               </Menu.Item>
-            </div>
-            <div className="px-1 py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <Link
-                    to="/notifications"
-                    className={`${
-                      active ? "bg-orange-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    <BellIcon className=" w-4 h-4 mr-2" />
-                    Notifications
-                  </Link>
-                )}
-              </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <Link
@@ -120,8 +106,8 @@ export default function DropDown() {
                       active ? "bg-orange-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    <Cog8ToothIcon className=" w-4 h-4 mr-2" />
-                    Settings
+                    <UsersIcon className=" w-4 h-4 mr-2" />
+                    Users
                   </Link>
                 )}
               </Menu.Item>
