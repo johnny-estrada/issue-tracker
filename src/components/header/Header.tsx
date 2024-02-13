@@ -1,5 +1,6 @@
 import SearchBar from "./SearchBar";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/outline";
 
@@ -18,9 +19,9 @@ export default function Header({ children }) {
           <button className="">
             <MagnifyingGlassIcon className="w-5 h-5 lg:hidden" />
           </button>
-          <button>
+          <Link to="/notifications">
             <BellIcon className="w-5 h-5 lg:hidden" />
-          </button>
+          </Link>
         </div>
 
         {/* Top header section */}
