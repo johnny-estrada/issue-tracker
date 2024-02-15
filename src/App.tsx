@@ -17,9 +17,6 @@ import Settings from "./pages/Settings";
 import Login from "./pages/authentication/Login";
 import SignUp from "./pages/authentication/SignUp";
 
-// data
-import { lineChart, barChart } from "./data/index";
-
 function App() {
   return (
     <BrowserRouter>
@@ -32,13 +29,7 @@ function App() {
 
           {/* Private Routes */}
           <Route path="" element={<PrivateRoute />}>
-            <Route
-              index={true}
-              path="/"
-              element={
-                <Dashboard lineChartData={lineChart} barChartData={barChart} />
-              }
-            />
+            <Route index={true} path="/" element={<Dashboard />} />
 
             <Route path="/projects" element={<Projects />} />
             <Route
