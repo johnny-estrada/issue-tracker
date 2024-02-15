@@ -6,7 +6,6 @@ interface Props {
 }
 
 const HeaderTitle = ({ title }: Props) => {
-  console.log(typeof title);
   return (
     <>
       <div>
