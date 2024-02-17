@@ -10,15 +10,12 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 import {
   ChevronDownIcon,
   ArrowRightOnRectangleIcon,
-  Cog8ToothIcon,
-  BellIcon,
   UserIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
 
 export default function DropDown() {
   const { userInfo } = useSelector((state) => state.auth);
-  console.log(userInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -65,7 +62,7 @@ export default function DropDown() {
                 className="text-neutral-400 text-sm font-normal"
                 aria-hidden="true"
               >
-                {userInfo.title ? userInfo.title : null}
+                {userInfo.title}
               </span>
             </p>
             <ChevronDownIcon
