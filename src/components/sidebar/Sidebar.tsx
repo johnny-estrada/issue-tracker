@@ -1,7 +1,7 @@
 import Navigation from "./Navigation";
 import Logo from "./Logo";
 
-import { navigation } from "../../data/index";
+import { navigation, mobileNavigation } from "../../data/index";
 
 export default function Sidebar() {
   return (
@@ -11,7 +11,10 @@ export default function Sidebar() {
           <Logo />
         </div>
         <div className="lg:px-0 lg:mt-8">
-          <Navigation navigation={navigation} />
+          <Navigation
+            navigation={navigation}
+            mobileNavigation={mobileNavigation}
+          />
         </div>
       </aside>
     </>
