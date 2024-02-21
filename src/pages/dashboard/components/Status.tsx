@@ -18,7 +18,9 @@ const Status = () => {
         </Link>
         <div className="flex justify-center items-center rounded-full w-28 h-28 border-2 border-orange-500 mb-5">
           <div className="flex flex-col justify-center items-center">
-            <p className="text-3xl">80<span className="text-xl">%</span></p>
+            <p className="text-3xl">
+              80<span className="text-xl">%</span>
+            </p>
             <p className="text-xs">completed</p>
           </div>
         </div>
