@@ -4,7 +4,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 const Status = () => {
   return (
     <>
-      <div className="flex flex-col items-center border border-gray-100 px-14 py-5 h-full shadow-sm rounded-lg">
+      <div className="flex flex-col items-center border border-gray-100 px-10 py-5 h-full shadow-sm rounded-lg">
         <header className="flex">
           <ChevronLeftIcon className="h-4 w-4 mr-5" />
           June 30 - July 30
