@@ -1,3 +1,4 @@
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 import {
   BellIcon,
   ClockIcon,
@@ -116,15 +117,15 @@ export const users = [
 export const navigation = [
   { name: "Dashboard", href: "/", icon: Squares2X2Icon, current: true },
   {
-    name: "Projects",
-    href: "/projects",
-    icon: FolderIcon,
-    current: true,
-  },
-  {
     name: "Tasks",
     href: "/tasks",
     icon: ClipboardDocumentListIcon,
+    current: true,
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: FolderIcon,
     current: true,
   },
   {
@@ -141,6 +142,27 @@ export const navigation = [
     icon: Cog6ToothIcon,
     current: true,
     mobile: true,
+  },
+];
+export const mobileNavigation = [
+  { name: "Dashboard", href: "/", icon: Squares2X2Icon, current: true },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: FolderIcon,
+    current: true,
+  },
+  {
+    name: "Tasks",
+    href: "/tasks",
+    icon: ClipboardDocumentListIcon,
+    current: true,
+  },
+  {
+    name: "Profile",
+    href: "/settings",
+    icon: UserCircleIcon,
+    current: true,
   },
 ];
 
