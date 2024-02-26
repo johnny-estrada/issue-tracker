@@ -10,7 +10,6 @@ export default function Breadcrumbs() {
     .filter((Boolean) => Boolean)
     .map((crumb, index, array) => {
       ` ${currentLink}/${crumb}`;
-      console.log(currentLink);
       const isLastCrumb = index === array.length - 1;
 
       return (
