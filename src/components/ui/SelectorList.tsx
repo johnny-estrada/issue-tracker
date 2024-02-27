@@ -11,7 +11,7 @@ export default function SelectorList({ children, id, active, onClick }: Props) {
       {children.length === 0 && <p>No items found</p>}
       <ul>
         <li>
-          <button
+          <div
             onClick={onClick}
             id={id}
             className={
@@ -21,7 +21,7 @@ export default function SelectorList({ children, id, active, onClick }: Props) {
             }
           >
             {children}
-          </button>
+          </div>
         </li>
       </ul>
     </>
