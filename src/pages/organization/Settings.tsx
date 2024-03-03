@@ -7,16 +7,16 @@ import { toast } from "react-toastify";
 import {
   useUpdateUserMutation,
   useGetUsersQuery,
-} from "../services/state/redux/slices/usersApiSlice";
-import { setCredentials } from "../services/state/redux/slices/authSlice";
-import Loader from "../components/ui/Loader";
+} from "../../services/state/redux/slices/usersApiSlice";
+import { setCredentials } from "../../services/state/redux/slices/authSlice";
+import Loader from "../../components/ui/Loader";
 import { Tab } from "@headlessui/react";
-import Header from "../components/header/Header";
-import HeaderTitle from "../components/header/HeaderTitle";
+import Header from "../../components/header/Header";
+import HeaderTitle from "../../components/header/HeaderTitle";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import Users from "./admin/components/Users";
+import Users from "../admin/components/Users";
 import ProfileDetails from "./ProfileDetails";
-import Sidebar from "../components/sidebar/Sidebar";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -124,14 +124,14 @@ function Settings() {
         </Header>
 
         <Tab.Group>
-          <Tab.List className="flex rounded-xl bg-gray-100 pb-4 lg:pb-8">
+          <Tab.List className="flex bg-gray-100 pb-4 lg:pb-8">
             <Tab
               className={({ selected }) =>
                 classNames(
-                  "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-stone-800  hover:bg-gray-50 focus:z-10 shadow-sm",
+                  "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md  px-3 py-2 text-stone-800  hover:bg-gray-50 focus:z-10 shadow-sm",
                   selected
                     ? "bg-stone-800 text-white pointer-events-none"
-                    : "text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                    : "bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700",
                   "whitespace-nowrap border-b-2 text-sm",
                 )
               }
@@ -142,10 +142,10 @@ function Settings() {
             <Tab
               className={({ selected }) =>
                 classNames(
-                  "text-sm leading-5 relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-gray-900 hover:bg-gray-50 focus:z-10 shadow-sm",
+                  "text-sm leading-5 relative inline-flex items-center rounded-r-md px-3 py-2 text-gray-900 hover:bg-gray-50 focus:z-10 shadow-sm",
                   selected
                     ? "bg-stone-800 text-white pointer-events-none"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                    : "bg-white border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                   "whitespace-nowrap border-b-2 text-sm",
                 )
               }
