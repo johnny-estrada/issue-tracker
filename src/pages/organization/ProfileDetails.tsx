@@ -1,31 +1,22 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useGetTaskQuery } from "../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../services/state/redux/slices/projectsApiSlice";
-
-import FlatBadge from "../components/ui/FlatBadge";
-import ListMenu from "../components/ui/ListMenu";
-import Loader from "../components/ui/Loader";
+import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
+import ListMenu from "../../components/ui/ListMenu";
+import Loader from "../../components/ui/Loader";
 import Axios from "axios";
 import { Image } from "cloudinary-react";
-
+import { formatDate } from "../../utils/formatting";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
   useUpdateUserMutation,
   useGetUsersQuery,
-} from "../services/state/redux/slices/usersApiSlice";
-import { setCredentials } from "../services/state/redux/slices/authSlice";
-import { Tab } from "@headlessui/react";
-import SplitScreen from "../layout/SplitScreen";
-import Header from "../components/header/Header";
-import HeaderTitle from "../components/header/HeaderTitle";
+} from "../../services/state/redux/slices/usersApiSlice";
+import { setCredentials } from "../../services/state/redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import Users from "./admin/components/Users";
-import TwoColumns from "../layout/TwoColumns";
-import Sidebar from "../components/sidebar/Sidebar";
-import Details from "../components/ui/Details";
+import Details from "../../components/ui/Details";
 
 const ProfileDetails = () => {
   const { id } = useParams();
@@ -123,6 +114,7 @@ const ProfileDetails = () => {
       }
     }
   };
+
   return (
     <main className="flex flex-col-reverse  lg:flex-row mb-36 lg:mb-0">
       <div className="flex-1 p-4 lg:p-12 mb-auto max-w-96">
@@ -142,7 +134,7 @@ const ProfileDetails = () => {
                     Photo
                   </label>
 
-                  <div className="my-3 flex items-center gap-x-3">
+                  <div className="flex items-center gap-x-3">
                     {photo ? (
                       <Image
                         style={{ width: 70, borderRadius: 50 }}
@@ -296,7 +288,7 @@ const ProfileDetails = () => {
         </section>
       </div>
       <div className="flex-1 px-4  lg:px-14 pt-4  lg:pt-10 border-l border-gray-200">
-        <section>
+        <section className="hidden lg:block">
           <header className="flex justify-between">
             <h2 className="sr-only" id="account">
               Account details
@@ -305,9 +297,28 @@ const ProfileDetails = () => {
             <h2 id="account" className="text-xl lg:text-2xl pb-4">
               Account details
             </h2>
-            <ListMenu />
           </header>
-          <Details />
+          <section aria-labelledby="projects">
+            <div className="max-w-[90%]">
+              <p className="text-sm pb-5 text-neutral-500"></p>
+              <ul>
+                <li className="grid grid-cols-2 py-2">
+                  <p className="text-sm text-neutral-500">ID</p>
+                  <p className="text-sm text-neutral-800">U-123</p>
+                </li>
+                <li className="grid grid-cols-2 py-2">
+                  <p className="text-sm text-neutral-500">Status</p>
+                  <p className="text-sm font-medium text-neutral-800">active</p>
+                </li>
+                <li className="grid grid-cols-2 py-2">
+                  <p className="text-sm text-neutral-500">Role</p>
+                  <p className="text-sm font-medium text-neutral-800">
+                    Manager
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
         </section>
       </div>
     </main>
