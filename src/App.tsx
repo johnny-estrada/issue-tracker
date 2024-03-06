@@ -16,6 +16,7 @@ import Notifications from "./pages/notifications/Notifications";
 import Settings from "./pages/organization/Settings";
 import Login from "./pages/authentication/Login";
 import SignUp from "./pages/authentication/SignUp";
+import TestForm from "./pages/TestForm";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             <Route path="/notifications" element={<Notifications />} />
 
             <Route path="/settings" element={<Settings />} />
+            <Route path="/test" element={<TestForm />} />
           </Route>
         </Routes>
       </Provider>
