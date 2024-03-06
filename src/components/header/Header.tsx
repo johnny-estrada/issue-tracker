@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/outline";
 
 export default function Header({ children }) {
-  const [title, display] = children;
+  const [title, searchbar, display] = children;
 
   function search(text) {
     alert(text);
@@ -30,7 +30,7 @@ export default function Header({ children }) {
           {title}
 
           {/* Search input and button */}
-          <SearchBar search={search} />
+          {searchbar}
           {/* <Search /> */}
         </div>
         <div className="lg:mb-5">{display}</div>
