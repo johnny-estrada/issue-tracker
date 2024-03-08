@@ -1,7 +1,7 @@
-import HeaderTitle from "../../../components/header/HeaderTitle";
-import EditTaskForm from "./EditTaskForm";
-import Header from "../../../components/header/Header";
-import Sidebar from "../../../components/sidebar/Sidebar";
+import HeaderTitle from "../../components/header/HeaderTitle";
+import EditTaskForm from "./components/EditTaskForm";
+import Header from "../../components/header/Header";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 const EditTask = () => {
   return (
