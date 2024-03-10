@@ -6,10 +6,10 @@ import store from "./services/state/redux/store";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Projects from "./pages/projects/Projects";
-import EditProject from "./pages/projects/components/EditProject";
-import CreateProject from "./pages/projects/components/CreateProject";
-import CreateTask from "./pages/tasks/components/CreateTask";
-import EditTask from "./pages/tasks/components/EditTask";
+import EditProject from "./pages/projects/EditProject";
+import CreateProject from "./pages/projects/CreateProject";
+import CreateTask from "./pages/tasks/CreateTask";
+import EditTask from "./pages/tasks/EditTask";
 import TaskInformation from "./pages/tasks/TaskInformation";
 import Tasks from "./pages/tasks/Tasks";
 import Notifications from "./pages/notifications/Notifications";
@@ -51,6 +51,7 @@ function App() {
 
             <Route path="/settings" element={<Settings />} />
             <Route path="/test" element={<TestForm />} />
+            <Route path="/upload" element={<TestForm />} />
           </Route>
         </Routes>
       </Provider>
