@@ -44,7 +44,7 @@ const SearchBar = (props) => {
           type="button"
           className="hidden lg:ml-3 lg:block lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10"
         >
-          + Create
+          Create new project
         </button>
 
         {/* Mobile create button */}
