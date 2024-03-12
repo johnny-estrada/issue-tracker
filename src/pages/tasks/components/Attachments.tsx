@@ -1,7 +1,26 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PaperClipIcon } from "@heroicons/react/24/outline";
+import { PaperClipIcon } from "@heroicons/react/20/solid";
+import axios from "axios"
 
 const Attachments = () => {
+  const [file, setFile] = useState("");
+ 
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    axios.post('http://localhost:5000/api/attachments', formData).then(res => {
+   
+        console.log(res.data)
+  
+    }).catch(err => console.log(err))
+  }
+ 
   return (
     <>
       <section aria-labelledby="attachments">
@@ -24,20 +43,26 @@ const Attachments = () => {
           <li className="w-32 h-28 border border-gray-200 shadow-sm"></li>
         </ul>
 
-        <a
-          href="#"
-          className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16"
-        >
-          <PaperClipIcon className="w-5 h-5" />
-          Attach new file
-        </a>
+        <form method="POST" encType="multipart/form-data">
+          <div className="flex gap-2">
+            <label
+              htmlFor="file"
+              className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer"
+            >
+              <PaperClipIcon className="w-5 h-5" />
+              Attach new file
+            </label>
+
+            <input
+              id="file"
+              type="file"
+              name="file"
+              onChange={handleFile}
+            />
+            <button type="button" onClick={handleUpload}>send</button>
+          </div>
+        </form>
       </section>
-      <footer>
-        <p className="text-sm text-neutral-500">
-          Created July 3, 2023 by Yulia B
-        </p>
-        <p className="text-sm text-neutral-500">Last updated now, by Yulia B</p>
-      </footer>
     </>
   );
 };
