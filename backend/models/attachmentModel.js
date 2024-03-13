@@ -1,55 +1,59 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 import Task from "./taskModel.js";
+import User from "./userModel.js";
 
-const Attachment = sequelize.define('File', {
-  originalname: {
-    type: DataTypes.STRING,
-  
+const Attachment = sequelize.define(
+  "File",
+  {
+    originalname: {
+      type: DataTypes.STRING,
+    },
+    fieldname: {
+      type: DataTypes.STRING,
+    },
+    mimetype: {
+      type: DataTypes.STRING,
+    },
+    destination: {
+      type: DataTypes.STRING,
+    },
+    filename: {
+      type: DataTypes.STRING,
+    },
+    path: {
+      type: DataTypes.STRING,
+    },
+    size: {
+      type: DataTypes.INTEGER,
+    },
+    taskId: {
+      type: DataTypes.INTEGER,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+    },
   },
-  fieldname: {
-    type: DataTypes.STRING,
-  
-  },
-  mimetype: {
-    type: DataTypes.STRING,
-  
-  },
-  destination: {
-    type: DataTypes.STRING,
-  
-  },
-  filename: {
-    type: DataTypes.STRING,
-  
-  },
-  path: {
-    type: DataTypes.STRING,
-  
-  },
-  size: {
-    type: DataTypes.INTEGER,
-  
-  },
-  taskId: {
-    type: DataTypes.INTEGER
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true,
-});
+);
 
 const setupAssociations = () => {
   Attachment.belongsTo(Task, { foreignKey: "taskId" });
+  Attachment.belongsTo(User, { foreignKey: "userId" });
 };
 
-export { setupAssociations };
+const syncAttachmentTable = async () => {
+  try {
+    await sequelize.sync();
+    console.log("Attachment table synchronized successfully!");
+  } catch (error) {
+    console.error("Unable to synchronize Attachment table: ", error);
+  }
+};
 
-Attachment.sync()
-  .then(() => {
-    console.log("Attachment table created successfully!");
-  })
-  .catch((error) => {
-    console.error("Unable to create table: ", error);
-  });
+setupAssociations();
+syncAttachmentTable();
 
 export default Attachment;
