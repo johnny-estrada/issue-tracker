@@ -1,26 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import axios from "axios"
+import axios from "axios";
+import { useGetAttachmentQuery } from "../../../services/state/redux/slices/attachmentsApiSlice";
 
-const Attachments = () => {
+interface Props {
+  taskId: number;
+  userId: number;
+}
+
+const Attachments = ({ taskId, userId }: Props) => {
   const [file, setFile] = useState("");
- 
+  const [taskI, setTaskI] = useState(0);
+  const [userI, setUserI] = useState(0);
+  const [image, setImage] = useState(
+    "1710279204083_beautiful_model_person_portrait_pretty_woman-914793.jpg",
+  );
+
+  const { data: attachments } = useGetAttachmentQuery("");
+  console.log(attachments);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/attachments?taskId=${taskId}`)
+      .then((res) => setImage(res.data))
+      .catch((err) => console.log(err));
+  }, [taskId]);
+
   const handleFile = (e) => {
     setFile(e.target.files[0]);
+    setTaskI(taskId);
+    setUserI(userId);
+    console.log(taskId);
   };
 
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("taskId", taskI);
+    formData.append("userId", userI);
 
-    axios.post('http://localhost:5000/api/attachments', formData).then(res => {
-   
-        console.log(res.data)
-  
-    }).catch(err => console.log(err))
-  }
- 
+    axios
+      .post("http://localhost:5000/api/attachments", formData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <section aria-labelledby="attachments">
@@ -38,11 +66,22 @@ const Attachments = () => {
         </header>
 
         {/* TASKS LIST */}
-        <ul className="flex gap-3 overflow-hidden py-4 text-slate-500 text-sm">
-          <li className="w-32 h-28 border border-gray-200 shadow-sm"></li>
-          <li className="w-32 h-28 border border-gray-200 shadow-sm"></li>
+        <ul className="flex flex-wrap max-w-lg mb-2 gap-2.5 overflow-hidden py-4 text-slate-500 text-sm">
+          {attachments?.map((attachment) => (
+            <li
+              key={attachment.id}
+              className="w-32 h-28 border border-gray-200 shadow-sm mb-2.5"
+            >
+              {
+                <img
+                  className="w-32 h-28"
+                  src={`http://localhost:5000/Uploads/${attachment.filename}`}
+                  alt=""
+                />
+              }
+            </li>
+          ))}
         </ul>
-
         <form method="POST" encType="multipart/form-data">
           <div className="flex gap-2">
             <label
@@ -52,14 +91,10 @@ const Attachments = () => {
               <PaperClipIcon className="w-5 h-5" />
               Attach new file
             </label>
-
-            <input
-              id="file"
-              type="file"
-              name="file"
-              onChange={handleFile}
-            />
-            <button type="button" onClick={handleUpload}>send</button>
+            <input id="file" type="file" name="file" onChange={handleFile} />
+            <button type="button" onClick={handleUpload}>
+              send
+            </button>
           </div>
         </form>
       </section>
