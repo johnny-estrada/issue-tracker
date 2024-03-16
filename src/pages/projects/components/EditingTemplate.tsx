@@ -10,6 +10,10 @@ import Datepicker from "../../../components/ui/Datepicker";
 
 import PeoplePicker from "../../../components/ui/PeoplePicker";
 
+type StatusOptions = {
+  [key: string]: string[];
+};
+
 const EditingTemplate = () => {
   const { id: projectId } = useParams();
   const [title, setTitle] = useState("");
@@ -20,6 +24,12 @@ const EditingTemplate = () => {
   const [targetDate, setTargetDate] = useState(new Date());
   const [hours, setHours] = useState("");
   const [members, setMembers] = useState([]);
+
+  const statusOptions: StatusOptions = {
+    "on hold": ["on hold", "active", "closed"],
+    active: ["active", "on hold", "closed"],
+    closed: ["closed", "active", "on hold"],
+  };
 
   const customId = "custom-id-yes";
 
@@ -85,7 +95,7 @@ const EditingTemplate = () => {
 
   return (
     <>
-      {loadingUpdate ? (
+      {isLoading ? (
         <Loader />
       ) : error ? (
         <p>error</p>
@@ -96,7 +106,6 @@ const EditingTemplate = () => {
               className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
               onSubmit={handleSubmit}
             >
-              {isLoading && <Loader />}
               <div className="px-4 py-6 sm:p-8">
                 <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-3">
@@ -104,7 +113,7 @@ const EditingTemplate = () => {
                       htmlFor="title"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Title
+                      Project name
                     </label>
                     <div className="mt-2">
                       <input
@@ -124,7 +133,7 @@ const EditingTemplate = () => {
                       htmlFor="description"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Description
+                      Project description
                     </label>
                     <div className="mt-2">
                       <textarea
@@ -170,14 +179,19 @@ const EditingTemplate = () => {
                       <select
                         id="status"
                         name="status"
-                        autoComplete="status-name"
                         defaultValue={status}
                         onChange={handleStatusChange}
                         className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                       >
-                        <option value="Active">Active</option>
-                        <option value="Closed">Closed</option>
-                        <option value="On hold">On hold</option>
+                        {statusOptions[status] ? (
+                          statusOptions[status].map((option: string) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
+                          ))
+                        ) : (
+                          <option value={status}>{status}</option>
+                        )}
                       </select>
                     </div>
                   </div>
