@@ -13,7 +13,7 @@ const Task = sequelize.define(
     status: {
       type: DataTypes.ENUM,
       values: ["to do", "in progress", "backlog", "done"],
-      defaultValue: "to do",
+      defaultValue: "backlog",
     },
     priority: {
       type: DataTypes.ENUM,
@@ -29,20 +29,8 @@ const Task = sequelize.define(
     targetDate: {
       type: DataTypes.DATE,
     },
-    project: {
-      type: DataTypes.STRING,
-    },
-    attachments: {
-      type: DataTypes.JSON,
-    },
-    details: {
+    description: {
       type: DataTypes.TEXT,
-    },
-    subtask: {
-      type: DataTypes.JSON,
-    },
-    activity: {
-      type: DataTypes.JSON,
     },
     userId: {
       type: DataTypes.INTEGER,
