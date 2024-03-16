@@ -1,26 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { toast } from "react-toastify";
-import { formatDate } from "../../utils/formatting";
 import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
 import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
+import { formatDate } from "../../utils/formatting";
+
+import TwoColumns from "../../layout/TwoColumns";
+import Column from "../../layout/Column";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";
 import FilterButton from "../../components/header/FilterButton";
+
 import Loader from "../../components/ui/Loader";
-import TwoColumns from "../../layout/TwoColumns";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
+import SearchBar from "../../components/header/SearchBar";
+import projectSelect from "../../assets/images/project-select.svg";
+import projectImg from "../../assets/images/projects.svg";
 
-function Projects() {
-  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery();
-  const { data: tasks } = useGetTaskQuery();
+export default function Projects() {
+  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");
+  const { data: tasks, isLoading: loading } = useGetTaskQuery("");
 
-  const [projectIndex, setProjectIndex] = useState(0);
+  const [projectIndex, setProjectIndex] = useState();
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
   const [formattedDates, setFormattedDates] = useState([]);
+  const [isComponentVisible, setComponentVisibility] = useState(true);
+
+  const customId = "custom-id-yes";
+
+  const notify = () => {
+    if (!toast.isActive(customId)) {
+      toast({
+        toastId: customId,
+      });
+    }
+  };
 
   useEffect(() => {
     if (projects) {
-      const formattedDatesArray = projects.map((project) => {
+      setFilteredProjects(projects);
+
+      const formattedDatesArray = projects.map((project: object) => {
         const startDate = formatDate(project.startDate, {
           month: "short",
           day: "numeric",
@@ -38,58 +59,142 @@ function Projects() {
     }
   }, [projects]);
 
-  const customId = "custom-id-yes";
-
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
+  const onClick = (event: SyntheticEvent) => {
+    // Toggle the visibility state when the button is clicked
+    toggleProjects(event);
   };
 
-  function toggleProjects(e) {
+  function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
-
     setProjectIndex(i);
+    setComponentVisibility(!isComponentVisible);
   }
 
-  const title = "Projects";
+  const onFilter = (filterType: string) => {
+    let filteredProjects: object[] = projects;
 
-  if (isLoading) {
-    return <Loader />;
+    switch (filterType) {
+      case "all":
+        setFilteredProjects(filteredProjects);
+        break;
+      case "active":
+        filteredProjects = projects.filter(
+          (project: object) => project.status === "active",
+        );
+        break;
+      case "closed":
+        filteredProjects = projects.filter(
+          (project: object) => project.status === "closed",
+        );
+        break;
+      case "on hold":
+        filteredProjects = projects.filter(
+          (project: object) => project.status === "on hold",
+        );
+        break;
+      default:
+        setFilteredProjects(projects);
+    }
+
+    setFilteredProjects(filteredProjects);
+  };
+
+  function search(text) {
+    alert(text);
   }
 
-  if (error) {
-    return <div>{error?.data?.message || error.error}</div>;
+  if (!tasks) {
+    // Handle the case where tasks is undefined or projectIndex is out of bounds
+    return null; // or you can render an error message
+  }
+
+  if (!filteredProjects) {
+    // Handle the case where tasks is undefined or projectIndex is out of bounds
+    return null; // or you can render an error message
   }
 
   return (
     <>
-      <TwoColumns>
-        <HeaderTitle title={title} />
-        <div className="flex justify-between">
-          <ButtonGroup titles={["all", "active", "closed", "on hold"]} />
-          <FilterButton />
-        </div>
+      {isLoading && <Loader />}
+      {loading && <Loader />}
+      {error && <div>{error?.data?.message || error.error}</div>}
+      {!projects?.length ? (
+        <Column>
+          <HeaderTitle title="Projects" />
+          <SearchBar search={search} />
+          <div className="flex justify-between">
+            <ButtonGroup
+              titles={["all", "active", "closed", "on hold"]}
+              onFilter={onFilter}
+            />
+            <div className="flex gap-4">
+              <ButtonGroup titles={["list", "timeline"]} onFilter={onFilter} />
+              <FilterButton />
+            </div>
+          </div>
+          <div className="flex flex-col items-end justify-center h-full">
+            <div className="flex flex-col items-center justify-center">
+              <img src={projectImg} alt="" className="w-56" />
+              <p className="text-gray-500 text-base mt-2">
+                No current active projects
+              </p>
+              <p className="text-gray-500 text-base mt-2">
+                Create a project to get started
+              </p>
+            </div>
+          </div>
+        </Column>
+      ) : (
+        <>
+          <TwoColumns>
+            <HeaderTitle title="Projects" />
+            <SearchBar search={search} />
+            <div className="flex justify-between">
+              <ButtonGroup
+                titles={["all", "active", "closed", "on hold"]}
+                onFilter={onFilter}
+              />
+              <div className="flex gap-4">
+                <ButtonGroup
+                  titles={["list", "timeline"]}
+                  onFilter={onFilter}
+                />
+                <FilterButton />
+              </div>
+            </div>
 
-        <ProjectList
-          projects={projects}
-          projectIndex={projectIndex}
-          toggleProjects={toggleProjects}
-          formattedDates={formattedDates}
-        />
+            <ProjectList
+              isComponentVisible={isComponentVisible}
+              onClick={onClick}
+              refetch={refetch}
+              projects={filteredProjects || projects || []} // Provide an empty array if filteredProjects is undefined
+              projectIndex={projectIndex}
+              toggleProjects={toggleProjects}
+              formattedDates={formattedDates}
+            />
 
-        <ProjectDetails
-          projects={projects}
-          projectIndex={projectIndex}
-          refetch={refetch}
-          id={projects[projectIndex].id}
-          tasks={tasks}
-        />
-      </TwoColumns>
+            {projectIndex === undefined ? (
+              <div className="flex flex-col items-center justify-center h-full">
+                <img src={projectSelect} alt="" className="w-56" />
+                <p className="text-gray-500 text-base mt-2">
+                  Select a project to see it&apos;s details
+                </p>
+              </div>
+            ) : (
+              <>
+                <ProjectDetails
+                  isComponentVisible={isComponentVisible}
+                  projects={filteredProjects}
+                  projectIndex={projectIndex}
+                  refetch={refetch}
+                  id={filteredProjects[projectIndex]?.id}
+                  tasks={tasks}
+                />
+              </>
+            )}
+          </TwoColumns>
+        </>
+      )}
     </>
   );
 }
-
-export default Projects;
