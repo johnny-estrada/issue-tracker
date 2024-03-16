@@ -34,8 +34,16 @@ const getProjectById = asyncHandler(async (req, res) => {
 // @route POST /api/projects
 // @access Private/Manager
 const createProject = asyncHandler(async (req, res) => {
-  const { title, description, client, startDate, targetDate, team, hours } =
-    req.body;
+  const {
+    title,
+    description,
+    status,
+    client,
+    startDate,
+    targetDate,
+    team,
+    hours,
+  } = req.body;
 
   const project = await Project.create({
     title,
@@ -45,7 +53,7 @@ const createProject = asyncHandler(async (req, res) => {
     targetDate,
     team,
     hours: hours || 0,
-    status: "Active",
+    status: status,
     userId: req.user.id,
   });
 
