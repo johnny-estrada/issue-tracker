@@ -41,11 +41,7 @@ const createTask = asyncHandler(async (req, res) => {
     asignee,
     startDate,
     targetDate,
-    project,
-    attachments,
-    details,
-    subtask,
-    activity,
+    description,
     projectId,
   } = req.body;
 
@@ -67,11 +63,7 @@ const createTask = asyncHandler(async (req, res) => {
     asignee,
     startDate,
     targetDate,
-    project,
-    attachments,
-    details,
-    subtask,
-    activity,
+    description,
     userId: req.user.id,
     projectId: userProject.id,
   });
@@ -97,7 +89,7 @@ const updateTask = asyncHandler(async (req, res) => {
     targetDate,
     project,
     attachments,
-    details,
+    description,
     subtask,
     activity,
     projectId,
@@ -114,7 +106,7 @@ const updateTask = asyncHandler(async (req, res) => {
     task.targetDate = targetDate;
     task.project = project;
     task.attachments = attachments;
-    task.details = details;
+    task.description = description;
     task.subtask = subtask;
     task.activity = activity;
     task.projectId = projectId;
