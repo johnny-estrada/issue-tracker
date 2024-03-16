@@ -5,10 +5,22 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 import { NavLink } from "react-router-dom";
 import { useDeleteProjectMutation } from "../../services/state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
-import Loader from "./Loader";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-export default function Menu1({ navigation, id, refetch, delete1 }) {
+export default function Menu1({ navigation, id, delete1 }) {
+  const [deleteProject, refetch] = useDeleteProjectMutation();
+
+  const deleteHandler = async (id) => {
+    if (window.confirm(`Are you sure you want to delete project ${id}`)) {
+      try {
+        await deleteProject(id);
+        refetch(id);
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
+
   return (
     <div>
       <Menu as="div">
