@@ -38,7 +38,7 @@ export default function DropDown() {
           <Menu.Button className="hidden lg:flex w-full flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-600">
             {userInfo.photo ? (
               <Image
-                style={{ width: 40, borderRadius: 40 }}
+                style={{ width: 50, height: 50, borderRadius: 50 }}
                 className="border-2 border-neutral-400"
                 cloudName="dm1cbmiwq"
                 publicId={userInfo.photo}
