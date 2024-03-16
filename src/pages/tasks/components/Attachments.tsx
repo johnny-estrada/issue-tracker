@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
@@ -6,19 +7,28 @@ import { useGetAttachmentQuery } from "../../../services/state/redux/slices/atta
 
 interface Props {
   taskId: number;
-  userId: number;
+  userId: number | null;
+  taskIndex: number;
+  tasks: object[];
 }
 
-const Attachments = ({ taskId, userId }: Props) => {
+const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
   const [file, setFile] = useState("");
+  const [image, setImage] = useState("");
   const [taskI, setTaskI] = useState(0);
   const [userI, setUserI] = useState(0);
-  const [image, setImage] = useState(
-    "1710279204083_beautiful_model_person_portrait_pretty_woman-914793.jpg",
-  );
 
-  const { data: attachments } = useGetAttachmentQuery("");
-  console.log(attachments);
+  const { data: attachments, refetch } = useGetAttachmentQuery("");
+
+  const customId = "custom-id-yes";
+
+  const notify = () => {
+    if (!toast.isActive(customId)) {
+      toast({
+        toastId: customId,
+      });
+    }
+  };
 
   useEffect(() => {
     axios
@@ -27,26 +37,26 @@ const Attachments = ({ taskId, userId }: Props) => {
       .catch((err) => console.log(err));
   }, [taskId]);
 
-  const handleFile = (e) => {
+  const handleFile = async (e) => {
     setFile(e.target.files[0]);
     setTaskI(taskId);
     setUserI(userId);
-    console.log(taskId);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("taskId", taskI);
     formData.append("userId", userI);
 
-    axios
-      .post("http://localhost:5000/api/attachments", formData)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    try {
+      await axios.post("http://localhost:5000/api/attachments", formData);
+      refetch();
+      toast.success("Attachment added successfully");
+    } catch (err) {
+      console.log(err);
+      toast.error(`${err}`);
+    }
   };
 
   return (
@@ -66,21 +76,22 @@ const Attachments = ({ taskId, userId }: Props) => {
         </header>
 
         {/* TASKS LIST */}
-        <ul className="flex flex-wrap max-w-lg mb-2 gap-2.5 overflow-hidden py-4 text-slate-500 text-sm">
-          {attachments?.map((attachment) => (
-            <li
-              key={attachment.id}
-              className="w-32 h-28 border border-gray-200 shadow-sm mb-2.5"
-            >
-              {
-                <img
-                  className="w-32 h-28"
-                  src={`http://localhost:5000/Uploads/${attachment.filename}`}
-                  alt=""
-                />
-              }
-            </li>
-          ))}
+        <ul className="flex flex-wrap max-w-lg gap-3 overflow-hidden text-slate-500 text-sm">
+          {attachments?.map(
+            (attachment) =>
+              attachment.taskId === tasks[taskIndex]?.id && (
+                <li key={attachment.id}>
+                  <div className="rounded-full">
+                    <img
+                      className="w-32 h-28 rounded"
+                      src={`http://localhost:5000/Uploads/${attachment.filename}`}
+                      alt=""
+                    />
+                  </div>
+                </li>
+              ),
+          )}
+          <li className="w-32 h-28 border border-gray-200 shadow-sm mb-2.5 rounded"></li>
         </ul>
         <form method="POST" encType="multipart/form-data">
           <div className="flex gap-2">
@@ -89,12 +100,16 @@ const Attachments = ({ taskId, userId }: Props) => {
               className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer"
             >
               <PaperClipIcon className="w-5 h-5" />
-              Attach new file
+              <div className="hidden">Paper clip</div>
             </label>
-            <input id="file" type="file" name="file" onChange={handleFile} />
-            <button type="button" onClick={handleUpload}>
-              send
+            <button
+              className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer"
+              type="button"
+              onClick={handleUpload}
+            >
+              Attach new file
             </button>
+            <input id="file" type="file" name="file" onChange={handleFile} />
           </div>
         </form>
       </section>
