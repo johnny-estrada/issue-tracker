@@ -14,7 +14,10 @@ import PeoplePicker from "../../../components/ui/PeoplePicker";
 const EditTaskForm = () => {
   const { id: taskId } = useParams();
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("");
+  const [assignee, setAssignee] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [targetDate, setTargetDate] = useState(new Date());
   const [projectId, setProjectId] = useState("");
@@ -49,7 +52,9 @@ const EditTaskForm = () => {
       await updateTask({
         taskId,
         name,
+        description,
         status,
+        priority,
         startDate,
         targetDate,
         projectId,
@@ -67,10 +72,16 @@ const EditTaskForm = () => {
     setStatus(e.target.value);
   };
 
+  const handlePriorityChange = (e) => {
+    setPriority(e.target.value);
+  };
+
   useEffect(() => {
     if (task) {
       setName(task.name);
+      setDescription(task.description);
       setStatus(task.status);
+      setPriority(task.priority);
       setStartDate(new Date(task.startDate));
       setTargetDate(new Date(task.targetDate));
       setProjectId(task.projectId);
@@ -80,7 +91,7 @@ const EditTaskForm = () => {
 
   return (
     <>
-      {loadingUpdate ? (
+      {isLoading ? (
         <Loader />
       ) : error ? (
         <p>error</p>
@@ -91,33 +102,12 @@ const EditTaskForm = () => {
               className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
               onSubmit={handleSubmit}
             >
-              {isLoading && <Loader />}
               <div className="px-4 py-6 sm:p-8">
                 <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="title"
-                      className="block text-sm font-medium leading-6 text-slate-500"
-                    >
-                      Name*
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="title"
-                        id="title"
-                        autoComplete="off"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
                   <div className="sm:col-span-4">
                     <label
                       htmlFor="project"
-                      className="block text-sm font-medium leading-6 text-slate-500"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Project
                     </label>
@@ -135,58 +125,123 @@ const EditTaskForm = () => {
                             {project.title}-{project.id}
                           </option>
                         ))}
+                        <option>0</option>
                       </select>
                     </div>
                   </div>
-
-                  <div className="sm:col-span-4">
+                  <div className="sm:col-span-3">
                     <label
-                      htmlFor="status"
-                      className="block text-sm font-medium leading-6 text-slate-500"
+                      htmlFor="title"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Status
+                      Task name*
                     </label>
                     <div className="mt-2">
-                      <select
-                        id="status"
-                        name="status"
-                        autoComplete="status-name"
-                        defaultValue={status}
-                        onChange={handleStatusChange}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      <input
+                        type="text"
+                        name="title"
+                        id="title"
+                        autoComplete="off"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Description*
+                    </label>
+                    <div className="mt-2">
+                      <textarea
+                        rows={4}
+                        name="description"
+                        id="description"
+                        autoComplete="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-grow gap-10">
+                    <div>
+                      <label
+                        htmlFor="start-date"
+                        className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        <option value="Active">Active</option>
-                        <option value="Closed">Closed</option>
-                        <option value="On hold">On hold</option>
-                      </select>
+                        Start date
+                      </label>
+                      <div className="mt-2">
+                        <Datepicker
+                          startDate={startDate}
+                          setStartDate={setStartDate}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="target-date"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Target date
+                      </label>
+                      <div className="mt-2">
+                        <Datepicker
+                          startDate={targetDate}
+                          setStartDate={setTargetDate}
+                        />
+                      </div>
                     </div>
                   </div>
-
-                  <div className="col-span-full">
-                    <label
-                      htmlFor="start-date"
-                      className="block text-sm font-medium leading-6 text-slate-500"
-                    >
-                      Start date
-                    </label>
-                    <div className="mt-2">
-                      <Datepicker
-                        startDate={startDate}
-                        setStartDate={setStartDate}
-                      />
+                  <div className="flex flex-grow gap-10">
+                    <div className="sm:col-span-4 flex-1">
+                      <label
+                        htmlFor="priority"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Priority
+                      </label>
+                      <div className="mt-2">
+                        <select
+                          id="priority"
+                          name="priority"
+                          autoComplete="status-name"
+                          value={priority}
+                          onChange={handlePriorityChange}
+                          className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        >
+                          <option value="low">low</option>
+                          <option value="medium">medium</option>
+                          <option value="high">high</option>
+                        </select>
+                      </div>
                     </div>
-
-                    <label
-                      htmlFor="target-date"
-                      className="block text-sm font-medium leading-6 text-slate-500"
-                    >
-                      Target date
-                    </label>
-                    <div className="mt-2">
-                      <Datepicker
-                        startDate={targetDate}
-                        setStartDate={setTargetDate}
-                      />
+                    <div className="sm:col-span-4 flex-1">
+                      <label
+                        htmlFor="status"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Status
+                      </label>
+                      <div className="mt-2">
+                        <select
+                          id="status"
+                          name="status"
+                          autoComplete="status-name"
+                          value={status}
+                          onChange={handleStatusChange}
+                          className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        >
+                          <option value="To do">To do</option>
+                          <option value="In progress">In progress</option>
+                          <option value="Backlog">Backlog</option>
+                          <option value="Done">Done</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
