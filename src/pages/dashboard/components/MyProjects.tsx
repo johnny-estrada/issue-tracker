@@ -37,7 +37,7 @@ const MyProjects = ({
       active={projectIndex === idx}
       onClick={toggleProjects}
     >
-      <div className="flex min-w-0 gap-x-4">
+      <div className="flex min-w-0 gap-x-4 m-2">
         <div className="flex h-12 w-12 justify-center items-center rounded-full bg-white text-black">
           <p>BK</p>
         </div>
@@ -49,7 +49,7 @@ const MyProjects = ({
           </p>
         </div>
       </div>
-      <div className="flex shrink-0 items-center gap-x-4">
+      <div className="flex shrink-0 items-center gap-x-4 m-2">
         <AvatarGroup members={project.team} />
         <p className="text-gray-400">
           {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
@@ -61,7 +61,7 @@ const MyProjects = ({
   return (
     <>
       <section aria-labelledby="projects">
-        <header className="flex  justify-between">
+        <header className="flex  justify-between pb-2">
           <div className="flex items-baseline gap-3">
             <h2 className="sr-only" id="projects">
               My projects
@@ -82,7 +82,7 @@ const MyProjects = ({
             delete1={"Delete project"}
           />
         </header>
-        <div className="flex flex-col gap-3 overflow-hidden rounded-lg px-1 py-4">
+        <div className="flex flex-col gap-3 overflow-hidden rounded-lg">
           {projectList}
         </div>
       </section>
