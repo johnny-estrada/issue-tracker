@@ -7,9 +7,9 @@ import {
   getTasks,
   updateTask,
 } from "../controllers/taskController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-router.route("/").get(protect, getTasks).post(protect, admin, createTask);
+router.route("/").get(protect, getTasks).post(protect, createTask);
 
 router
   .route("/:id")
