@@ -8,7 +8,7 @@ interface Props {
 const HeaderTitle = ({ title }: Props) => {
   return (
     <>
-      <div>
+      <div className="w-3/5">
         {title === "Dashboard" ? <Greeting /> : <Breadcrumbs />}
         <h1 className="text-3xl lg:text-4xl text-gray-900 line-clamp-1">
           {title}
