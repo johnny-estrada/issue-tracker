@@ -3,7 +3,7 @@ const SortBy = () => {
     <div className="hidden lg:block">
       <label
         htmlFor="sort"
-        className="ml-10 mr-2 text-sm text-slate-500 my-auto"
+        className="ml-10 lg:ml-0 mr-2 text-sm text-slate-500 my-auto"
       >
         sort by:
       </label>
@@ -14,6 +14,12 @@ const SortBy = () => {
       >
         <option value="status">status</option>
         <option value="priority">priority</option>
+        <option className="truncate w-12" value="alphabetical: a to ">
+          name: a to z
+        </option>
+        <option className="w-12" value="alphabetical: z to a">
+          name: z to a
+        </option>
       </select>
     </div>
   );
