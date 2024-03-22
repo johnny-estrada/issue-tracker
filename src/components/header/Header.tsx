@@ -1,6 +1,6 @@
 export default function Header({ children }) {
   const [title, searchbar, display] = children;
-  
+
   return (
     <>
       <header className="py-4 lg:py-0 px-4 lg:px-14 lg:pt-4 z-10 bg-gray-200">
