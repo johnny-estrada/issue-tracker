@@ -20,6 +20,11 @@ export default function Users({ users }) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
+            <h2 className="sr-only" id="tasks">
+              All users
+            </h2>
+
+            <h2 className="text-xl lg:text-2xl pb-4">Users</h2>
             <p className="mt-2 text-sm text-gray-700">
               A list of all the users including their name, title, email and
               role.
@@ -73,7 +78,12 @@ export default function Users({ users }) {
                           <div className="h-11 w-11 flex-shrink-0">
                             {user.photo ? (
                               <Image
-                                style={{ width: 80, borderRadius: 50 }}
+                                style={{
+                                  width: 45,
+                                  height: 45,
+                                  borderRadius: 50,
+                                }}
+                                className="border-2 border-neutral-400 block"
                                 cloudName={cloud_name}
                                 publicId={user.photo}
                               />
