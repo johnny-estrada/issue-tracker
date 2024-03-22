@@ -13,6 +13,7 @@ import {
   UserIcon,
   UsersIcon,
 } from "@heroicons/react/24/outline";
+import { formatNameDisplay } from "../../utils/formatting";
 
 export default function DropDown() {
   const { userInfo } = useSelector((state) => state.auth);
@@ -38,35 +39,37 @@ export default function DropDown() {
           <Menu.Button className="hidden lg:flex w-full flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-600">
             {userInfo.photo ? (
               <Image
-                style={{ width: 50, height: 50, borderRadius: 50 }}
-                className="border-2 border-neutral-400"
+                style={{ width: 45, height: 45, borderRadius: 50 }}
+                className="border-2 border-neutral-400 block m-auto"
                 cloudName="dm1cbmiwq"
                 publicId={userInfo.photo}
               />
             ) : (
               <UserCircleIcon
-                className="h-8 w-8 text-gray-300"
+                className="h-12 w-12 text-gray-300"
                 aria-hidden="true"
               />
             )}
+            <div className="w-36">
+              <p className="flex flex-col w-auto text-left">
+                <span className="sr-only">Your profile</span>
+                <span
+                  className="hover:text-white text-base font-normal w-full truncate"
+                  aria-hidden="true"
+                >
+                  {formatNameDisplay(userInfo.name)}
+                </span>
+                <span
+                  className="text-neutral-400 text-sm font-normal"
+                  aria-hidden="true"
+                >
+                  {userInfo.title}
+                </span>
+              </p>
+            </div>
 
-            <p className="flex flex-col w-auto text-left">
-              <span className="sr-only">Your profile</span>
-              <span
-                className="hover:text-white text-base font-normal w-full"
-                aria-hidden="true"
-              >
-                {userInfo.name}
-              </span>
-              <span
-                className="text-neutral-400 text-sm font-normal"
-                aria-hidden="true"
-              >
-                {userInfo.title}
-              </span>
-            </p>
             <ChevronDownIcon
-              className="ml-8 -mr-1 h-5 w-5 text-gray-100"
+              className="h-5 w-5 text-gray-100"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -91,7 +94,7 @@ export default function DropDown() {
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <UserIcon className=" w-4 h-4 mr-2" />
-                    Account
+                    Profile
                   </Link>
                 )}
               </Menu.Item>
