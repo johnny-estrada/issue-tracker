@@ -6,9 +6,11 @@ import ButtonGroup from "../../components/header/ButtonGroup";
 import FilterButton from "../../components/header/FilterButton";
 import Column from "../../layout/Column";
 import NotificationsList from "./components/NotificationsList";
+import SearchBar from "../../components/header/SearchBar";
+import notificationsIcon from "../../assets/images/notifications.svg";
 
 const Notifications = () => {
-  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery();
+  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");
 
   const [projectIndex, setProjectIndex] = useState(-1);
   const [formattedDates, setFormattedDates] = useState([]);
@@ -20,23 +22,41 @@ const Notifications = () => {
     setProjectIndex(i);
   }
 
-  const title = "Notifications";
-  return (
-    <>
-      <Column>
-        <HeaderTitle title={title} />
-        <div className="flex justify-between">
-          <ButtonGroup titles={buttonNames} />
-          <FilterButton />
-        </div>
+  function search(text) {
+    alert(text);
+  }
 
-        <NotificationsList
-          projects={projects}
-          projectIndex={projectIndex}
-          toggleProjects={toggleProjects}
-        />
-      </Column>
-    </>
+  return (
+    <div>
+      {!projects ? (
+        <Column>
+          <HeaderTitle title="Notifications" />
+          <SearchBar search={search} />
+          <ButtonGroup titles={buttonNames} />
+          <div className="lg:flex-1 lg:px-14 lg:pt-10 lg:max-w-4xl">
+            <NotificationsList
+              projects={projects}
+              projectIndex={projectIndex}
+              toggleProjects={toggleProjects}
+            />
+          </div>
+        </Column>
+      ) : (
+        <Column>
+          <HeaderTitle title="Notifications" />
+          <SearchBar search={search} />
+          <ButtonGroup titles={buttonNames} />
+          <div className="flex justify-center m-auto items-center h-screen -mt-36">
+            <div>
+              <img src={notificationsIcon} alt="" className="w-28 lg:w-52" />
+              <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
+                No notifications yet
+              </p>
+            </div>
+          </div>
+        </Column>
+      )}
+    </div>
   );
 };
 
