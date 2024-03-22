@@ -1,60 +1,121 @@
+import { useState, useEffect } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import FlatBadge from "../../../components/ui/FlatBadge";
+import Loader from "../../../components/ui/Loader";
+import AvatarGroup from "../../../components/ui/AvatarGroup";
 
-const TaskList = ({ tasks, taskIndex, toggleTasks, formattedDates }) => {
+interface Props {
+  projects: object[];
+  tasks: object[];
+  taskId: number | undefined;
+  taskIndex: number | undefined;
+  toggleTasks: object;
+  formattedDates: object[];
+  isLoading: boolean;
+  error: FetchBaseQueryError | SerializedError | undefined;
+}
+
+const TaskList = ({
+  projects,
+  tasks,
+  taskId,
+  taskIndex,
+  toggleTasks,
+  formattedDates,
+  isLoading,
+  error,
+}: Props) => {
+  const [sortedTasks, setSortedTasks] = useState([]);
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    // Sort tasks by status
+    const sorted =
+      tasks?.reduce((acc, task) => {
+        const status = task.status;
+        acc[status] = acc[status] || [];
+        acc[status].push(task);
+        return acc;
+      }, {}) || {};
+
+    setSortedTasks(sorted);
+
+    const a = projects?.map((project) => {
+      if (project.id === tasks[taskIndex]?.projectId) {
+        setTeam(project.team);
+      }
+      console.log("no results");
+    });
+  }, [tasks, projects, taskIndex]);
+
   return (
     <>
-      <section aria-labelledby="tasks">
-        <h2 className="sr-only" id="tasks">
-          All Tasks
-        </h2>
-        <div className="flex justify-between">
-          <h2 className="text-xl pb-4">To do</h2>
-          <div className="flex items-center">
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
-            </a>
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
-            </a>
-          </div>
-        </div>
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <div>{error?.data?.message || error.error}</div>
+      ) : (
+        <section className="mb-96 lg:mb-0 relative">
+          {/* Display ChevronRightIcon and ChevronLeftIcon once at the top */}
+          <header className="flex justify-between align-middle">
+            <div className="lg:flex items-center my-4 lg:my-0 mt-4 lg:mt-0 hidden lg:absolute right-0 top-0">
+              <button className="hover:bg-gray-50 rounded-full p-3">
+                <span className="sr-only">Previous</span>
+                <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
+              </button>
+              <button className="hover:bg-gray-50 rounded-full p-3">
+                <span className="sr-only">Next</span>
+                <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
+          </header>
 
-        {/* TASKS LIST */}
-        <ul className="flex flex-col gap-3 overflow-hidden py-4">
-          {tasks?.map((task, idx) => (
-            <SelectorList
-              key={task?.id}
-              id={task?.id}
-              active={taskIndex === idx}
-              onClick={(e) => toggleTasks(e)}
+          {Object?.keys(sortedTasks).map((status) => (
+            <div
+              key={status}
+              className="flex flex-col justify-center gap-3 py-4 lg:py-0 m-4 lg:m-0 lg:mb-8"
+              style={{ marginTop: "0px" }}
             >
-              <div className="flex">
-                <div>
-                  <p className=" mt-1 flex text-xs leading-5 text-neutral-500">
-                    <span className="inset-x-0 -top-px bottom-0" />
-                    ID LG-{task?.id}
-                  </p>
-                  <p className="text-base leading-6">{task?.name}</p>
-                </div>
-              </div>
-              <div className="flex shrink-0 items-center gap-x-4">
-                {/* index 6 should be 3 */}
-                <FlatBadge priority={tasks[taskIndex]?.priority} />
-                {/* <AvatarGroup /> */}
-                <p className="text-xs text-neutral-500">
-                  {formattedDates[idx]?.startDate} -{" "}
-                  {formattedDates[idx]?.targetDate}
-                </p>
-                <ChevronRightIcon className="w-4 h-4" />
-              </div>
-            </SelectorList>
+              <h2 className="sr-only" id="tasks">
+                All Tasks
+              </h2>
+
+              <h2 className="text-xl lg:text-2xl mb-4">{status}</h2>
+
+              {sortedTasks[status] &&
+                sortedTasks[status]?.map((task) => (
+                  <SelectorList
+                    key={task?.id}
+                    id={task?.id}
+                    active={task.id === taskId}
+                    onClick={(e) => toggleTasks(e)}
+                  >
+                    <div className="flex flex-col items-start justify-center min-w-0 gap-x-4 ml-4">
+                      <p className="mt-1 text-sm leading-5">ID LG-{task?.id}</p>
+                      <p className="text-sm leading-6 line-clamp-1 text-left">
+                        {task?.name}
+                      </p>
+                    </div>
+                    <div className="flex justify-center mr-4">
+                      <div className="hidden lg:flex shrink-0 items-center gap-x-4 mr-3">
+                        <AvatarGroup members={team} />
+                        <FlatBadge priority={task?.priority} />
+                      </div>
+                      <div className="flex justify-center items-center">
+                        <p className="text-xs hidden lg:block">
+                          {formattedDates[0].startDate} -
+                          {formattedDates[1].targetDate}
+                        </p>
+                        <ChevronRightIcon className="w-4 h-4 lg:hidden" />
+                      </div>
+                    </div>
+                  </SelectorList>
+                ))}
+            </div>
           ))}
-        </ul>
-      </section>
+        </section>
+      )}
     </>
   );
 };
