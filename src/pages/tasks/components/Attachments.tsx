@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { useGetAttachmentQuery } from "../../../services/state/redux/slices/attachmentsApiSlice";
+import pdfFile from "../../../assets/images/icons/pdf-icon.png";
+import textFile from "../../../assets/images/icons/text-icon.webp";
 
 interface Props {
   taskId: number;
@@ -17,6 +19,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
   const [image, setImage] = useState("");
   const [taskI, setTaskI] = useState(0);
   const [userI, setUserI] = useState(0);
+  const [preview, setPreview] = useState(null);
 
   const { data: attachments, refetch } = useGetAttachmentQuery("");
 
@@ -41,6 +44,14 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
     setFile(e.target.files[0]);
     setTaskI(taskId);
     setUserI(userId);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleUpload = async () => {
@@ -76,22 +87,54 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
         </header>
 
         {/* TASKS LIST */}
-        <ul className="flex flex-wrap max-w-lg gap-3 overflow-hidden text-slate-500 text-sm">
+        <ul className="flex flex-wrap max-w-sm gap-3 overflow-hidden text-slate-500 text-sm">
           {attachments?.map(
-            (attachment) =>
+            (attachment, index) =>
+              index > 6 &&
               attachment.taskId === tasks[taskIndex]?.id && (
                 <li key={attachment.id}>
-                  <div className="rounded-full">
-                    <img
-                      className="w-32 h-28 rounded"
-                      src={`http://localhost:5000/Uploads/${attachment.filename}`}
-                      alt=""
-                    />
-                  </div>
+                  <button className="shadow-sm border border-gray-100 w-28 rounded-lg bg-gray-100 hover:bg-gray-200 mb-4">
+                    <p className="my-3 text-xs text-gray-800 font-semibold line-clamp-1">
+                      {attachment.filename.split("_")[1]}
+                    </p>
+                    {attachment.mimetype.split("/")[0] === "text" ||
+                    attachment.mimetype.split("/")[0] === "application" ? (
+                      <>
+                        {attachment.mimetype.split("/")[1] === "pdf" ? (
+                          <>
+                            <img
+                              className="w-full h-20 rounded m-auto"
+                              src={pdfFile}
+                              alt=""
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <img
+                              className="w-full h-20 rounded m-auto"
+                              src={textFile}
+                              alt=""
+                            />
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {" "}
+                        <img
+                          className="w-full h-20 rounded m-auto"
+                          src={`http://localhost:5000/Uploads/${attachment.filename}`}
+                          alt=""
+                        />
+                      </>
+                    )}
+                  </button>
                 </li>
               ),
           )}
-          <li className="w-32 h-28 border border-gray-200 shadow-sm mb-2.5 rounded"></li>
+          <li className="flex items-center justify-center w-38 h-28 mb-2.5 rounded text-sm border p-2 shadow-sm">
+            No attachments
+          </li>
         </ul>
         <form method="POST" encType="multipart/form-data">
           <div className="flex gap-2">
@@ -103,7 +146,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
               <div className="hidden">Paper clip</div>
             </label>
             <button
-              className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer"
+              className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer text-sm"
               type="button"
               onClick={handleUpload}
             >
