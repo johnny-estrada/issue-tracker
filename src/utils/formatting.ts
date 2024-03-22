@@ -10,3 +10,11 @@ export const formatName = (fullName) => {
   const firstName = fullName.split(" ");
   return firstName[0];
 };
+
+export const formatNameDisplay = (fullName) => {
+  const parts = fullName.split(" ");
+  const firstName = parts[0];
+  const lastNameInitial =
+    parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
+  return `${firstName} ${lastNameInitial}`;
+};
