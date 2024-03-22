@@ -4,8 +4,16 @@ import Menu1 from "../../../components/ui/Menu1";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import FlatBadge from "../../../components/ui/FlatBadge";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
+import TasksList from "./TasksList";
 
-const ProjectDetails = ({ projects, projectIndex, id, refetch, tasks }) => {
+const ProjectDetails = ({
+  projects,
+  projectIndex,
+  id,
+  refetch,
+  tasks,
+  isComponentVisible,
+}) => {
   const NAV = [
     {
       name: "Create project",
@@ -20,15 +28,20 @@ const ProjectDetails = ({ projects, projectIndex, id, refetch, tasks }) => {
   ];
 
   return (
-    <>
-      <section aria-labelledby="projects">
+    <div className=" flex flex-col">
+      <section
+        aria-labelledby="projects"
+        className="p-4 lg:p-0 hidden lg:block"
+      >
         {projects[projectIndex] ? (
           <>
             <header className="flex justify-between">
               <h3 className="sr-only" id="projects">
                 Project details
               </h3>
-              <h3 className="text-xl pb-4">{projects[projectIndex].title}</h3>
+              <h3 className="text-xl lg:text-2xl pb-4">
+                {projects[projectIndex].title}
+              </h3>
               <Menu1
                 id={id}
                 refetch={refetch}
@@ -48,47 +61,22 @@ const ProjectDetails = ({ projects, projectIndex, id, refetch, tasks }) => {
           <p>No project selected</p>
         )}
       </section>
-      <section aria-labelledby="tasks">
+      <TasksList tasks={tasks} id={id} />
+      {/* <section className="flex flex-col gap-3 overflow-hidden text-sm flex-grow mt-4 mb-10">
         <header className="flex items-baseline gap-3">
           <h3 className="sr-only" id="tasks">
-            Tasks
+            Progress
           </h3>
-          <h3 className="text-xl pb-4">Tasks</h3>
-          <Link
-            to="/tasks"
-            className="underline text-xs text-orange-400 hover:text-orange-500"
-          >
-            view all
-          </Link>
+          <h3 className="text-xl lg:text-2xl">Progress</h3>
         </header>
-
-        {tasks?.map(
-          (item) =>
-            item.projectId === projects[projectIndex].id && (
-              <div
-                key={item.id}
-                className="flex cursor-pointer justify-between mb-3 gap-x-6 px-4 py-4 hover:bg-gray-200 sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5 mr-9"
-              >
-                <div className="min-w-0 flex-auto">
-                  <p className=" mt-1 flex text-sm text-gray-400">
-                    <span className="inset-x-0 -top-px bottom-0" />
-                    ID PL-
-                    {item.id}
-                  </p>
-                  <p className="text-base">{item.name}</p>
-                </div>
-
-                <div className="flex shrink-0 items-center gap-x-4">
-                  <FlatBadge priority={item.priority} />
-                  <span className="text-gray-400">
-                    <ChevronRightIcon className="h-4 w-4" />
-                  </span>
-                </div>
-              </div>
-            ),
-        )}
-      </section>
-    </>
+        <div className="flex w-full h-10 border border-gray-200 shadow-sm rounded-full justify-center items-center">
+          <div className=" w-full mx-4 h-2 border border-gray-200 bg-gray-100 shadow-sm rounded-full mr-5">
+            <div className="w-1/2 h-2 bg-gray-600 border border-gray-200 shadow-sm rounded-full"></div>
+          </div>
+          <span className="mr-4">42%</span>
+        </div>
+      </section> */}
+    </div>
   );
 };
 
