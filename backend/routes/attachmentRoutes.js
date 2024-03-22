@@ -5,9 +5,9 @@ import {
   createAttachment,
   getAttachments,
 } from "../controllers/attachmentController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect} from "../middleware/authMiddleware.js";
 
-router.route("/").post(upload.single("file"), createAttachment);
-router.route("/").get(getAttachments);
+router.route("/").post(upload.single("file"), protect, createAttachment);
+router.route("/").get(protect, getAttachments);
 
 export default router;
