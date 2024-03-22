@@ -17,13 +17,7 @@ interface Props {
   onSelectItem: Event;
 }
 
-export default function Tabs({
-  width,
-  height,
-  data,
-  projectData,
-  onSelectItem,
-}: Props) {
+export default function Tabs({ data, projectData, onSelectItem }: Props) {
   const [projects, setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 
@@ -111,7 +105,7 @@ export default function Tabs({
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
-            <LineChart width={width} height={height} data={data} />
+            <LineChart data={data} />
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
