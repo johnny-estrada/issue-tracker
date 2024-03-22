@@ -3,23 +3,23 @@ export default function FlatBadge(props) {
 
   switch (props.priority) {
     case "low":
-      badgeColor = "bg-green-50 text-green-800";
+      badgeColor = "bg-green-100 text-neutral-500";
       break;
     case "medium":
-      badgeColor = "bg-yellow-50 text-yellow-800";
+      badgeColor = "bg-orange-100 text-neutral-500";
       break;
     case "high":
-      badgeColor = "bg-red-50 text-red-800";
+      badgeColor = "bg-red-100 text-neutral-500";
       break;
     default:
-      badgeColor = "bg-green-50 text-green-800";
+      badgeColor = "bg-green-100 text-neutral-500";
       break;
   }
 
   return (
     <>
       <span
-        className={`inline-flex items-center rounded-md px-3 text-xs font-medium h-8 w-fit ${badgeColor}`}
+        className={`inline-flex shadow-sm items-center rounded-md px-3 text-xs font-medium py-1 w-fit ${badgeColor}`}
       >
         {props.priority}
       </span>
