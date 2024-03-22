@@ -38,6 +38,12 @@ export const tasksApiSlice = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    searchTask: builder.query({
+      query: (searchQuery) => ({
+        url: `${TASK_URL}?q=${searchQuery}`,
+        keepUnusedDataFor: 5,
+      }),
+    }),
   }),
 });
 
@@ -47,4 +53,5 @@ export const {
   useUpdateTaskMutation,
   useCreateTaskMutation,
   useDeleteTaskMutation,
+  useSearchTaskQuery,
 } = tasksApiSlice;
