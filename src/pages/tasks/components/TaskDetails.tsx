@@ -103,7 +103,7 @@ const TaskDetails = ({
                 <h4 className="text-sm text-neutral-500 w-36">Assignee</h4>
                 <div className="flex gap-3 items-center">
                   <img
-                    className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+                    className="inline-block h-7 w-7 rounded-full ring-2 ring-white"
                     src={projects[0].team[0].photo}
                     alt=""
                   />
