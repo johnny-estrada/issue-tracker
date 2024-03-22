@@ -2,172 +2,136 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
+import { useGetUsersQuery } from "../../services/state/redux/slices/usersApiSlice";
 import { formatDate } from "../../utils/formatting";
-import Header from "../../components/header/Header";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";
-import FilterButton from "../../components/header/FilterButton";
 import FlatBadge from "../../components/ui/FlatBadge";
 import TaskMenu from "../../components/ui/TaskMenu";
-import Sidebar from "../../components/sidebar/Sidebar";
+import TwoColumns from "../../layout/TwoColumns";
+import Attachments from "./components/Attachments";
+import SortBy from "../../components/header/SortBy";
+import SearchBar from "../../components/header/SearchBar";
+import Comments from "./components/Comments";
+import Subtasks from "./components/Subtasks";
+import Information from "./components/Information";
+import ActivityLog from "./components/ActivityLog";
+import Details from "./components/Details";
+import { useSelector } from "react-redux";
 
 const TaskInformation = () => {
+  const { data: projects } = useGetProjectsQuery("");
+  const { data: tasks, refetch } = useGetTaskQuery("");
+  const [taskIndex, setTaskIndex] = useState(0);
   const { id } = useParams();
-  const [taskIndex, setTaskIndex] = useState(parseInt(id, 10));
+  const { data: users } = useGetUsersQuery("");
+
+  let b = tasks?.findIndex((task) => task.id == id);
+  console.log(b); // 18 i3
+  // console.log(id)
+
   const [formattedDate1, setFormattedDate1] = useState("");
   const [formattedDate2, setFormattedDate2] = useState("");
-
-  const { data: projects } = useGetProjectsQuery();
-  const { data: tasks } = useGetTaskQuery();
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (tasks) {
-      const formatted1 = formatDate(
-        tasks[tasks.findIndex((task) => task.id === taskIndex)].startDate,
-        {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        },
-      );
+      const formatted1 = formatDate(tasks[b].startDate, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
       setFormattedDate1(formatted1);
 
-      const formatted2 = formatDate(
-        tasks[tasks.findIndex((task) => task.id === taskIndex)].targetDate,
-        {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        },
-      );
+      const formatted2 = formatDate(tasks[b].targetDate, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
       setFormattedDate2(formatted2);
     }
-  }, [taskIndex, tasks]);
+  }, [b, tasks]);
 
-  const title = "Tasks";
+  function search(text: string) {
+    alert(text);
+  }
+
+  const task1 = users?.findIndex((user) => user.id === tasks[taskIndex].userId);
+
+  const created = formatDate(tasks[taskIndex].createdAt, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  if (!users) {
+    // Handle the case where tasks is undefined or projectIndex is out of bounds
+    return null; // or you can render an error message
+  }
+
+  if (!tasks) {
+    // Handle the case where tasks is undefined or projectIndex is out of bounds
+    return null; // or you can render an error message
+  }
 
   return (
-    <>
-      <Sidebar />
-      <div className="flex flex-col h-screen lg:ml-[288px]">
-        <Header>
-          <HeaderTitle title={title} />
-          <div className="flex justify-between">
-            <ButtonGroup titles={["list", "board"]} />
-            <FilterButton />
+    <div>
+      <TwoColumns>
+        <HeaderTitle title={tasks[b].name} />
+        <SearchBar search={search} />
+        <div className="flex justify-between">
+          <div className="flex gap-10">
+            <SortBy />
+            <div>
+              priority:{" "}
+              <ButtonGroup titles={["high", "medium", "low"]} onFilter={null} />
+            </div>
           </div>
-        </Header>
+        </div>
 
-        <main className="flex h-screen">
-          <div className="flex-1 p-10 mb-auto">
-            <section aria-labelledby="projects">
-              <header className="flex justify-between">
-                <h2 className="sr-only" id="projects">
-                  Task Information
-                </h2>
+        <div className="flex-1 p-4 lg:p-0">
+          <Information tasks={tasks} taskIndex={b} />
+          <Subtasks />
+          {/* <Comments b={b} tasks={tasks} /> */}
+        </div>
 
-                <h2 className="text-xl pb-4">Task information</h2>
-              </header>
+        <div className="flex-1 mb-20 p-4 lg:p-0">
+          <section aria-labelledby="tasks">
+            {/* <header className="flex justify-between">
+              <h2 className="sr-only" id="tasks">
+                Task Details
+              </h2>
 
-              {/* TASKS LIST */}
-              <ul className="flex flex-col gap-3 overflow-hidden py-4 text-slate-500 text-sm">
-                <li>
-                  {
-                    tasks?.[tasks.findIndex((task) => task.id === taskIndex)]
-                      ?.details
-                  }
-                </li>
-              </ul>
-            </section>
-          </div>
+              <div className="flex gap-5">
+                <h2 className="text-xl lg:text-2xl pb-4">Task Details</h2>
+                <FlatBadge priority={`ID LG-${id}`} />
+              </div>
 
-          <div className="flex-1 p-10 border-l border-gray-200">
-            {/* TASKS DETAILS SECTION */}
-            <section aria-labelledby="tasks">
-              <header className="flex justify-between">
-                <h2 className="sr-only" id="tasks">
-                  Task Details
-                </h2>
+              <TaskMenu id={id} tasks={tasks} refetch={refetch} />
+            </header> */}
 
-                <div className="flex gap-5">
-                  <h2 className="text-xl pb-4">Task Details</h2>
-                  <FlatBadge priority={`ID LG-${id}`} />
-                </div>
+            <Details
+              userId={userInfo.id}
+              taskId={id}
+              users={users || undefined}
+              tasks={tasks}
+              taskIndex={b}
+              projects={projects}
+              formattedDate1={formattedDate1}
+              formattedDate2={formattedDate2}
+            />
+          </section>
 
-                <TaskMenu id={id} tasks={tasks} />
-              </header>
-
-              {tasks ? (
-                <ul className="w-64">
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Name</h4>
-                    <p className="text-sm">
-                      {
-                        tasks[tasks.findIndex((task) => task.id === taskIndex)]
-                          ?.name
-                      }
-                    </p>
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Status</h4>
-                    <p className="text-sm">
-                      {
-                        tasks[tasks.findIndex((task) => task.id === taskIndex)]
-                          ?.status
-                      }
-                    </p>
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Priority</h4>
-
-                    <FlatBadge
-                      priority={
-                        tasks[tasks.findIndex((task) => task.id === taskIndex)]
-                          ?.priority
-                      }
-                    />
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Assignee</h4>
-                    <div className="flex gap-3">
-                      <img
-                        className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-                        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <p className="text-sm">Fred S</p>
-                    </div>
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Start date</h4>
-                    <p className="text-sm">{formattedDate1}</p>
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Target date</h4>
-                    <p className="text-sm">{formattedDate2}</p>
-                  </li>
-                  <li className="grid grid-cols-2 py-2">
-                    <h4 className="text-neutral-500 text-sm">Project</h4>
-                    <p className="text-sm">
-                      {
-                        projects?.find(
-                          (project) =>
-                            tasks[
-                              tasks.findIndex((task) => task.id === taskIndex)
-                            ].projectId === project.id,
-                        )?.client
-                      }
-                    </p>
-                  </li>
-                </ul>
-              ) : (
-                <li>No task details available</li>
-              )}
-            </section>
-          </div>
-        </main>
-      </div>
-    </>
+          {/* <Attachments
+            taskId={Number(id)}
+            userId={null}
+            taskIndex={b}
+            tasks={tasks}
+          />
+          <ActivityLog created={created} users={users} task1={task1} /> */}
+        </div>
+      </TwoColumns>
+    </div>
   );
 };
 
