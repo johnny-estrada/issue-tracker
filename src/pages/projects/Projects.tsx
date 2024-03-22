@@ -132,15 +132,17 @@ export default function Projects() {
               <FilterButton />
             </div>
           </div>
-          <div className="flex flex-col items-end justify-center h-full">
-            <div className="flex flex-col items-center justify-center">
-              <img src={projectImg} alt="" className="w-56" />
-              <p className="text-gray-500 text-base mt-2">
-                No current active projects
-              </p>
-              <p className="text-gray-500 text-base mt-2">
-                Create a project to get started
-              </p>
+          <div className="flex justify-center m-auto items-center h-screen -mt-36">
+            <div className="flex flex-col items-end justify-center h-full">
+              <div className="flex flex-col items-center justify-center">
+                <img src={projectImg} alt="" className="w-32 lg:w-56" />
+                <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
+                  No current active projects
+                </p>
+                <p className="text-gray-500 text-sm lg:text-base lg:mt-2">
+                  Create a project to get started
+                </p>
+              </div>
             </div>
           </div>
         </Column>
@@ -155,10 +157,12 @@ export default function Projects() {
                 onFilter={onFilter}
               />
               <div className="flex gap-4">
-                <ButtonGroup
-                  titles={["list", "timeline"]}
-                  onFilter={onFilter}
-                />
+                <div className="hidden lg:block">
+                  <ButtonGroup
+                    titles={["list", "timeline"]}
+                    onFilter={onFilter}
+                  />
+                </div>
                 <FilterButton />
               </div>
             </div>
