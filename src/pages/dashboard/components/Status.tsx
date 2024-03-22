@@ -25,8 +25,8 @@ const Status = () => {
           </div>
         </div>
 
-        <p>You're doing good!</p>
-        <p>You almost reached your goal.</p>
+        <p className="line-clamp-1">You&apos;re doing good!</p>
+        <p className="line-clamp-1">You almost reached your goal.</p>
       </div>
     </>
   );
