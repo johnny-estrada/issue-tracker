@@ -10,8 +10,6 @@ import {
 } from "recharts";
 
 interface Props {
-  width: number;
-  height: number;
   data: object[];
 }
 
