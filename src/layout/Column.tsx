@@ -13,9 +13,7 @@ const Layout = ({ children }) => {
           {headerMiddle}
           {headerBottom}
         </Header>
-        <main className="lg:flex lg:h-screen">
-          <div className="lg:flex-1 lg:px-14 lg:pt-10 lg:max-w-4xl">{main}</div>
-        </main>
+        <main className="lg:flex lg:h-screen">{main}</main>
       </div>
     </>
   );
