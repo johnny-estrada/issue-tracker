@@ -2,26 +2,29 @@ import { useState, useEffect } from "react";
 import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
 import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
 import { formatDate } from "../../utils/formatting";
+import SearchBar from "../../components/header/SearchBar";
+import Search from "../../components/header/Search";
 import DataDisplay from "./components/DataDisplay";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import LineChart from "./components/LineChart";
-import BarCharts from "./components/BarCharts";
 import MyTask from "./components/MyTask";
 import MyProjects from "./components/MyProjects";
 import TwoColumnsWide from "../../layout/TwoColumnsWide";
+import { useSelector } from "react-redux";
 
-interface Props {
-  lineChartData: object[];
-  barChartData: object[];
-}
+// data
+import { lineChart } from "../../data/index";
+import Status from "./components/Status";
 
-const Dashboard = ({ lineChartData, barChartData }: Props) => {
+const Dashboard = () => {
   const [projectIndex, setProjectIndex] = useState(0);
+
   const [formattedDates, setFormattedDates] = useState([]);
-  const [lineChart, setLineChart] = useState(lineChartData);
-  const [barChart, setBarChart] = useState(barChartData);
-  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery();
-  const { data: tasks } = useGetTaskQuery();
+  const [lineChartData, setLineChartData] = useState(lineChart);
+  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");
+  const { data: tasks } = useGetTaskQuery("");
+
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (projects) {
@@ -43,6 +46,8 @@ const Dashboard = ({ lineChartData, barChartData }: Props) => {
     }
   }, [projects]);
 
+  // console.log(projects[projectIndex]?.id)
+
   function toggleProjects(e) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
@@ -58,42 +63,51 @@ const Dashboard = ({ lineChartData, barChartData }: Props) => {
     return null; // or you can render an error message
   }
 
-  const title = "Dashboard";
+  function search(text) {
+    alert(text);
+  }
 
   return (
     <>
       <TwoColumnsWide>
-        <HeaderTitle title={title} />
-        <DataDisplay projects={projects} />
+        <HeaderTitle title="Dashboard" />
+        <SearchBar search={search} />
+        <DataDisplay projects={projects} projectIndex={projectIndex} />
 
         <MyTask
+          formattedDates={formattedDates}
           id={tasks[projectIndex].id}
           refetch={refetch}
           projectIndex={projectIndex}
           projects={projects}
           tasks={tasks}
           dates={formattedDates}
+          lineChartData={lineChart}
         />
 
-        <section aria-labelledby="statistics">
-          <header>
-            <h2 className="sr-only" id="statistics">
-              Statistics
-            </h2>
-            <h2 className="text-2xl">Statistics</h2>
-            <p className="mb-5 text-sm  text-neutral-500">
-              tasks created vs tasks completed
-            </p>
-          </header>
+        <section
+          aria-labelledby="statistics"
+          className="flex justify-between flex-wrap"
+        >
+          <div className="flex flex-1 flex-col">
+            <header>
+              <h2 className="sr-only" id="statistics">
+                Statistics
+              </h2>
+              <h2 className="text-2xl">Statistics</h2>
+              <p className="mb-5 text-sm  text-neutral-500">
+                tasks created vs tasks completed
+              </p>
+            </header>
 
-          <div className="flex">
-            <LineChart data={lineChart} />
-            <BarCharts data={barChart} />
+            <LineChart data={lineChartData} />
           </div>
+
+          <Status />
         </section>
 
         <MyProjects
-          id={tasks[projectIndex].id}
+          id={projects[projectIndex]?.id}
           refetch={refetch}
           projectIndex={projectIndex}
           projects={projects}
