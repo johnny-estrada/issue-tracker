@@ -8,13 +8,13 @@ import {
   deleteProject,
   getProjectById,
 } from "../controllers/projectController.js";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-router.route("/").get(protect, getProjects).post(protect, admin, createProject);
+router.route("/").get(protect, getProjects).post(protect, createProject);
 router
   .route("/:id")
   .get(protect, getProjectById)
-  .put(protect, admin, updateProject)
-  .delete(protect, admin, deleteProject);
+  .put(protect, updateProject)
+  .delete(protect, deleteProject);
 
 export default router;
