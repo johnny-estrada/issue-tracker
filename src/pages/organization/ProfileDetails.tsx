@@ -17,13 +17,14 @@ import {
 import { setCredentials } from "../../services/state/redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import Details from "../../components/ui/Details";
+import FlatBadge from "../../components/ui/FlatBadge";
 
 const ProfileDetails = () => {
   const { id } = useParams();
   const [taskIndex, setTaskIndex] = useState(0);
 
-  const { data: projects } = useGetProjectsQuery();
-  const { data: tasks, isLoading: load } = useGetTaskQuery();
+  const { data: projects } = useGetProjectsQuery("");
+  const { data: tasks, isLoading: load } = useGetTaskQuery("");
   const [file, setFile] = useState("");
   const [photo, setPhoto] = useState("");
   const [name, setName] = useState("");
@@ -134,39 +135,47 @@ const ProfileDetails = () => {
                     Photo
                   </label>
 
-                  <div className="flex items-center gap-x-3">
+                  <div className="flex items-center gap-x-3 mb-4">
                     {photo ? (
                       <Image
-                        style={{ width: 70, borderRadius: 50 }}
+                        style={{ width: 80, height: 80, borderRadius: 50 }}
+                        className="border-2 border-neutral-400 block"
                         cloudName={cloud_name}
                         publicId={photo}
                       />
                     ) : (
                       <UserCircleIcon
-                        className="h-8 w-8 lg:h-12 lg:w-12 text-gray-300"
+                        className="h-8 w-8 lg:h-20 lg:w-20 text-gray-300"
                         aria-hidden="true"
                       />
                     )}
-
-                    <label className="custom-file-upload">Attach file</label>
                   </div>
-                  {/* <button
-                    type="button"
-                    id="imgupload"
-                    onClick={uploadFile}
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm text-slate-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mr-5"
+
+                  <label
+                    className="px-3 py-2 rounded-md cursor-pointer shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 text-sm"
+                    htmlFor="imgupload"
                   >
-                    Change
-                  </button> */}
+                    Upload file
+                  </label>
                   <input
                     type="file"
                     id="imgupload"
-                    className="mt-5"
+                    name="imgupload"
                     onChange={(e) => {
                       setFile(e.target.files[0]);
                     }}
                   />
+
+                  <button
+                    type="button"
+                    id="imgupload"
+                    onClick={uploadFile}
+                    className="rounded-md bg-white px-2.5 py-1.5 text-sm shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ml-2"
+                  >
+                    Change
+                  </button>
                 </div>
+
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="name"
@@ -300,21 +309,24 @@ const ProfileDetails = () => {
           </header>
           <section aria-labelledby="projects">
             <div className="max-w-[90%]">
-              <p className="text-sm pb-5 text-neutral-500"></p>
               <ul>
                 <li className="grid grid-cols-2 py-2">
-                  <p className="text-sm text-neutral-500">ID</p>
-                  <p className="text-sm text-neutral-800">U-123</p>
-                </li>
-                <li className="grid grid-cols-2 py-2">
                   <p className="text-sm text-neutral-500">Status</p>
-                  <p className="text-sm font-medium text-neutral-800">active</p>
+                  <FlatBadge priority={"active"} />
                 </li>
                 <li className="grid grid-cols-2 py-2">
-                  <p className="text-sm text-neutral-500">Role</p>
+                  <p className="text-sm text-neutral-500">Name</p>
+                  <p className="text-sm text-neutral-800">John Smith</p>
+                </li>
+                <li className="grid grid-cols-2 py-2">
+                  <p className="text-sm text-neutral-500">Email</p>
                   <p className="text-sm font-medium text-neutral-800">
-                    Manager
+                    John@email.com
                   </p>
+                </li>
+                <li className="grid grid-cols-2 py-2">
+                  <p className="text-sm text-neutral-500">Title</p>
+                  <p className="text-sm text-neutral-800">Project manager</p>
                 </li>
               </ul>
             </div>
