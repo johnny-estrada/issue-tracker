@@ -1,6 +1,6 @@
 import { stats } from "../../../data/index";
 
-export default function DataDisplay() {
+export default function DataDisplay({ projects, projectIndex }) {
   return (
     <>
       <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 px-3 pb-4 lg:px-0 lg:pb-0">
@@ -14,7 +14,8 @@ export default function DataDisplay() {
             </dt>
             <div className="flex justify-between">
               <dd className="mt-1 text-base lg:text-3xl tracking-tight text-gray-900">
-                {stat.stat} <span className="text-2xl">%</span>
+                {projects[projectIndex].hours}{" "}
+                <span className="text-2xl">Hrs</span>
               </dd>
 
               <stat.icon className="w-6 h-6 lg:w-10 lg:h-10 mt-auto rounded-md bg-gray-100 text-neutral-500 p-1 lg:p-2" />
