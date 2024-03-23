@@ -91,7 +91,7 @@ const TaskList = ({
                     active={task.id === taskId}
                     onClick={(e) => toggleTasks(e)}
                   >
-                    <div className="flex flex-col items-start justify-center min-w-0 gap-x-4 ml-4">
+                    <div className="flex flex-1 flex-col items-start justify-center gap-x-4 ml-4">
                       <p className="mt-1 text-sm leading-5">ID LG-{task?.id}</p>
                       <p className="text-sm leading-6 line-clamp-1 text-left">
                         {task?.name}
