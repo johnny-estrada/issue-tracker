@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <>
+    <div className="absolute bg-white z-50 w-screen h-screen p-96">
       <svg
         className="m-auto block bg-white shape-auto"
         width="200"
@@ -249,7 +249,7 @@ const Loader = () => {
           </rect>
         </g>
       </svg>
-    </>
+    </div>
   );
 };
 
