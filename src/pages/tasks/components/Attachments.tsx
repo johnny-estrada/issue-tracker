@@ -6,6 +6,7 @@ import axios from "axios";
 import { useGetAttachmentQuery } from "../../../services/state/redux/slices/attachmentsApiSlice";
 import pdfFile from "../../../assets/images/icons/pdf-icon.png";
 import textFile from "../../../assets/images/icons/text-icon.webp";
+import Loader from "../../../components/ui/Loader";
 
 interface Props {
   taskId: number;
@@ -21,7 +22,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
   const [userI, setUserI] = useState(0);
   const [preview, setPreview] = useState(null);
 
-  const { data: attachments, refetch } = useGetAttachmentQuery("");
+  const { data: attachments, isLoading, refetch } = useGetAttachmentQuery("");
 
   const customId = "custom-id-yes";
 
@@ -64,6 +65,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
       await axios.post("http://localhost:5000/api/attachments", formData);
       refetch();
       toast.success("Attachment added successfully");
+      // setFile(null);
     } catch (err) {
       console.log(err);
       toast.error(`${err}`);
@@ -72,6 +74,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <section aria-labelledby="attachments">
         <header className="flex items-baseline gap-3">
           <h3 className="sr-only" id="tasks">
