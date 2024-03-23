@@ -1,7 +1,10 @@
-# Issue Tracker Web App
+# 📌 Issue Tracker Web App
 
 ## Overview
-This project is an issue tracker web application built with MySQL, React, TypeScript, Node.js, Express, and Tailwind CSS. It provides a platform for managing and tracking issues, facilitating collaboration and organization within teams.
+This project is an issue tracker web application built with **MySQL**, **React**, **TypeScript**, **Node.js**, **Express**, and **Tailwind CSS**. It provides a platform for managing and tracking issues, facilitating collaboration and organization within teams.
+
+![Issue Tracker Demo](./src/assets/images/icons/klarity-preview.webp)
+*Screenshot of the Issue Tracker Web App*
 
 ## Table of Contents
 1. [Features](#features)
@@ -10,7 +13,9 @@ This project is an issue tracker web application built with MySQL, React, TypeSc
 4. [Contributing](#contributing)
 5. [License](#license)
 
-## Features
+---
+
+## Features 🛠️
 - **User Authentication**: Secure user authentication system allowing users to register, login, and manage their accounts.
 - **Issue Management**: Create, view, update, and delete issues with details such as title, description, priority, status, and assignees.
 - **Search and Filtering**: Efficiently search for specific issues using various filters like status, priority, and assignees.
@@ -18,15 +23,19 @@ This project is an issue tracker web application built with MySQL, React, TypeSc
 - **Customization**: Tailwind CSS integration for easy customization of the user interface according to project requirements.
 - **Responsive Design**: Mobile-friendly interface ensuring usability across different devices and screen sizes.
 
-## Installation
+---
+
+## Installation ⚙️
 1. **Clone Repository**: Clone this repository to your local machine using `git clone https://github.com/your-username/issue-tracker.git`.
 2. **Install Dependencies**: Navigate to the project directory and install dependencies using `npm install`.
-3. **Set Up Database**: Configure MySQL database settings in `config/database.js`.
+3. **Set Up Database**: Configure **MySQL** database settings in `config/database.js`.
 4. **Run Migrations**: Execute database migrations using `npm run migrate` to set up the database schema.
 5. **Start Server**: Start the server by running `npm start`.
 6. **Access Application**: Access the application in your web browser at `http://localhost:3000`.
 
-## Usage
+---
+
+## Usage 🚀
 1. **Register/Login**: Register for a new account or login with existing credentials.
 2. **View Issues**: Explore existing issues on the dashboard, categorized by status and priority.
 3. **Create Issue**: Click on the "New Issue" button to create a new issue, providing necessary details.
@@ -35,7 +44,9 @@ This project is an issue tracker web application built with MySQL, React, TypeSc
 6. **Comment on Issues**: Engage in discussions by commenting on issues, providing additional context or updates.
 7. **Logout**: Logout from the application when finished.
 
-## Contributing
+---
+
+## Contributing 🤝
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 1. Fork the repository.
 2. Create your feature branch (`git checkout -b feature/your-feature`).
@@ -43,5 +54,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Create a new Pull Request.
 
-## License
-This project is licensed under the [MIT License](https://mit-license.org/).
+---
+
+## License 📝
+This project is licensed under the [MIT License](LICENSE).
