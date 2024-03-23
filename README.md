@@ -14,7 +14,7 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 
 ---
 
-## Features 🛠️
+## Features 📋 
 
 - **User Authentication**: Secure user authentication system allowing users to register, login, and manage their accounts.
 - **Issue Management**: Create, view, update, and delete issues with details such as title, description, priority, status, and assignees.
@@ -43,7 +43,7 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 
 ---
 
-## Usage 🚀
+## Usage 📚 
 1. **Register/Login**: Register for a new account or login with existing credentials.
 2. **View Issues**: Explore existing issues on the dashboard, categorized by status and priority.
 3. **Create Issue**: Click on the "New Issue" button to create a new issue, providing necessary details.
