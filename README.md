@@ -1,7 +1,7 @@
 # ![Issue Tracker Demo](./src/assets/images/logo.svg) Klarity Issue Tracker
 
 ## Overview
-Klarity is an issue tracker web application built with **MySQL**, **React**, **TypeScript**, **Node.js**, **Express**, and **Tailwind CSS**. It provides a platform for managing and tracking issues, facilitating collaboration and organization within teams.
+Klarity is an issue tracker web application built with **MySQL**, **React**, **TypeScript**, **Node.js**, **Express**, and **Tailwind CSS**. It provides a platform for managing and tracking project issues, facilitating collaboration and organization within teams.
 
 ![Issue Tracker Demo](./src/assets/images/klarity-preview.webp)
 
