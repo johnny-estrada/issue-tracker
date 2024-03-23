@@ -16,7 +16,7 @@ function ProjectList({
       active={projectIndex === idx}
       onClick={toggleProjects}
     >
-      <div className="flex flex-col items-start justify-center min-w-0 gap-x-4 ml-4">
+      <div className="flex flex-1 flex-col items-start justify-center min-w-0 gap-x-4 ml-4">
         <h4 className="text-sm leading-6 line-clamp-1">{project.client}</h4>
         <p className="flex flex-wrap text-xs lg:text-sm leading-5 text-gray-400">
           <span className="inset-x-0 -top-px bottom-0" />9 tasks &#x2022; 2
@@ -24,7 +24,7 @@ function ProjectList({
         </p>
       </div>
       <div className="flex justify-center mr-4">
-        <div className="hidden lg:flex shrink-0 items-center gap-x-4">
+        <div className="hidden lg:flex shrink-0 items-center gap-x-10">
           <AvatarGroup members={project.team} />
           <p className="text-gray-400 text-xs">
             {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
