@@ -18,13 +18,19 @@ import Information from "./components/Information";
 import ActivityLog from "./components/ActivityLog";
 import Details from "./components/Details";
 import { useSelector } from "react-redux";
+import Loader from "../../components/ui/Loader";
 
 const TaskInformation = () => {
-  const { data: projects } = useGetProjectsQuery("");
-  const { data: tasks, refetch } = useGetTaskQuery("");
+  const { data: projects, error, isLoading } = useGetProjectsQuery("");
+  const {
+    data: tasks,
+    isLoading: isLoadingTasks,
+    refetch,
+  } = useGetTaskQuery("");
+  const { data: users, isLoading: isLoadingUsers } = useGetUsersQuery("");
+
   const [taskIndex, setTaskIndex] = useState(0);
   const { id } = useParams();
-  const { data: users } = useGetUsersQuery("");
 
   let b = tasks?.findIndex((task) => task.id == id);
   console.log(b); // 18 i3
@@ -75,29 +81,37 @@ const TaskInformation = () => {
   }
 
   return (
-    <div>
-      <TwoColumns>
-        <HeaderTitle title={tasks[b].name} />
-        <SearchBar search={search} />
-        <div className="flex justify-between">
-          <div className="flex gap-10">
-            <SortBy />
-            <div>
-              priority:{" "}
-              <ButtonGroup titles={["high", "medium", "low"]} onFilter={null} />
+    <>
+      {isLoading && <Loader />}
+      {isLoadingTasks && <Loader />}
+      {isLoadingUsers && <Loader />}
+
+      <div>
+        <TwoColumns>
+          <HeaderTitle title={tasks[b].name} />
+          <SearchBar search={search} />
+          <div className="flex justify-between">
+            <div className="flex gap-10">
+              <SortBy />
+              <div>
+                priority:{" "}
+                <ButtonGroup
+                  titles={["high", "medium", "low"]}
+                  onFilter={null}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex-1 p-4 lg:p-0">
-          <Information tasks={tasks} taskIndex={b} />
-          <Subtasks />
-          {/* <Comments b={b} tasks={tasks} /> */}
-        </div>
+          <div className="flex-1 p-4 lg:p-0">
+            <Information tasks={tasks} taskIndex={b} />
+            <Subtasks />
+            {/* <Comments b={b} tasks={tasks} /> */}
+          </div>
 
-        <div className="flex-1 mb-20 p-4 lg:p-0">
-          <section aria-labelledby="tasks">
-            {/* <header className="flex justify-between">
+          <div className="flex-1 mb-20 p-4 lg:p-0">
+            <section aria-labelledby="tasks">
+              {/* <header className="flex justify-between">
               <h2 className="sr-only" id="tasks">
                 Task Details
               </h2>
@@ -110,28 +124,29 @@ const TaskInformation = () => {
               <TaskMenu id={id} tasks={tasks} refetch={refetch} />
             </header> */}
 
-            <Details
-              userId={userInfo.id}
-              taskId={id}
-              users={users || undefined}
-              tasks={tasks}
-              taskIndex={b}
-              projects={projects}
-              formattedDate1={formattedDate1}
-              formattedDate2={formattedDate2}
-            />
-          </section>
+              <Details
+                userId={userInfo.id}
+                taskId={id}
+                users={users || undefined}
+                tasks={tasks}
+                taskIndex={b}
+                projects={projects}
+                formattedDate1={formattedDate1}
+                formattedDate2={formattedDate2}
+              />
+            </section>
 
-          {/* <Attachments
+            {/* <Attachments
             taskId={Number(id)}
             userId={null}
             taskIndex={b}
             tasks={tasks}
           />
           <ActivityLog created={created} users={users} task1={task1} /> */}
-        </div>
-      </TwoColumns>
-    </div>
+          </div>
+        </TwoColumns>
+      </div>
+    </>
   );
 };
 
