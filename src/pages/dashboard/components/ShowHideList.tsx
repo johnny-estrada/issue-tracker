@@ -46,20 +46,22 @@ export default function ShowHideList({
                             <p className="text-sm text-neutral-500">
                               ID RA - {task.id}
                             </p>
-                            <NavLink
-                              to={`/tasks/`}
-                              className="inline-flex items-center justify-center rounded-full hover:bg-gray-500 w-10 h-10 p-1.5"
-                            >
-                              <span className="sr-only">Task details</span>
-                              <ArrowRightIcon
-                                className="w-9 h-9 m-auto transform -rotate-45 origin-top-left"
-                                aria-hidden="true"
-                              />
-                              <ArrowLeftIcon
-                                className="w-9 h-9 m-auto transform -rotate-45 origin-bottom-left"
-                                aria-hidden="true"
-                              />
-                            </NavLink>
+                            {open && openDisclosureId === task.id && (
+                              <NavLink
+                                to={`/tasks/`}
+                                className="inline-flex items-center justify-center rounded-full hover:bg-gray-500 w-10 h-10 p-1.5"
+                              >
+                                <span className="sr-only">Task details</span>
+                                <ArrowRightIcon
+                                  className="w-9 h-9 m-auto transform -rotate-45 origin-top-left"
+                                  aria-hidden="true"
+                                />
+                                <ArrowLeftIcon
+                                  className="w-9 h-9 m-auto transform -rotate-45 origin-bottom-left"
+                                  aria-hidden="true"
+                                />
+                              </NavLink>
+                            )}
                           </div>
 
                           <h3
