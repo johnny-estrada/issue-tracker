@@ -1,15 +1,11 @@
 # ![Issue Tracker Demo](./src/assets/images/logo.svg) Klarity Issue Tracker
 
 ## Overview
-
 Klarity is an issue tracker web application built with **MySQL**, **React**, **TypeScript**, **Node.js**, **Express**, and **Tailwind CSS**. It provides a platform for managing and tracking issues, facilitating collaboration and organization within teams.
 
-<div style="display: flex; justify-content: center; align-items: center; ">
- <img src="./src/assets/images/klarity-preview.webp" alt="Issue Tracker Demo">
-</div>
+![Issue Tracker Demo](./src/assets/images/klarity-preview.webp)
 
 ## Table of Contents
-
 1. [Features](#features)
 2. [Installation](#installation)
 3. [Usage](#usage)
@@ -19,7 +15,6 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ---
 
 ## Features 🛠️
-
 - **User Authentication**: Secure user authentication system allowing users to register, login, and manage their accounts.
 - **Issue Management**: Create, view, update, and delete issues with details such as title, description, priority, status, and assignees.
 - **Search and Filtering**: Efficiently search for specific issues using various filters like status, priority, and assignees.
@@ -30,7 +25,6 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ---
 
 ## Installation ⚙️
-
 1. **Clone Repository**: Clone this repository to your local machine using `git clone https://github.com/your-username/issue-tracker.git`.
 2. **Install Dependencies**: Navigate to the project directory and install dependencies using `npm install`.
 3. **Set Up Database**: Configure **MySQL** database settings in `config/database.js`.
@@ -41,7 +35,6 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ---
 
 ## Usage 🚀
-
 1. **Register/Login**: Register for a new account or login with existing credentials.
 2. **View Issues**: Explore existing issues on the dashboard, categorized by status and priority.
 3. **Create Issue**: Click on the "New Issue" button to create a new issue, providing necessary details.
@@ -53,9 +46,7 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ---
 
 ## Contributing 🤝
-
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
 1. Fork the repository.
 2. Create your feature branch (`git checkout -b feature/your-feature`).
 3. Commit your changes (`git commit -am 'Add some feature'`).
@@ -65,5 +56,4 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ---
 
 ## License 📝
-
 This project is licensed under the [MIT License](https://mit-license.org/).
