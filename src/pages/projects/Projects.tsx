@@ -14,7 +14,7 @@ import Loader from "../../components/ui/Loader";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
 import SearchBar from "../../components/header/SearchBar";
-import projectSelect from "../../assets/images/icons/state/select-item.svg";
+import selectProject from "../../assets/images/icons/state/select-item.svg";
 import projectImg from "../../assets/images/icons/state/file-folder.svg";
 
 export default function Projects() {
@@ -179,7 +179,7 @@ export default function Projects() {
 
             {projectIndex === undefined ? (
               <div className="flex flex-col items-center justify-center h-full">
-                <img src={projectSelect} alt="" className="w-56" />
+                <img src={selectProject} alt="" className="w-56" />
                 <p className="text-gray-500 text-base mt-2">
                   Select a project to see it&apos;s details
                 </p>
