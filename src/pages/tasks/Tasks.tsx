@@ -16,8 +16,8 @@ import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
 import SortBy from "../../components/header/SortBy";
 
-import projectSelect from "../../assets/images/project-select.svg";
-import create from "../../assets/images/create.svg";
+import projectSelect from "../../assets/images/icons/state/selecting.svg";
+import create from "../../assets/images/icons/state/add-task.svg";
 import { useSelector } from "react-redux";
 
 const Tasks = () => {

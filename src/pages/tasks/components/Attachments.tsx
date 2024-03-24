@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
 import { useGetAttachmentQuery } from "../../../services/state/redux/slices/attachmentsApiSlice";
-import pdfFile from "../../../assets/images/icons/pdf-icon.png";
-import textFile from "../../../assets/images/icons/text-icon.webp";
+import pdfFile from "../../../assets/images/icons/files/pdf-icon.png";
+import textFile from "../../../assets/images/icons/files/text-icon.webp";
 import Loader from "../../../components/ui/Loader";
 
 interface Props {

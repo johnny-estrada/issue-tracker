@@ -2,7 +2,7 @@ import FlatBadge from "../../../components/ui/FlatBadge";
 import { formatDate } from "../../../utils/formatting";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
-import noData from "../../../assets/images/no-data.svg";
+import noData from "../../../assets/images/icons/state/empty-clipboards.svg";
 import TaskMenu from "../../../components/ui/TaskMenu";
 
 interface Props {
@@ -66,7 +66,7 @@ const Details = ({
           <TaskMenu id={taskId} tasks={tasks} />
         </div>
         <div className="w-2/3 lg:mb-10">
-          {tasks?.length > 0 ? (
+          {!tasks?.length > 0 ? (
             <ul>
               <li className="grid grid-cols-2 py-2 w-64">
                 <h4 className="text-sm text-neutral-500">Name</h4>
