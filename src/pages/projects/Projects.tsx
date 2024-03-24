@@ -14,7 +14,7 @@ import Loader from "../../components/ui/Loader";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
 import SearchBar from "../../components/header/SearchBar";
-import projectSelect from "../../assets/images/icons/state/selecting.svg";
+import projectSelect from "../../assets/images/icons/state/select-item.svg";
 import projectImg from "../../assets/images/icons/state/file-folder.svg";
 
 export default function Projects() {
