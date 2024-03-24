@@ -6,11 +6,11 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ![Issue Tracker Demo](./src/assets/images/klarity-preview.jpg)
 
 ## Table of Contents
-1. [Features](#features)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [License](#license)
+1. Features
+2. Installation
+3. Usage
+4. Contributing
+5. License
 
 ---
 
