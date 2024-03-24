@@ -14,7 +14,7 @@ import { Tab } from "@headlessui/react";
 import Header from "../../components/header/Header";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import Users from "../admin/components/Users";
+import Users from "./admin/Users";
 import ProfileDetails from "./ProfileDetails";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SearchBar from "../../components/header/SearchBar";
@@ -58,8 +58,6 @@ function Settings() {
         const imageName = res.data.url;
 
         setPhoto(imageName);
-        console.log(imageName);
-        // console.log(res);
       })
       .catch((error) => {
         console.error("Error uploading image:", error);
