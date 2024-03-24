@@ -7,7 +7,7 @@ import {
 } from "../controllers/attachmentController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
-router.route("/").post(upload.single("file"), protect, createAttachment);
+router.route("/").post(upload.single("file"),  createAttachment);
 router.route("/").get(protect, getAttachments);
 
 export default router;
