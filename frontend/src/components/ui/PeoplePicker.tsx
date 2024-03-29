@@ -2,16 +2,21 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 
-const PeoplePicker = ({ members, onChange }) => {
+interface Props {
+  members: object[];
+  onChange: () => void;
+}
+
+const PeoplePicker = ({ members, onChange }: Props) => {
   const [selectedPeople, setSelectedPeople] = useState([]);
   const [options, setOptions] = useState([]);
 
-  const { data: users, isLoading, refetch, error } = useGetUsersQuery();
+  const { data: users, isLoading, error } = useGetUsersQuery("");
 
   useEffect(() => {
     // Map user data to the format expected by react-select
     if (users) {
-      const options = users.map((user) => ({
+      const options = users.map((user: object) => ({
         id: user.id,
         name: user.name,
         email: user.email,
