@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import axios from "axios";
-import { useGetAttachmentQuery } from "../../../state/redux/slices/attachmentsApiSlice";
 import pdfFile from "../../../assets/images//file-logos/pdf-icon.png";
 import textFile from "../../../assets/images/file-logos/text-icon.webp";
+
+import axios from "axios";
+import { useGetAttachmentQuery } from "../../../state/redux/slices/attachmentsApiSlice";
 import Loader from "../../../components/ui/Loader";
 
 interface Props {
-  taskId: number;
+  taskId: string | "";
   userId: number | null;
   taskIndex: number;
   tasks: object[];
@@ -26,13 +27,11 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
 
   const customId = "custom-id-yes";
 
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   useEffect(() => {
     axios
@@ -41,7 +40,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
       .catch((err) => console.log(err));
   }, [taskId]);
 
-  const handleFile = async (e) => {
+  const handleFile = async (e: SyntheticEvent) => {
     setFile(e.target.files[0]);
     setTaskI(taskId);
     setUserI(userId);
@@ -92,7 +91,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
         {/* TASKS LIST */}
         <ul className="flex flex-wrap max-w-sm gap-3 overflow-hidden text-slate-500 text-sm">
           {attachments?.map(
-            (attachment, index) =>
+            (attachment: object) =>
               attachment.taskId === tasks[taskIndex]?.id && (
                 <li key={attachment.id}>
                   <button className="shadow-sm border border-gray-100 w-28 rounded-lg bg-gray-100 hover:bg-gray-200 mb-4">

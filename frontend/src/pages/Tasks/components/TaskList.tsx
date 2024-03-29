@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { formatDate } from "../../../utils/formatting";
+
 import SelectorList from "../../../components/ui/SelectorList";
 import FlatBadge from "../../../components/ui/FlatBadge";
 import Loader from "../../../components/ui/Loader";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
-import { formatDate } from "../../../utils/formatting";
 
 interface Props {
   projects: object[];
@@ -39,16 +40,7 @@ const TaskList = ({
       }, {}) || {};
 
     setSortedTasks(sorted);
-
-    const a = projects?.map((project) => {
-      if (project.id === tasks[taskIndex]?.projectId) {
-        setTeam(project.team);
-      }
-      console.log("no results");
-    });
   }, [tasks, projects, taskIndex]);
-
-  console.log(sortedTasks);
 
   return (
     <>
@@ -58,7 +50,6 @@ const TaskList = ({
         <div>{error?.data?.message || error.error}</div>
       ) : (
         <section className="mb-96 lg:mb-0 relative">
-          {/* Display ChevronRightIcon and ChevronLeftIcon once at the top */}
           <header className="flex justify-between align-middle">
             <div className="lg:flex items-center my-4 lg:my-0 mt-4 lg:mt-0 hidden lg:absolute right-0 top-0">
               <button className="hover:bg-gray-50 rounded-full p-3">
@@ -84,7 +75,7 @@ const TaskList = ({
 
               <h2 className="text-xl lg:text-2xl mb-4">{status}</h2>
 
-              {sortedTasks[status]?.map((task) => (
+              {sortedTasks[status]?.map((task: object) => (
                 <SelectorList
                   key={task?.id}
                   id={task?.id}

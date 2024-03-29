@@ -1,9 +1,9 @@
-import FlatBadge from "../../../components/ui/FlatBadge";
 import { formatDate } from "../../../utils/formatting";
+import noData from "../../../assets/icons/state/empty-clipboards.svg";
+import FlatBadge from "../../../components/ui/FlatBadge";
+import TaskMenu from "../../../components/ui/TaskMenu";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
-import noData from "../../../assets/icons/state/empty-clipboards.svg";
-import TaskMenu from "../../../components/ui/TaskMenu";
 
 interface Props {
   tasks: object[];
@@ -12,7 +12,7 @@ interface Props {
   formattedDate1: string;
   formattedDate2: string;
   users: object[];
-  taskId: number;
+  taskId: string;
   userId: number;
 }
 
@@ -30,11 +30,6 @@ const Details = ({
     (user) => user.id === tasks[taskIndex].userId,
   );
 
-  let b = tasks?.findIndex((task) => task.projectId);
-  console.log(tasks[taskIndex].projectId);
-
-  // console.log(tasks[taskIndex].userId); // 4
-
   const created = formatDate(tasks[taskIndex].createdAt, {
     month: "short",
     day: "numeric",
@@ -46,8 +41,8 @@ const Details = ({
     year: "numeric",
   });
 
+  // Handle the case where tasks is undefined or projectIndex is out of bounds
   if (!users) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
     return null; // or you can render an error message
   }
 
@@ -63,7 +58,7 @@ const Details = ({
             <FlatBadge priority={`ID LG-${taskId}`} />
           </div>
 
-          <TaskMenu id={taskId} tasks={tasks} />
+          <TaskMenu id={taskId} tasks={tasks} refetch={""} />
         </div>
         <div className="w-2/3 lg:mb-10">
           {tasks?.length > 0 ? (

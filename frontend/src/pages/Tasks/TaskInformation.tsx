@@ -6,39 +6,26 @@ import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import { formatDate } from "../../utils/formatting";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";
-import FlatBadge from "../../components/ui/FlatBadge";
-import TaskMenu from "../../components/ui/TaskMenu";
 import TwoColumns from "../../layout/TwoColumns";
-import Attachments from "./components/Attachments";
 import SortBy from "../../components/header/SortBy";
 import SearchBar from "../../components/header/SearchBar";
-import Comments from "./components/Comments";
 import Subtasks from "./components/Subtasks";
 import Information from "./components/Information";
-import ActivityLog from "./components/ActivityLog";
 import Details from "./components/Details";
 import { useSelector } from "react-redux";
 import Loader from "../../components/ui/Loader";
 
 const TaskInformation = () => {
-  const { data: projects, error, isLoading } = useGetProjectsQuery("");
-  const {
-    data: tasks,
-    isLoading: isLoadingTasks,
-    refetch,
-  } = useGetTaskQuery("");
-  const { data: users, isLoading: isLoadingUsers } = useGetUsersQuery("");
-
-  const [taskIndex, setTaskIndex] = useState(0);
   const { id } = useParams();
-
-  let b = tasks?.findIndex((task) => task.id == id);
-  console.log(b); // 18 i3
-  // console.log(id)
-
   const [formattedDate1, setFormattedDate1] = useState("");
   const [formattedDate2, setFormattedDate2] = useState("");
+
+  const { data: projects, isLoading } = useGetProjectsQuery("");
+  const { data: tasks, isLoading: isLoadingTasks } = useGetTaskQuery("");
+  const { data: users, isLoading: isLoadingUsers } = useGetUsersQuery("");
   const { userInfo } = useSelector((state) => state.auth);
+
+  const b = tasks?.findIndex((task: object) => task.id == id);
 
   useEffect(() => {
     if (tasks) {
@@ -58,25 +45,12 @@ const TaskInformation = () => {
     }
   }, [b, tasks]);
 
-  function search(text: string) {
-    alert(text);
-  }
-
-  const task1 = users?.findIndex((user) => user.id === tasks[taskIndex].userId);
-
-  const created = formatDate(tasks[taskIndex].createdAt, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
+  // Handle the case where tasks is undefined or projectIndex is out of bounds
   if (!users) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
     return null; // or you can render an error message
   }
-
+  // Handle the case where tasks is undefined or projectIndex is out of bounds
   if (!tasks) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
     return null; // or you can render an error message
   }
 
@@ -89,7 +63,7 @@ const TaskInformation = () => {
       <div>
         <TwoColumns>
           <HeaderTitle title={tasks[b].name} />
-          <SearchBar search={search} />
+          <SearchBar />
           <div className="flex justify-between">
             <div className="flex gap-10">
               <SortBy />
@@ -126,7 +100,7 @@ const TaskInformation = () => {
 
               <Details
                 userId={userInfo.id}
-                taskId={id}
+                taskId={id || ""}
                 users={users || undefined}
                 tasks={tasks}
                 taskIndex={b}
@@ -135,14 +109,6 @@ const TaskInformation = () => {
                 formattedDate2={formattedDate2}
               />
             </section>
-
-            {/* <Attachments
-            taskId={Number(id)}
-            userId={null}
-            taskIndex={b}
-            tasks={tasks}
-          />
-          <ActivityLog created={created} users={users} task1={task1} /> */}
           </div>
         </TwoColumns>
       </div>

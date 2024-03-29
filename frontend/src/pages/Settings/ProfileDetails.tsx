@@ -3,12 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {
-  useUpdateUserMutation,
-  useGetUsersQuery,
-} from "../../state/redux/slices/usersApiSlice";
+import { useUpdateUserMutation } from "../../state/redux/slices/usersApiSlice";
 import { setCredentials } from "../../state/redux/slices/authSlice";
-import Loader from "../../components/ui/Loader";
 import Details from "./Details";
 import Profile from "./Profile";
 import Security from "./Security";
@@ -21,7 +17,7 @@ const ProfileDetails = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [updateProfile, { isLoading }] = useUpdateUserMutation();
+  const [updateProfile] = useUpdateUserMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -62,13 +58,6 @@ const ProfileDetails = () => {
         // Handle the error, e.g., show a toast or alert
       });
   };
-
-  const {
-    data: users,
-    isLoading: loading,
-    refetch,
-    error,
-  } = useGetUsersQuery();
 
   useEffect(() => {
     setName(userInfo.name);

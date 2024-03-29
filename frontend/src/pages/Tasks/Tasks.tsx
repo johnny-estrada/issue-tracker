@@ -56,7 +56,7 @@ const Tasks = () => {
     }
 
     if (tasks) {
-      const formattedDatesArray = tasks.map((task) => {
+      const formattedDatesArray = tasks.map((task: string) => {
         const startDate = formatDate(task.startDate, {
           month: "short",
           day: "numeric",
@@ -76,7 +76,7 @@ const Tasks = () => {
 
   function toggleTasks(e: SyntheticEvent) {
     const taskId = Number(e.currentTarget.id);
-    const taskIndex = tasks?.findIndex((task) => task.id === taskId);
+    const taskIndex = tasks?.findIndex((task: object) => task.id === taskId);
 
     if (taskIndex !== -1) {
       setTaskIndex(taskIndex);
@@ -84,26 +84,21 @@ const Tasks = () => {
     }
   }
 
-  function search(text) {
-    alert(text);
-  }
-
   let onFilter;
 
   return (
     <>
-      {error && <div>{error?.data?.message || error.error}</div>}
       {!tasks?.length ? (
         <Column>
           <HeaderTitle title="Tasks" />
-          <SearchBar search={search} />
+          <SearchBar />
           <div className="flex justify-between">
             <ButtonGroup
               titles={["all", "active", "closed", "on hold"]}
               onFilter={onFilter}
             />
             <div className="flex gap-4">
-              <ButtonGroup titles={buttonName} />
+              <ButtonGroup titles={buttonName} onFilter={""} />
               <SortBy />
             </div>
           </div>
@@ -125,10 +120,10 @@ const Tasks = () => {
         <>
           <TwoColumns>
             <HeaderTitle title="Tasks" />
-            <SearchBar search={search} />
+            <SearchBar />
             <div className="flex justify-between">
               <div className="flex gap-6">
-                <ButtonGroup titles={buttonName} />
+                <ButtonGroup titles={buttonName} onFilter={""} />
                 <SortBy />
               </div>
 

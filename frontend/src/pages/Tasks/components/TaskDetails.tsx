@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
-import FlatBadge from "../../../components/ui/FlatBadge";
 import { formatDate } from "../../../utils/formatting";
+
+import noData from "../../../assets/icons/state/empty-clipboards.svg";
+import FlatBadge from "../../../components/ui/FlatBadge";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
-import noData from "../../../assets/icons/state/empty-clipboards.svg";
 
 interface Props {
   tasks: object[];
@@ -27,12 +28,14 @@ const TaskDetails = ({
   taskId,
   userId,
 }: Props) => {
+  // Handle the case where tasks is undefined or projectIndex is out of bounds
+  if (!users) {
+    return null; // or you can render an error message
+  }
+
   const userIndex = users?.findIndex(
     (user) => user.id === tasks[taskIndex].userId,
   );
-
-  // console.log(task1);
-  // console.log(tasks[taskIndex].userId); // 4
 
   const created = formatDate(tasks[taskIndex].createdAt, {
     month: "short",
@@ -46,11 +49,6 @@ const TaskDetails = ({
     day: "numeric",
     year: "numeric",
   });
-
-  if (!users) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
-  }
 
   return (
     <>

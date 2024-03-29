@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import {
   useGetTaskDetailsQuery,
   useUpdateTaskMutation,
 } from "../../../state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
+
 import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";
-
 import PeoplePicker from "../../../components/ui/PeoplePicker";
 
 const EditTaskForm = () => {
-  const { id: taskId } = useParams();
+  const { id: taskId } = useParams("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
-  const [assignee, setAssignee] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [targetDate, setTargetDate] = useState(new Date());
   const [projectId, setProjectId] = useState("");
@@ -25,14 +25,11 @@ const EditTaskForm = () => {
 
   const customId = "custom-id-yes";
 
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
-
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
   const {
     data: task,
     isLoading,
@@ -40,12 +37,12 @@ const EditTaskForm = () => {
     error,
   } = useGetTaskDetailsQuery(taskId);
 
-  const [updateTask, { isLoading: loadingUpdate }] = useUpdateTaskMutation();
-  const { data: projects } = useGetProjectsQuery();
+  const [updateTask] = useUpdateTaskMutation();
+  const { data: projects } = useGetProjectsQuery("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     try {
@@ -68,11 +65,11 @@ const EditTaskForm = () => {
     }
   };
 
-  const handleStatusChange = (e) => {
+  const handleStatusChange = (e: SyntheticEvent) => {
     setStatus(e.target.value);
   };
 
-  const handlePriorityChange = (e) => {
+  const handlePriorityChange = (e: SyntheticEvent) => {
     setPriority(e.target.value);
   };
 
@@ -120,7 +117,7 @@ const EditTaskForm = () => {
                         onChange={(e) => setProjectId(e.target.value)}
                         className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       >
-                        {projects?.map((project) => (
+                        {projects?.map((project: object) => (
                           <option key={project.id} value={project.id}>
                             {project.title}-{project.id}
                           </option>
