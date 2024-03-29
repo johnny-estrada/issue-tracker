@@ -1,15 +1,15 @@
 import express from "express";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
-import projectRoutes from "./routes/projectRoutes.js";
-import attachmentRoutes from "./routes/attachmentRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import morgan from "morgan";
-import fs from "fs";
-import path from "path";
+
+import userRoutes from "./routes/userRoutes.js";
+import projectRoutes from "./routes/projectRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
+import attachmentRoutes from "./routes/attachmentRoutes.js";
+
+import { setupLogging } from "./middleware/loggingMiddleware.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 
@@ -23,42 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static("public"));
 
-// Create a write stream for the log file in the 'logs' directory
-const logFilePath = path.join(process.cwd(), "logs", "morgan.log");
-
-function test() {
-  console.log("hello");
-}
-
-console.log("hello");
-const logStream = fs.createWriteStream(logFilePath, { flags: "a" });
-
-morgan.token("date", (req, res) => {
-  const pacificOptions = {
-    timeZone: "America/Los_Angeles",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: true,
-  };
-  return new Date().toLocaleString("en-US", pacificOptions);
-});
-
-const logFormat =
-  ":date[web] :method :url :status :response-time ms - :res[content-length]\n";
-
-app.use(
-  morgan(logFormat, {
-    stream: logStream,
-    skip: (req, res) => res.statusCode < 400,
-  }),
-);
-
-// Add log rotation functionality
-// have to install a package
+setupLogging(app);
 
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
