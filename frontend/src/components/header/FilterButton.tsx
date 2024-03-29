@@ -1,5 +1,5 @@
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
-import funnelIcon from "../../assets/images/icons/funnel.svg"
+import funnelIcon from "../../assets/icons/funnel.svg"
 
 export default function FilterButton() {
   return (

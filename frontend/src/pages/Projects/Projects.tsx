@@ -14,8 +14,8 @@ import Loader from "../../components/ui/Loader";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
 import SearchBar from "../../components/header/SearchBar";
-import selectProject from "../../assets/images/icons/state/select-item.svg";
-import projectImg from "../../assets/images/icons/state/file-folder.svg";
+import selectProject from "../../assets/icons/state/select-item.svg";
+import projectImg from "../../assets/icons/state/file-folder.svg";
 
 export default function Projects() {
   const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");

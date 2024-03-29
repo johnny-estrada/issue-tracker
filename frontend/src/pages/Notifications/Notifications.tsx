@@ -7,7 +7,7 @@ import FilterButton from "../../components/header/FilterButton";
 import Column from "../../layout/Column";
 import NotificationsList from "./components/NotificationsList";
 import SearchBar from "../../components/header/SearchBar";
-import notificationsIcon from "../../assets/images/icons/state/mailbox.svg";
+import notificationsIcon from "../../assets/icons/state/mailbox.svg";
 
 const Notifications = () => {
   const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");

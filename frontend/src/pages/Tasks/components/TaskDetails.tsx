@@ -4,7 +4,7 @@ import FlatBadge from "../../../components/ui/FlatBadge";
 import { formatDate } from "../../../utils/formatting";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
-import noData from "../../../assets/images/icons/state/empty-clipboards.svg";
+import noData from "../../../assets/icons/state/empty-clipboards.svg";
 
 interface Props {
   tasks: object[];
