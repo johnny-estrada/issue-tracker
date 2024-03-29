@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import upload from "../middleware/multerMiddleware.js";
+import upload from "../middleware/fileUploadMiddleware.js";
 import {
   createAttachment,
   getAttachments,
