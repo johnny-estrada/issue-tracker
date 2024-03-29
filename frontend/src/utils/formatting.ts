@@ -10,16 +10,12 @@ export const formatDate = ({ dateString, options }: Props) => {
   return date.toLocaleDateString("en-US", options);
 };
 
-interface Props {
-  fullName: string;
-}
-
-export const formatName = ({fullName}: Props) => {
+export const formatName = (fullName: string) => {
   const firstName = fullName.split(" ");
   return firstName[0];
 };
 
-export const formatNameDisplay = ({fullName}: Props) => {
+export const formatNameDisplay = (fullName: string) => {
   const parts = fullName.split(" ");
   const firstName = parts[0];
   const lastNameInitial =
