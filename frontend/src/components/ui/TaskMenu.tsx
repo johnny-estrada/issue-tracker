@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import {
   EllipsisHorizontalIcon,
@@ -7,12 +8,17 @@ import {
   TrashIcon,
   ArrowUturnLeftIcon,
 } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
 import { useDeleteTaskMutation } from "../../state/redux/slices/tasksApiSlice";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
 
-export default function DropDown({ id, refetch, tasks }) {
+interface Props {
+  id: string;
+  refetch: any;
+  tasks: object[];
+}
+
+export default function DropDown({ id, refetch, tasks }: Props) {
   const [deleteTask, { isLoading: loadingDelete }] = useDeleteTaskMutation();
 
   const deleteHandler = async (id) => {

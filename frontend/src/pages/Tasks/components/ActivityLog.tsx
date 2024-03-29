@@ -1,4 +1,11 @@
-const ActivityLog = ({ created, users, userIndex, updated }) => {
+interface Props {
+  created: string;
+  users: object[];
+  userIndex: number;
+  updated: string;
+}
+
+const ActivityLog = ({ created, users, userIndex, updated }: Props) => {
   const createDate = users[userIndex]?.name;
 
   return (

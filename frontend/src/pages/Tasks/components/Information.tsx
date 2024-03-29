@@ -1,4 +1,9 @@
-const Information = ({ taskIndex, tasks }) => {
+interface Props {
+  taskIndex: number;
+  tasks: object[];
+}
+
+const Information = ({ taskIndex, tasks }: Props) => {
   return (
     <div>
       <section aria-labelledby="projects" className="mb-28">

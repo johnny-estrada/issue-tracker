@@ -1,6 +1,18 @@
 import { Image } from "cloudinary-react";
-import Loader from "../../components/ui/Loader";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { SyntheticEvent } from "react";
+
+interface Props {
+  submitHandler: (e: SyntheticEvent) => Promise<void>;
+  photo: string;
+  cloudName: string;
+  uploadFile: () => void;
+  name: string;
+  email: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  setFile: React.Dispatch<React.SetStateAction<string>>;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const Profile = ({
   submitHandler,
@@ -12,7 +24,7 @@ const Profile = ({
   setName,
   setFile,
   setEmail,
-}) => {
+}: Props) => {
   return (
     <section aria-labelledby="profile">
       <header className="flex justify-between">
@@ -116,7 +128,6 @@ const Profile = ({
           </div>
         </div>
         <div className="flex justify-end gap-x-6 py-4 px-8">
-          {/* {isLoading && <Loader />} */}
           <button
             type="submit"
             className="rounded-md border border-orange-500 px-3 py-2 text-sm text-orange-500 shadow-sm hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
