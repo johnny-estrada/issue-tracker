@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Axios from "axios";
 
-const useCloudinaryUpload = (presetKey, cloudName) => {
+interface Props {
+  presetKey: string;
+  cloudName: string;
+}
+
+const useCloudinaryUpload = ({presetKey, cloudName}: Props) => {
   const [photo, setPhoto] = useState("");
 
-  const uploadFile = async (file) => {
+  const uploadFile = async (file: string) => {
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -17,7 +22,6 @@ const useCloudinaryUpload = (presetKey, cloudName) => {
 
       const imageName = response.data.url;
       setPhoto(imageName);
-      console.log(imageName);
       // You can return or handle the photo URL as needed
       return imageName;
     } catch (error) {
