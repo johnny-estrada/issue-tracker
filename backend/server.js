@@ -25,6 +25,12 @@ app.use(express.static("public"));
 
 // Create a write stream for the log file in the 'logs' directory
 const logFilePath = path.join(process.cwd(), "logs", "morgan.log");
+
+function test() {
+  console.log("hello");
+}
+
+console.log("hello");
 const logStream = fs.createWriteStream(logFilePath, { flags: "a" });
 
 morgan.token("date", (req, res) => {
@@ -48,7 +54,7 @@ app.use(
   morgan(logFormat, {
     stream: logStream,
     skip: (req, res) => res.statusCode < 400,
-  })
+  }),
 );
 
 // Add log rotation functionality

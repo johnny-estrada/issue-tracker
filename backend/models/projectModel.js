@@ -45,7 +45,7 @@ const Project = sequelize.define(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const setupAssociations = () => {

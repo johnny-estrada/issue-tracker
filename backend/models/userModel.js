@@ -39,7 +39,7 @@ const User = sequelize.define(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 User.beforeCreate(async (user) => {
