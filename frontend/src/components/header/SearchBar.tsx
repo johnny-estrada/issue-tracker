@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useSearchTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { BellIcon } from "@heroicons/react/24/outline";
 
-const SearchBar = (props) => {
+const SearchBar = () => {
   const [search, setSearch] = useState("");
   const { data: searchResults = [], isLoading } = useSearchTaskQuery(search);
 
@@ -132,57 +132,3 @@ const SearchBar = (props) => {
 };
 
 export default SearchBar;
-
-// TaskSearch.js
-// import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import { useSearchTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
-
-// const TaskSearch = () => {
-//   const [searchQuery, setSearchQuery] = useState("");
-//   const { data: searchResults = [], isLoading } =
-//     useSearchTaskQuery(searchQuery);
-
-//   const handleSearchChange = (e) => {
-//     setSearchQuery(e.target.value);
-//   };
-
-//   return (
-//     <div>
-//       <input
-//         className="relative w-80"
-//         type="text"
-//         value={searchQuery}
-//         onChange={handleSearchChange}
-//       />
-//       {searchQuery && searchResults.length === 0 ? (
-//         <p>No results found</p>
-//       ) : searchQuery && !isLoading ? (
-//         <ul className=" absolute right-14 ring-1 ring-gray-50">
-//           {searchResults
-//             .filter(
-//               (task) =>
-//                 task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-//                 task.name.toUpperCase().includes(searchQuery.toUpperCase()) ||
-//                 task.id.toString().includes(searchQuery),
-//             )
-//             .map((task) => (
-//               <li
-//                 key={task.id}
-//                 className="w-80 bg-white px-4 pt-3 last:pb-4 hover:bg-gray-50 shadow-sm first:mt-1 rounded"
-//               >
-//                 <Link className="text-sm" to={`/tasks/${task.id}`}>
-//                   <p className="line-clamp-1">
-//                     <span className="font-semibold">ID TK-{task.id}</span>{" "}
-//                     {task.name}{" "}
-//                   </p>
-//                 </Link>
-//               </li>
-//             ))}
-//         </ul>
-//       ) : null}
-//     </div>
-//   );
-// };
-
-// export default TaskSearch;
