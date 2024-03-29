@@ -17,19 +17,19 @@ Klarity is an issue tracker web application built with **MySQL**, **React**, **T
 ## Features 📋 
 
 - **User Authentication**: Secure user authentication system allowing users to register, login, and manage their accounts.
-- **Issue Management**: Create, view, update, and delete issues with details such as title, description, priority, status, and assignees.
-- **Project Management**: Create, view, update, and delete projects with details such as title, description, members, and tasks.
-- **Kanban Board**: Utilize a Kanban board for visualizing and managing project workflows.
 - **Dashboard**: Personalized dashboard providing an overview of project activities, tasks, and notifications.
-- **Search and Filtering**: Efficiently search for specific issues or projects using various filters.
-- **Commenting System**: Engage in discussions by commenting on issues or projects, facilitating better communication among team members.
-- **User Management**: Administer user roles, permissions, and access control settings.
-- **Customization**: Tailwind CSS integration for easy customization of the user interface according to project requirements.
-- **Responsive Design**: Mobile-friendly interface ensuring usability across different devices and screen sizes.
+- **Project Management**: Create, view, update, and delete projects with details such as title, description, members, and tasks.
+- **Project Stats**: Access project statistics and analytics to track progress and performance.
+- **Task Management**: Create, view, update, and delete tasks with details such as title, description, priority, status, and assignees.
 - **Task Calendar**: Integrated calendar for tracking project tasks and deadlines.
 - **Attachments**: Add attachments to issues or projects for including relevant documents, images, or files.
 - **Notifications**: Receive real-time notifications for updates, comments, and changes within the project.
-- **Project Stats**: Access project statistics and analytics to track progress and performance.
+- **User Management**: Administer user roles, permissions, and access control settings.
+- **Commenting System**: Engage in discussions by commenting on issues or projects, facilitating better communication among team members.
+- **Kanban Board**: Utilize a Kanban board for visualizing and managing project workflows.
+- **Search and Filtering**: Efficiently search for specific issues or projects using various filters.
+- **Responsive Design**: Mobile-friendly interface ensuring usability across different devices and screen sizes.
+- **Customization**: Tailwind CSS integration for easy customization of the user interface according to project requirements.
 
 ---
 
