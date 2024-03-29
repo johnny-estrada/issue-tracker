@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
-import { useGetUsersQuery } from "../../services/state/redux/slices/usersApiSlice";
+import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
+import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import { formatDate } from "../../utils/formatting";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";

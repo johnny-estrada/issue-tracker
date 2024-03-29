@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
-import { useGetUsersQuery } from "../../services/state/redux/slices/usersApiSlice";
+import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 
 const PeoplePicker = ({ members, onChange }) => {
   const [selectedPeople, setSelectedPeople] = useState([]);

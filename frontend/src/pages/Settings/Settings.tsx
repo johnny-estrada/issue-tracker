@@ -7,8 +7,8 @@ import { toast } from "react-toastify";
 import {
   useUpdateUserMutation,
   useGetUsersQuery,
-} from "../../services/state/redux/slices/usersApiSlice";
-import { setCredentials } from "../../services/state/redux/slices/authSlice";
+} from "../../state/redux/slices/usersApiSlice";
+import { setCredentials } from "../../state/redux/slices/authSlice";
 import Loader from "../../components/ui/Loader";
 import { Tab } from "@headlessui/react";
 import Header from "../../components/header/Header";

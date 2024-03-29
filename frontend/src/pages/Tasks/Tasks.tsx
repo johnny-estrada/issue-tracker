@@ -1,7 +1,7 @@
 import { useState, useEffect, SyntheticEvent } from "react";
-import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
-import { useGetUsersQuery } from "../../services/state/redux/slices/usersApiSlice";
+import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
+import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import { formatDate } from "../../utils/formatting";
 
 import Column from "../../layout/Column";

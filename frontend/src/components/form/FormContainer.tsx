@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateProjectMutation } from "../../services/state/redux/slices/projectsApiSlice";
+import { useCreateProjectMutation } from "../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader";
 import Datepicker from "../../components/ui/Datepicker";

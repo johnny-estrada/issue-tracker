@@ -1,7 +1,7 @@
 import { useState, useEffect, SyntheticEvent } from "react";
 import { toast } from "react-toastify";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
-import { useGetTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
+import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
+import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { formatDate } from "../../utils/formatting";
 
 import TwoColumns from "../../layout/TwoColumns";

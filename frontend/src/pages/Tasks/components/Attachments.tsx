@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
-import { useGetAttachmentQuery } from "../../../services/state/redux/slices/attachmentsApiSlice";
+import { useGetAttachmentQuery } from "../../../state/redux/slices/attachmentsApiSlice";
 import pdfFile from "../../../assets/images//file-logos/pdf-icon.png";
 import textFile from "../../../assets/images/file-logos/text-icon.webp";
 import Loader from "../../../components/ui/Loader";

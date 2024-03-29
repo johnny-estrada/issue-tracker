@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { useSearchTaskQuery } from "../../services/state/redux/slices/tasksApiSlice";
+import { useSearchTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { BellIcon } from "@heroicons/react/24/outline";
 
 const SearchBar = (props) => {

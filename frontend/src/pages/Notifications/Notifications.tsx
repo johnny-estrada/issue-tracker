@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetProjectsQuery } from "../../services/state/redux/slices/projectsApiSlice";
+import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { formatDate } from "../../utils/formatting";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import ButtonGroup from "../../components/header/ButtonGroup";

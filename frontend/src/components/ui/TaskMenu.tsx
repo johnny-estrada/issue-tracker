@@ -8,7 +8,7 @@ import {
   ArrowUturnLeftIcon,
 } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
-import { useDeleteTaskMutation } from "../../services/state/redux/slices/tasksApiSlice";
+import { useDeleteTaskMutation } from "../../state/redux/slices/tasksApiSlice";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
 

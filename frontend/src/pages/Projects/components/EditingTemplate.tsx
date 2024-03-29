@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProjectDetailsQuery,
   useUpdateProjectMutation,
-} from "../../../services/state/redux/slices/projectsApiSlice";
+} from "../../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";

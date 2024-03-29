@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 
 import { NavLink } from "react-router-dom";
-import { useDeleteProjectMutation } from "../../services/state/redux/slices/projectsApiSlice";
+import { useDeleteProjectMutation } from "../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
