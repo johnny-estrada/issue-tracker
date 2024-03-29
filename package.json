@@ -9,7 +9,8 @@
     "server": "nodemon backend/server.js",
     "client": "npm run dev --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "format": "prettier --write \"./backend/**/*.{js,jsx,ts,tsx}\""
+    "format": "prettier --write \"./backend/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"./backend/**/*.{js,ts,tsx}\" --quiet"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,10 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
     "prettier": "3.2.5"
   }
 }
