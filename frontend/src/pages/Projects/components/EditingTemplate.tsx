@@ -33,13 +33,11 @@ const EditingTemplate = () => {
 
   const customId = "custom-id-yes";
 
-
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const {
     data: project,
@@ -48,8 +46,7 @@ const EditingTemplate = () => {
     error,
   } = useGetProjectDetailsQuery(projectId);
 
-  const [updateProject] =
-    useUpdateProjectMutation();
+  const [updateProject] = useUpdateProjectMutation();
 
   const navigate = useNavigate();
 

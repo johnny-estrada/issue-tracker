@@ -29,13 +29,11 @@ export default function Projects() {
 
   const customId = "custom-id-yes";
 
-
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   useEffect(() => {
     if (projects) {

@@ -9,13 +9,11 @@ interface Props {
 export default function Users({ users }: Props) {
   const customId = "custom-id-yes";
 
-
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const cloud_name = "dm1cbmiwq";
 

@@ -6,7 +6,7 @@ interface Props {
   cloudName: string;
 }
 
-const useCloudinaryUpload = ({presetKey, cloudName}: Props) => {
+const useCloudinaryUpload = ({ presetKey, cloudName }: Props) => {
   const [photo, setPhoto] = useState("");
 
   const uploadFile = async (file: string) => {

@@ -10,12 +10,7 @@ interface Props {
   tasks: object[];
 }
 
-const ProjectDetails = ({
-  projects,
-  projectIndex,
-  id,
-  tasks,
-}: Props) => {
+const ProjectDetails = ({ projects, projectIndex, id, tasks }: Props) => {
   const NAV = [
     {
       name: "Create project",
@@ -44,11 +39,7 @@ const ProjectDetails = ({
               <h3 className="text-xl lg:text-2xl pb-4">
                 {projects[projectIndex].title}
               </h3>
-              <Menu1
-                id={id}
-                navigation={NAV}
-                delete1={"Delete project"}
-              />
+              <Menu1 id={id} navigation={NAV} delete1={"Delete project"} />
             </header>
             <Details
               client={projects[projectIndex].client}

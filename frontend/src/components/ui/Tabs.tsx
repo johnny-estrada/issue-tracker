@@ -14,7 +14,7 @@ interface Props {
   projectData: object[];
 }
 
-export default function Tabs({ data, projectData}: Props) {
+export default function Tabs({ data, projectData }: Props) {
   const [projects, setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 

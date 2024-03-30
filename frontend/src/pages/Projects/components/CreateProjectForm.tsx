@@ -16,16 +16,13 @@ const CreateProjectForm = () => {
   const [hours, setHours] = useState("");
   const [members, setMembers] = useState([]);
 
-
   const customId = "custom-id-yes";
 
-
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const [createProject, { isLoading: loadingCreate }] =
     useCreateProjectMutation();
