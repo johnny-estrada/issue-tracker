@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProjectDetailsQuery,
@@ -33,13 +33,13 @@ const EditingTemplate = () => {
 
   const customId = "custom-id-yes";
 
-  const notify = () => {
+
     if (!toast.isActive(customId)) {
       toast({
         toastId: customId,
       });
     }
-  };
+
 
   const {
     data: project,
@@ -48,7 +48,7 @@ const EditingTemplate = () => {
     error,
   } = useGetProjectDetailsQuery(projectId);
 
-  const [updateProject, { isLoading: loadingUpdate }] =
+  const [updateProject] =
     useUpdateProjectMutation();
 
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const EditingTemplate = () => {
     }
   };
 
-  const handleStatusChange = (e) => {
+  const handleStatusChange = (e: SyntheticEvent) => {
     setStatus(e.target.value);
   };
 
