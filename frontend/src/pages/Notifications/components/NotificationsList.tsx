@@ -1,16 +1,21 @@
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
-import ListMenu from "../../../components/ui/ListMenu";
-import Menu1 from "../../../components/ui/Menu1";
+// import ListMenu from "../../../components/ui/ListMenu";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import { SyntheticEvent } from "react";
 
-import {
-  PencilSquareIcon,
-  PlusIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+interface Props {
+  projects: object[];
+  projectIndex: number;
+  toggleProjects: (e: SyntheticEvent) => void;
+}
 
-const NotificationsList = ({ projects, projectIndex, toggleProjects }) => {
+const NotificationsList = ({
+  projects,
+  projectIndex,
+  toggleProjects,
+}: Props) => {
   const NAV = [
     {
       name: "Dashboard",
@@ -43,11 +48,11 @@ const NotificationsList = ({ projects, projectIndex, toggleProjects }) => {
           <h2 className="text-xl lg:text-2xl p-1">All notifications</h2>
 
           <div className="lg:flex items-center hidden">
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
+            <a href="/" className="hover:bg-gray-50 rounded-full p-3">
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
             </a>
-            <a href="#" className="hover:bg-gray-50 rounded-full p-3">
+            <a href="/" className="hover:bg-gray-50 rounded-full p-3">
               <span className="sr-only">Next</span>
               <ChevronRightIcon
                 className="w-4 h-4 hover:bg-gray-100 rounded-full"
@@ -82,7 +87,7 @@ const NotificationsList = ({ projects, projectIndex, toggleProjects }) => {
               </div>
               <div className="flex shrink-0 items-center gap-x-4">
                 <button className="text-gray-400 text-xs">
-                  <ListMenu />
+                  {/* <ListMenu /> */}
                 </button>
               </div>
             </SelectorList>
