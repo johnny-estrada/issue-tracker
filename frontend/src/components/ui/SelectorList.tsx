@@ -1,8 +1,10 @@
+import { SyntheticEvent } from "react";
+
 interface Props {
   children: object[];
   id: string;
   active: boolean | undefined;
-  onClick: (project: string) => void;
+  onClick: (e: SyntheticEvent) => void;
 }
 
 export default function SelectorList({ children, id, active, onClick }: Props) {
