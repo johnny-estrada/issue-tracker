@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, SyntheticEvent } from "react";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -23,17 +22,13 @@ const ProfileDetails = () => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const customId = "custom-id-yes";
 
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const preset_key = "t9ew2cj4";
   const cloud_name = "dm1cbmiwq";
@@ -65,7 +60,7 @@ const ProfileDetails = () => {
     setPhoto(userInfo.photo);
   }, [userInfo.name, userInfo.email, userInfo.photo]);
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");

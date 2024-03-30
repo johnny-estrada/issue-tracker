@@ -1,121 +1,21 @@
-import Axios from "axios";
-import { Image } from "cloudinary-react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import {
-  useUpdateUserMutation,
-  useGetUsersQuery,
-} from "../../state/redux/slices/usersApiSlice";
-import { setCredentials } from "../../state/redux/slices/authSlice";
-import Loader from "../../components/ui/Loader";
+import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
+
 import { Tab } from "@headlessui/react";
 import Header from "../../components/header/Header";
 import HeaderTitle from "../../components/header/HeaderTitle";
-import { UserCircleIcon } from "@heroicons/react/24/solid";
 import Users from "./admin/Users";
 import ProfileDetails from "./ProfileDetails";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SearchBar from "../../components/header/SearchBar";
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 function Settings() {
-  const [file, setFile] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const customId = "custom-id-yes";
-
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
-
-  const preset_key = "t9ew2cj4";
-  const cloud_name = "dm1cbmiwq";
-
-  const uploadFile = () => {
-    const formData = new FormData();
-
-    formData.append("file", file);
-    formData.append("upload_preset", preset_key);
-
-    Axios.post(
-      `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
-      formData,
-    )
-      .then((res) => {
-        const imageName = res.data.url;
-
-        setPhoto(imageName);
-      })
-      .catch((error) => {
-        console.error("Error uploading image:", error);
-        // Handle the error, e.g., show a toast or alert
-      });
-  };
-
-  const dispatch = useDispatch();
-
-  const { userInfo } = useSelector((state) => state.auth);
-
-  const [updateProfile, { isLoading }] = useUpdateUserMutation();
-
-  const {
-    data: users,
-    isLoading: loading,
-    refetch,
-    error,
-  } = useGetUsersQuery();
-
-  useEffect(() => {
-    setName(userInfo.name);
-    setEmail(userInfo.email);
-    setPhoto(userInfo.photo);
-  }, [userInfo.name, userInfo.email, userInfo.photo]);
-
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-    } else {
-      try {
-        // await uploadFile();
-        const res = await updateProfile({
-          id: userInfo.id,
-          name,
-          email,
-          password,
-          photo,
-        }).unwrap();
-
-        dispatch(setCredentials({ ...res }));
-        toast.success("Profile updated", {
-          toastId: customId,
-        });
-      } catch (err) {
-        toast.error(err?.data?.message || err.error, {
-          toastId: customId,
-        });
-      }
-    }
-  };
+  const { data: users } = useGetUsersQuery("");
 
   const title = "Settings";
-
-  function search(text) {
-    alert(text);
-  }
 
   return (
     <>
@@ -123,7 +23,7 @@ function Settings() {
       <div className="grid grid-cols-1 lg:flex flex-col lg:h-screen lg:ml-[288px]">
         <Header>
           <HeaderTitle title={title} />
-          <SearchBar search={search} />
+          <SearchBar />
         </Header>
 
         <Tab.Group>
