@@ -29,6 +29,6 @@ export const setupLogging = (app) => {
     morgan(logFormat, {
       stream: logStream,
       skip: (req, res) => res.statusCode < 400,
-    }),
+    })
   );
 };

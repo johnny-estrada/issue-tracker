@@ -36,7 +36,7 @@ const Attachment = sequelize.define(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const setupAssociations = () => {

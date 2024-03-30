@@ -43,7 +43,7 @@ const Task = sequelize.define(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const setupAssociations = () => {
