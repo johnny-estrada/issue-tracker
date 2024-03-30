@@ -4,7 +4,7 @@ import FlatBadge from "../../../components/ui/FlatBadge";
 
 interface Props {
   tasks: object[];
-  id: number;
+  id: string;
 }
 
 const TasksList = ({ tasks, id }: Props) => {
