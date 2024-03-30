@@ -1,10 +1,20 @@
+import { SyntheticEvent } from "react";
+
+interface Props {
+  password: string;
+  confirmPassword: string;
+  submitHandler: (e: SyntheticEvent) => Promise<void>;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const Security = ({
-  submitHandler,
   password,
-  setPassword,
   confirmPassword,
+  submitHandler,
+  setPassword,
   setConfirmPassword,
-}) => {
+}: Props) => {
   return (
     <section>
       <header className="flex justify-between">

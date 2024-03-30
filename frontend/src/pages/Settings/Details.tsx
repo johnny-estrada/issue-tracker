@@ -1,6 +1,10 @@
 import FlatBadge from "../../components/ui/FlatBadge";
 
-const Details = ({ userInfo }) => {
+interface Props {
+  userInfo: object;
+}
+
+const Details = ({ userInfo }: Props) => {
   return (
     <section className="flex-1 px-4  lg:px-14 pt-4  lg:pt-10 border-l border-gray-200">
       <div className="hidden lg:block">

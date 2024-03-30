@@ -2,16 +2,20 @@ import { toast } from "react-toastify";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { Image } from "cloudinary-react";
 
-export default function Users({ users }) {
+interface Props {
+  users: object[];
+}
+
+export default function Users({ users }: Props) {
   const customId = "custom-id-yes";
 
-  const notify = () => {
+
     if (!toast.isActive(customId)) {
       toast({
         toastId: customId,
       });
     }
-  };
+
 
   const cloud_name = "dm1cbmiwq";
 
@@ -120,12 +124,12 @@ export default function Users({ users }) {
                       </td>
                       <td className="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <a
-                          href="#"
+                          href="/"
                           className="text-gray-500 hover:text-gray-900 mr-5"
                         >
                           Edit<span className="sr-only">, {user.name}</span>
                         </a>
-                        <a href="#" className="text-red-500 hover:text-red-600">
+                        <a href="/" className="text-red-500 hover:text-red-600">
                           Delete<span className="sr-only">, {user.name}</span>
                         </a>
                       </td>
