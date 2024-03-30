@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import Select from "react-select";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 
 interface Props {
   members: object[];
-  onChange: () => void;
+  onChange: (e: SyntheticEvent) => void;
 }
 
 const PeoplePicker = ({ members, onChange }: Props) => {
@@ -31,7 +31,7 @@ const PeoplePicker = ({ members, onChange }: Props) => {
     }
   }, [users, members]);
 
-  const handleSelectChange = (selectedOptions) => {
+  const handleSelectChange = (selectedOptions: object[]) => {
     setSelectedPeople(selectedOptions);
     onChange(selectedOptions);
   };
