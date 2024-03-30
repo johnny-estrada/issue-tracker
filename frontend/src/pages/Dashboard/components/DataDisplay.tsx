@@ -1,6 +1,11 @@
 import { stats } from "../../../data/index";
 
-export default function DataDisplay({ projects, projectIndex }) {
+interface Props {
+  projects: object[];
+  projectIndex: number;
+}
+
+export default function DataDisplay({ projects, projectIndex }: Props) {
   return (
     <>
       <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 px-3 pb-4 lg:px-0 lg:pb-0">

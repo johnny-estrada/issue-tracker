@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 import Menu1 from "../../../components/ui/Menu1";
 import SelectorList from "../../../components/ui/SelectorList";
-import {
-  PencilSquareIcon,
-  PlusIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { SyntheticEvent } from "react";
+
+interface Props {
+  id: string;
+  projectIndex: number;
+  projects: object[];
+  tasks: object[];
+  refetch: any;
+  toggleProjects: (e: SyntheticEvent) => void;
+  formattedDates: object[];
+}
 
 const MyProjects = ({
   id,
@@ -16,7 +23,7 @@ const MyProjects = ({
   refetch,
   toggleProjects,
   formattedDates,
-}) => {
+}: Props) => {
   const NAV = [
     {
       name: "Create project",

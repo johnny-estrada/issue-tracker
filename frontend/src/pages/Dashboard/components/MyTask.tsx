@@ -1,24 +1,27 @@
 import { Link } from "react-router-dom";
 import ShowHideList from "../components/ShowHideList";
-import AvatarGroup from "../../../components/ui/AvatarGroup";
 import Menu1 from "../../../components/ui/Menu1";
 import Tabs from "../../../components/ui/Tabs";
-import {
-  PencilSquareIcon,
-  PlusIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
+
+interface Props {
+  id: string;
+  projectIndex: number;
+  projects: object[];
+  tasks: object[];
+  dates: object[];
+  refetch: any;
+  lineChartData: object[];
+}
 
 const MyTask = ({
   id,
   projectIndex,
   projects,
   tasks,
-  dates,
   refetch,
   lineChartData,
-  formattedDates,
-}) => {
+}: Props) => {
   const NAV = [
     {
       name: "Create task",
@@ -62,7 +65,6 @@ const MyTask = ({
           projectIndex={projectIndex}
           projects={projects}
           tasks={tasks}
-          dates={dates}
         />
       </section>
     </>

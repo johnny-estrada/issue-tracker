@@ -7,22 +7,28 @@ import AvatarGroup from "../../../components/ui/AvatarGroup";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 import { formatDate } from "../../../utils/formatting";
 
-export default function ShowHideList({ projects, projectIndex, tasks }) {
+interface Props {
+  projects: object[];
+  projectIndex: number;
+  tasks: object[];
+}
+
+export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
+  const [openDisclosureId, setOpenDisclosureId] = useState(null);
+
   if (!tasks || !tasks[projectIndex] || !projects) {
     // Handle the case where tasks or projects are undefined or projectIndex is out of bounds
     return null; // or you can render an error message
   }
 
-  const [openDisclosureId, setOpenDisclosureId] = useState(null);
-
-  const handleDisclosureToggle = (taskId) => {
+  const handleDisclosureToggle = (taskId: string) => {
     setOpenDisclosureId(taskId === openDisclosureId ? null : taskId);
   };
 
   return (
     <ul>
       {tasks?.map(
-        (task) =>
+        (task: object) =>
           task.projectId === projects[projectIndex]?.id && (
             <li key={task.id}>
               <div>
