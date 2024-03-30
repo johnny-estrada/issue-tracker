@@ -1,19 +1,21 @@
-import { Link } from "react-router-dom";
 import Details from "../../../components/ui/Details";
 import Menu1 from "../../../components/ui/Menu1";
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import FlatBadge from "../../../components/ui/FlatBadge";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 import TasksList from "./TasksList";
+
+interface Props {
+  projects: object[];
+  projectIndex: number;
+  id: string;
+  tasks: object[];
+}
 
 const ProjectDetails = ({
   projects,
   projectIndex,
   id,
-  refetch,
   tasks,
-  isComponentVisible,
-}) => {
+}: Props) => {
   const NAV = [
     {
       name: "Create project",
@@ -44,7 +46,6 @@ const ProjectDetails = ({
               </h3>
               <Menu1
                 id={id}
-                refetch={refetch}
                 navigation={NAV}
                 delete1={"Delete project"}
               />

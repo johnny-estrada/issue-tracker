@@ -1,14 +1,21 @@
+import { SyntheticEvent } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 
+interface Props {
+  projects: object[];
+  projectIndex: number;
+  toggleProjects: (e: SyntheticEvent) => void;
+  formattedDates: object[];
+}
+
 function ProjectList({
-  isComponentVisible,
   projects,
   projectIndex,
   toggleProjects,
   formattedDates,
-}) {
+}: Props) {
   const projectList = projects.map((project, idx) => (
     <SelectorList
       key={project.id}
