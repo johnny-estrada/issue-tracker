@@ -29,13 +29,13 @@ export default function Projects() {
 
   const customId = "custom-id-yes";
 
-  const notify = () => {
+
     if (!toast.isActive(customId)) {
       toast({
         toastId: customId,
       });
     }
-  };
+
 
   useEffect(() => {
     if (projects) {
@@ -60,7 +60,6 @@ export default function Projects() {
   }, [projects]);
 
   const onClick = (event: SyntheticEvent) => {
-    // Toggle the visibility state when the button is clicked
     toggleProjects(event);
   };
 
@@ -99,10 +98,6 @@ export default function Projects() {
     setFilteredProjects(filteredProjects);
   };
 
-  function search(text) {
-    alert(text);
-  }
-
   if (!tasks) {
     // Handle the case where tasks is undefined or projectIndex is out of bounds
     return null; // or you can render an error message
@@ -121,7 +116,7 @@ export default function Projects() {
       {!projects?.length ? (
         <Column>
           <HeaderTitle title="Projects" />
-          <SearchBar search={search} />
+          <SearchBar />
           <div className="flex justify-between">
             <ButtonGroup
               titles={["all", "active", "closed", "on hold"]}
@@ -150,7 +145,7 @@ export default function Projects() {
         <>
           <TwoColumns>
             <HeaderTitle title="Projects" />
-            <SearchBar search={search} />
+            <SearchBar />
             <div className="flex justify-between">
               <ButtonGroup
                 titles={["all", "active", "closed", "on hold"]}
@@ -168,9 +163,6 @@ export default function Projects() {
             </div>
 
             <ProjectList
-              isComponentVisible={isComponentVisible}
-              onClick={onClick}
-              refetch={refetch}
               projects={filteredProjects || projects || []} // Provide an empty array if filteredProjects is undefined
               projectIndex={projectIndex}
               toggleProjects={toggleProjects}
@@ -187,10 +179,8 @@ export default function Projects() {
             ) : (
               <>
                 <ProjectDetails
-                  isComponentVisible={isComponentVisible}
                   projects={filteredProjects}
                   projectIndex={projectIndex}
-                  refetch={refetch}
                   id={filteredProjects[projectIndex]?.id}
                   tasks={tasks}
                 />
