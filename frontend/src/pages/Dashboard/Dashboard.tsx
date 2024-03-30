@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { formatDate } from "../../utils/formatting";
 import SearchBar from "../../components/header/SearchBar";
-import Search from "../../components/header/Search";
 import DataDisplay from "./components/DataDisplay";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import LineChart from "./components/LineChart";
 import MyTask from "./components/MyTask";
 import MyProjects from "./components/MyProjects";
 import TwoColumnsWide from "../../layout/TwoColumnsWide";
-import { useSelector } from "react-redux";
 
 // data
 import { lineChart } from "../../data/index";
@@ -18,17 +16,14 @@ import Status from "./components/Status";
 
 const Dashboard = () => {
   const [projectIndex, setProjectIndex] = useState(0);
-
   const [formattedDates, setFormattedDates] = useState([]);
   const [lineChartData, setLineChartData] = useState(lineChart);
-  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");
+  const { data: projects, refetch } = useGetProjectsQuery("");
   const { data: tasks } = useGetTaskQuery("");
-
-  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (projects) {
-      const formattedDatesArray = projects?.map((project) => {
+      const formattedDatesArray = projects?.map((project: object) => {
         const startDate = formatDate(project.startDate, {
           month: "short",
           day: "numeric",
@@ -48,7 +43,7 @@ const Dashboard = () => {
 
   // console.log(projects[projectIndex]?.id)
 
-  function toggleProjects(e) {
+  function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
   }
@@ -63,19 +58,14 @@ const Dashboard = () => {
     return null; // or you can render an error message
   }
 
-  function search(text) {
-    alert(text);
-  }
-
   return (
     <>
       <TwoColumnsWide>
         <HeaderTitle title="Dashboard" />
-        <SearchBar search={search} />
+        <SearchBar />
         <DataDisplay projects={projects} projectIndex={projectIndex} />
 
         <MyTask
-          formattedDates={formattedDates}
           id={tasks[projectIndex].id}
           refetch={refetch}
           projectIndex={projectIndex}
