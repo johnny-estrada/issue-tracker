@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { Tab } from "@headlessui/react";
-import LineChart from "../../pages/dashboard/components/LineChart";
-import ShowHideList from "../../pages/dashboard/components/ShowHideList";
+import LineChart from "../../pages/Dashboard/components/LineChart";
+import ShowHideList from "../../pages/Dashboard/components/ShowHideList";
 import SelectorList from "../ui/SelectorList";
 import AvatarGroup from "./AvatarGroup";
 
-function classNames(...classes) {
+function classNames(...classes: object[]) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -18,7 +18,7 @@ export default function Tabs({ data, projectData }: Props) {
   const [projects, setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 
-  function toggleProjects(e) {
+  function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
   }
@@ -43,7 +43,7 @@ export default function Tabs({ data, projectData }: Props) {
         </div>
       </div>
       <div className="flex shrink-0 items-center gap-x-4">
-        <AvatarGroup />
+        <AvatarGroup members={[]} />
         <p className="text-gray-400">
           {project.startDate} - {project.targetDate}
         </p>
@@ -110,7 +110,11 @@ export default function Tabs({ data, projectData }: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
-            <ShowHideList projectIndex={projectIndex} projectData={projects} />
+            <ShowHideList
+              projectIndex={projectIndex}
+              projects={projects}
+              tasks={[]}
+            />
           </Tab.Panel>
           <Tab.Panel
             className={classNames(

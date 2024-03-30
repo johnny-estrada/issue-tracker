@@ -62,7 +62,7 @@ const LoginForm = () => {
 
           <div className="text-sm leading-6">
             <a
-              href="#"
+              href="/"
               className="font-semibold text-orange-500 hover:text-orange-400"
             >
               Forgot password?

@@ -1,7 +1,11 @@
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
-const Layout = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: Props) => {
   const [headerTop, headerMiddle, headerBottom, main] = children;
 
   return (

@@ -1,7 +1,11 @@
 import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
-const TwoColumnsWide = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const TwoColumnsWide = ({ children }: Props) => {
   const [
     headerTop,
     headerMiddle,

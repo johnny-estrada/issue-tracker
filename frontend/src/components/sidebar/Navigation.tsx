@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
 
-function classNames(...classes) {
+function classNames(...classes: object[]) {
   return classes.filter(Boolean).join(" ");
 }
 

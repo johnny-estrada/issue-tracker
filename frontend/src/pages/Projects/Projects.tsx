@@ -57,10 +57,6 @@ export default function Projects() {
     }
   }, [projects]);
 
-  const onClick = (event: SyntheticEvent) => {
-    toggleProjects(event);
-  };
-
   function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);

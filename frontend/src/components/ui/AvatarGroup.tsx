@@ -1,6 +1,10 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 
-export default function AvatarGroup({ members }) {
+interface Props {
+  members: object[];
+}
+
+export default function AvatarGroup({ members }: Props) {
   if (!Array.isArray(members)) {
     // Handle the case where members is not an array (e.g., set members to an empty array)
     members = [];

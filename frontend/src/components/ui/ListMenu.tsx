@@ -11,7 +11,12 @@ import { useDeleteProjectMutation } from "../../state/redux/slices/projectsApiSl
 import { toast } from "react-toastify";
 import Loader from "./Loader";
 
-export default function ListMenu({ id, refetch }) {
+interface Props {
+  id: string;
+  refetch: any;
+}
+
+export default function ListMenu({ id, refetch }: Props) {
   const [deleteProject, { isLoading: loadingDelete }] =
     useDeleteProjectMutation();
 

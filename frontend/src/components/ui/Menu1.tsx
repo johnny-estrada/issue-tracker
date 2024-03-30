@@ -7,8 +7,15 @@ import { useDeleteProjectMutation } from "../../state/redux/slices/projectsApiSl
 import { toast } from "react-toastify";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-export default function Menu1({ navigation, id, delete1 }) {
-  const [deleteProject, refetch] = useDeleteProjectMutation();
+interface Props {
+  refetch: any;
+  navigation: object[];
+  id: string;
+  delete1: string;
+}
+
+export default function Menu1({ navigation, id, delete1, refetch }: Props) {
+  const [deleteProject] = useDeleteProjectMutation();
 
   const deleteHandler = async (id) => {
     if (window.confirm(`Are you sure you want to delete project ${id}`)) {

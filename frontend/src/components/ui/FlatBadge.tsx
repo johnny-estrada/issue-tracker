@@ -1,7 +1,11 @@
-export default function FlatBadge(props) {
+interface Props {
+  priority: string;
+}
+
+export default function FlatBadge({ priority }: Props) {
   let badgeColor;
 
-  switch (props.priority) {
+  switch (priority) {
     case "low":
       badgeColor = "bg-green-100 text-neutral-500";
       break;
@@ -21,7 +25,7 @@ export default function FlatBadge(props) {
       <span
         className={`inline-flex shadow-sm items-center rounded-md px-3 text-xs font-medium py-1 w-fit ${badgeColor}`}
       >
-        {props.priority}
+        {priority}
       </span>
     </>
   );

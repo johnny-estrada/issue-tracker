@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-// interface Props {
-//   titles: object[];
-//   onFilter: void;
-// }
+interface Props {
+  titles: object[string];
+  onFilter: (filterType: string) => void;
+}
 
-export default function ButtonGroup({ titles, onFilter }) {
+export default function ButtonGroup({ titles, onFilter }: Props) {
   const [active, setActive] = useState(titles[0]);
 
   return (
     <div className="isolate inline-flex rounded-md">
       {titles?.map((title: string) => (
         <button
-          key={title}
+          key={title.id}
           type="button"
           onClick={() => {
             setActive(title); // Set the active button

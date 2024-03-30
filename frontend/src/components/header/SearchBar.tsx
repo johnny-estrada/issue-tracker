@@ -40,12 +40,12 @@ const SearchBar = () => {
           <ul className="absolute top-[70px] left-0 ring-1 ring-gray-100 rounded shadow-sm w-full bg-white">
             {searchResults
               .filter(
-                (task) =>
+                (task: object) =>
                   task.name.toLowerCase().includes(search.toLowerCase()) ||
                   task.name.toUpperCase().includes(search.toUpperCase()) ||
                   task.id.toString().includes(search),
               )
-              .map((task) => (
+              .map((task: object) => (
                 <li key={task.id} className="hover:bg-gray-50 p-4">
                   <Link className="text-sm" to={`/tasks/${task.id}`}>
                     <p className="line-clamp-1">
@@ -93,12 +93,12 @@ const SearchBar = () => {
               <ul className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 bg-white">
                 {searchResults
                   .filter(
-                    (task) =>
+                    (task: object) =>
                       task.name.toLowerCase().includes(search.toLowerCase()) ||
                       task.name.toUpperCase().includes(search.toUpperCase()) ||
                       task.id.toString().includes(search),
                   )
-                  .map((task) => (
+                  .map((task: object) => (
                     <li key={task.id} className="hover:bg-gray-100 p-4">
                       <Link className="text-sm" to={`/tasks/${task.id}`}>
                         <p className="line-clamp-1">

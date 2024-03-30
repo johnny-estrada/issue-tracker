@@ -1,14 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateProjectMutation } from "../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader";
-import Datepicker from "../../components/ui/Datepicker";
-import PeoplePicker from "../../components/ui/PeoplePicker";
-import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
 
 interface Props {
-  children: object;
+  children: React.ReactNode;
 }
 
 const FormContainer = ({ children }: Props) => {
@@ -21,17 +18,13 @@ const FormContainer = ({ children }: Props) => {
   const [hours, setHours] = useState("");
   const [members, setMembers] = useState([]);
 
-  const history = useNavigate();
-
   const customId = "custom-id-yes";
 
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const [createProject, { isLoading: loadingCreate }] =
     useCreateProjectMutation();
@@ -57,10 +50,6 @@ const FormContainer = ({ children }: Props) => {
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
-  };
-
-  const handleStatusChange = (e) => {
-    setStatus(e.target.value);
   };
 
   return (

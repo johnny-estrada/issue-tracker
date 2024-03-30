@@ -1,11 +1,9 @@
-import React from "react";
+// const Label = () => {
+//   return (
+//     <>
+//       <label for={}>{}</label>
+//     </>
+//   );
+// };
 
-const Label = () => {
-  return (
-    <>
-      <label for={}>{}</label>
-    </>
-  );
-};
-
-export default Label;
+// export default Label;

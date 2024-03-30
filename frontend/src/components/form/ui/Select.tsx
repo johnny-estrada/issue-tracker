@@ -1,9 +1,7 @@
-import React from "react";
-
 const Select = () => {
   return (
     <div>
-      <label for="cars">Choose a car:</label>
+      <label htmlFor="cars">Choose a car:</label>
       <select id="cars" name="cars">
         <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>

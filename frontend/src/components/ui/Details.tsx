@@ -1,10 +1,23 @@
 import { useState, useEffect } from "react";
-import { Image } from "cloudinary-react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import AvatarGroup from "./AvatarGroup";
 import { formatDate } from "../../utils/formatting";
 
-const Details = ({ description, client, startDate, targetDate, members }) => {
+interface Props {
+  description: string;
+  client: string;
+  startDate: string;
+  targetDate: string;
+  members: object[];
+}
+
+const Details = ({
+  description,
+  client,
+  startDate,
+  targetDate,
+  members,
+}: Props) => {
   const [formattedDate1, setFormattedDate1] = useState("");
   const [formattedDate2, setFormattedDate2] = useState("");
 
