@@ -2,11 +2,15 @@ import { toast } from "react-toastify";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { Image } from "cloudinary-react";
 
-interface Props {
-  users: object[];
+interface User {
+  name: string;
+  title: string;
+  email: string;
+  photo: string;
+  role: string;
 }
 
-export default function Users({ users }: Props) {
+export default function Users({ users }) {
   const customId = "custom-id-yes";
 
   if (!toast.isActive(customId)) {
@@ -73,7 +77,7 @@ export default function Users({ users }: Props) {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {users?.map((user?) => (
+                  {users?.map((user: User) => (
                     <tr key={user.email}>
                       <td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                         <div className="flex items-center">
@@ -108,9 +112,6 @@ export default function Users({ users }: Props) {
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                         <div className="text-gray-900">{user.title}</div>
-                        <div className="mt-1 text-gray-500">
-                          {user.department}
-                        </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                         <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
