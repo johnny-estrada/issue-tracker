@@ -1,11 +1,11 @@
 // Function that is small, helpful with formatting.
 //Ex. Currencies, dates, numbers, etc. or 3ed party libraries.
-interface Props {
+interface DateFormat {
   dateString: string;
-  options: string;
+  options: object;
 }
 
-export const formatDate = ({ dateString, options }: Props) => {
+export const formatDate = ({ dateString, options }: DateFormat) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", options);
 };
