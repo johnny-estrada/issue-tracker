@@ -9,14 +9,14 @@ interface Props {
 }
 
 const FormContainer = ({ children }: Props) => {
-  const [title, setTitle] = useState("");
-  const [client, setClient] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date());
-  const [hours, setHours] = useState("");
-  const [members, setMembers] = useState([]);
+  const [title, _setTitle] = useState("");
+  const [client, _setClient] = useState("");
+  const [description, _setDescription] = useState("");
+  const [status, _setStatus] = useState("");
+  const [startDate, _setStartDate] = useState(new Date());
+  const [targetDate, _setTargetDate] = useState(new Date());
+  const [hours, _setHours] = useState("");
+  const [members, _setMembers] = useState([]);
 
   const customId = "custom-id-yes";
 
