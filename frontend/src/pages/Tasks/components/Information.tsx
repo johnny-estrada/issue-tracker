@@ -1,6 +1,11 @@
+interface Task {
+  tasks: object[];
+  description: string;
+}
+
 interface Props {
   taskIndex: number;
-  tasks: object[];
+  tasks: Task[];
 }
 
 const Information = ({ taskIndex, tasks }: Props) => {

@@ -20,13 +20,13 @@ export default function ListMenu({ id, refetch }: Props) {
   const [deleteProject, { isLoading: loadingDelete }] =
     useDeleteProjectMutation();
 
-  const deleteHandler = async (id) => {
+  const deleteHandler = async (id: string) => {
     if (window.confirm(`Are you sure you want to delete project ${id}`)) {
       try {
         await deleteProject(id);
         refetch();
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error(`${err}`);
       }
     }
   };

@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, SyntheticEvent, ChangeEvent } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 
-const SearchBar = (props) => {
+const SearchBar = (props: any) => {
   const [search, setSearch] = useState("");
 
-  function handleSubmit(e) {
+  function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
     props.search(search);
     setSearch("");
   }
 
-  function handleChange(e) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setSearch(e.target.value);
   }

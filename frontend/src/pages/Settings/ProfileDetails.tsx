@@ -1,6 +1,7 @@
 import { useState, useEffect, SyntheticEvent } from "react";
 import Axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../hooks/hooks";
 import { toast } from "react-toastify";
 import { useUpdateUserMutation } from "../../state/redux/slices/usersApiSlice";
 import { setCredentials } from "../../state/redux/slices/authSlice";
@@ -9,7 +10,7 @@ import Profile from "./Profile";
 import Security from "./Security";
 
 const ProfileDetails = () => {
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [photo, setPhoto] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const ProfileDetails = () => {
 
   const [updateProfile] = useUpdateUserMutation();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useAppSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ const ProfileDetails = () => {
   const uploadFile = () => {
     const formData = new FormData();
 
-    formData.append("file", file);
+    formData.append("file", file!);
     formData.append("upload_preset", preset_key);
 
     Axios.post(
@@ -80,7 +81,7 @@ const ProfileDetails = () => {
           toastId: customId,
         });
       } catch (err) {
-        toast.error(err?.data?.message || err.error, {
+        toast.error(`${err}`, {
           toastId: customId,
         });
       }

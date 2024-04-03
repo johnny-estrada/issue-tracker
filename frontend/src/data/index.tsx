@@ -8,7 +8,6 @@ import {
   ListBulletIcon,
   Squares2X2Icon,
   Cog6ToothIcon,
-  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 
 export const lineChart = [

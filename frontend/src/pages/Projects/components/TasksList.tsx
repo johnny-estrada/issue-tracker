@@ -2,9 +2,17 @@ import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import FlatBadge from "../../../components/ui/FlatBadge";
 
-interface Props {
+interface Tasks {
   tasks: object[];
-  id: string;
+  id: number;
+  name: string;
+  projectId: number;
+  priority: string;
+}
+
+interface Props {
+  tasks: Tasks[];
+  id: number;
 }
 
 const TasksList = ({ tasks, id }: Props) => {

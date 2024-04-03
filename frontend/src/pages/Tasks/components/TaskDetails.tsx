@@ -7,13 +7,37 @@ import FlatBadge from "../../../components/ui/FlatBadge";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
 
-interface Props {
+interface Task {
   tasks: object[];
+  id: string & number;
+  name: string;
+  priority: string;
+  status: string;
+  startDate: string;
+  targetDate: string;
   taskIndex: number;
-  projects: object[];
-  formattedDate1: string;
-  formattedDate2: string;
-  users: object[];
+  userId: number;
+  createdAt: string;
+  updatedAt: string;
+  projectId: number;
+}
+
+interface Project {
+  team: object[];
+  id: number;
+  client: string;
+}
+
+interface User {
+  id: number;
+  name: string;
+}
+
+interface Props {
+  tasks: Task[];
+  taskIndex: number;
+  projects: Project[];
+  users: User[];
   taskId: number;
   userId: number;
 }
@@ -22,32 +46,36 @@ const TaskDetails = ({
   tasks,
   taskIndex,
   projects,
-  formattedDate1,
-  formattedDate2,
   users,
   taskId,
   userId,
 }: Props) => {
-  // Handle the case where tasks is undefined or projectIndex is out of bounds
   if (!users) {
-    return null; // or you can render an error message
+    return null;
   }
 
   const userIndex = users?.findIndex(
     (user) => user.id === tasks[taskIndex].userId,
   );
 
-  const created = formatDate(tasks[taskIndex].createdAt, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    time: "numeric",
+  const startDate = formatDate({
+    dateString: tasks[taskIndex].startDate,
+    options: { month: "short", day: "numeric", year: "numeric" },
   });
 
-  const updated = formatDate(tasks[taskIndex].updatedAt, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
+  const targetDate = formatDate({
+    dateString: tasks[taskIndex].targetDate,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+
+  const created = formatDate({
+    dateString: tasks[taskIndex].createdAt,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+
+  const updated = formatDate({
+    dateString: tasks[taskIndex].updatedAt,
+    options: { month: "short", day: "numeric", year: "numeric" },
   });
 
   return (
@@ -100,28 +128,29 @@ const TaskDetails = ({
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Assignee</h4>
                 <div className="flex gap-3 items-center">
-                  <img
+                  {/* <img
                     className="inline-block h-7 w-7 rounded-full ring-2 ring-white"
                     src={projects[0].team[0].photo}
                     alt=""
                   />
-                  <p className="text-sm">{projects[0].team[0].name}</p>
+                  <p className="text-sm">{projects[0].team[0].name}</p> */}
                 </div>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Start date</h4>
-                <p className="text-sm">{formattedDate1}</p>
+                <p className="text-sm">{startDate}</p>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Target date</h4>
-                <p className="text-sm">{formattedDate2}</p>
+                <p className="text-sm">{targetDate}</p>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Project</h4>
                 <p className="flex-1 text-sm w-60 line-clamp-1">
                   {
                     projects?.find(
-                      (project) => tasks[taskIndex]?.projectId === project.id,
+                      (project: Project) =>
+                        tasks[taskIndex]?.projectId === project.id,
                     )?.client
                   }
                 </p>

@@ -1,29 +1,35 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
-
 import { NavLink } from "react-router-dom";
 import { useDeleteProjectMutation } from "../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
-interface Props {
-  refetch: any;
+interface Nav {
   navigation: object[];
-  id: string;
+  href: string;
+  name: string;
+  icon: React.SVGProps<SVGSVGElement>;
+}
+
+interface Props {
+  refetch: () => void;
+  navigation: Nav[];
+  id: number;
   delete1: string;
 }
 
 export default function Menu1({ navigation, id, delete1, refetch }: Props) {
   const [deleteProject] = useDeleteProjectMutation();
 
-  const deleteHandler = async (id) => {
+  const deleteHandler = async (id: number) => {
     if (window.confirm(`Are you sure you want to delete project ${id}`)) {
       try {
         await deleteProject(id);
-        refetch(id);
+        refetch();
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error(`${err}`);
       }
     }
   };
@@ -56,13 +62,7 @@ export default function Menu1({ navigation, id, delete1, refetch }: Props) {
                         active ? "bg-gray-100 text-gray-900" : "text-gray-500"
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
-                      {
-                        <item.icon
-                          className="w-4 h-4 mr-2"
-                          aria-hidden="true"
-                        />
-                      }
-                      {item.name}
+                      <item.icon className="w-4 h-4 mr-2" /> {item.name}
                     </NavLink>
                   )}
                 </Menu.Item>

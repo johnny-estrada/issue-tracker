@@ -10,7 +10,7 @@ interface Props {
   name: string;
   email: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
-  setFile: React.Dispatch<React.SetStateAction<string>>;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -69,7 +69,7 @@ const Profile = ({
                   id="imgupload"
                   name="imgupload"
                   onChange={(e) => {
-                    setFile(e.target.files[0]);
+                    setFile(e.target.files?.[0] ?? null);
                   }}
                 />
 

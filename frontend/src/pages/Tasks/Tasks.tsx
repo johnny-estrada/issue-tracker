@@ -9,64 +9,56 @@ import TwoColumns from "../../layout/TwoColumns";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import SearchBar from "../../components/header/SearchBar";
 import ButtonGroup from "../../components/header/ButtonGroup";
-import FilterButton from "../../components/header/FilterButton";
+// import FilterButton from "../../components/header/FilterButton";
 
 import Loader from "../../components/ui/Loader";
 import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
-import SortBy from "../../components/header/SortBy";
+// import SortBy from "../../components/header/SortBy";
 
 import selectTask from "../../assets/icons/state/select-item.svg";
 import create from "../../assets/icons/state/add-task.svg";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks/hooks";
+
+interface Task {
+  id: number;
+  startDate: string;
+  targetDate: string;
+  taskId: number;
+  error: string;
+}
+
+interface FormattedDates {
+  startDate: string;
+  targetDate: string;
+}
 
 const Tasks = () => {
-  const { data: tasks, isLoading, error } = useGetTaskQuery("");
+  const { data: tasks, isLoading } = useGetTaskQuery("");
   const { data: projects } = useGetProjectsQuery("");
 
-  const { data: users, isLoading1: loading } = useGetUsersQuery("");
+  const { data: users } = useGetUsersQuery("");
 
   const [taskIndex, setTaskIndex] = useState();
   const [taskId, setTaskId] = useState(0);
-  const [formattedDates, setFormattedDates] = useState([]);
-  const [formattedDate1, setFormattedDate1] = useState("");
-  const [formattedDate2, setFormattedDate2] = useState("");
+  const [_formattedDates, setFormattedDates] = useState<FormattedDates[]>([]);
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useAppSelector((state) => state.auth);
 
-  const buttonName = ["list", "board"];
+  const buttonName = ["list"];
 
   useEffect(() => {
-    const currentTask = tasks?.[taskIndex];
-
-    if (currentTask) {
-      const formatted1 = formatDate(currentTask.startDate, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-      setFormattedDate1(formatted1);
-
-      const formatted2 = formatDate(currentTask.targetDate, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-      setFormattedDate2(formatted2);
-    }
-
     if (tasks) {
-      const formattedDatesArray = tasks.map((task: string) => {
-        const startDate = formatDate(task.startDate, {
-          month: "short",
-          day: "numeric",
+      const formattedDatesArray = tasks.map((task: Task) => {
+        const startDate = formatDate({
+          dateString: task.startDate,
+          options: { month: "short", day: "numeric" },
         });
 
-        const targetDate = formatDate(task.targetDate, {
-          month: "short",
-          day: "numeric",
+        const targetDate = formatDate({
+          dateString: task.targetDate,
+          options: { month: "short", day: "numeric" },
         });
-
         return { startDate, targetDate };
       });
 
@@ -76,15 +68,13 @@ const Tasks = () => {
 
   function toggleTasks(e: SyntheticEvent) {
     const taskId = Number(e.currentTarget.id);
-    const taskIndex = tasks?.findIndex((task: object) => task.id === taskId);
+    const taskIndex = tasks?.findIndex((task: Task) => task.id === taskId);
 
     if (taskIndex !== -1) {
       setTaskIndex(taskIndex);
       setTaskId(taskId);
     }
   }
-
-  let onFilter;
 
   return (
     <>
@@ -93,14 +83,12 @@ const Tasks = () => {
           <HeaderTitle title="Tasks" />
           <SearchBar />
           <div className="flex justify-between">
-            <ButtonGroup
-              titles={["all", "active", "closed", "on hold"]}
-              onFilter={onFilter}
-            />
-            <div className="flex gap-4">
-              <ButtonGroup titles={buttonName} onFilter={""} />
-              <SortBy />
+            <div className="flex gap-6">
+              <ButtonGroup titles={buttonName} onFilter={() => {}} />
+              {/* <SortBy /> */}
             </div>
+
+            {/* <FilterButton /> */}
           </div>
           <div className="flex justify-center m-auto items-center h-screen -mt-36">
             <div className="flex flex-col items-end justify-center h-full">
@@ -123,18 +111,17 @@ const Tasks = () => {
             <SearchBar />
             <div className="flex justify-between">
               <div className="flex gap-6">
-                <ButtonGroup titles={buttonName} onFilter={""} />
-                <SortBy />
+                <ButtonGroup titles={buttonName} onFilter={() => {}} />
+                {/* <SortBy /> */}
               </div>
 
-              <FilterButton />
+              {/* <FilterButton /> */}
             </div>
 
             <>
               {isLoading && <Loader />}
               <TaskList
                 projects={projects}
-                error={error}
                 taskId={taskId}
                 isLoading={isLoading}
                 tasks={tasks}
@@ -154,13 +141,11 @@ const Tasks = () => {
               <>
                 <TaskDetails
                   userId={userInfo.id}
-                  taskId={taskId}
+                  taskId={taskId || 0}
                   users={users || undefined}
                   tasks={tasks}
-                  taskIndex={taskIndex}
+                  taskIndex={taskIndex || 0}
                   projects={projects}
-                  formattedDate1={formattedDate1}
-                  formattedDate2={formattedDate2}
                 />
               </>
             )}

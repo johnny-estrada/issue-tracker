@@ -1,7 +1,12 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 
+interface Member {
+  id: string;
+  photo: string;
+}
+
 interface Props {
-  members: object[];
+  members: Member[];
 }
 
 export default function AvatarGroup({ members }: Props) {

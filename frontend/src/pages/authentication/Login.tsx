@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../state/redux/slices/usersApiSlice";
 import { setCredentials } from "../../state/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader";
 import Logo from "../../components/sidebar/Logo";
+import { useAppSelector } from "../../hooks/hooks";
 // import LoginForm from "../components/form/LoginForm";
 
 export default function Login() {
@@ -17,17 +18,15 @@ export default function Login() {
 
   const customId = "custom-id-yes";
 
-  const notify = () => {
-    if (!toast.isActive(customId)) {
-      toast({
-        toastId: customId,
-      });
-    }
-  };
+  if (!toast.isActive(customId)) {
+    toast({
+      toastId: customId,
+    });
+  }
 
   const [login, { isLoading }] = useLoginMutation();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     if (userInfo) {
@@ -35,16 +34,14 @@ export default function Login() {
     }
   }, [navigate, userInfo]);
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (err) {
-      toast.error(err?.data?.message || err.error, {
-        toastId: customId,
-      });
+      toast.error(`${err}`);
     }
   };
 
@@ -138,7 +135,7 @@ export default function Login() {
 
                     <div className="text-sm leading-6">
                       <a
-                        href="#"
+                        href="/"
                         className="text-orange-500 hover:text-orange-400"
                       >
                         Forgot password?
@@ -176,7 +173,7 @@ export default function Login() {
 
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   <a
-                    href="#"
+                    href="/"
                     className="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
                   >
                     <svg
@@ -191,7 +188,7 @@ export default function Login() {
                   </a>
 
                   <a
-                    href="#"
+                    href="/"
                     className="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
                   >
                     <svg

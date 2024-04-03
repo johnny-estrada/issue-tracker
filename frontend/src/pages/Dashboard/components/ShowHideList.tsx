@@ -7,28 +7,46 @@ import AvatarGroup from "../../../components/ui/AvatarGroup";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 import { formatDate } from "../../../utils/formatting";
 
-interface Props {
+interface Project {
   projects: object[];
-  projectIndex: number;
+  id: string & number;
+  team: object[];
+}
+
+interface Task {
   tasks: object[];
+  id: string & number;
+  projectId: number;
+  name: string;
+  priority: string;
+  description: string;
+  startDate: string;
+  targetDate: string;
+}
+
+interface Props {
+  projects: Project[];
+  projectIndex: number;
+  tasks: Task[];
 }
 
 export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
-  const [openDisclosureId, setOpenDisclosureId] = useState(null);
+  const [openDisclosureId, setOpenDisclosureId] = useState<
+    string | number | null
+  >(null);
 
   if (!tasks || !tasks[projectIndex] || !projects) {
-    // Handle the case where tasks or projects are undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
+    return null;
   }
 
-  const handleDisclosureToggle = (taskId: string) => {
+  const handleDisclosureToggle = (taskId: string | number) => {
     setOpenDisclosureId(taskId === openDisclosureId ? null : taskId);
   };
 
   return (
     <ul>
       {tasks?.map(
-        (task: object) =>
+        (task: Task) =>
           task.projectId === projects[projectIndex]?.id && (
             <li key={task.id}>
               <div>
@@ -86,14 +104,20 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                               <div className="flex items-center justify-center gap-4">
                                 <AvatarGroup members={projects[1].team} />
                                 <p className="text-sm">
-                                  {formatDate(task.startDate, {
-                                    month: "short",
-                                    day: "numeric",
-                                  })}{" "}
+                                  {formatDate({
+                                    dateString: task.startDate,
+                                    options: {
+                                      month: "short",
+                                      day: "numeric",
+                                    },
+                                  })}
                                   -{" "}
-                                  {formatDate(task.targetDate, {
-                                    month: "short",
-                                    day: "numeric",
+                                  {formatDate({
+                                    dateString: task.targetDate,
+                                    options: {
+                                      month: "short",
+                                      day: "numeric",
+                                    },
                                   })}
                                 </p>
                               </div>

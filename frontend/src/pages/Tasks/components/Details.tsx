@@ -5,43 +5,80 @@ import TaskMenu from "../../../components/ui/TaskMenu";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
 
-interface Props {
-  tasks: object[];
-  taskIndex: number;
+interface Task {
+  id: string & number;
+  name: string;
+  description: string;
+  priority: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  userId: number;
+  projectId: number;
+  startDate: string;
+  targetDate: string;
+}
+
+interface Project {
   projects: object[];
-  formattedDate1: string;
-  formattedDate2: string;
+  team: object[];
+  photo: string;
+  id: number;
+  client: string;
+}
+
+interface Users {
   users: object[];
+  id: number;
+  name: string;
+}
+
+interface Props {
+  tasks: Task[];
+  taskIndex: number;
+  projects: Project[];
+  users: Users[];
   taskId: string;
   userId: number;
+  refetch: () => void;
 }
 
 const Details = ({
   tasks,
-  taskIndex,
   projects,
-  formattedDate1,
-  formattedDate2,
   users,
   taskId,
   userId,
+  taskIndex,
+  refetch,
 }: Props) => {
+  // const taskIndex = tasks?.findIndex((task) => task.projectId);
+
+  // Task details dates
+  const startDate = formatDate({
+    dateString: tasks[taskIndex].startDate,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+
+  const targetDate = formatDate({
+    dateString: tasks[taskIndex].targetDate,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+
+  // Activity Log Dates
+  const created = formatDate({
+    dateString: tasks[taskIndex].createdAt,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+  const updated = formatDate({
+    dateString: tasks[taskIndex].updatedAt,
+    options: { month: "short", day: "numeric", year: "numeric" },
+  });
+
   const userIndex = users?.findIndex(
     (user) => user.id === tasks[taskIndex].userId,
   );
 
-  const created = formatDate(tasks[taskIndex].createdAt, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-  const updated = formatDate(tasks[taskIndex].updatedAt, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
-  // Handle the case where tasks is undefined or projectIndex is out of bounds
   if (!users) {
     return null; // or you can render an error message
   }
@@ -58,7 +95,7 @@ const Details = ({
             <FlatBadge priority={`ID LG-${taskId}`} />
           </div>
 
-          <TaskMenu id={taskId} tasks={tasks} refetch={""} />
+          <TaskMenu id={taskId} tasks={tasks} refetch={refetch} />
         </div>
         <div className="w-2/3 lg:mb-10">
           {tasks?.length > 0 ? (
@@ -83,21 +120,21 @@ const Details = ({
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Assignee</h4>
                 <div className="flex gap-3 items-center">
-                  <img
+                  {/* <img
                     className="inline-block h-7 w-7 rounded-full ring-2 ring-white"
                     src={projects[0].team[0].photo}
                     alt=""
                   />
-                  <p className="text-sm">{projects[0].team[0].name}</p>
+                  <p className="text-sm">{projects[0].team[0].name}</p> */}
                 </div>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Start date</h4>
-                <p className="text-sm">{formattedDate1}</p>
+                <p className="text-sm">{startDate}</p>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Target date</h4>
-                <p className="text-sm">{formattedDate2}</p>
+                <p className="text-sm">{targetDate}</p>
               </li>
               <li className="flex items-center py-2 w-64">
                 <h4 className="text-sm text-neutral-500 w-36">Project</h4>

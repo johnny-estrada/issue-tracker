@@ -17,15 +17,26 @@ import SearchBar from "../../components/header/SearchBar";
 import selectProject from "../../assets/icons/state/select-item.svg";
 import projectImg from "../../assets/icons/state/file-folder.svg";
 
+interface Project {
+  projects: object[];
+  id: number;
+  name: string;
+  title: string;
+  client: string;
+  team: object[];
+  startDate: string;
+  targetDate: string;
+  status: string;
+}
+
 export default function Projects() {
-  const { data: projects, refetch, isLoading, error } = useGetProjectsQuery("");
-  const { data: tasks, isLoading: loading } = useGetTaskQuery("");
-
-  const [projectIndex, setProjectIndex] = useState();
-  const [filteredProjects, setFilteredProjects] = useState([]);
-
+  const [projectIndex, setProjectIndex] = useState(0);
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>();
   const [formattedDates, setFormattedDates] = useState([]);
   const [isComponentVisible, setComponentVisibility] = useState(true);
+
+  const { data: projects, isLoading } = useGetProjectsQuery("");
+  const { data: tasks, isLoading: loading } = useGetTaskQuery("");
 
   const customId = "custom-id-yes";
 
@@ -39,15 +50,15 @@ export default function Projects() {
     if (projects) {
       setFilteredProjects(projects);
 
-      const formattedDatesArray = projects.map((project: object) => {
-        const startDate = formatDate(project.startDate, {
-          month: "short",
-          day: "numeric",
+      const formattedDatesArray = projects.map((project: Project) => {
+        const startDate = formatDate({
+          dateString: project.startDate,
+          options: { month: "short", day: "numeric" },
         });
 
-        const targetDate = formatDate(project.targetDate, {
-          month: "short",
-          day: "numeric",
+        const targetDate = formatDate({
+          dateString: project.targetDate,
+          options: { month: "short", day: "numeric" },
         });
 
         return { startDate, targetDate };
@@ -64,7 +75,7 @@ export default function Projects() {
   }
 
   const onFilter = (filterType: string) => {
-    let filteredProjects: object[] = projects;
+    let filteredProjects = projects;
 
     switch (filterType) {
       case "all":
@@ -72,17 +83,17 @@ export default function Projects() {
         break;
       case "active":
         filteredProjects = projects.filter(
-          (project: object) => project.status === "active",
+          (project: Project) => project.status === "active",
         );
         break;
       case "closed":
         filteredProjects = projects.filter(
-          (project: object) => project.status === "closed",
+          (project: Project) => project.status === "closed",
         );
         break;
       case "on hold":
         filteredProjects = projects.filter(
-          (project: object) => project.status === "on hold",
+          (project: Project) => project.status === "on hold",
         );
         break;
       default:
@@ -106,7 +117,6 @@ export default function Projects() {
     <>
       {isLoading && <Loader />}
       {loading && <Loader />}
-      {error && <div>{error?.data?.message || error.error}</div>}
       {!projects?.length ? (
         <Column>
           <HeaderTitle title="Projects" />
@@ -117,7 +127,7 @@ export default function Projects() {
               onFilter={onFilter}
             />
             <div className="flex gap-4">
-              <ButtonGroup titles={["list", "timeline"]} onFilter={onFilter} />
+              <ButtonGroup titles={["list"]} onFilter={onFilter} />
               <FilterButton />
             </div>
           </div>
@@ -147,12 +157,9 @@ export default function Projects() {
               />
               <div className="flex gap-4">
                 <div className="hidden lg:block">
-                  <ButtonGroup
-                    titles={["list", "timeline"]}
-                    onFilter={onFilter}
-                  />
+                  <ButtonGroup titles={["list"]} onFilter={onFilter} />
                 </div>
-                <FilterButton />
+                {/* <FilterButton /> */}
               </div>
             </div>
 

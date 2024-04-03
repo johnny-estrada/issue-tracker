@@ -1,13 +1,22 @@
 import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
 
-function classNames(...classes: object[]) {
+function classNames(
+  ...classes: (string | boolean | undefined | null)[]
+): string {
   return classes.filter(Boolean).join(" ");
 }
 
 interface Props {
-  navigation: object[];
-  mobileNavigation: object[];
+  navigation: Navigation[];
+  mobileNavigation: Navigation[];
+}
+
+interface Navigation {
+  name: string;
+  href: string;
+  current: boolean;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 export default function Navigation({ navigation, mobileNavigation }: Props) {

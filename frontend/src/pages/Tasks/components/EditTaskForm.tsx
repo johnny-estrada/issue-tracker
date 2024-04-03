@@ -1,4 +1,4 @@
-import { useState, useEffect, SyntheticEvent } from "react";
+import { useState, useEffect, SyntheticEvent, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -12,14 +12,19 @@ import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";
 import PeoplePicker from "../../../components/ui/PeoplePicker";
 
+interface Project {
+  id: number;
+  title: string;
+}
+
 const EditTaskForm = () => {
-  const { id: taskId } = useParams("");
+  const { id: taskId } = useParams();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
+  const [targetDate, setTargetDate] = useState("");
   const [projectId, setProjectId] = useState("");
   const [members, setMembers] = useState([]);
 
@@ -30,6 +35,7 @@ const EditTaskForm = () => {
       toastId: customId,
     });
   }
+
   const {
     data: task,
     isLoading,
@@ -61,15 +67,15 @@ const EditTaskForm = () => {
       refetch();
       navigate("/tasks");
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(`${error || err}`);
     }
   };
 
-  const handleStatusChange = (e: SyntheticEvent) => {
+  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };
 
-  const handlePriorityChange = (e: SyntheticEvent) => {
+  const handlePriorityChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPriority(e.target.value);
   };
 
@@ -79,8 +85,8 @@ const EditTaskForm = () => {
       setDescription(task.description);
       setStatus(task.status);
       setPriority(task.priority);
-      setStartDate(new Date(task.startDate));
-      setTargetDate(new Date(task.targetDate));
+      setStartDate(task.startDate);
+      setTargetDate(task.targetDate);
       setProjectId(task.projectId);
       setMembers(task.team);
     }
@@ -117,7 +123,7 @@ const EditTaskForm = () => {
                         onChange={(e) => setProjectId(e.target.value)}
                         className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       >
-                        {projects?.map((project: object) => (
+                        {projects?.map((project: Project) => (
                           <option key={project.id} value={project.id}>
                             {project.title}-{project.id}
                           </option>

@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import { formatName } from "../../../utils/formatting";
+import { useAppSelector } from "../../../hooks/hooks";
 
 const Greeting = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useAppSelector((state) => state.auth);
 
   const userName = userInfo.name;
   const firstName = formatName(userName);

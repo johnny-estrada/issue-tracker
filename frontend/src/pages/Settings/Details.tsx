@@ -1,7 +1,15 @@
 import FlatBadge from "../../components/ui/FlatBadge";
 
-interface Props {
+interface Users {
   userInfo: object;
+  name: string;
+  email: string;
+  status: string;
+  title: string;
+}
+
+interface Props {
+  userInfo: Users;
 }
 
 const Details = ({ userInfo }: Props) => {

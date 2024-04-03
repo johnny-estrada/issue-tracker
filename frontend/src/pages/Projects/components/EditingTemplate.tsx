@@ -1,4 +1,4 @@
-import { useState, useEffect, SyntheticEvent } from "react";
+import { useState, useEffect, ChangeEvent, SyntheticEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProjectDetailsQuery,
@@ -19,9 +19,9 @@ const EditingTemplate = () => {
   const [title, setTitle] = useState("");
   const [client, setClient] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date());
+  const [status, setStatus] = useState<string>("");
+  const [startDate, setStartDate] = useState<string>("");
+  const [targetDate, setTargetDate] = useState<string>("");
   const [hours, setHours] = useState("");
   const [members, setMembers] = useState([]);
 
@@ -50,7 +50,7 @@ const EditingTemplate = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     try {
@@ -69,11 +69,11 @@ const EditingTemplate = () => {
       refetch();
       navigate("/projects");
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(`${err}`);
     }
   };
 
-  const handleStatusChange = (e: SyntheticEvent) => {
+  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };
 
@@ -83,8 +83,8 @@ const EditingTemplate = () => {
       setClient(project.client);
       setDescription(project.description);
       setStatus(project.status);
-      setStartDate(new Date(project.startDate));
-      setTargetDate(new Date(project.targetDate));
+      setStartDate(project.startDate);
+      setTargetDate(project.targetDate);
       setHours(project.hours);
       setMembers(project.team);
     }

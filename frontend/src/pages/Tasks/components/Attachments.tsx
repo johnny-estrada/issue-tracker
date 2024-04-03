@@ -1,27 +1,38 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
-import pdfFile from "../../../assets/images//file-logos/pdf-icon.png";
-import textFile from "../../../assets/images/file-logos/text-icon.webp";
+import pdfFile from "../../../assets/images/png/file-logos/pdf-icon.png";
+import textFile from "../../../assets/images/webp/file-logos/text-icon.webp";
 
 import axios from "axios";
 import { useGetAttachmentQuery } from "../../../state/redux/slices/attachmentsApiSlice";
 import Loader from "../../../components/ui/Loader";
 
 interface Props {
-  taskId: string | "";
-  userId: number | null;
+  taskId: number;
+  userId: number;
   taskIndex: number;
-  tasks: object[];
+  tasks: Task[];
+}
+
+interface Task {
+  id: number;
+}
+
+interface Attachment {
+  id: string;
+  filename: string;
+  mimetype: string;
+  taskId: number;
 }
 
 const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
-  const [file, setFile] = useState("");
-  const [image, setImage] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [_image, setImage] = useState("");
   const [taskI, setTaskI] = useState(0);
   const [userI, setUserI] = useState(0);
-  const [preview, setPreview] = useState(null);
+  const [_preview, setPreview] = useState<string | null>(null);
 
   const { data: attachments, isLoading, refetch } = useGetAttachmentQuery("");
 
@@ -40,34 +51,42 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
       .catch((err) => console.log(err));
   }, [taskId]);
 
-  const handleFile = async (e: SyntheticEvent) => {
-    setFile(e.target.files[0]);
+  const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files ? e.target.files[0] : null;
+    setFile(selectedFile);
     setTaskI(taskId);
     setUserI(userId);
 
-    if (file) {
+    if (selectedFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result);
+        setPreview(reader.result as string);
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(selectedFile);
+    } else {
+      setPreview(null);
     }
   };
 
   const handleUpload = async () => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("taskId", taskI);
-    formData.append("userId", userI);
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("taskId", taskI.toString());
+      formData.append("userId", userI.toString());
 
-    try {
-      await axios.post("http://localhost:5000/api/attachments", formData);
-      refetch();
-      toast.success("Attachment added successfully");
-      // setFile(null);
-    } catch (err) {
-      console.log(err);
-      toast.error(`${err}`);
+      try {
+        await axios.post("http://localhost:5000/api/attachments", formData);
+        refetch();
+        toast.success("Attachment added successfully");
+        setFile(null);
+        setPreview(null);
+      } catch (err) {
+        console.log(err);
+        toast.error(`${err}`);
+      }
+    } else {
+      toast.error("No file selected");
     }
   };
 
@@ -91,7 +110,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
         {/* TASKS LIST */}
         <ul className="flex flex-wrap max-w-sm gap-3 overflow-hidden text-slate-500 text-sm">
           {attachments?.map(
-            (attachment: object) =>
+            (attachment: Attachment) =>
               attachment.taskId === tasks[taskIndex]?.id && (
                 <li key={attachment.id}>
                   <button className="shadow-sm border border-gray-100 w-28 rounded-lg bg-gray-100 hover:bg-gray-200 mb-4">
@@ -133,9 +152,15 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
                 </li>
               ),
           )}
-          <li className="flex items-center justify-center w-38 h-28 mb-2.5 rounded text-sm border p-2 shadow-sm">
-            No attachments
-          </li>
+          {_preview && (
+            <li className="flex items-center justify-center w-38 h-28 mb-2.5 rounded text-sm border p-2 shadow-sm">
+              <img
+                src={_preview}
+                alt="Preview"
+                className="max-w-full max-h-full"
+              />
+            </li>
+          )}
         </ul>
         <form method="POST" encType="multipart/form-data">
           <div className="flex gap-2">

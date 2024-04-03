@@ -14,20 +14,19 @@ import Loader from "./Loader";
 
 interface Props {
   id: string;
-  refetch: any;
-  tasks: object[];
+  refetch: () => void;
 }
 
-export default function DropDown({ id, refetch, tasks }: Props) {
+export default function DropDown({ id, refetch }: Props) {
   const [deleteTask, { isLoading: loadingDelete }] = useDeleteTaskMutation();
 
-  const deleteHandler = async (id) => {
+  const deleteHandler = async (id: string) => {
     if (window.confirm(`Are you sure you want to delete project ${id}`)) {
       try {
         await deleteTask(id);
         refetch();
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error(`${err}`);
       }
     }
   };
@@ -98,7 +97,7 @@ export default function DropDown({ id, refetch, tasks }: Props) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={() => deleteHandler(tasks[id].id)}
+                    onClick={() => deleteHandler(id)}
                     className={`${
                       active ? "bg-gray-100 text-red-500" : "text-red-400"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}

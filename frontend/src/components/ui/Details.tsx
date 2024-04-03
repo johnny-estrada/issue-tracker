@@ -3,12 +3,19 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 import AvatarGroup from "./AvatarGroup";
 import { formatDate } from "../../utils/formatting";
 
+interface Task {
+  tasks: object[];
+  id: string;
+  photo: string;
+}
+
 interface Props {
+  tasks: Task[];
   description: string;
   client: string;
   startDate: string;
   targetDate: string;
-  members: object[];
+  members: Task[];
 }
 
 const Details = ({
@@ -23,14 +30,18 @@ const Details = ({
 
   useEffect(() => {
     const date1 = startDate;
-    const options1 = { year: "numeric", month: "short", day: "numeric" };
-    const formatted1 = formatDate(date1, options1);
-    setFormattedDate1(formatted1);
+    const startDate1 = formatDate({
+      dateString: date1,
+      options: { month: "short", day: "numeric", year: "numeric" },
+    });
+    setFormattedDate1(startDate1);
 
     const date2 = targetDate;
-    const options2 = { year: "numeric", month: "short", day: "numeric" };
-    const formatted2 = formatDate(date2, options2);
-    setFormattedDate2(formatted2);
+    const targetDate1 = formatDate({
+      dateString: date2,
+      options: { month: "short", day: "numeric", year: "numeric" },
+    });
+    setFormattedDate2(targetDate1);
   }, [startDate, targetDate]);
 
   return (

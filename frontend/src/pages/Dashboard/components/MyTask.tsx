@@ -4,11 +4,37 @@ import Menu1 from "../../../components/ui/Menu1";
 import Tabs from "../../../components/ui/Tabs";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 
+interface Project {
+  projects: object[];
+  id: number;
+  team: object[];
+}
+
+interface Task {
+  projects: object[];
+  id: number;
+  name: string;
+  description: string;
+  priority: string;
+  startDate: string;
+  targetDate: string;
+  status: string;
+  projectId: string;
+}
+
+interface Nav {
+  navigation: object[];
+  href: string;
+  name: string;
+  photo: string;
+  icon: React.ForwardRefExoticComponent<React.SVGProps<SVGSVGElement>>;
+}
+
 interface Props {
   id: string;
   projectIndex: number;
-  projects: object[];
-  tasks: object[];
+  projects: Project[];
+  tasks: Task[];
   dates: object[];
   refetch: any;
   lineChartData: object[];
@@ -22,7 +48,7 @@ const MyTask = ({
   refetch,
   lineChartData,
 }: Props) => {
-  const NAV = [
+  const NAV: Nav[] = [
     {
       name: "Create task",
       href: "/tasks/create-task",

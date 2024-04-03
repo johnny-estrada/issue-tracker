@@ -9,29 +9,35 @@ import LineChart from "./components/LineChart";
 import MyTask from "./components/MyTask";
 import MyProjects from "./components/MyProjects";
 import TwoColumnsWide from "../../layout/TwoColumnsWide";
+import Calendar from "./components/Calendar";
+// import Status from "./components/Status";
 
 // data
 import { lineChart } from "../../data/index";
-import Status from "./components/Status";
+
+interface Project {
+  startDate: string;
+  targetDate: string;
+}
 
 const Dashboard = () => {
   const [projectIndex, setProjectIndex] = useState(0);
   const [formattedDates, setFormattedDates] = useState([]);
-  const [lineChartData, setLineChartData] = useState(lineChart);
+  const [lineChartData, _setLineChartData] = useState(lineChart);
   const { data: projects, refetch } = useGetProjectsQuery("");
   const { data: tasks } = useGetTaskQuery("");
 
   useEffect(() => {
     if (projects) {
-      const formattedDatesArray = projects?.map((project: object) => {
-        const startDate = formatDate(project.startDate, {
-          month: "short",
-          day: "numeric",
+      const formattedDatesArray = projects?.map((project: Project) => {
+        const startDate = formatDate({
+          dateString: project.startDate,
+          options: { month: "short", day: "numeric" },
         });
 
-        const targetDate = formatDate(project.targetDate, {
-          month: "short",
-          day: "numeric",
+        const targetDate = formatDate({
+          dateString: project.targetDate,
+          options: { month: "short", day: "numeric" },
         });
 
         return { startDate, targetDate };
@@ -41,21 +47,17 @@ const Dashboard = () => {
     }
   }, [projects]);
 
-  // console.log(projects[projectIndex]?.id)
-
   function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
   }
 
   if (!tasks || !tasks[projectIndex]) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
+    return null;
   }
 
   if (!projects) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
+    return null;
   }
 
   return (
@@ -93,7 +95,8 @@ const Dashboard = () => {
             <LineChart data={lineChartData} />
           </div>
 
-          <Status />
+          <Calendar />
+          {/* <Status /> */}
         </section>
 
         <MyProjects

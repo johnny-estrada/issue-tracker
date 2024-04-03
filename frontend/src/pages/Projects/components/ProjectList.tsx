@@ -3,11 +3,31 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 
+interface Project {
+  id: number;
+  client: string;
+  team: object[];
+  startDate: string;
+  targetDate: string;
+  members: Member[];
+}
+
+interface Member {
+  members: object[];
+  id: string;
+  photo: string;
+}
+
+interface FormattedDate {
+  startDate: string;
+  targetDate: string;
+}
+
 interface Props {
-  projects: object[];
+  projects: Project[];
   projectIndex: number;
   toggleProjects: (e: SyntheticEvent) => void;
-  formattedDates: object[];
+  formattedDates: FormattedDate[];
 }
 
 function ProjectList({

@@ -2,16 +2,62 @@ import Details from "../../../components/ui/Details";
 import Menu1 from "../../../components/ui/Menu1";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 import TasksList from "./TasksList";
+import { ReactElement } from "react";
 
-interface Props {
+interface Project {
   projects: object[];
-  projectIndex: number;
-  id: string;
-  tasks: object[];
+  name: string;
+  title: string;
+  startDate: string;
+  targetDate: string;
+  description: string;
+  client: string;
+  team: Member[];
 }
 
-const ProjectDetails = ({ projects, projectIndex, id, tasks }: Props) => {
-  const NAV = [
+interface Member {
+  team: object[];
+  id: string;
+  photo: string;
+}
+
+interface Task {
+  tasks: object[];
+  id: number;
+  name: string;
+  projectId: number;
+  priority: string;
+  title: string;
+  description: string;
+  client: string;
+  team: object[];
+  startDate: string;
+  targetDate: string;
+  status: string;
+}
+
+interface Navigation {
+  navigation: object[];
+  name: string;
+  href: string;
+  icon: ReactElement;
+}
+
+interface Props {
+  projects: Project[];
+  projectIndex: number;
+  id: number;
+  tasks: Task[];
+  refetch: () => void;
+}
+const ProjectDetails = ({
+  projects,
+  projectIndex,
+  id,
+  tasks,
+  refetch,
+}: Props) => {
+  const NAV: Navigation[] = [
     {
       name: "Create project",
       href: "/projects/create-project",
@@ -39,7 +85,12 @@ const ProjectDetails = ({ projects, projectIndex, id, tasks }: Props) => {
               <h3 className="text-xl lg:text-2xl pb-4">
                 {projects[projectIndex].title}
               </h3>
-              <Menu1 id={id} navigation={NAV} delete1={"Delete project"} />
+              <Menu1
+                id={id}
+                navigation={NAV}
+                delete1={"Delete project"}
+                refetch={refetch}
+              />
             </header>
             <Details
               client={projects[projectIndex].client}

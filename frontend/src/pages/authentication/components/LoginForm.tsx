@@ -1,4 +1,15 @@
-const LoginForm = () => {
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
+const LoginForm = (
+  email: string,
+  password: string,
+  setPassword: React.Dispatch<string>,
+  setEmail: React.Dispatch<string>,
+  submitHandler: () => void,
+) => {
   return (
     <div>
       <form method="POST" className="space-y-6" onSubmit={submitHandler}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateProjectMutation } from "../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
@@ -31,7 +31,7 @@ const FormContainer = ({ children }: Props) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     try {
@@ -48,7 +48,7 @@ const FormContainer = ({ children }: Props) => {
       toast.success("Project created successfully");
       navigate("/projects");
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(`${err}`);
     }
   };
 

@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useState, SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useSearchTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { BellIcon } from "@heroicons/react/24/outline";
 
+interface Task {
+  id: number;
+  name: string;
+}
+
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const { data: searchResults = [], isLoading } = useSearchTaskQuery(search);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
-    props.search(search);
+    setSearch(search);
     setSearch("");
   }
 
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     setSearch(e.target.value);
   }
@@ -40,12 +45,12 @@ const SearchBar = () => {
           <ul className="absolute top-[70px] left-0 ring-1 ring-gray-100 rounded shadow-sm w-full bg-white">
             {searchResults
               .filter(
-                (task: object) =>
+                (task: Task) =>
                   task.name.toLowerCase().includes(search.toLowerCase()) ||
                   task.name.toUpperCase().includes(search.toUpperCase()) ||
                   task.id.toString().includes(search),
               )
-              .map((task: object) => (
+              .map((task: Task) => (
                 <li key={task.id} className="hover:bg-gray-50 p-4">
                   <Link className="text-sm" to={`/tasks/${task.id}`}>
                     <p className="line-clamp-1">
@@ -93,12 +98,12 @@ const SearchBar = () => {
               <ul className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 bg-white">
                 {searchResults
                   .filter(
-                    (task: object) =>
+                    (task: Task) =>
                       task.name.toLowerCase().includes(search.toLowerCase()) ||
                       task.name.toUpperCase().includes(search.toUpperCase()) ||
                       task.id.toString().includes(search),
                   )
-                  .map((task: object) => (
+                  .map((task: Task) => (
                     <li key={task.id} className="hover:bg-gray-100 p-4">
                       <Link className="text-sm" to={`/tasks/${task.id}`}>
                         <p className="line-clamp-1">

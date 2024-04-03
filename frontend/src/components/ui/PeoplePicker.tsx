@@ -1,22 +1,29 @@
-import { useState, useEffect, SyntheticEvent } from "react";
-import Select from "react-select";
+import { useState, useEffect } from "react";
+import Select, { components, OptionProps } from "react-select";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  photo: string;
+}
+
 interface Props {
-  members: object[];
-  onChange: (e: SyntheticEvent) => void;
+  members: User[];
+  onChange: (selectedOptions: User[] | null) => void;
 }
 
 const PeoplePicker = ({ members, onChange }: Props) => {
-  const [selectedPeople, setSelectedPeople] = useState([]);
-  const [options, setOptions] = useState([]);
+  const [selectedPeople, setSelectedPeople] = useState<User[]>([]);
+  const [options, setOptions] = useState<User[]>([]);
 
-  const { data: users, isLoading, error } = useGetUsersQuery("");
+  const { data: users, isLoading } = useGetUsersQuery("");
 
   useEffect(() => {
     // Map user data to the format expected by react-select
     if (users) {
-      const options = users.map((user: object) => ({
+      const options = users.map((user: User) => ({
         id: user.id,
         name: user.name,
         email: user.email,
@@ -31,54 +38,45 @@ const PeoplePicker = ({ members, onChange }: Props) => {
     }
   }, [users, members]);
 
-  const handleSelectChange = (selectedOptions: object[]) => {
-    setSelectedPeople(selectedOptions);
-    onChange(selectedOptions);
+  const handleSelectChange = (selectedOptions: User[] | null) => {
+    setSelectedPeople(selectedOptions || []);
+    onChange(selectedOptions || []);
   };
 
   if (isLoading) {
     return <p>Loading users...</p>;
   }
 
-  if (error) {
-    return <p>Error loading users: {error.message}</p>;
-  }
+  const Option = (props: OptionProps<User, true>) => {
+    return (
+      <components.Option {...props}>
+        <div className="flex items-center">
+          <img
+            src={props.data.photo}
+            alt="User"
+            style={{
+              marginRight: "8px",
+              borderRadius: "50%",
+              height: "24px",
+            }}
+          />
+          {props.data.name}
+        </div>
+      </components.Option>
+    );
+  };
 
   return (
     <div>
       <Select
         isMulti
-        value={selectedPeople?.map((option) => ({
-          id: option.id,
-          name: option.name,
-          email: option.email,
-          photo: option.photo,
-        }))}
+        value={selectedPeople}
         onChange={handleSelectChange}
         options={options}
         isSearchable={true}
-        filterOption={({ name, data }, inputValue) => {
-          const labelString = String(name);
-          return (
-            labelString.toLowerCase().includes(inputValue.toLowerCase()) ||
-            data.email.toLowerCase().includes(inputValue.toLowerCase())
-          );
-        }}
-        getOptionLabel={(option) => (
-          <div className="flex">
-            <img
-              src={option.photo}
-              alt="User"
-              style={{
-                marginRight: "8px",
-                borderRadius: "50%",
-                height: "24px",
-              }}
-            />
-            <span>{option.name}</span>
-          </div>
-        )}
+        getOptionLabel={(option) => option.name}
         getOptionValue={(option) => String(option.id)}
+        components={{ Option }}
       />
     </div>
   );

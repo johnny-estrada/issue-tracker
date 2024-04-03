@@ -5,17 +5,29 @@ import ShowHideList from "../../pages/Dashboard/components/ShowHideList";
 import SelectorList from "../ui/SelectorList";
 import AvatarGroup from "./AvatarGroup";
 
-function classNames(...classes: object[]) {
-  return classes.filter(Boolean).join(" ");
+interface Project {
+  projects: object[];
+  id: string & number;
+  team: object[];
+  client: string;
+  startDate: string;
+  targetDate: string;
+  status: string;
 }
 
 interface Props {
   data: object[];
-  projectData: object[];
+  projectData: Project[];
+}
+
+function classNames(
+  ...classes: (string | boolean | undefined | null)[]
+): string {
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Tabs({ data, projectData }: Props) {
-  const [projects, setProjects] = useState(projectData);
+  const [projects, _setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 
   function toggleProjects(e: SyntheticEvent) {
@@ -36,10 +48,10 @@ export default function Tabs({ data, projectData }: Props) {
         </div>
         <div className="min-w-0 flex-auto">
           <p className="text-sm font-semibold leading-6">{project.client}</p>
-          <p className=" mt-1 flex text-xs leading-5 text-gray-400">
+          {/* <p className=" mt-1 flex text-xs leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />
             {project.tasks} tasks &#x2022; {project.overdue} overdue
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="flex shrink-0 items-center gap-x-4">

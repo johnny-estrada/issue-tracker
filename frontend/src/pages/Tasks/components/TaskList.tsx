@@ -1,20 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { formatDate } from "../../../utils/formatting";
-
 import SelectorList from "../../../components/ui/SelectorList";
 import FlatBadge from "../../../components/ui/FlatBadge";
 import Loader from "../../../components/ui/Loader";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 
+interface Task {
+  id: string & number;
+  name: string;
+  priority: string;
+  status: string;
+  startDate: string;
+  targetDate: string;
+}
+
 interface Props {
   projects: object[];
-  tasks: object[];
+  tasks: Task[];
   taskId: number | undefined;
   taskIndex: number | undefined;
-  toggleTasks: object;
+  toggleTasks: (e: SyntheticEvent) => void;
   isLoading: boolean;
-  error: FetchBaseQueryError | SerializedError | undefined;
 }
 
 const TaskList = ({
@@ -24,15 +31,14 @@ const TaskList = ({
   taskIndex,
   toggleTasks,
   isLoading,
-  error,
 }: Props) => {
-  const [sortedTasks, setSortedTasks] = useState([]);
-  const [team, setTeam] = useState([]);
+  const [sortedTasks, setSortedTasks] = useState<{ [key: string]: Task[] }>({});
+  const [team, _setTeam] = useState([]);
 
   useEffect(() => {
     // Sort tasks by status
     const sorted =
-      tasks?.reduce((acc, task) => {
+      tasks?.reduce<{ [key: string]: Task[] }>((acc, task) => {
         const status = task.status;
         acc[status] = acc[status] || [];
         acc[status].push(task);
@@ -46,8 +52,6 @@ const TaskList = ({
     <>
       {isLoading ? (
         <Loader />
-      ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
       ) : (
         <section className="mb-96 lg:mb-0 relative">
           <header className="flex justify-between align-middle">
@@ -75,11 +79,11 @@ const TaskList = ({
 
               <h2 className="text-xl lg:text-2xl mb-4">{status}</h2>
 
-              {sortedTasks[status]?.map((task: object) => (
+              {sortedTasks[status]?.map((task: Task) => (
                 <SelectorList
                   key={task?.id}
                   id={task?.id}
-                  active={task.id === taskId}
+                  active={Number(task.id) === taskId}
                   onClick={(e) => toggleTasks(e)}
                 >
                   <div className="flex flex-1 flex-col items-start justify-center gap-x-4 ml-4">
@@ -95,14 +99,14 @@ const TaskList = ({
                     </div>
                     <div className="flex justify-center items-center">
                       <p className="text-sm hidden lg:block">
-                        {formatDate(task?.startDate, {
-                          month: "short",
-                          day: "numeric",
+                        {formatDate({
+                          dateString: task.startDate,
+                          options: { month: "short", day: "numeric" },
                         })}{" "}
                         -
-                        {formatDate(task?.targetDate, {
-                          month: "short",
-                          day: "numeric",
+                        {formatDate({
+                          dateString: task.targetDate,
+                          options: { month: "short", day: "numeric" },
                         })}
                       </p>
                       <ChevronRightIcon className="w-4 h-4 lg:hidden" />

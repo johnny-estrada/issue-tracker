@@ -8,7 +8,9 @@ import ProfileDetails from "./ProfileDetails";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SearchBar from "../../components/header/SearchBar";
 
-function classNames(...classes: any) {
+function classNames(
+  ...classes: (string | boolean | undefined | null)[]
+): string {
   return classes.filter(Boolean).join(" ");
 }
 

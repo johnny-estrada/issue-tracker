@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, SyntheticEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateProjectMutation } from "../../../state/redux/slices/projectsApiSlice";
 import { toast } from "react-toastify";
@@ -6,15 +6,19 @@ import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";
 import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
 
+interface Member {
+  members: object[];
+}
+
 const CreateProjectForm = () => {
   const [title, setTitle] = useState("");
   const [client, setClient] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState();
-  const [startDate, setStartDate] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date());
+  const [status, setStatus] = useState<string>("");
+  const [startDate, setStartDate] = useState<string>("");
+  const [targetDate, setTargetDate] = useState<string>("");
   const [hours, setHours] = useState("");
-  const [members, setMembers] = useState([]);
+  const [members, _setMembers] = useState<Member[]>();
 
   const customId = "custom-id-yes";
 
@@ -29,7 +33,7 @@ const CreateProjectForm = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     try {
@@ -46,11 +50,11 @@ const CreateProjectForm = () => {
       toast.success("Project created successfully");
       navigate("/projects");
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(`${err}`);
     }
   };
 
-  const handleStatusChange = (e) => {
+  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };
 

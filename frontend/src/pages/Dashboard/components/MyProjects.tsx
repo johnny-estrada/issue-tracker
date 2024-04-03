@@ -5,14 +5,33 @@ import SelectorList from "../../../components/ui/SelectorList";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { SyntheticEvent } from "react";
 
-interface Props {
-  id: string;
-  projectIndex: number;
+interface Project {
   projects: object[];
-  tasks: object[];
+  id: number;
+  client: string;
+  startDate: string;
+  targetDate: string;
+  team: object[];
+}
+
+interface Task {
+  id: number;
+}
+
+interface Dates {
+  formattedDates: object[];
+  startDate: string;
+  targetDate: string;
+}
+
+interface Props {
+  id: Task;
+  projectIndex: number;
+  projects: Project[];
+  tasks: Task[];
   refetch: any;
   toggleProjects: (e: SyntheticEvent) => void;
-  formattedDates: object[];
+  formattedDates: Dates[];
 }
 
 const MyProjects = ({
@@ -87,7 +106,7 @@ const MyProjects = ({
           </div>
 
           <Menu1
-            id={tasks[projectIndex].id}
+            id={id}
             refetch={refetch}
             navigation={NAV}
             delete1={"Delete project"}

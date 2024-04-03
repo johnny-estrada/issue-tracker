@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCreateTaskMutation } from "../../../state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../../state/redux/slices/projectsApiSlice";
@@ -7,15 +7,25 @@ import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";
 import PeoplePicker from "../../../components/ui/PeoplePicker";
 
+interface Project {
+  id: string;
+  title: string;
+  members: Member[];
+}
+
+interface Member {
+  members: object[];
+}
+
 const CreateTaskForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [targetDate, setTargetDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<string>("");
+  const [targetDate, setTargetDate] = useState<string>("");
   const [projectId, setProjectId] = useState("");
-  const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState<Member[]>();
 
   const customId = "custom-id-yes";
 
@@ -47,15 +57,15 @@ const CreateTaskForm = () => {
       navigate("/tasks");
       refetch();
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(`${err}`);
     }
   };
 
-  const handleStatusChange = (e: SyntheticEvent) => {
+  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };
 
-  const handlePriorityChange = (e: SyntheticEvent) => {
+  const handlePriorityChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPriority(e.target.value);
   };
 
@@ -86,7 +96,7 @@ const CreateTaskForm = () => {
                       onChange={(e) => setProjectId(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
-                      {projects?.map((project: object) => (
+                      {projects?.map((project: Project) => (
                         <option key={project.id} value={project.id}>
                           {project.title}-{project.id}
                         </option>

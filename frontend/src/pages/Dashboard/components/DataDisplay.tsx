@@ -1,7 +1,11 @@
 import { stats } from "../../../data/index";
 
+interface Project {
+  hours: number;
+}
+
 interface Props {
-  projects: object[];
+  projects: Project[];
   projectIndex: number;
 }
 

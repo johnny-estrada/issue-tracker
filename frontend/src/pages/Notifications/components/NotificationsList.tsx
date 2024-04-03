@@ -2,11 +2,17 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 // import ListMenu from "../../../components/ui/ListMenu";
-import { PlusIcon } from "@heroicons/react/24/outline";
+// import { PlusIcon } from "@heroicons/react/24/outline";
 import { SyntheticEvent } from "react";
 
-interface Props {
+interface Project {
   projects: object[];
+  id: number;
+  members: object[];
+}
+
+interface Props {
+  projects: Project[];
   projectIndex: number;
   toggleProjects: (e: SyntheticEvent) => void;
 }
@@ -16,26 +22,26 @@ const NotificationsList = ({
   projectIndex,
   toggleProjects,
 }: Props) => {
-  const NAV = [
-    {
-      name: "Dashboard",
-      href: "/",
-      icon: PlusIcon,
-      current: true,
-    },
-    {
-      name: "Projects",
-      href: "/projects",
-      icon: PlusIcon,
-      current: true,
-    },
-    {
-      name: "Tasks",
-      href: "/tasks",
-      icon: PlusIcon,
-      current: true,
-    },
-  ];
+  // const NAV = [
+  //   {
+  //     name: "Dashboard",
+  //     href: "/",
+  //     icon: PlusIcon,
+  //     current: true,
+  //   },
+  //   {
+  //     name: "Projects",
+  //     href: "/projects",
+  //     icon: PlusIcon,
+  //     current: true,
+  //   },
+  //   {
+  //     name: "Tasks",
+  //     href: "/tasks",
+  //     icon: PlusIcon,
+  //     current: true,
+  //   },
+  // ];
 
   return (
     <>

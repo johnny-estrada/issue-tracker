@@ -21,7 +21,8 @@ const TestForm = () => {
             <HeaderTitle title="Create project" />
           </div>
         </Header>
-        <section className="px-3 lg:px-8 py-1 lg:py-8 max-w-2xl mx-auto shadow-sm h-full">
+
+        <section className="px-3 lg:px-8 py-1 lg:py-8 w-full mx-auto shadow-sm h-full">
           <FormContainer>
             <LabeledInput
               label={"Client"}

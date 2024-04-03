@@ -3,7 +3,7 @@ import { Image } from "cloudinary-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../state/redux/slices/usersApiSlice";
 import { logout } from "../../state/redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
@@ -14,9 +14,10 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline";
 import { formatNameDisplay } from "../../utils/formatting";
+import { useAppSelector } from "../../hooks/hooks";
 
 export default function DropDown() {
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useAppSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,8 +25,8 @@ export default function DropDown() {
 
   const logoutHandler = async () => {
     try {
-      await logoutApiCall().unwrap();
-      dispatch(logout());
+      await logoutApiCall("").unwrap();
+      dispatch(logout(""));
       navigate("/login");
     } catch (error) {
       console.log(error);

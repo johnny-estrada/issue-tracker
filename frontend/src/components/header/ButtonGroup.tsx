@@ -12,7 +12,7 @@ export default function ButtonGroup({ titles, onFilter }: Props) {
     <div className="isolate inline-flex rounded-md">
       {titles?.map((title: string) => (
         <button
-          key={title.id}
+          key={title}
           type="button"
           onClick={() => {
             setActive(title); // Set the active button

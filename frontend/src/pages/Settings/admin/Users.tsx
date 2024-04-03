@@ -10,7 +10,11 @@ interface User {
   role: string;
 }
 
-export default function Users({ users }) {
+interface UserProps {
+  users: User[];
+}
+
+export default function Users({ users }: UserProps) {
   const customId = "custom-id-yes";
 
   if (!toast.isActive(customId)) {
