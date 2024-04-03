@@ -2,10 +2,13 @@
 //Ex. Currencies, dates, numbers, etc. or 3ed party libraries.
 interface DateFormat {
   dateString: string;
-  options: object;
+  options?: Intl.DateTimeFormatOptions;
 }
 
-export const formatDate = ({ dateString, options }: DateFormat) => {
+export const formatDate = ({
+  dateString,
+  options = {},
+}: DateFormat): string => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", options);
 };
