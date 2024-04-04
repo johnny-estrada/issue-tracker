@@ -29,6 +29,7 @@ interface Project {
 }
 
 interface User {
+  users: object[];
   id: number;
   name: string;
 }
