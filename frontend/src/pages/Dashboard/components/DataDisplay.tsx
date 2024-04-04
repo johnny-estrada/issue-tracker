@@ -12,7 +12,7 @@ interface Props {
 export default function DataDisplay({ projects, projectIndex }: Props) {
   return (
     <>
-      <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 px-3 pb-4 lg:px-0 lg:pb-0">
+      <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 pb-4 lg:px-0 lg:pb-0">
         {stats.map((stat) => (
           <div
             key={stat.name}
