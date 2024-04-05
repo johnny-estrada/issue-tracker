@@ -79,14 +79,6 @@ const SearchBar = () => {
         >
           Create project
         </Link>
-
-        {/* Mobile create button */}
-        <Link
-          to={`/projects/create-project`}
-          className="lg:hidden fixed bottom-20 right-3 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
-        >
-          +
-        </Link>
       </div>
     </>
   );
