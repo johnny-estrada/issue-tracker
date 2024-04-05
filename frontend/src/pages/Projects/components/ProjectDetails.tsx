@@ -49,6 +49,7 @@ interface Props {
   id: number;
   tasks: Task[];
   refetch: () => void;
+  isVisible: boolean;
 }
 const ProjectDetails = ({
   projects,
@@ -56,6 +57,7 @@ const ProjectDetails = ({
   id,
   tasks,
   refetch,
+  // isVisible,
 }: Props) => {
   const NAV: Navigation[] = [
     {
@@ -71,7 +73,7 @@ const ProjectDetails = ({
   ];
 
   return (
-    <div className=" flex flex-col">
+    <div className="flex lg:flex-col">
       <section
         aria-labelledby="projects"
         className="p-4 lg:p-0 hidden lg:block"
