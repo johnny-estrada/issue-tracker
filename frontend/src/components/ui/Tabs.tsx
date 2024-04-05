@@ -4,6 +4,9 @@ import LineChart from "../../pages/Dashboard/components/LineChart";
 import ShowHideList from "../../pages/Dashboard/components/ShowHideList";
 import SelectorList from "../ui/SelectorList";
 import AvatarGroup from "./AvatarGroup";
+// import Calendar from "../../pages/Dashboard/components/Calendar";
+import Status from "../../pages/Dashboard/components/Status";
+import { formatDate } from "../../utils/formatting";
 
 interface Project {
   projects: object[];
@@ -42,38 +45,46 @@ export default function Tabs({ data, projectData }: Props) {
       active={projectIndex === idx}
       onClick={toggleProjects}
     >
-      <div className="flex min-w-0 gap-x-4">
-        <div className="flex h-12 w-12 justify-center items-center rounded-full bg-white text-black">
+      <div className="flex items-center min-w-0 gap-x-4">
+        <div className="flex w-8 lg:h-12 h-8 lg:w-12 justify-center items-center rounded-full bg-white text-black">
           <p>BK</p>
         </div>
         <div className="min-w-0 flex-auto">
           <p className="text-sm font-semibold leading-6">{project.client}</p>
-          {/* <p className=" mt-1 flex text-xs leading-5 text-gray-400">
+          <p className=" mt-1 flex text-xs leading-5 text-gray-400">
             <span className="inset-x-0 -top-px bottom-0" />
             {project.tasks} tasks &#x2022; {project.overdue} overdue
-          </p> */}
+          </p>
         </div>
       </div>
-      <div className="flex shrink-0 items-center gap-x-4">
+      <div className="hidden lg:flex shrink-0 items-center gap-x-4">
         <AvatarGroup members={[]} />
-        <p className="text-gray-400">
-          {project.startDate} - {project.targetDate}
+        <p className="text-gray-400 text-sm">
+          {formatDate({
+            dateString: project.startDate,
+            options: { month: "short", day: "numeric" },
+          })}{" "}
+          -{" "}
+          {formatDate({
+            dateString: project.targetDate,
+            options: { month: "short", day: "numeric" },
+          })}
         </p>
       </div>
     </SelectorList>
   ));
 
   return (
-    <div className="lg:hidden w-full px-2 py-5 sm:px-0">
+    <div className="lg:hidden w-full px-4 py-5 sm:px-0">
       <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl p-1">
+        <Tab.List className="flex rounded-xl p-1">
           <Tab
             className={({ selected }) =>
               classNames(
                 "w-full py-2.5 text-sm border-neutral-300",
                 selected
-                  ? "border-gray-400 text-gray-500"
-                  : " text-neutral-300 hover:border-gray-300 hover:text-gray-600",
+                  ? "border-gray-600 text-gray-900"
+                  : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
                 "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
@@ -83,10 +94,10 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm text-stone-800",
+                "w-full py-2.5 text-sm border-neutral-300",
                 selected
-                  ? "border-gray-400"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                  ? "border-gray-600 text-gray-900"
+                  : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
                 "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
@@ -96,10 +107,10 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "lg:w-full py-2.5 text-sm text-stone-800",
+                "w-full py-2.5 text-sm border-neutral-300",
                 selected
-                  ? "border-gray-400"
-                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                  ? "border-gray-600 text-gray-900"
+                  : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
                 "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
             }
@@ -114,7 +125,22 @@ export default function Tabs({ data, projectData }: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
-            <LineChart data={data} />
+            <header className=" mt-4 mx-2">
+              <h2 className="sr-only" id="statistics">
+                Performance statistics
+              </h2>
+              <h2 className="text-lg"> Performance statistics</h2>
+            </header>
+            <div className="flex md:items-center gap-10 md:justify-center overflow-auto overflow-y-hidden  mt-4 w-s">
+              {/* <Calendar /> */}
+              <Status />
+              <div>
+                <p className="mb-5 text-sm  text-neutral-500">
+                  tasks created vs tasks completed
+                </p>
+                <LineChart data={data} />
+              </div>
+            </div>
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
