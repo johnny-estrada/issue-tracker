@@ -31,9 +31,10 @@ interface Project {
 
 export default function Projects() {
   const [projectIndex, setProjectIndex] = useState(0);
+  // const [showProjectDetails, setShowProjectDetails] = useState(false);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>();
   const [formattedDates, setFormattedDates] = useState([]);
-  const [isComponentVisible, setComponentVisibility] = useState(true);
+  const [isComponentVisible, setComponentVisible] = useState(true);
 
   const { data: projects, isLoading } = useGetProjectsQuery("");
   const { data: tasks, isLoading: loading } = useGetTaskQuery("");
@@ -68,10 +69,14 @@ export default function Projects() {
     }
   }, [projects]);
 
+  if (!tasks || !filteredProjects) {
+    return null;
+  }
+
   function toggleProjects(e: SyntheticEvent) {
     const i = Number(e.currentTarget.id);
     setProjectIndex(i);
-    setComponentVisibility(!isComponentVisible);
+    setComponentVisible(!isComponentVisible);
   }
 
   const onFilter = (filterType: string) => {
@@ -102,16 +107,6 @@ export default function Projects() {
 
     setFilteredProjects(filteredProjects);
   };
-
-  if (!tasks) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
-  }
-
-  if (!filteredProjects) {
-    // Handle the case where tasks is undefined or projectIndex is out of bounds
-    return null; // or you can render an error message
-  }
 
   return (
     <>
@@ -168,6 +163,7 @@ export default function Projects() {
               projectIndex={projectIndex}
               toggleProjects={toggleProjects}
               formattedDates={formattedDates}
+              isVisible={isComponentVisible}
             />
 
             {projectIndex === undefined ? (
@@ -184,6 +180,7 @@ export default function Projects() {
                   projectIndex={projectIndex}
                   id={filteredProjects[projectIndex]?.id}
                   tasks={tasks}
+                  isVisible={isComponentVisible}
                 />
               </>
             )}
