@@ -1,5 +1,5 @@
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
-
+import { useAppSelector } from "../../hooks/hooks";
 import { Tab } from "@headlessui/react";
 import Header from "../../components/header/Header";
 import HeaderTitle from "../../components/header/HeaderTitle";
@@ -17,6 +17,9 @@ function classNames(
 function Settings() {
   const { data: users } = useGetUsersQuery("");
 
+  const { userInfo } = useAppSelector((state) => state.auth);
+  console.log(userInfo.role);
+
   const title = "Settings";
 
   return (
@@ -29,11 +32,11 @@ function Settings() {
         </Header>
 
         <Tab.Group>
-          <Tab.List className="flex bg-gray-200 pb-4 lg:pb-5">
+          <Tab.List className="flex bg-gray-200 px-2 pb-4 lg:pb-5">
             <Tab
               className={({ selected }) =>
                 classNames(
-                  "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md  px-3 text-stone-800  hover:bg-gray-50 focus:z-10 shadow-sm",
+                  "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md  px-3 py-1.5 text-stone-800  hover:bg-gray-50 focus:z-10 shadow-sm",
                   selected
                     ? "bg-stone-800 text-white pointer-events-none"
                     : "bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700",
@@ -43,20 +46,21 @@ function Settings() {
             >
               profile
             </Tab>
-
-            <Tab
-              className={({ selected }) =>
-                classNames(
-                  "text-sm leading-5 relative inline-flex items-center rounded-r-md px-3 py-1.5 text-gray-900 hover:bg-gray-50 focus:z-10 shadow-sm",
-                  selected
-                    ? "bg-stone-800 text-white pointer-events-none"
-                    : "bg-white border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                  "whitespace-nowrap border-b-2 text-sm",
-                )
-              }
-            >
-              users
-            </Tab>
+            {userInfo && userInfo.role === "admin" && (
+              <Tab
+                className={({ selected }) =>
+                  classNames(
+                    "text-sm leading-5 relative inline-flex items-center rounded-r-md px-3 py-1.5 text-stone-800 hover:bg-gray-50 focus:z-10 shadow-sm",
+                    selected
+                      ? "bg-stone-800 text-white pointer-events-none"
+                      : "bg-white border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                    "whitespace-nowrap border-b-2 text-sm",
+                  )
+                }
+              >
+                users
+              </Tab>
+            )}
           </Tab.List>
 
           <Tab.Panels>
@@ -81,7 +85,6 @@ function Settings() {
               </section>
             </Tab.Panel>
           </Tab.Panels>
-          <></>
         </Tab.Group>
       </div>
     </>
