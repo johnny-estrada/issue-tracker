@@ -131,7 +131,7 @@ const Tasks = () => {
             </>
 
             {taskIndex === undefined ? (
-              <div className="flex flex-col items-center justify-center h-full">
+              <div className="hidden lg:flex flex-col items-center justify-center h-full">
                 <img src={selectTask} alt="" className="w-56" />
                 <p className="text-gray-500 text-base mt-2">
                   Select a task to see it&apos;s details

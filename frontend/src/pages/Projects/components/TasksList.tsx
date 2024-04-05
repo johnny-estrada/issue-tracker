@@ -19,7 +19,7 @@ const TasksList = ({ tasks, id }: Props) => {
   return (
     <section
       aria-labelledby="tasks"
-      className="flex flex-col gap-3 text-sm h-1/3 flex-grow"
+      className="hidden lg:flex flex-col gap-3 text-sm h-1/3 flex-grow"
     >
       <header className="flex items-baseline gap-3">
         <h3 className="sr-only" id="tasks">

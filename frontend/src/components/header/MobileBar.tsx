@@ -27,7 +27,7 @@ const MobileBar = () => {
   return (
     <>
       {/* Mobile Top Nav */}
-      <div className="lg:hidden flex justify-end items-center gap-4 text-gray-900 bg-gray-200 px-6 pt-6 pb-2">
+      <div className="lg:hidden flex justify-end items-center gap-4 text-gray-900 bg-gray-200 px-6 pt-3 pb-2">
         <input
           type="text"
           name="mobile-search"
@@ -71,7 +71,7 @@ const MobileBar = () => {
       {/* Mobile create button */}
       <Link
         to={`/projects/create-project`}
-        className="lg:hidden fixed bottom-20 right-3 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
+        className="lg:hidden fixed bottom-20 right-6 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
       >
         +
       </Link>

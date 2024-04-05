@@ -18,14 +18,14 @@ const TwoColumns = ({ children }: Props) => {
   return (
     <>
       <Sidebar />
-      <div className="grid grid-cols-1 overflow-auto lg:flex flex-col lg:ml-[288px] h-screen">
+      <div className="grid grid-cols-1 overflow-auto lg:ml-[288px] h-full">
         <Header>
           {headerTop}
           {headerMiddle}
           {headerBottom}
         </Header>
         <main className="lg:flex h-full">
-          <div className="lg:flex-1 lg:px-14 lg:pt-10 border-r border-gray-200">
+          <div className="lg:flex-1 px-6 lg:px-14 lg:pt-10 border-r border-gray-200">
             {mainLeft}
           </div>
 

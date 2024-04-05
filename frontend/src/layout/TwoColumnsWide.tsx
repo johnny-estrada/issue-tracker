@@ -25,7 +25,7 @@ const TwoColumnsWide = ({ children }: Props) => {
           {headerBottom}
         </Header>
         <main className="lg:flex lg:h-screen gap-10 lg:px-14 lg:pt-10">
-          <div className="lg:w-2/5 mb-auto">{mainRight}</div>
+          <div className="lg:w-2/5 mb-20">{mainRight}</div>
           <div className="flex-1 mb-auto lg:block hidden">
             {mainLeftTop}
             {mainLeftBottom}

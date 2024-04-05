@@ -55,7 +55,7 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                     <React.Fragment>
                       <Disclosure.Button
                         onClick={() => handleDisclosureToggle(task.id)}
-                        className={`flex flex-col flex-wrap w-full justify-between text-left text-sm text-neutral-500 z-10 p-5 mb-2 sm:flex-nowrap rounded-lg shadow-sm ${
+                        className={`flex flex-col flex-wrap w-full justify-between text-left text-sm text-neutral-500 z-10 p-5 mb-2 sm:flex-nowrap rounded-lg shadow-sm ring-1 ring-gray-200 ${
                           open && openDisclosureId === task.id
                             ? "bg-neutral-800 text-white"
                             : "bg-gray-100 hover:bg-gray-200"

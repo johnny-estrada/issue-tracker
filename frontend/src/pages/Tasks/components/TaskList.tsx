@@ -70,14 +70,14 @@ const TaskList = ({
           {Object?.keys(sortedTasks).map((status) => (
             <div
               key={status}
-              className="flex flex-col justify-center gap-3 py-4 lg:py-0 m-4 lg:m-0 lg:mb-8"
+              className="flex flex-col justify-center gap-3 pt-6 lg:pt-0 lg:m-0 lg:mb-8"
               style={{ marginTop: "0px" }}
             >
               <h2 className="sr-only" id="tasks">
                 {status}
               </h2>
 
-              <h2 className="text-xl lg:text-2xl mb-4">{status}</h2>
+              <h2 className="text-xl lg:text-2xl lg:mb-4">{status}</h2>
 
               {sortedTasks[status]?.map((task: Task) => (
                 <SelectorList

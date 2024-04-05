@@ -12,7 +12,7 @@ interface Props {
 export default function DataDisplay({ projects, projectIndex }: Props) {
   return (
     <>
-      <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 pb-4 lg:px-0 lg:pb-0">
+      <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10  lg:px-0 ">
         {stats.map((stat) => (
           <div
             key={stat.name}
@@ -24,7 +24,7 @@ export default function DataDisplay({ projects, projectIndex }: Props) {
             <div className="flex justify-between">
               <dd className="mt-1 text-base lg:text-3xl tracking-tight text-gray-900">
                 {projects[projectIndex].hours}{" "}
-                <span className="text-2xl">Hrs</span>
+                <span className="text-sm lg:text-2xl">hrs</span>
               </dd>
 
               <stat.icon className="w-6 h-6 lg:w-10 lg:h-10 mt-auto rounded-md bg-gray-100 text-neutral-500 p-1 lg:p-2" />

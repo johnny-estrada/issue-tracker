@@ -3,9 +3,9 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 const Status = () => {
   return (
-    <>
-      <div className="flex flex-col items-center border border-gray-100 px-3 py-5 h-full shadow-sm rounded-lg mb-2 w-72">
-        <header className="flex">
+    <div className="w-full lg:w-72">
+      <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:px-3 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-72">
+        <header className="flex text-sm leading-3 lg:leading-none font-semibold ">
           <ChevronLeftIcon className="h-5 w-5 mr-5" />
           June 30 - July 30
           <ChevronRightIcon className="h-5 w-5 ml-5" />
@@ -32,7 +32,7 @@ const Status = () => {
           You almost reached your goal.
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

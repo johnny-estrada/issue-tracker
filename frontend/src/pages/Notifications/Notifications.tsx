@@ -37,7 +37,7 @@ const Notifications = () => {
         <Column>
           <HeaderTitle title="Notifications" />
           <SearchBar />
-          <div className="h-5"></div>
+          <div></div>
           <div className="flex justify-center m-auto items-center h-screen -mt-36">
             <div>
               <img src={notificationsIcon} alt="" className="w-28 lg:w-52" />

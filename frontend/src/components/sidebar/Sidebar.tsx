@@ -10,7 +10,7 @@ export default function Sidebar() {
         <div className="lg:mt-14 lg:mb-12 lg:pl-8">
           <Logo />
         </div>
-        <div>
+        <div className="flex items-center justify-center lg:block">
           <Navigation
             navigation={navigation}
             mobileNavigation={mobileNavigation}

@@ -54,8 +54,8 @@ function classNames(
 export default function Calendar() {
   return (
     <>
-      <div className="flex">
-        <div className=" shadow ring-1 ring-gray-200 rounded-lg pt-4 text-center w-80 mb-4">
+      <div className="flex justify-end">
+        <div className=" shadow ring-1 ring-gray-200 rounded-lg pt-4 text-center  mb-4 w-80 max-w-sm ">
           <div className="flex items-center text-gray-900 px-3">
             <button
               type="button"
