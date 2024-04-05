@@ -9,8 +9,9 @@ import LineChart from "./components/LineChart";
 import MyTask from "./components/MyTask";
 import MyProjects from "./components/MyProjects";
 import TwoColumnsWide from "../../layout/TwoColumnsWide";
-import Calendar from "./components/Calendar";
-// import Status from "./components/Status";
+// import Calendar from "./components/Calendar";
+import Tabs from "../../components/ui/Tabs";
+import Status from "./components/Status";
 
 // data
 import { lineChart } from "../../data/index";
@@ -67,20 +68,19 @@ const Dashboard = () => {
         <SearchBar />
         <DataDisplay projects={projects} projectIndex={projectIndex} />
 
-        <MyTask
-          id={tasks[projectIndex].id}
-          refetch={refetch}
-          projectIndex={projectIndex}
-          projects={projects}
-          tasks={tasks}
-          dates={formattedDates}
-          lineChartData={lineChart}
-        />
+        <div>
+          <Tabs data={lineChartData} projectData={projects} />
+          <MyTask
+            id={tasks[projectIndex].id}
+            refetch={refetch}
+            projectIndex={projectIndex}
+            projects={projects}
+            tasks={tasks}
+            dates={formattedDates}
+          />
+        </div>
 
-        <section
-          aria-labelledby="statistics"
-          className="flex justify-between flex-wrap"
-        >
+        <section aria-labelledby="statistics" className="flex flex-wrap">
           <div className="flex flex-1 flex-col">
             <header>
               <h2 className="sr-only" id="statistics">
@@ -95,8 +95,8 @@ const Dashboard = () => {
             <LineChart data={lineChartData} />
           </div>
 
-          <Calendar />
-          {/* <Status /> */}
+          {/* <Calendar /> */}
+          <Status />
         </section>
 
         <MyProjects
