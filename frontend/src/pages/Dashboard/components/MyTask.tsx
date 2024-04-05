@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import ShowHideList from "../components/ShowHideList";
 import Menu1 from "../../../components/ui/Menu1";
-import Tabs from "../../../components/ui/Tabs";
 import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface Project {
@@ -37,7 +36,6 @@ interface Props {
   tasks: Task[];
   dates: object[];
   refetch: any;
-  lineChartData: object[];
 }
 
 const MyTask = ({
@@ -46,7 +44,6 @@ const MyTask = ({
   projects,
   tasks,
   refetch,
-  lineChartData,
 }: Props) => {
   const NAV: Nav[] = [
     {
@@ -63,7 +60,6 @@ const MyTask = ({
 
   return (
     <>
-      <Tabs data={lineChartData} projectData={projects} />
       <section aria-labelledby="projects" className="hidden lg:block">
         <header className="hidden lg:flex justify-between pb-5">
           <div className="flex items-baseline gap-3">
