@@ -62,8 +62,11 @@ const CreateProjectForm = () => {
     <>
       {loadingCreate && <Loader />}
       <main className="space-y-10 divide-y divide-gray-900/10 border">
-        <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3 lg:mt-5">
-          <form className="bg-white  mb-48 lg:mb-24" onSubmit={handleSubmit}>
+        <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3 lg:mt-10">
+          <form
+            className="bg-white  mb-48 lg:mb-24 border rounded-lg border-gray-900/10"
+            onSubmit={handleSubmit}
+          >
             <div className="px-6 py-6 sm:p-8 h-full">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-4">
@@ -71,7 +74,7 @@ const CreateProjectForm = () => {
                     htmlFor="client"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Client
+                    Client name
                   </label>
                   <div className="mt-2">
                     <input
@@ -110,7 +113,7 @@ const CreateProjectForm = () => {
                     htmlFor="description"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Project description
+                    Description
                   </label>
                   <div className="mt-2">
                     <textarea
@@ -124,30 +127,49 @@ const CreateProjectForm = () => {
                     />
                   </div>
                 </div>
-
-                <div className=" sm:col-span-4">
-                  <label
-                    htmlFor="status"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Status
-                  </label>
-                  <div className="mt-2">
-                    <select
-                      id="status"
-                      name="status"
-                      value={status}
-                      onChange={handleStatusChange}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <div className="flex gap-10 flex-wrap justify-between">
+                  <div className="flex-1 sm:col-span-2">
+                    <label
+                      htmlFor="region"
+                      className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      <option value="Active">active</option>
-                      <option value="Closed">closed</option>
-                      <option value="On hold">on hold</option>
-                    </select>
+                      Time (hours)
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="number"
+                        name="hours"
+                        id="hours"
+                        defaultValue={0}
+                        // value={hours}
+                        onChange={(e) => setHours(e.target.defaultValue)}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1 sm:col-span-4">
+                    <label
+                      htmlFor="status"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Status
+                    </label>
+                    <div className="mt-2">
+                      <select
+                        id="status"
+                        name="status"
+                        value={status}
+                        onChange={handleStatusChange}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      >
+                        <option value="Active">active</option>
+                        <option value="Closed">closed</option>
+                        <option value="On hold">on hold</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex gap-4 flex-wrap justify-between">
+                <div className="flex gap-10 flex-wrap justify-between">
                   <div className="flex-1">
                     <label
                       htmlFor="start-date"
@@ -175,25 +197,6 @@ const CreateProjectForm = () => {
                         setStartDate={setTargetDate}
                       />
                     </div>
-                  </div>
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="region"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Project hours
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="hours"
-                      id="hours"
-                      value={hours}
-                      onChange={(e) => setHours(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
                   </div>
                 </div>
                 <div className="sm:col-span-2">
