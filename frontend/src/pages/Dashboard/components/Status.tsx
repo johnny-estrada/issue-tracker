@@ -3,7 +3,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 const Status = () => {
   return (
-    <div className="w-full lg:w-72">
+    <div className="w-full lg:w-72 mb-5">
       <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:px-3 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-72">
         <header className="flex text-sm leading-3 lg:leading-none font-semibold ">
           <ChevronLeftIcon className="h-5 w-5 mr-5" />
