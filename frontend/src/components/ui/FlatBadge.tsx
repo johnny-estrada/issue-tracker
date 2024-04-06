@@ -7,16 +7,16 @@ export default function FlatBadge({ priority }: Props) {
 
   switch (priority) {
     case "low":
-      badgeColor = "bg-green-100 text-neutral-500";
+      badgeColor = "bg-green-100 border border-green-200 text-neutral-500";
       break;
     case "medium":
-      badgeColor = "bg-orange-100 text-neutral-500";
+      badgeColor = "bg-orange-100 border border-orange-200 text-neutral-500";
       break;
     case "high":
-      badgeColor = "bg-red-100 text-neutral-500";
+      badgeColor = "bg-red-100 border border-red-200 text-neutral-500";
       break;
     default:
-      badgeColor = "bg-green-100 text-neutral-500";
+      badgeColor = "bg-green-100 border border-gray-200 text-neutral-500";
       break;
   }
 
