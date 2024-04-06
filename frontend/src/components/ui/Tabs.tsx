@@ -81,9 +81,9 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm border-neutral-300",
+                "w-full py-2.5 text-sm",
                 selected
-                  ? "border-gray-600 text-gray-900"
+                  ? "border-gray-500 text-gray-900"
                   : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
                 "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
               )
@@ -94,7 +94,7 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm border-neutral-300",
+                "w-full py-2.5 text-sm",
                 selected
                   ? "border-gray-600 text-gray-900"
                   : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
@@ -107,7 +107,7 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm border-neutral-300",
+                "w-full py-2.5 text-sm",
                 selected
                   ? "border-gray-600 text-gray-900"
                   : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
