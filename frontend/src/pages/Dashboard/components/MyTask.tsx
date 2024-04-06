@@ -38,13 +38,7 @@ interface Props {
   refetch: any;
 }
 
-const MyTask = ({
-  id,
-  projectIndex,
-  projects,
-  tasks,
-  refetch,
-}: Props) => {
+const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
   const NAV: Nav[] = [
     {
       name: "Create task",
