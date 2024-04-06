@@ -86,8 +86,8 @@ const Dashboard = () => {
               <h2 className="sr-only" id="statistics">
                 Statistics
               </h2>
-              <h2 className="text-2xl">Statistics</h2>
-              <p className="mb-5 text-sm  text-neutral-500">
+              <h2 className="text-2xl mb-1">Statistics</h2>
+              <p className="mb-8 text-sm  text-neutral-500">
                 tasks created vs tasks completed
               </p>
             </header>
