@@ -1,11 +1,10 @@
 import { useState, useEffect, SyntheticEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRegisterMutation } from "../../state/redux/slices/usersApiSlice";
 import { setCredentials } from "../../state/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader";
-import Logo from "../../components/sidebar/Logo";
 import { useAppSelector } from "../../hooks/hooks";
 // import SignUpForm from "../components/form/SignUpForm";
 
@@ -59,7 +58,24 @@ export default function SignUp() {
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="">
-              <Logo />
+              <NavLink to={"/"}>
+                <div className="flex shrink-0 items-center gap-3">
+                  <svg
+                    width="26"
+                    height="26"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g fill="#FF7A50" fillRule="evenodd">
+                      <rect width="6" height="25" rx="2" />
+                      <rect opacity=".75" x="9" width="6" height="25" rx="2" />
+                      <rect opacity=".5" x="18" width="6" height="25" rx="2" />
+                    </g>
+                  </svg>
+                  <span className="text-white text-2xl tracking-wide">
+                    Klarity
+                  </span>
+                </div>
+              </NavLink>
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Sign up for an account
               </h2>
