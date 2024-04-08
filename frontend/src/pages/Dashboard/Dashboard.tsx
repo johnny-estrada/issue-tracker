@@ -66,7 +66,7 @@ const Dashboard = () => {
       <TwoColumnsWide>
         <HeaderTitle title="Dashboard" />
         <SearchBar />
-        <DataDisplay projects={projects} projectIndex={projectIndex} />
+        <DataDisplay projects={projects} projectIndex={projectIndex} tasks={tasks} taskIndex={0} />
 
         <div>
           <Tabs data={lineChartData} projectData={projects} />
@@ -80,7 +80,7 @@ const Dashboard = () => {
           />
         </div>
 
-        <section aria-labelledby="statistics" className="flex flex-wrap">
+        <section aria-labelledby="statistics" className="flex flex-wrap mb-5">
           <div className="flex flex-1 flex-col">
             <header>
               <h2 className="sr-only" id="statistics">
