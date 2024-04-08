@@ -64,7 +64,7 @@ const CreateProjectForm = () => {
       <main className="space-y-10 divide-y divide-gray-900/10 border">
         <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3 lg:mt-10">
           <form
-            className="bg-white  mb-48 lg:mb-24 border rounded-lg border-gray-900/10"
+            className="bg-white  mb-48 lg:mb-24"
             onSubmit={handleSubmit}
           >
             <div className="px-6 py-6 sm:p-8 h-full">
@@ -108,67 +108,6 @@ const CreateProjectForm = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-3">
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Description
-                  </label>
-                  <div className="mt-2">
-                    <textarea
-                      rows={4}
-                      name="description"
-                      id="description"
-                      autoComplete="description"
-                      defaultValue={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-10 flex-wrap justify-between">
-                  <div className="flex-1 sm:col-span-2">
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Time (hours)
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="number"
-                        name="hours"
-                        id="hours"
-                        defaultValue={0}
-                        // value={hours}
-                        onChange={(e) => setHours(e.target.defaultValue)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex-1 sm:col-span-4">
-                    <label
-                      htmlFor="status"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Status
-                    </label>
-                    <div className="mt-2">
-                      <select
-                        id="status"
-                        name="status"
-                        value={status}
-                        onChange={handleStatusChange}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      >
-                        <option value="Active">active</option>
-                        <option value="Closed">closed</option>
-                        <option value="On hold">on hold</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
                 <div className="flex gap-10 flex-wrap justify-between">
                   <div className="flex-1">
                     <label
@@ -199,6 +138,68 @@ const CreateProjectForm = () => {
                     </div>
                   </div>
                 </div>
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="description"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Description
+                  </label>
+                  <div className="mt-2">
+                    <textarea
+                      rows={4}
+                      name="description"
+                      id="description"
+                      autoComplete="description"
+                      defaultValue={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-10 flex-wrap justify-between">
+                  <div className="flex-1 sm:col-span-4">
+                    <label
+                      htmlFor="status"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Status
+                    </label>
+                    <div className="mt-2">
+                      <select
+                        id="status"
+                        name="status"
+                        value={status}
+                        onChange={handleStatusChange}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      >
+                        <option value="Active">active</option>
+                        <option value="Closed">closed</option>
+                        <option value="On hold">on hold</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="flex-1 sm:col-span-2">
+                    <label
+                      htmlFor="region"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Time (hours)
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="number"
+                        name="hours"
+                        id="hours"
+                        defaultValue={0}
+                        // value={hours}
+                        onChange={(e) => setHours(e.target.defaultValue)}
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="postal-code"
@@ -236,7 +237,7 @@ const CreateProjectForm = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+            <div className="flex items-center justify-end gap-x-6 border rounded-b-lg border-gray-900/10 px-4 py-4 sm:px-8">
               <button
                 type="button"
                 className="text-sm  leading-6 text-gray-900"
