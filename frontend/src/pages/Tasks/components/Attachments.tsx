@@ -29,6 +29,7 @@ interface Attachment {
 
 const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
   const [file, setFile] = useState<File | null>(null);
+  const [photo, setPhoto] = useState("");
   const [_image, setImage] = useState("");
   const [taskI, setTaskI] = useState(0);
   const [userI, setUserI] = useState(0);
@@ -51,7 +52,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
       .catch((err) => console.log(err));
   }, [taskId]);
 
-  const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null;
     setFile(selectedFile);
     setTaskI(taskId);
@@ -68,22 +69,26 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
     }
   };
 
-  const handleUpload = async () => {
+  const uploadFile = async () => {
+    const cloudName = "dm1cbmiwq";
+    const presetKey = "t9ew2cj4";
     if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("taskId", taskI.toString());
-      formData.append("userId", userI.toString());
-
       try {
-        await axios.post("http://localhost:5000/api/attachments", formData);
-        refetch();
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", presetKey);
+
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          formData,
+        );
+
+        const imageName = response.data.url;
+        setPhoto(imageName);
         toast.success("Attachment added successfully");
-        setFile(null);
-        setPreview(null);
-      } catch (err) {
-        console.log(err);
-        toast.error(`${err}`);
+        refetch(); // If you need to refetch the attachments after upload
+      } catch (error) {
+        toast.error(`Error uploading image: ${error}`);
       }
     } else {
       toast.error("No file selected");
@@ -174,7 +179,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
             <button
               className="flex gap-2 text-orange-400 hover:text-orange-500 mb-16 cursor-pointer text-sm"
               type="button"
-              onClick={handleUpload}
+              onClick={uploadFile}
             >
               Attach new file
             </button>
