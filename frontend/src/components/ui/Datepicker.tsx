@@ -18,7 +18,7 @@ const Datepicker = ({ startDate, setStartDate }: Props) => {
       dateFormat="MM/dd/yyyy"
       icon={
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://www.w3.org/2000/svg"
           width="1em"
           height="1em"
           viewBox="0 0 48 48"
