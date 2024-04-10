@@ -32,10 +32,10 @@ function LineChart() {
 
   return (
     <div className="flex min-w-[300px] w-96 lg:w-full h-full">
-      <ResponsiveContainer minWidth="100%" height={150}>
+      <ResponsiveContainer minWidth="100%" height={180}>
         <AreaChart
           data={data}
-          margin={{ top: 0, right: 50, bottom: -20, left: -25 }}
+          margin={{ top: 0, right: 100, bottom: 10, left: -25 }}
         >
           <Legend
             iconType="plainline"
@@ -50,7 +50,13 @@ function LineChart() {
           />
 
           <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1"></linearGradient>
+            <linearGradient
+              id="colorUv"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            ></linearGradient>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="2">
               <stop offset="5%" stopColor="#FF7A50" stopOpacity={0.6} />
               <stop offset="95%" stopColor="#FF7A50" stopOpacity={0} />
