@@ -11,7 +11,7 @@ import {
   ChevronDownIcon,
   ArrowRightOnRectangleIcon,
   UserIcon,
-  UsersIcon,
+  // UsersIcon,
 } from "@heroicons/react/24/outline";
 import { formatNameDisplay } from "../../utils/formatting";
 import { useAppSelector } from "../../hooks/hooks";
@@ -99,7 +99,7 @@ export default function DropDown() {
                   </Link>
                 )}
               </Menu.Item>
-              <Menu.Item>
+              {/* <Menu.Item>
                 {({ active }) => (
                   <Link
                     to="/settings"
@@ -111,7 +111,7 @@ export default function DropDown() {
                     Users
                   </Link>
                 )}
-              </Menu.Item>
+              </Menu.Item> */}
             </div>
             <div className="px-1 py-1">
               <Menu.Item>
