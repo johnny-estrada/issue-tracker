@@ -81,11 +81,11 @@ export default function Tabs({ data, projectData }: Props) {
           <Tab
             className={({ selected }) =>
               classNames(
-                "w-full py-2.5 text-sm",
+                "w-full py-2.5",
                 selected
                   ? "border-gray-500 text-gray-900"
                   : " text-gray-400 hover:border-gray-900 hover:text-gray-600",
-                "whitespace-nowrap border-b-2 py-4 px-1 text-sm",
+                "whitespace-nowrap border-b-2 py-4 px-1",
               )
             }
           >
@@ -129,13 +129,13 @@ export default function Tabs({ data, projectData }: Props) {
               <h2 className="sr-only" id="statistics">
                 Performance statistics
               </h2>
-              <h2 className="text-lg"> Performance statistics</h2>
+              <h2 className="text-xl text-gray-800"> Performance statistics</h2>
             </header>
-            <div className="flex md:items-center gap-10 md:justify-center overflow-auto overflow-y-hidden  mt-4 w-s">
+            <div className="flex md:items-center gap-2 lg:gap-10 md:justify-center overflow-auto overflow-y-hidden mt-4">
               {/* <Calendar /> */}
               <Status />
               <div>
-                <p className="mb-5 text-sm  text-neutral-500">
+                <p className="mb-5 text-sm font-semibold text-neutral-800">
                   tasks created vs tasks completed
                 </p>
                 <LineChart data={data} />
