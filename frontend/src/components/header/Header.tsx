@@ -8,7 +8,7 @@ export default function Header({ children }) {
   return (
     <>
       <MobileBar />
-      <header className="pb-4 lg:pb-0 lg:py-4 px-6 lg:px-14 lg:pt-8 z-10 bg-gray-200">
+      <header className="pb-4 lg:pb-3 lg:py-4 px-6 lg:px-14 lg:pt-8 z-10 bg-gray-200">
         {/* Top header section */}
         <div className="flex justify-between mb-3 lg:mb-6">
           {/* <HeaderTitle /> */}
