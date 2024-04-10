@@ -66,7 +66,12 @@ const Dashboard = () => {
       <TwoColumnsWide>
         <HeaderTitle title="Dashboard" />
         <SearchBar />
-        <DataDisplay projects={projects} projectIndex={projectIndex} tasks={tasks} taskIndex={0} />
+        <DataDisplay
+          projects={projects}
+          projectIndex={projectIndex}
+          tasks={tasks}
+          taskIndex={0}
+        />
 
         <div>
           <Tabs data={lineChartData} projectData={projects} />
@@ -87,7 +92,7 @@ const Dashboard = () => {
                 Statistics
               </h2>
               <h2 className="text-2xl mb-1">Statistics</h2>
-              <p className="mb-8 text-sm  text-neutral-500">
+              <p className="lg:mb-4 text-sm  text-neutral-500">
                 tasks created vs tasks completed
               </p>
             </header>
