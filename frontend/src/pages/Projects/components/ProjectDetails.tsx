@@ -56,8 +56,7 @@ const ProjectDetails = ({
   projectIndex,
   id,
   tasks,
-  refetch,
-  // isVisible,
+  refetch, // isVisible,
 }: Props) => {
   const NAV: Navigation[] = [
     {

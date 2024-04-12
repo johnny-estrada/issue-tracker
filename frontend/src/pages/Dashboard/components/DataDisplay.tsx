@@ -1,15 +1,60 @@
-import { stats } from "../../../data/index";
+import {
+  ClockIcon,
+  FolderIcon,
+  ClipboardDocumentCheckIcon,
+  ListBulletIcon,
+} from "@heroicons/react/24/outline";
 
 interface Project {
   hours: number;
 }
 
+interface Task {
+  tasks: object[];
+  status: string;
+}
+
 interface Props {
   projects: Project[];
   projectIndex: number;
+  tasks: Task[];
+  taskIndex: number;
 }
 
-export default function DataDisplay({ projects, projectIndex }: Props) {
+export default function DataDisplay({
+  projects,
+  projectIndex,
+  tasks,
+  taskIndex,
+}: Props) {
+  const projectHours = projects[projectIndex].hours;
+  console.log(projectHours);
+  const y = tasks[9].status === "open";
+
+  const x = [];
+
+  const projectCompleted = () => {
+    tasks?.map((task) => {
+      if (task.status === "open") {
+        x.push(task);
+      }
+    });
+    return x;
+  };
+
+  projectCompleted();
+  console.log(y);
+
+  // tasks[taskIndex].status === 'open / tasks[taskIndex].status ';//task open / task completed (taskStatus)
+  // const taskDue = ; //task  targetDate = today / task total = open
+  // const newAssigned = ; // task total where userid = user;
+
+  const stats = [
+    { name: "Hours this week", stat: "32", icon: ClockIcon },
+    { name: "Project completed", stat: "78", icon: FolderIcon },
+    { name: "Tasks due", stat: "32", icon: ClipboardDocumentCheckIcon },
+    { name: "Assigned to me", stat: "42", icon: ListBulletIcon },
+  ];
   return (
     <>
       <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10  lg:px-0 ">
@@ -23,7 +68,8 @@ export default function DataDisplay({ projects, projectIndex }: Props) {
             </dt>
             <div className="flex justify-between">
               <dd className="mt-1 text-base lg:text-3xl tracking-tight text-gray-900">
-                {projects[projectIndex].hours}{" "}
+                {/* {projects[projectIndex].hours}{" "} */}
+                {projectHours}
                 <span className="text-sm lg:text-2xl">hrs</span>
               </dd>
 
