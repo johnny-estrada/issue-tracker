@@ -60,10 +60,7 @@ export default function SignUp() {
             <div className="">
               <NavLink to={"/"}>
                 <div className="flex shrink-0 items-center gap-3">
-                  <svg
-                    width="26"
-                    height="26"
-                  >
+                  <svg width="26" height="26">
                     <g fill="#FF7A50" fillRule="evenodd">
                       <rect width="6" height="25" rx="2" />
                       <rect opacity=".75" x="9" width="6" height="25" rx="2" />
