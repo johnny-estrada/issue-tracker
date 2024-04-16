@@ -13,14 +13,14 @@ const Status = () => {
   return (
     <div className="w-full lg:w-72 mb-5">
       <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:px-3 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-72">
-        <header className="flex text-sm leading-2 lg:leading-0 font-semibold ">
+        <header className="flex text-sm leading-2 lg:leading-0 font-semibold mb-2 lg:mb-1">
           {/* <ChevronLeftIcon className="h-5 w-5 mr-5" /> */}
           {`${formattedStartDate} - ${formattedEndDate}`}
           {/* <ChevronRightIcon className="h-5 w-5 ml-5" /> */}
         </header>
         <Link
           to="/tasks"
-          className="underline text-xs text-orange-400 hover:text-orange-500 mb-5"
+          className="hidden lg:inline underline text-xs text-orange-400 hover:text-orange-500 mb-5"
         >
           view all
         </Link>
