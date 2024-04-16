@@ -69,12 +69,20 @@ const MobileBar = () => {
         </Link>
       </div>
       {/* Mobile create button */}
-      <Link
-        to={`/projects/create-project`}
-        className="lg:hidden fixed bottom-20 right-6 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
-      >
-        +
-      </Link>
+      {window.location.href.split("/")[3] === "settings" ||
+      window.location.href.split("/")[4] === "create-project" ||
+      window.location.href.split("/")[3] === "notifications" ? (
+        <></>
+      ) : (
+        <>
+          <Link
+            to={`/projects/create-project`}
+            className="lg:hidden fixed bottom-20 right-6 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
+          >
+            +
+          </Link>
+        </>
+      )}
     </>
   );
 };
