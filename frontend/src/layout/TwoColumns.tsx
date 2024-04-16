@@ -18,7 +18,7 @@ const TwoColumns = ({ children }: Props) => {
   return (
     <>
       <Sidebar />
-      <div className="grid grid-cols-1 overflow-auto lg:ml-[288px] h-full">
+      <div className="grid grid-cols-1 overflow-auto lg:ml-[288px] h-full lg:h-screen">
         <Header>
           {headerTop}
           {headerMiddle}
