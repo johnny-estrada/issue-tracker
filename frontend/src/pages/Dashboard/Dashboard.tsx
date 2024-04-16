@@ -74,7 +74,7 @@ const Dashboard = () => {
         />
 
         <div>
-          <Tabs data={lineChartData} projectData={projects} />
+          <Tabs data={lineChartData} projectData={projects} tasks={tasks} />
           <MyTask
             id={tasks[projectIndex].id}
             refetch={refetch}
