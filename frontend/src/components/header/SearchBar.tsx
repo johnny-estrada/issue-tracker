@@ -2,7 +2,6 @@ import { useState, SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useSearchTaskQuery } from "../../state/redux/slices/tasksApiSlice";
-import { BellIcon } from "@heroicons/react/24/outline";
 
 interface Task {
   id: number;
@@ -49,7 +48,9 @@ const SearchBar = () => {
               onSubmit={handleSubmit}
             />
             {searchResults.length === 0 ? (
-              <p>No results found</p>
+              <div className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 h-16 bg-white px-4 py-2">
+                <p>No results found</p>
+              </div>
             ) : search && !isLoading ? (
               <ul className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 bg-white">
                 {searchResults
