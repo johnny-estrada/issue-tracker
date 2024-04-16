@@ -18,8 +18,13 @@ interface Project {
   status: string;
 }
 
+interface Task {
+  tasks: object[];
+}
+
 interface Props {
   data: object[];
+  tasks: object[];
   projectData: Project[];
 }
 
@@ -29,7 +34,7 @@ function classNames(
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Tabs({ data, projectData }: Props) {
+export default function Tabs({ data, projectData, tasks }: Props) {
   const [projects, _setProjects] = useState(projectData);
   const [projectIndex, setProjectIndex] = useState(0);
 
@@ -151,7 +156,7 @@ export default function Tabs({ data, projectData }: Props) {
             <ShowHideList
               projectIndex={projectIndex}
               projects={projects}
-              tasks={[]}
+              tasks={tasks}
             />
           </Tab.Panel>
           <Tab.Panel
