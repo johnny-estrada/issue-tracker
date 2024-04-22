@@ -1,4 +1,4 @@
-# ![Issue Tracker Demo](./src/assets/icons/logo.svg) Klarity Issue Tracker
+# ![Issue Tracker Demo](/frontend/public/favicon.svg) Klarity Issue Tracker
 
 ## Overview
 
