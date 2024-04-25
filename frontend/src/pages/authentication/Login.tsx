@@ -129,7 +129,7 @@ export default function Login() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <input
                         id="remember-me"
@@ -153,14 +153,14 @@ export default function Login() {
                         Forgot password?
                       </a>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div>
                     {isLoading && <Loader />}
 
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Sign in
                     </button>
@@ -168,7 +168,7 @@ export default function Login() {
                 </form>
               </div>
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <div className="relative">
                   <div
                     className="absolute inset-0 flex items-center"
@@ -218,7 +218,7 @@ export default function Login() {
                     <span className="text-sm leading-6">GitHub</span>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
