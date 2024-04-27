@@ -4,6 +4,7 @@ import {
   ClipboardDocumentCheckIcon,
   ListBulletIcon,
 } from "@heroicons/react/24/outline";
+import { useEffect } from "react";
 
 interface Project {
   hours: number;
@@ -31,19 +32,27 @@ export default function DataDisplay({
   console.log(projectHours);
   const y = tasks[9].status === "open";
 
-  const x = [];
 
-  const projectCompleted = () => {
-    tasks?.map((task) => {
-      if (task.status === "open") {
-        x.push(task);
-      }
-    });
-    return x;
-  };
+  useEffect(() => {
+    const projectCompleted = () => {
+      const x: object[] = [];
+  
+      tasks?.map((task) => {
+        if (projects[projectIndex].id === task.projectId) {
+          x.push(task.id);
+        } if (projects[projectIndex].id === task.projectId) {
+          return tasks.length / x;
+        }
+      });
+  
+    
+    };
+    console.log(projectCompleted());
+  }, [tasks, projects, projectIndex]
+  )
 
-  projectCompleted();
-  console.log(y);
+
+
 
   // tasks[taskIndex].status === 'open / tasks[taskIndex].status ';//task open / task completed (taskStatus)
   // const taskDue = ; //task  targetDate = today / task total = open
