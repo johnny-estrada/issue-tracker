@@ -44,7 +44,7 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
   };
 
   return (
-    <ul>
+    <ul className="pt-4 lg:pt-0">
       {tasks?.map(
         (task: Task) =>
           task.projectId === projects[projectIndex]?.id && (
@@ -63,7 +63,7 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                       >
                         <div>
                           <div className="flex items-center justify-between">
-                            <p className="text-sm text-neutral-500">
+                            <p className="text-sm text-neutral-400">
                               TSK-{task.id}
                             </p>
                             {open && openDisclosureId === task.id && (
@@ -94,7 +94,13 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                             {task.name}
                           </h3>
                         </div>
-                        <Disclosure.Panel className="mb-7 text-sm text-neutral-500 z-10">
+                        <Disclosure.Panel
+                          className={`mb-7 text-sm z-10 ${
+                            open && openDisclosureId === task.id
+                              ? "text-neutral-300"
+                              : ""
+                          }`}
+                        >
                           {task.description}
                         </Disclosure.Panel>
                         <div className="flex justify-between items-center">
@@ -103,7 +109,7 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                             {open && openDisclosureId === task.id && (
                               <div className="flex items-center justify-center gap-4">
                                 <AvatarGroup members={projects[1].team} />
-                                <p className="text-sm">
+                                <p className="text-sm text-neutral-300">
                                   {formatDate({
                                     dateString: task.startDate,
                                     options: {
