@@ -4,7 +4,6 @@ interface Users {
   userInfo: object;
   name: string;
   email: string;
-  status: string;
   title: string;
 }
 
@@ -28,12 +27,6 @@ const Details = ({ userInfo }: Props) => {
         <div aria-labelledby="projects">
           <div className="max-w-[90%]">
             <ul>
-              <li className="flex justify-center py-2 items-center w-full">
-                <p className="w-36 text-sm text-neutral-500">Status</p>
-                <div className="flex-1">
-                  <FlatBadge priority={userInfo.status || "active"} />
-                </div>
-              </li>
               <li className="flex justify-center py-2 items-center w-full">
                 <p className="w-36 text-sm text-neutral-500">Name</p>
                 <p className="flex-1 text-sm text-neutral-800">
