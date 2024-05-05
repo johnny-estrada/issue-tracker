@@ -1,4 +1,3 @@
-import path from "path";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -11,6 +10,7 @@ import attachmentRoutes from "./routes/attachmentRoutes.js";
 
 import { setupLogging } from "./middleware/loggingMiddleware.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import { setStaticFile } from "./middleware/staticFileMiddleware.js";
 
 dotenv.config();
 
@@ -31,16 +31,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/attachments", attachmentRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => res.send("Server is ready"));
-}
+setStaticFile(app);
 
 app.use(notFound);
 app.use(errorHandler);
