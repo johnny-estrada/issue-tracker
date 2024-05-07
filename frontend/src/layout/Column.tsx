@@ -10,14 +10,20 @@ const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <Sidebar />
-      <div className="grid grid-cols-1 overflow-hidden lg:flex flex-col lg:h-screen lg:ml-[288px]">
-        <Header>
-          {headerTop}
-          {headerMiddle}
-          {headerBottom}
-        </Header>
-        <main className="lg:flex lg:h-screen">{main}</main>
+      <div className=" lg:flex grid grid-rows-3 grid-flow-col bg-slate-600 h-screen overflow-hidden">
+        <div className="absolute z-20 w-full lg:w-72 bottom-0 bottom- row-span-3 bg-red-800 lg:relative lg:h-auto">
+          <Sidebar />
+        </div>
+        <div className="flex flex-col h-screen lg:h-full w-full overflow-auto">
+          <Header>
+            {headerTop}
+            {headerMiddle}
+            {headerBottom}
+          </Header>
+          <main className="flex flex-col lg:flex-row flex-1 row-span-2 col-span-2 bg-white">
+            {main}
+          </main>
+        </div>
       </div>
     </>
   );
