@@ -80,7 +80,7 @@ export default function Tabs({ data, projectData, tasks }: Props) {
   ));
 
   return (
-    <div className="lg:hidden w-full px-4 py-5 sm:px-0">
+    <div className="lg:hidden w-full py-4 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex rounded-xl p-1">
           <Tab
