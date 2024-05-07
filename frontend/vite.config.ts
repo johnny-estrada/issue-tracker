@@ -1,8 +1,17 @@
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
- 
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import autoprefixer from 'autoprefixer';
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'postcss',
+      plugins: [
+        autoprefixer()
+      ]
+    }
+  ],
   server: {
     port: 3000,
     proxy: {
@@ -12,4 +21,4 @@ export default defineConfig({
       }
     }
   }
-})
+});
