@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <div className=" lg:flex grid grid-flow-col h-screen overflow-hidden">
-          <Sidebar />
+        <Sidebar />
         <div className="flex flex-col h-screen lg:h-full w-full overflow-auto">
           <Header>
             {headerTop}
