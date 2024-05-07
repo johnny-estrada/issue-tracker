@@ -31,8 +31,8 @@ function LineChart() {
   const data = generateWeekData();
 
   return (
-    <div className="flex min-w-[300px] w-96 lg:w-full h-full">
-      <ResponsiveContainer minWidth="100%" height={180}>
+    <div className="flex min-w-[250px] w-80 lg:w-auto">
+      <ResponsiveContainer minWidth="135%" height={180}>
         <AreaChart
           data={data}
           margin={{ top: 0, right: 100, bottom: 10, left: -25 }}
