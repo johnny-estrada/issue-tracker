@@ -29,10 +29,10 @@ const Profile = ({
     <section aria-labelledby="profile">
       <header className="flex justify-between">
         <h2 className="sr-only" id="profile">
-          Profile
+          My profile
         </h2>
 
-        <h2 className="text-xl lg:text-2xl pb-4">Profile</h2>
+        <h2 className="text-xl lg:text-2xl pb-4">My profile</h2>
       </header>
       <form method="PUT" onSubmit={submitHandler} className="bg-white mb-10">
         <div className="pb-4">
@@ -42,7 +42,7 @@ const Profile = ({
                 Photo
               </label>
 
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-center">
                 {photo ? (
                   <Image
                     style={{ width: 80, height: 80, borderRadius: 50 }}
@@ -62,7 +62,7 @@ const Profile = ({
                   className="px-3 py-2 rounded-md cursor-pointer shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 text-sm"
                   htmlFor="imgupload"
                 >
-                  Upload file
+                  Upload image
                 </label>
                 <input
                   type="file"
@@ -87,7 +87,7 @@ const Profile = ({
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium leading-6 text-slate-500"
+                className="block text-sm leading-6 text-slate-500"
               >
                 Name
               </label>
@@ -108,7 +108,7 @@ const Profile = ({
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-slate-500"
+                className="block text-sm leading-6 text-slate-500"
               >
                 Email address
               </label>
