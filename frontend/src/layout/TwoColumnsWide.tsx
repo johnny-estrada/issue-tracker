@@ -17,11 +17,11 @@ const TwoColumnsWide = ({ children }: Props) => {
 
   return (
     <>
-      <div className="grid grid-rows-3 grid-flow-col lg:flex h-screen overflow-hidden">
-        <div className="fixed z-20 w-full lg:w-72 bottom-0 row-span-3 lg:h-auto lg:relative">
+      <div className="grid grid-flow-col lg:flex lg:h-screen overflow-hidden">
+        <div className="absolute z-40 w-full lg:w-72 bottom-0 row-span-3 lg:h-auto lg:relative">
           <Sidebar />
         </div>
-        <div className="flex  flex-col h-screen lg:h-full w-full overflow-auto">
+        <div className="flex flex-col h-screen lg:h-full w-full overflow-auto">
           <Header>
             {headerTop}
             {headerMiddle}
