@@ -11,7 +11,7 @@ const Status = () => {
   const formattedEndDate = format(endDate, "MMM dd");
 
   return (
-    <div className="flex justify-end items-center flex-1">
+    <div className="flex lg:justify-end items-center lg:flex-1">
       <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:px-3 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-3/4">
         <header className="flex text-sm leading-2 lg:leading-0 font-semibold mb-2 lg:mb-1">
           {/* <ChevronLeftIcon className="h-5 w-5 mr-5" /> */}
