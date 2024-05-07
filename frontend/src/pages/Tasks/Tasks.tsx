@@ -90,7 +90,7 @@ const Tasks = () => {
 
             {/* <FilterButton /> */}
           </div>
-          <div className="flex justify-center m-auto items-center h-screen -mt-36">
+          <div className="flex justify-center m-auto">
             <div className="flex flex-col items-end justify-center h-full">
               <div className="flex flex-col items-center justify-center">
                 <img src={create} alt="" className="w-40 lg:w-64" />
