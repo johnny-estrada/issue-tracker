@@ -10,27 +10,33 @@ const TwoColumnsWide = ({ children }: Props) => {
     headerTop,
     headerMiddle,
     headerBottom,
-    mainRight,
-    mainLeftTop,
-    mainLeftBottom,
+    mainLeft,
+    mainTopRight,
+    mainBottomRight,
   ] = children;
 
   return (
     <>
-      <Sidebar />
-      <div className="grid grid-cols-1 lg:flex flex-col lg:h-screen lg:ml-[288px]">
-        <Header>
-          {headerTop}
-          {headerMiddle}
-          {headerBottom}
-        </Header>
-        <main className="lg:flex lg:h-screen gap-10 lg:px-14 lg:pt-10">
-          <div className="lg:w-2/5 mb-20">{mainRight}</div>
-          <div className="flex-1 mb-auto lg:block hidden">
-            {mainLeftTop}
-            {mainLeftBottom}
-          </div>
-        </main>
+      <div className=" lg:flex grid grid-rows-3 grid-flow-col bg-slate-600 h-screen overflow-hidden">
+        <div className="absolute z-20 w-full lg:w-72 bottom-0 bottom- row-span-3 bg-red-800 lg:relative lg:h-auto">
+          <Sidebar />
+        </div>
+        <div className="flex  flex-col h-screen lg:h-full w-full overflow-auto">
+          <Header>
+            {headerTop}
+            {headerMiddle}
+            {headerBottom}
+          </Header>
+          <main className="flex flex-col lg:flex-row flex-1 row-span-2 col-span-2 bg-white mb-18 lg:mb-0">
+            <div className="lg:w-2/5 px-6 lg:px-14 lg:pt-10 mb-20 lg:mb-0">
+              {mainLeft}
+            </div>
+            <div className="hidden lg:block lg:flex-1 px-6 lg:px-14 lg:pt-10">
+              {mainTopRight}
+              {mainBottomRight}
+            </div>
+          </main>
+        </div>
       </div>
     </>
   );
