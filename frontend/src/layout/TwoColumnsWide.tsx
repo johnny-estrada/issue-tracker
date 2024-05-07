@@ -29,7 +29,7 @@ const TwoColumnsWide = ({ children }: Props) => {
             <div className="lg:w-2/5 px-6 lg:px-14 lg:pt-10 mb-20 lg:mb-0">
               {mainLeft}
             </div>
-            <div className="hidden lg:block lg:flex-1 px-6 lg:px-14 lg:pt-10">
+            <div className="hidden lg:block lg:flex-1 px-6 lg:pr-14 lg:pl-0 lg:pt-10">
               {mainTopRight}
               {mainBottomRight}
             </div>
