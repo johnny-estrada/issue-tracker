@@ -130,12 +130,12 @@ export default function Tabs({ data, projectData, tasks }: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
-            <header className=" mt-4 mx-2">
+            <div className=" mt-4 mx-2">
               <h2 className="sr-only" id="statistics">
                 Performance statistics
               </h2>
               <h2 className="text-xl text-gray-800"> Performance statistics</h2>
-            </header>
+            </div>
             <div className="flex md:items-center gap-2 lg:gap-10 md:justify-center overflow-auto overflow-y-hidden mt-4">
               {/* <Calendar /> */}
               <Status />
@@ -149,7 +149,7 @@ export default function Tabs({ data, projectData, tasks }: Props) {
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
-              " p-3",
+              "lg:p-3",
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
@@ -161,13 +161,13 @@ export default function Tabs({ data, projectData, tasks }: Props) {
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
-              " p-3",
+              "lg:p-3",
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
             )}
           >
-            <ul className="flex flex-col gap-3 overflow-hidden rounded-lg px-1 py-4">
+            <div className="flex flex-col gap-3 overflow-hidden rounded-lg px-1 py-4">
               {projectList}
-            </ul>
+            </div>
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
