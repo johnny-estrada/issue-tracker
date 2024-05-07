@@ -12,6 +12,7 @@ import TwoColumnsWide from "../../layout/TwoColumnsWide";
 // import Calendar from "./components/Calendar";
 import Tabs from "../../components/ui/Tabs";
 import Status from "./components/Status";
+import Loader from "../../components/ui/Loader";
 
 // data
 import { lineChart } from "../../data/index";
@@ -25,7 +26,7 @@ const Dashboard = () => {
   const [projectIndex, setProjectIndex] = useState(0);
   const [formattedDates, setFormattedDates] = useState([]);
   const [lineChartData, _setLineChartData] = useState(lineChart);
-  const { data: projects, refetch } = useGetProjectsQuery("");
+  const { data: projects, isLoading, refetch } = useGetProjectsQuery("");
   const { data: tasks } = useGetTaskQuery("");
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const Dashboard = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <TwoColumnsWide>
         <HeaderTitle title="Dashboard" />
         <SearchBar />
@@ -70,7 +72,6 @@ const Dashboard = () => {
           projects={projects}
           projectIndex={projectIndex}
           tasks={tasks}
-          taskIndex={0}
         />
 
         <div>
@@ -85,7 +86,7 @@ const Dashboard = () => {
           />
         </div>
 
-        <section aria-labelledby="statistics" className="flex flex-wrap mb-5">
+        <section aria-labelledby="statistics" className="flex mb-5 w-full">
           <div className="flex flex-1 flex-col">
             <header>
               <h2 className="sr-only" id="statistics">
