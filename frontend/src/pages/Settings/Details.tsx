@@ -13,7 +13,7 @@ interface Props {
 
 const Details = ({ userInfo }: Props) => {
   return (
-    <section className="flex-1 px-4  lg:px-14 pt-4  lg:pt-10 border-l border-gray-200">
+    <section className="flex-1 px-4 lg:px-14 pt-4 lg:pt-10 border-l border-gray-200">
       <div className="hidden lg:block">
         <header className="flex justify-between">
           <h2 className="sr-only" id="account">
