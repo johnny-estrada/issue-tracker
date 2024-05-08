@@ -61,12 +61,12 @@ const ProjectDetails = ({
   const NAV: Navigation[] = [
     {
       name: "Create project",
-      href: "/projects/create-project",
+      href: "/projects/create",
       icon: PlusIcon,
     },
     {
       name: "Edit project",
-      href: `/projects/edit-project/${id}`,
+      href: `/projects/edit/${id}`,
       icon: PencilSquareIcon,
     },
   ];

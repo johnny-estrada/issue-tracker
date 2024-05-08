@@ -33,19 +33,13 @@ function App() {
             <Route index={true} path="/" element={<Dashboard />} />
 
             <Route path="/projects" element={<Projects />} />
-            <Route
-              path="/projects/create-project"
-              element={<CreateProject />}
-            />
-            <Route
-              path="/projects/edit-project/:id"
-              element={<EditProject />}
-            />
+            <Route path="/projects/create" element={<CreateProject />} />
+            <Route path="/projects/edit/:id" element={<EditProject />} />
 
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/tasks/:id" element={<TaskInformation />} />
-            <Route path="/tasks/create-task" element={<CreateTask />} />
-            <Route path="/tasks/edit-task/:id" element={<EditTask />} />
+            <Route path="/tasks/create" element={<CreateTask />} />
+            <Route path="/tasks/edit/:id" element={<EditTask />} />
 
             <Route path="/notifications" element={<Notifications />} />
 

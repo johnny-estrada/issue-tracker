@@ -42,12 +42,12 @@ const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
   const NAV: Nav[] = [
     {
       name: "Create task",
-      href: "/tasks/create-task",
+      href: "/tasks/create",
       icon: PlusIcon,
     },
     {
       name: "Edit task",
-      href: `/tasks/edit-task/${id}`,
+      href: `/tasks/edit/${id}`,
       icon: PencilSquareIcon,
     },
   ];

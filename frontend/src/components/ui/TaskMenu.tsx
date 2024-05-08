@@ -69,7 +69,7 @@ export default function DropDown({ id, refetch }: Props) {
               <Menu.Item>
                 {({ active }) => (
                   <NavLink
-                    to="/tasks/create-task"
+                    to="/tasks/create"
                     className={`${
                       active ? "bg-gray-100 text-gray-900" : "text-gray-500"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -82,7 +82,7 @@ export default function DropDown({ id, refetch }: Props) {
               <Menu.Item>
                 {({ active }) => (
                   <NavLink
-                    to={`/tasks/edit-task/${id}`}
+                    to={`/tasks/edit/${id}`}
                     className={`${
                       active ? "bg-gray-100 text-gray-900" : "text-gray-500"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
