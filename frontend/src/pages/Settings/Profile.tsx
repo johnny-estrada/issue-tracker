@@ -29,10 +29,10 @@ const Profile = ({
     <section aria-labelledby="profile">
       <header className="flex justify-between">
         <h2 className="sr-only" id="profile">
-          My profile
+          Profile
         </h2>
 
-        <h2 className="text-xl lg:text-2xl pb-4">My profile</h2>
+        <h2 className="text-xl lg:text-2xl pb-4">Profile</h2>
       </header>
       <form method="PUT" onSubmit={submitHandler} className="bg-white mb-10">
         <div className="pb-4">
