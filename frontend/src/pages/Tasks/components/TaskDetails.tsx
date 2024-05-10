@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 import { formatDate } from "../../../utils/formatting";
 
-import noData from "../../../assets/icons/state/empty-clipboards.svg";
 import FlatBadge from "../../../components/ui/FlatBadge";
 import Attachments from "./Attachments";
 import ActivityLog from "./ActivityLog";
@@ -159,7 +158,6 @@ const TaskDetails = ({
             </ul>
           ) : (
             <div className="flex flex-col justify-center items-center mt-10">
-              <img src={noData} alt="" className="w-36 mb-3" />
               <p>No task details available</p>
             </div>
           )}
