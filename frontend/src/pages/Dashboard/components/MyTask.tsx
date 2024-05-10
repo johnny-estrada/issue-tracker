@@ -41,14 +41,14 @@ interface Props {
 const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
   const NAV: Nav[] = [
     {
-      name: "Create task",
-      href: "/tasks/create",
-      icon: PlusIcon,
-    },
-    {
-      name: "Edit task",
+      name: "Edit",
       href: `/tasks/edit/${id}`,
       icon: PencilSquareIcon,
+    },
+    {
+      name: "Create",
+      href: "/tasks/create",
+      icon: PlusIcon,
     },
   ];
 
@@ -73,7 +73,7 @@ const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
             id={tasks[projectIndex].id}
             refetch={refetch}
             navigation={NAV}
-            delete1={"Delete task"}
+            delete1={"Delete"}
           />
         </header>
 

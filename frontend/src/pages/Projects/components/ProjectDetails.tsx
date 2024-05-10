@@ -60,14 +60,14 @@ const ProjectDetails = ({
 }: Props) => {
   const NAV: Navigation[] = [
     {
-      name: "Create project",
-      href: "/projects/create",
-      icon: PlusIcon,
-    },
-    {
-      name: "Edit project",
+      name: "Edit",
       href: `/projects/edit/${id}`,
       icon: PencilSquareIcon,
+    },
+    {
+      name: "Create",
+      href: "/projects/create",
+      icon: PlusIcon,
     },
   ];
 
@@ -89,7 +89,7 @@ const ProjectDetails = ({
               <Menu1
                 id={id}
                 navigation={NAV}
-                delete1={"Delete project"}
+                delete1={"Delete"}
                 refetch={refetch}
               />
             </header>

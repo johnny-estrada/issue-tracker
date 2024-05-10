@@ -60,25 +60,12 @@ export default function DropDown({ id, refetch }: Props) {
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <ArrowUturnLeftIcon className=" w-4 h-4 mr-2" />
-                    Back to tasks
+                    Go back
                   </NavLink>
                 )}
               </Menu.Item>
             </div>
             <div className="px-1 py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <NavLink
-                    to="/tasks/create"
-                    className={`${
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-500"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    <PlusIcon className=" w-4 h-4 mr-2" />
-                    Create task
-                  </NavLink>
-                )}
-              </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <NavLink
@@ -88,7 +75,20 @@ export default function DropDown({ id, refetch }: Props) {
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <PencilSquareIcon className=" w-4 h-4 mr-2" />
-                    Edit task
+                    Edit
+                  </NavLink>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <NavLink
+                    to="/tasks/create"
+                    className={`${
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-500"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <PlusIcon className=" w-4 h-4 mr-2" />
+                    Create
                   </NavLink>
                 )}
               </Menu.Item>
@@ -103,7 +103,7 @@ export default function DropDown({ id, refetch }: Props) {
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <TrashIcon className=" w-4 h-4 mr-2" />
-                    Delete task
+                    Delete
                   </button>
                 )}
               </Menu.Item>

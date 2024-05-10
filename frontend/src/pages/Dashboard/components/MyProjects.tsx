@@ -45,14 +45,14 @@ const MyProjects = ({
 }: Props) => {
   const NAV = [
     {
-      name: "Create project",
-      href: "/projects/create",
-      icon: PlusIcon,
-    },
-    {
-      name: "Edit project",
+      name: "Edit",
       href: `/projects/edit/${id}`,
       icon: PencilSquareIcon,
+    },
+    {
+      name: "Create",
+      href: "/projects/create",
+      icon: PlusIcon,
     },
   ];
 
@@ -109,7 +109,7 @@ const MyProjects = ({
             id={id}
             refetch={refetch}
             navigation={NAV}
-            delete1={"Delete project"}
+            delete1={"Delete"}
           />
         </header>
         <div className="flex flex-col gap-3 overflow-hidden rounded-lg">
