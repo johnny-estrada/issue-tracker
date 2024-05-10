@@ -17,11 +17,7 @@ const Datepicker = ({ startDate, setStartDate }: Props) => {
       }
       dateFormat="MM/dd/yyyy"
       icon={
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 48 48"
-        >
+        <svg width="1em" height="1em" viewBox="0 0 48 48">
           <mask id="ipSApplication0">
             <g fill="none" stroke="#fff" strokeLinejoin="round" strokeWidth="4">
               <path strokeLinecap="round" d="M40.04 22v20h-32V22"></path>
