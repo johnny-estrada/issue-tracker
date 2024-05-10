@@ -74,12 +74,25 @@ const SearchBar = () => {
             ) : null}
           </div>
         </form>
-        <Link
-          to={`/projects/create`}
-          className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10 w-44 h-12"
-        >
-          Create project
-        </Link>
+        {window.location.href.split("/")[3] === "tasks" ? (
+          <>
+            <Link
+              to={`/tasks/create`}
+              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10 w-44 h-12"
+            >
+              Create tasks
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              to={`/projects/create`}
+              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10 w-44 h-12"
+            >
+              Create project
+            </Link>
+          </>
+        )}
       </div>
     </>
   );
