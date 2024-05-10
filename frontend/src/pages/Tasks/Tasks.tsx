@@ -16,9 +16,9 @@ import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
 // import SortBy from "../../components/header/SortBy";
 
-import selectTask from "../../assets/icons/state/select-item.svg";
-import create from "../../assets/icons/state/add-task.svg";
 import { useAppSelector } from "../../hooks/hooks";
+import CreateTaskIcon from "./components/CreateTaskIcon";
+import SelectItemIcon from "./components/SelectItemIcon";
 
 interface Task {
   id: number;
@@ -93,7 +93,7 @@ const Tasks = () => {
           <div className="flex justify-center m-auto">
             <div className="flex flex-col items-end justify-center h-full">
               <div className="flex flex-col items-center justify-center">
-                <img src={create} alt="" className="w-40 lg:w-64" />
+                <CreateTaskIcon />
                 <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
                   No current active tasks
                 </p>
@@ -132,7 +132,7 @@ const Tasks = () => {
 
             {taskIndex === undefined ? (
               <div className="hidden lg:flex flex-col items-center justify-center h-full">
-                <img src={selectTask} alt="" className="w-56" />
+                <SelectItemIcon />
                 <p className="text-gray-500 text-base mt-2">
                   Select a task to see it&apos;s details
                 </p>
