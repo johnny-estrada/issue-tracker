@@ -1,5 +1,4 @@
 import { formatDate } from "../../../utils/formatting";
-import noData from "../../../assets/icons/state/empty-clipboards.svg";
 import FlatBadge from "../../../components/ui/FlatBadge";
 import TaskMenu from "../../../components/ui/TaskMenu";
 import Attachments from "./Attachments";
@@ -149,7 +148,6 @@ const Details = ({
             </ul>
           ) : (
             <div className="flex flex-col justify-center items-center mt-10">
-              <img src={noData} alt="" className="w-36 mb-3" />
               <p>No task details available</p>
             </div>
           )}
