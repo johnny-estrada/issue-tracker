@@ -47,7 +47,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/attachments?taskId=${taskId}`)
+      .get(`https://localhost:5000/api/attachments?taskId=${taskId}`)
       .then((res) => setImage(res.data))
       .catch((err) => console.log(err));
   }, [taskId]);
@@ -148,7 +148,7 @@ const Attachments = ({ taskId, userId, taskIndex, tasks }: Props) => {
                         {" "}
                         <img
                           className="w-full h-20 rounded m-auto"
-                          src={`http://localhost:5000/Uploads/${attachment.filename}`}
+                          src={`https://localhost:5000/Uploads/${attachment.filename}`}
                           alt=""
                         />
                       </>
