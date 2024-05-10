@@ -4,7 +4,7 @@ import HeaderTitle from "../../components/header/HeaderTitle";
 import Column from "../../layout/Column";
 import NotificationsList from "./components/NotificationsList";
 import SearchBar from "../../components/header/SearchBar";
-import notificationsIcon from "../../assets/icons/state/mailbox.svg";
+import MailboxIcon from "./components/MailboxIcon";
 
 const Notifications = () => {
   const { data: projects } = useGetProjectsQuery("");
@@ -40,7 +40,8 @@ const Notifications = () => {
           <div></div>
           <div className="flex justify-center m-auto items-center h-screen -mt-36">
             <div>
-              <img src={notificationsIcon} alt="" className="w-28 lg:w-52" />
+              <MailboxIcon />
+
               <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
                 No notifications yet
               </p>
