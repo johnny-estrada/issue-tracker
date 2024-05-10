@@ -1,11 +1,9 @@
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import { useAppSelector } from "../../hooks/hooks";
 import { Tab } from "@headlessui/react";
-import Header from "../../components/header/Header";
 import HeaderTitle from "../../components/header/HeaderTitle";
 import Users from "./admin/Users";
 import ProfileDetails from "./ProfileDetails";
-import Sidebar from "../../components/sidebar/Sidebar";
 import SearchBar from "../../components/header/SearchBar";
 import Column from "../../layout/Column";
 
