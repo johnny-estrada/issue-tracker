@@ -15,7 +15,7 @@ import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
 import SearchBar from "../../components/header/SearchBar";
 import selectProject from "../../assets/icons/state/select-item.svg";
-import projectImg from "../../assets/icons/state/file-folder.svg";
+import FileFolderIcon from "./components/FileFolderIcon";
 
 interface Project {
   projects: object[];
@@ -129,7 +129,7 @@ export default function Projects() {
           <div className="flex justify-center m-auto">
             <div className="flex flex-col items-end justify-center h-full">
               <div className="flex flex-col items-center justify-center">
-                <img src={projectImg} alt="" className="w-32 lg:w-56" />
+                <FileFolderIcon />
                 <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
                   No current active projects
                 </p>
