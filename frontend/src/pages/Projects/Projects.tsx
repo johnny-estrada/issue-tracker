@@ -14,8 +14,8 @@ import Loader from "../../components/ui/Loader";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
 import SearchBar from "../../components/header/SearchBar";
-import selectProject from "../../assets/icons/state/select-item.svg";
 import FileFolderIcon from "./components/FileFolderIcon";
+import SelectItemIcon from "../Tasks/components/SelectItemIcon";
 
 interface Project {
   projects: object[];
@@ -168,7 +168,7 @@ export default function Projects() {
 
             {projectIndex === undefined ? (
               <div className="hidden lg:flex flex-col items-center justify-center h-full">
-                <img src={selectProject} alt="" className="w-56" />
+                <SelectItemIcon />
                 <p className="text-gray-500 text-base mt-2">
                   Select a project to see it&apos;s details
                 </p>
