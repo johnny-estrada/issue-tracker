@@ -1,20 +1,16 @@
 import HeaderTitle from "../../components/header/HeaderTitle";
 import CreateProjectForm from "./components/CreateProjectForm";
-import Header from "../../components/header/Header";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Column from "../../layout/Column";
 
 const EditProject = () => {
   return (
     <>
-      <Sidebar />
-      <div className="flex flex-col h-screen lg:ml-[288px]">
-        <Header>
-          <HeaderTitle title="Create project" />
-          <></>
-        </Header>
+      <Column>
+        <HeaderTitle title="Create project" />
+        <></>
 
         <CreateProjectForm />
-      </div>
+      </Column>
     </>
   );
 };
