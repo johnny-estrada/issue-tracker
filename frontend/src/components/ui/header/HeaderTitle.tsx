@@ -1,5 +1,5 @@
 import Breadcrumbs from "./Breadcrumbs";
-import Greeting from "../../pages/Dashboard/components/Greeting";
+import Greeting from "../../../pages/Dashboard/components/Greeting";
 
 interface Props {
   title: string;

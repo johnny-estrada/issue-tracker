@@ -46,7 +46,7 @@ const Details = ({
 
   return (
     <section aria-labelledby="projects">
-      <div className="max-w-[90%]">
+      <div className="max-w-[90%] hidden lg:block">
         <p className="text-sm pb-5 text-neutral-500">{description}</p>
         <ul>
           <li className="flex justify-center py-2 items-center w-full">

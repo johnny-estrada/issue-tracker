@@ -1,7 +1,7 @@
 import { useState, SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { useSearchTaskQuery } from "../../state/redux/slices/tasksApiSlice";
+import { useSearchTaskQuery } from "../../../state/redux/slices/tasksApiSlice";
 
 interface Task {
   id: number;

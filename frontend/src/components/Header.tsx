@@ -1,6 +1,6 @@
 // import Search  from "../header/Search"
 
-import MobileBar from "./MobileBar";
+import MobileBar from "./ui/header/MobileBar";
 
 export default function Header({ children }) {
   const [title, searchbar, display] = children;

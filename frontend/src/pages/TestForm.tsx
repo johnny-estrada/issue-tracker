@@ -1,11 +1,11 @@
-import HeaderTitle from "../components/header/HeaderTitle";
-import Sidebar from "../components/sidebar/Sidebar";
+import HeaderTitle from "../components/ui/header/HeaderTitle";
+import Sidebar from "../components/Sidebar";
 import FormContainer from "../components/form/FormContainer";
 import { ArrowLongLeftIcon } from "@heroicons/react/20/solid";
 import LabeledInput from "../components/form/LabeledInput";
-import Header from "../components/header/Header";
+import Header from "../components/Header";
 import LabeledTextArea from "../components/form/LabeledTextArea";
-import Button from "../components/Button";
+import Button from "../components/ui/Button";
 
 const TestForm = () => {
   return (

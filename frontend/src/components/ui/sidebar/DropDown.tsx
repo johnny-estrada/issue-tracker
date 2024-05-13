@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { useLogoutMutation } from "../../state/redux/slices/usersApiSlice";
-import { logout } from "../../state/redux/slices/authSlice";
+import { useLogoutMutation } from "../../../state/redux/slices/usersApiSlice";
+import { logout } from "../../../state/redux/slices/authSlice";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import {
   ChevronDownIcon,
@@ -13,8 +13,8 @@ import {
   UserIcon,
   // UsersIcon,
 } from "@heroicons/react/24/outline";
-import { formatNameDisplay } from "../../utils/formatting";
-import { useAppSelector } from "../../hooks/hooks";
+import { formatNameDisplay } from "../../../utils/formatting";
+import { useAppSelector } from "../../../hooks/hooks";
 
 export default function DropDown() {
   const { userInfo } = useAppSelector((state) => state.auth);

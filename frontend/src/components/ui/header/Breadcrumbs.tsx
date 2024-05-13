@@ -4,7 +4,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 export default function Breadcrumbs() {
   const location = useLocation();
 
-  const crumbs = location.pathname
+  const breadcrumbs = location.pathname
     .split("/")
     .filter(Boolean)
     .map((crumb, index, array) => {
@@ -38,7 +38,7 @@ export default function Breadcrumbs() {
         className="h-4 w-4 flex-shrink-0 text-neutral-500"
         aria-hidden="true"
       />
-      {crumbs}
+      {breadcrumbs}
     </nav>
   );
 }

@@ -1,7 +1,7 @@
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "./ui/sidebar/Navigation";
+import Logo from "./ui/sidebar/Logo";
 
-import { navigation, mobileNavigation } from "../../data/index";
+import { navigation, mobileNavigation } from "../data/index";
 
 export default function Sidebar() {
   return (
