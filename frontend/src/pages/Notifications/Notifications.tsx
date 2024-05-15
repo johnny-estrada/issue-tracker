@@ -1,9 +1,9 @@
 import { SyntheticEvent, useState } from "react";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import Column from "../../layout/Column";
 import NotificationsList from "./components/NotificationsList";
-import SearchBar from "../../components/header/SearchBar";
+import SearchBar from "../../components/ui/header/SearchBar";
 import MailboxIcon from "./components/MailboxIcon";
 
 const Notifications = () => {
