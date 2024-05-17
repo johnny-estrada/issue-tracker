@@ -10,7 +10,6 @@ import {
   Cog6ToothIcon,
 } from "@heroicons/react/24/outline";
 
-
 export const navigation = [
   { name: "Dashboard", href: "/", icon: Squares2X2Icon, current: true },
   {
