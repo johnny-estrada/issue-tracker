@@ -1,7 +1,7 @@
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import EditingTemplate from "./components/EditingTemplate";
-import Header from "../../components/header/Header";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Header from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
 
 const EditProject = () => {
   return (

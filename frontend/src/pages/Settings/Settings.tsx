@@ -1,10 +1,10 @@
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import { useAppSelector } from "../../hooks/hooks";
 import { Tab } from "@headlessui/react";
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import Users from "./admin/Users";
 import ProfileDetails from "./ProfileDetails";
-import SearchBar from "../../components/header/SearchBar";
+import SearchBar from "../../components/ui/header/SearchBar";
 import Column from "../../layout/Column";
 
 function classNames(

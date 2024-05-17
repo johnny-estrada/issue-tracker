@@ -1,4 +1,4 @@
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import CreateProjectForm from "./components/CreateProjectForm";
 import Column from "../../layout/Column";
 

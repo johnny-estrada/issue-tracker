@@ -6,14 +6,14 @@ import { formatDate } from "../../utils/formatting";
 
 import TwoColumns from "../../layout/TwoColumns";
 import Column from "../../layout/Column";
-import HeaderTitle from "../../components/header/HeaderTitle";
-import ButtonGroup from "../../components/header/ButtonGroup";
-import FilterButton from "../../components/header/FilterButton";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
+import ButtonGroup from "../../components/ui/header/ButtonGroup";
+import FilterButton from "../../components/ui/header/FilterButton";
 
 import Loader from "../../components/ui/Loader";
 import ProjectList from "./components/ProjectList";
 import ProjectDetails from "./components/ProjectDetails";
-import SearchBar from "../../components/header/SearchBar";
+import SearchBar from "../../components/ui/header/SearchBar";
 import FileFolderIcon from "./components/FileFolderIcon";
 import SelectItemIcon from "../Tasks/components/SelectItemIcon";
 
