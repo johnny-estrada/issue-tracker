@@ -36,7 +36,7 @@ Klarity is an [issue tracker web application](https://www.klarity.online/) built
 ## Installation ⚙️
 1. **Clone Repository**: Clone this repository to your local machine using `git clone https://github.com/your-username/issue-tracker.git`.
 2. **Install Dependencies**: Navigate to the project directory and install dependencies using `npm install`.
-3. **Set Up Database**: Configure **MySQL** database settings in `config/database.js`.
+3. **Set Up Database**: Configure **MySQL** database settings in `backend/config/db.js`.
 4. **Start Server**: Start the server by running `npm run dev`.
 5. **Access Application**: Access the application in your web browser at `http://localhost:3000`.
 
