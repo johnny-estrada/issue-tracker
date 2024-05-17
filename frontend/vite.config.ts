@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import autoprefixer from 'autoprefixer';
-import postcssImport from 'postcss-import'
+import postcss from 'postcss-import'
 
 export default defineConfig({
   plugins: [
@@ -10,7 +10,7 @@ export default defineConfig({
       name: 'postcss',
       plugins: [
         autoprefixer(),
-        postcssImport()
+        postcss()
       ]
     }
   ],
