@@ -72,7 +72,7 @@ const CreateTaskForm = () => {
   return (
     <>
       {loadingCreate && <Loader />}
-      <main className="space-y-10 divide-y divide-gray-900/10 border">
+      <div className="space-y-10 divide-y divide-gray-900/10 border">
         <section className="px-8 max-w-2xl">
           <form
             className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
@@ -255,7 +255,7 @@ const CreateTaskForm = () => {
             </div>
           </form>
         </section>
-      </main>
+      </div>
     </>
   );
 };
