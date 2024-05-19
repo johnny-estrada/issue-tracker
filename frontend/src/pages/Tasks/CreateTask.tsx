@@ -1,21 +1,16 @@
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import CreateTaskForm from "./components/CreateTaskForm";
-import Header from "../../components/header/Header";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Column from "../../layout/Column";
 
 const CreateTask = () => {
   return (
     <>
-      <Sidebar />
-      <div className="flex flex-col h-screen lg:ml-[288px]">
-        <Header>
-          <HeaderTitle title="Create task" />
-          <></>
-        </Header>
-        <main>
-          <CreateTaskForm />
-        </main>
-      </div>
+      <Column>
+        <HeaderTitle title="Create task" />
+        <></>
+
+        <CreateTaskForm />
+      </Column>
     </>
   );
 };
