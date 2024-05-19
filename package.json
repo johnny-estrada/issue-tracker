@@ -32,9 +32,9 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-react": "^7.34.1",
     "prettier": "3.2.5"
   }
 }
