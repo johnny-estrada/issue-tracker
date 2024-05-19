@@ -61,7 +61,7 @@ const CreateProjectForm = () => {
   return (
     <>
       {loadingCreate && <Loader />}
-      <main className="space-y-10 divide-y divide-gray-900/10 border">
+      <div className="space-y-10 divide-y divide-gray-900/10 border">
         <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3 lg:mt-10">
           <form className="bg-white mb-24 lg:mb-24" onSubmit={handleSubmit}>
             <div className="px-6 py-6 sm:p-8 h-full">
@@ -251,7 +251,7 @@ const CreateProjectForm = () => {
             </div>
           </form>
         </section>
-      </main>
+      </div>
     </>
   );
 };
