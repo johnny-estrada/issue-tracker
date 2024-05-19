@@ -4,7 +4,6 @@ import LineChart from "../../pages/Dashboard/components/LineChart";
 import ShowHideList from "../../pages/Dashboard/components/ShowHideList";
 import SelectorList from "../ui/SelectorList";
 import AvatarGroup from "./AvatarGroup";
-// import Calendar from "../../pages/Dashboard/components/Calendar";
 import Status from "../../pages/Dashboard/components/Status";
 import { formatDate } from "../../utils/formatting";
 
