@@ -2,20 +2,19 @@ import { useState, useEffect, SyntheticEvent } from "react";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { formatDate } from "../../utils/formatting";
-import SearchBar from "../../components/header/SearchBar";
+import SearchBar from "../../components/ui/header/SearchBar";
 import DataDisplay from "./components/DataDisplay";
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import LineChart from "./components/LineChart";
 import MyTask from "./components/MyTask";
 import MyProjects from "./components/MyProjects";
 import TwoColumnsWide from "../../layout/TwoColumnsWide";
-// import Calendar from "./components/Calendar";
 import Tabs from "../../components/ui/Tabs";
 import Status from "./components/Status";
 import Loader from "../../components/ui/Loader";
 
 // data
-import { lineChart } from "../../data/index";
+import {lineChart} from "../../data/index"
 
 interface Project {
   startDate: string;
@@ -98,10 +97,9 @@ const Dashboard = () => {
               </p>
             </header>
 
-            <LineChart data={lineChartData} />
+            <LineChart />
           </div>
 
-          {/* <Calendar /> */}
           <Status />
         </section>
 
