@@ -45,13 +45,17 @@ const ProfileDetails = () => {
       formData,
     )
       .then((res) => {
-        const imageName = res.data.url;
+        let imageName = res.data.url;
 
+        if (imageName.startsWith("http://")) {
+          imageName = imageName.replace("http://", "https://");
+        }
+  
         setPhoto(imageName);
+        console.log(imageName);
       })
       .catch((error) => {
         console.error("Error uploading image:", error);
-        // Handle the error, e.g., show a toast or alert
       });
   };
 
