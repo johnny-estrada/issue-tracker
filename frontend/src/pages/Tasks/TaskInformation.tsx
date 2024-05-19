@@ -2,12 +2,13 @@ import { useParams } from "react-router-dom";
 import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
-import HeaderTitle from "../../components/header/HeaderTitle";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
 // import ButtonGroup from "../../components/header/ButtonGroup";
 import TwoColumns from "../../layout/TwoColumns";
 // import SortBy from "../../components/header/SortBy";
-import SearchBar from "../../components/header/SearchBar";
+import SearchBar from "../../components/ui/header/SearchBar";
 // import Subtasks from "./components/Subtasks";
+// import Comments from "./components/comments";
 import Information from "./components/Information";
 import Details from "./components/Details";
 import Loader from "../../components/ui/Loader";
@@ -60,8 +61,8 @@ const TaskInformation = () => {
 
           <div className="flex-1 p-4 lg:p-0">
             <Information tasks={tasks} taskIndex={b} />
-            {/* <Subtasks /> */}
-            {/* <Comments b={b} tasks={tasks} /> */}
+            {/* <Subtasks />
+            <Comments b={b} tasks={tasks} /> */}
           </div>
 
           <div className="flex-1 mb-20 p-4 lg:p-0">
