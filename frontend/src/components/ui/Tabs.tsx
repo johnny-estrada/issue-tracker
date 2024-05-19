@@ -136,7 +136,6 @@ export default function Tabs({ data, projectData, tasks }: Props) {
               <h2 className="text-xl text-gray-800"> Performance statistics</h2>
             </div>
             <div className="flex md:items-center gap-2 lg:gap-10 md:justify-center overflow-auto overflow-y-hidden mt-4">
-              {/* <Calendar /> */}
               <Status />
               <div>
                 <p className="mb-5 text-sm font-semibold text-neutral-800">
