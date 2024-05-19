@@ -6,15 +6,15 @@ import { formatDate } from "../../utils/formatting";
 
 import Column from "../../layout/Column";
 import TwoColumns from "../../layout/TwoColumns";
-import HeaderTitle from "../../components/header/HeaderTitle";
-import SearchBar from "../../components/header/SearchBar";
-import ButtonGroup from "../../components/header/ButtonGroup";
-// import FilterButton from "../../components/header/FilterButton";
+import HeaderTitle from "../../components/ui/header/HeaderTitle";
+import SearchBar from "../../components/ui/header/SearchBar";
+import ButtonGroup from "../../components/ui/header/ButtonGroup";
+// import FilterButton from "../../components/ui/header/FilterButton";
 
 import Loader from "../../components/ui/Loader";
 import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
-// import SortBy from "../../components/header/SortBy";
+// import SortBy from "../../components/ui/header/SortBy";
 
 import { useAppSelector } from "../../hooks/hooks";
 import CreateTaskIcon from "./components/CreateTaskIcon";
