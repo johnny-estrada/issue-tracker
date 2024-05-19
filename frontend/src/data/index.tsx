@@ -10,6 +10,39 @@ import {
   Cog6ToothIcon,
 } from "@heroicons/react/24/outline";
 
+export const lineChart = [
+  {
+    date: "Jul 6",
+    created: 8,
+    completed: 10,
+  },
+  {
+    date: "Jul 8",
+    created: 15,
+    completed: 7,
+  },
+  {
+    date: "Jul 10",
+    created: 5,
+    completed: 12,
+  },
+  {
+    date: "Jul 12",
+    created: 15,
+    completed: 28,
+  },
+  {
+    date: "Jul 14",
+    created: 20,
+    completed: 45,
+  },
+  {
+    date: "Jul 16",
+    created: 15,
+    completed: 15,
+  },
+];
+
 export const navigation = [
   { name: "Dashboard", href: "/", icon: Squares2X2Icon, current: true },
   {
