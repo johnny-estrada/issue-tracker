@@ -2,6 +2,7 @@ import { SyntheticEvent } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
+import ProjectDetails from "./ProjectDetails";
 
 interface Project {
   id: number;
@@ -71,39 +72,42 @@ function ProjectList({
   return (
     <>
       <section aria-labelledby="projects">
-        {isVisible && (
-          <>
-            <header className="flex justify-between">
-              <h2 className="sr-only" id="projects">
-                All Projects
-              </h2>
+        <div>
+          <header className="flex justify-between">
+            <h2 className="sr-only" id="projects">
+              All Projects
+            </h2>
 
-              <h2 className="text-xl lg:text-2xl pb-0 lg:pb-4 pt-4 lg:pt-0">
-                Active projects
-              </h2>
-              <div className="hidden lg:flex items-center">
-                <button className="hover:bg-gray-50 rounded-full p-3">
-                  <span className="sr-only">Previous</span>
-                  <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
-                </button>
-                <button className="hover:bg-gray-50 rounded-full p-3">
-                  <span className="sr-only">Next</span>
-                  <ChevronRightIcon
-                    className="w-4 h-4 hover:bg-gray-100 rounded-full"
-                    aria-hidden="true"
-                  />
-                </button>
-              </div>
-            </header>
-            <div className="hidden lg:flex flex-col gap-2 rounded-lg py-4">
-              {projectList}
+            <h2 className="text-xl lg:text-2xl pb-0 lg:pb-4 pt-4 lg:pt-0">
+              Active projects
+            </h2>
+            <div className="hidden lg:flex items-center">
+              <button className="hover:bg-gray-50 rounded-full p-3">
+                <span className="sr-only">Previous</span>
+                <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
+              </button>
+              <button className="hover:bg-gray-50 rounded-full p-3">
+                <span className="sr-only">Next</span>
+                <ChevronRightIcon
+                  className="w-4 h-4 hover:bg-gray-100 rounded-full"
+                  aria-hidden="true"
+                />
+              </button>
             </div>
-            {/* MOBILE LIST */}
-            <div className="lg:hidden flex flex-col gap-2 rounded-lg py-2">
-              {projectList}
-            </div>
-          </>
-        )}
+          </header>
+          <div className="hidden lg:flex flex-col gap-2 rounded-lg py-4">
+            {projectList}
+          </div>
+        </div>
+        <div className="lg:hidden flex flex-col gap-2 rounded-lg py-2">
+          {isVisible ? (
+            <>{projectList}</>
+          ) : (
+            <>
+              <ProjectDetails projects={projects} projectIndex={projectIndex} />
+            </>
+          )}
+        </div>
       </section>
     </>
   );
