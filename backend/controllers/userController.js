@@ -109,7 +109,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc Get all users
-// @route PUT /api/users/settings
+// @route GET /api/users/settings
 // @access Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.findAll({});
@@ -117,7 +117,7 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 // @desc Get user by Id
-// @route PUT /api/users/settings/:id
+// @route GET /api/users/settings/:id
 // @access Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findByPk(req.params.id);
