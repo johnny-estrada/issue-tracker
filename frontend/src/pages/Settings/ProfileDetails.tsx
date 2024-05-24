@@ -50,7 +50,7 @@ const ProfileDetails = () => {
         if (imageName.startsWith("http://")) {
           imageName = imageName.replace("http://", "https://");
         }
-  
+
         setPhoto(imageName);
         console.log(imageName);
       })
@@ -94,7 +94,7 @@ const ProfileDetails = () => {
 
   return (
     <div className="flex flex-col-reverse lg:flex-row bg-white lg:h-screen pb-20 lg:pb-0">
-      <div className="flex-1 px-6 pt-4 lg:pt-12 lg:px-12 mb-auto max-w-96">
+      <div className="flex-1 px-6 pt-4 lg:pt-12 lg:px-12 mb-auto">
         <Profile
           submitHandler={submitHandler}
           photo={photo}
