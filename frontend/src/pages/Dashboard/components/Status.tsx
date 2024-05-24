@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { startOfWeek, endOfWeek, format } from "date-fns";
 
 const Status = () => {
@@ -12,11 +12,11 @@ const Status = () => {
 
   return (
     <div className="flex lg:justify-end items-center lg:flex-1">
-      <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:px-3 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-3/4">
-        <header className="flex text-sm leading-2 lg:leading-0 font-semibold mb-2 lg:mb-1">
-          {/* <ChevronLeftIcon className="h-5 w-5 mr-5" /> */}
+      <div className="flex flex-col items-center lg:ring-1 lg:ring-gray-200 lg:py-5 h-full lg:shadow rounded-lg lg:mb-2 w-60 lg:w-3/4">
+        <header className="flex text-base leading-2 lg:leading-0 mb-2 lg:mb-1">
+          <ChevronLeftIcon className="h-5 w-5 mr-8" />
           {`${formattedStartDate} - ${formattedEndDate}`}
-          {/* <ChevronRightIcon className="h-5 w-5 ml-5" /> */}
+          <ChevronRightIcon className="h-5 w-5 ml-8" />
         </header>
         <Link
           to="/tasks"
