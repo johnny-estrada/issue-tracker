@@ -4,7 +4,6 @@ import {
   ClipboardDocumentCheckIcon,
   ListBulletIcon,
 } from "@heroicons/react/24/outline";
-import { useEffect } from "react";
 
 interface Project {
   hours: number;
@@ -29,34 +28,6 @@ export default function DataDisplay({
   taskIndex,
 }: Props) {
   const projectHours = projects[projectIndex].hours;
-  console.log(projectHours);
-  const y = tasks[9].status === "open";
-
-
-  useEffect(() => {
-    const projectCompleted = () => {
-      const x: object[] = [];
-  
-      tasks?.map((task) => {
-        if (projects[projectIndex].id === task.projectId) {
-          x.push(task.id);
-        } if (projects[projectIndex].id === task.projectId) {
-          return tasks.length / x;
-        }
-      });
-  
-    
-    };
-    console.log(projectCompleted());
-  }, [tasks, projects, projectIndex]
-  )
-
-
-
-
-  // tasks[taskIndex].status === 'open / tasks[taskIndex].status ';//task open / task completed (taskStatus)
-  // const taskDue = ; //task  targetDate = today / task total = open
-  // const newAssigned = ; // task total where userid = user;
 
   const stats = [
     { name: "Hours this week", stat: "32", icon: ClockIcon },
@@ -70,7 +41,7 @@ export default function DataDisplay({
         {stats.map((stat) => (
           <div
             key={stat.name}
-            className="overflow-hidden rounded-lg bg-white px-2 py-2 lg:px-4 lg:py-4 shadow sm:p-6  lg:max-w-60"
+            className="overflow-hidden rounded-lg bg-white px-2 py-2 lg:px-4 lg:py-4 shadow sm:p-6  lg: max-w-96x"
           >
             <dt className="truncate text-sm lg:text-lg text-gray-900 mb-4 lg:mb-2">
               {stat.name}
