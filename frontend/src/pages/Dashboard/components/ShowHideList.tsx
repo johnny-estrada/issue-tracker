@@ -108,7 +108,7 @@ export default function ShowHideList({ projects, projectIndex, tasks }: Props) {
                             <FlatBadge priority={task.priority} />
                             {open && openDisclosureId === task.id && (
                               <div className="flex items-center justify-center gap-4">
-                                <AvatarGroup members={projects[1].team} />
+                                <AvatarGroup members={projects[0].team} />
                                 <p className="text-sm text-neutral-300">
                                   {formatDate({
                                     dateString: task.startDate,
