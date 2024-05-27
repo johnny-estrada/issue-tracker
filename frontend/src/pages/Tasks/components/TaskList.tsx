@@ -57,7 +57,7 @@ const TaskList = ({
       {isLoading ? (
         <Loader />
       ) : (
-        <section className="mb-96 lg:mb-0 relative">
+        <section className="mb-24 lg:mb-0 relative">
           <header className="flex justify-between align-middle">
             <div className="lg:flex items-center my-4 lg:my-0 mt-4 lg:mt-0 hidden lg:absolute right-0 top-0">
               <button className="hover:bg-gray-50 rounded-full p-3">
