@@ -1,5 +1,5 @@
 import { useState, useEffect, SyntheticEvent } from "react";
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { ChevronRightIcon, ChevronLeftIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { formatDate } from "../../../utils/formatting";
 import SelectorList from "../../../components/ui/SelectorList";
 import FlatBadge from "../../../components/ui/FlatBadge";
@@ -94,7 +94,21 @@ const TaskList = ({
                   </div>
                   <div className="flex justify-center mr-4">
                     <div className="hidden lg:flex shrink-0 items-center gap-x-4 mr-3">
-                      <AvatarGroup members={team} />
+                      {!team ? (
+                        <>
+                          {" "}
+                          <AvatarGroup members={team} />
+                        </>
+                      ) : (
+                        <>
+                          {" "}
+                          <UserCircleIcon
+                            className="h-8 w-8 lg:h-10 lg:w-10 text-gray-300"
+                            aria-hidden="true"
+                          />
+                        </>
+                      )}
+
                       <FlatBadge priority={task?.priority} />
                     </div>
                     <div className="flex justify-center items-center">
