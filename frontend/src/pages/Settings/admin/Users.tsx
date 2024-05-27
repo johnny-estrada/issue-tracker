@@ -27,7 +27,7 @@ export default function Users({ users }: UserProps) {
 
   return (
     <>
-      <div className="px-4 sm:px-6 lg:px-3">
+      <div className="px-4 sm:px-6 lg:px-3 mb-10 lg:mb-0">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <h2 className="sr-only" id="tasks">
