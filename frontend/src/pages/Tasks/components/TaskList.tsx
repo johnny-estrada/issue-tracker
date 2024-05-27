@@ -103,7 +103,7 @@ const TaskList = ({
                         <>
                           {" "}
                           <UserCircleIcon
-                            className="h-8 w-8 lg:h-10 lg:w-10 text-gray-300"
+                            className="h-6 w-6 lg:h-8 lg:w-8 text-gray-300"
                             aria-hidden="true"
                           />
                         </>

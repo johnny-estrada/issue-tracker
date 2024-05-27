@@ -1,5 +1,9 @@
 import { SyntheticEvent } from "react";
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/solid";
 import SelectorList from "../../../components/ui/SelectorList";
 import AvatarGroup from "../../../components/ui/AvatarGroup";
 import ProjectDetails from "./ProjectDetails";
@@ -57,7 +61,17 @@ function ProjectList({
       </div>
       <div className="flex justify-center mr-4">
         <div className="hidden lg:flex shrink-0 items-center gap-x-10">
-          <AvatarGroup members={project.team} />
+          {project.team ? (
+            <>
+              {" "}
+              <AvatarGroup members={project.team} />
+            </>
+          ) : (
+            <>
+              <UserCircleIcon className="w-5 h-5 lg:w-8 lg:h-8" />
+            </>
+          )}
+
           <p className="text-gray-400 text-sm">
             {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
           </p>
