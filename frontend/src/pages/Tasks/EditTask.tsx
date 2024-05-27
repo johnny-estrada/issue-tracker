@@ -1,21 +1,18 @@
 import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import EditTaskForm from "./components/EditTaskForm";
-import Header from "../../components/Header";
-import Sidebar from "../../components/Sidebar";
+import Column from "../../layout/Column";
 
 const EditTask = () => {
   return (
     <>
-      <Sidebar />
-      <div className="flex flex-col h-screen lg:ml-[288px]">
-        <Header>
+      <main className="flex flex-col lg:flex-row flex-1 row-span-2 col-span-2 bg-gray-200">
+        <Column>
           <HeaderTitle title="Edit task" />
           <></>
-        </Header>
-        <main>
+          <></>
           <EditTaskForm />
-        </main>
-      </div>
+        </Column>
+      </main>
     </>
   );
 };

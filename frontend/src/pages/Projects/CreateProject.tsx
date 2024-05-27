@@ -5,12 +5,14 @@ import Column from "../../layout/Column";
 const EditProject = () => {
   return (
     <>
-      <Column>
-        <HeaderTitle title="Create project" />
-        <></>
-
-        <CreateProjectForm />
-      </Column>
+      <main className="flex flex-col lg:flex-row flex-1 row-span-2 col-span-2 bg-gray-200">
+        <Column>
+          <HeaderTitle title="Create project" />
+          <></>
+          <></>
+          <CreateProjectForm />
+        </Column>
+      </main>
     </>
   );
 };

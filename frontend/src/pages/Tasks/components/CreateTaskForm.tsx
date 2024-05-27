@@ -73,7 +73,7 @@ const CreateTaskForm = () => {
     <>
       {loadingCreate && <Loader />}
       <div className="space-y-10 divide-y divide-gray-900/10 border">
-        <section className="px-8 max-w-2xl">
+        <section className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
           <form
             className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
             onSubmit={handleSubmit}
@@ -238,7 +238,7 @@ const CreateTaskForm = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+            <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 mt-8  sm:px-8">
               <button
                 type="button"
                 className="text-sm font-semibold leading-6 text-gray-900"
