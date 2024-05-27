@@ -71,6 +71,7 @@ const MobileBar = () => {
       {/* Mobile create button */}
       {window.location.href.split("/")[3] === "settings" ||
       window.location.href.split("/")[4] === "create" ||
+      window.location.href.split("/")[4] === "edit" ||
       window.location.href.split("/")[3] === "notifications" ? (
         <></>
       ) : window.location.href.split("/")[3] === "tasks" ? (
