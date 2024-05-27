@@ -26,7 +26,7 @@ const Dashboard = () => {
   const [formattedDates, setFormattedDates] = useState([]);
   const [lineChartData, _setLineChartData] = useState(lineChart);
   const { data: projects, isLoading, refetch } = useGetProjectsQuery("");
-  const { data: tasks } = useGetTaskQuery("");
+  const { data: tasks, isLoading: loading } = useGetTaskQuery("");
 
   useEffect(() => {
     if (projects) {
@@ -64,6 +64,7 @@ const Dashboard = () => {
   return (
     <>
       {isLoading && <Loader />}
+      {loading && <Loader />}
       <TwoColumnsWide>
         <HeaderTitle title="Dashboard" />
         <SearchBar />
