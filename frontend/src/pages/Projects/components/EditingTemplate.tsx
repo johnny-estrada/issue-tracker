@@ -98,12 +98,12 @@ const EditingTemplate = () => {
         <p>error</p>
       ) : (
         <div className="space-y-10 divide-y divide-gray-900/10 border">
-          <div className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
+          <section className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
             <form
-              className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
+              className="bg-white shadow-lg ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
               onSubmit={handleSubmit}
             >
-              <div className="px-4 py-6 sm:p-8">
+              <div className="px-4 py-6 sm:p-8 w-[600px]">
                 <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-4">
                     <label
@@ -273,7 +273,7 @@ const EditingTemplate = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </section>
         </div>
       )}
       <></>
