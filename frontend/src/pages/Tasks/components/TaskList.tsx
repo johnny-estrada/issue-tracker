@@ -1,5 +1,9 @@
 import { useState, useEffect, SyntheticEvent } from "react";
-import { ChevronRightIcon, ChevronLeftIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/solid";
 import { formatDate } from "../../../utils/formatting";
 import SelectorList from "../../../components/ui/SelectorList";
 import FlatBadge from "../../../components/ui/FlatBadge";

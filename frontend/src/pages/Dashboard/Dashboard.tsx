@@ -14,7 +14,7 @@ import Status from "./components/Status";
 import Loader from "../../components/ui/Loader";
 
 // data
-import {lineChart} from "../../data/index"
+import { lineChart } from "../../data/index";
 
 interface Project {
   startDate: string;

@@ -62,13 +62,13 @@ const ProjectDetails = ({
     {
       name: "Edit",
       href: `/projects/edit/${id}`,
-      icon: PencilSquareIcon
+      icon: PencilSquareIcon,
     },
     {
       name: "Create",
       href: "/projects/create",
-      icon: PlusIcon
-    }
+      icon: PlusIcon,
+    },
   ];
 
   return (
