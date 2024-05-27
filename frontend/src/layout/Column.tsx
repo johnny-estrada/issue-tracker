@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <div className=" lg:flex grid grid-flow-col lg:h-screen overflow-hidden">
+      <div className=" lg:flex grid grid-flow-col min-h-screen overflow-hidden">
         <Sidebar />
         <div className="flex flex-col h-full w-full overflow-auto">
           <Header>
