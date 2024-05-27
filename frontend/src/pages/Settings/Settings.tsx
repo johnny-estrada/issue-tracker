@@ -27,7 +27,7 @@ function Settings() {
         <HeaderTitle title={title} />
         <SearchBar />
         <></>
-        <div className="grid grid-cols-1 lg:flex flex-col lg:w-screen">
+        <div className="grid grid-cols-1 lg:flex flex-col">
           <Tab.Group>
             <Tab.List className="flex bg-gray-200 px-2 pb-4 lg:pb-5">
               <Tab
