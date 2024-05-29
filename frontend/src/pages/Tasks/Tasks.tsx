@@ -64,7 +64,7 @@ const Tasks = () => {
 
       setFormattedDates(formattedDatesArray);
     }
-  }, [taskIndex, tasks]);
+  }, [tasks]);
 
   function toggleTasks(e: SyntheticEvent) {
     const taskId = Number(e.currentTarget.id);
