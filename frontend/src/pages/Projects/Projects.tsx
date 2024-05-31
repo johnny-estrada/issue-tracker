@@ -126,8 +126,8 @@ export default function Projects() {
               <FilterButton />
             </div>
           </div>
-          <div className="flex justify-center m-auto">
-            <div className="flex flex-col items-end justify-center h-full">
+          <div className="flex justify-center m-auto lg:h-[780px]">
+            <div className="flex flex-col items-end justify-center">
               <div className="flex flex-col items-center justify-center">
                 <FileFolderIcon />
                 <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
