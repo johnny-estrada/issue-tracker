@@ -52,7 +52,7 @@ const Profile = ({
                   />
                 ) : (
                   <UserCircleIcon
-                    className="h-8 w-8 lg:h-20 lg:w-20 text-gray-300"
+                    className="h-20 w-20 text-gray-300"
                     aria-hidden="true"
                   />
                 )}
