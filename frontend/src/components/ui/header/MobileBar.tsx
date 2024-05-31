@@ -39,7 +39,7 @@ const MobileBar = () => {
           onChange={handleChange}
           onSubmit={handleSubmit}
         />
-        {searchResults.length === 0 ? (
+        {search && searchResults.length === 0 ? (
           <p>No results found</p>
         ) : search && !isLoading ? (
           <ul className="absolute top-[70px] left-0 ring-1 ring-gray-100 rounded shadow-sm w-full bg-white">

@@ -47,7 +47,7 @@ const SearchBar = () => {
               onChange={handleChange}
               onSubmit={handleSubmit}
             />
-            {searchResults.length === 0 ? (
+            {search && searchResults.length === 0 ? (
               <div className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 h-16 bg-white px-4 py-2">
                 <p>No results found</p>
               </div>
