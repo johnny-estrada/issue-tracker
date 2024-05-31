@@ -5,7 +5,7 @@ import { navigation, mobileNavigation } from "../data/index";
 
 export default function Sidebar() {
   return (
-    <div className="fixed z-40 w-full lg:w-72 bottom-0 row-span-3 lg:h-auto lg:relative">
+    <div className="fixed z-10 w-full lg:w-72 bottom-0 row-span-3 lg:h-auto lg:relative">
       <aside className="w-full lg:h-full lg:w-72 bg-neutral-800">
         <div className="lg:pt-14 lg:mb-12 lg:pl-8">
           <Logo />
