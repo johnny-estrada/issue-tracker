@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useSearchTaskQuery } from "../../../state/redux/slices/tasksApiSlice";
 import { BellIcon } from "@heroicons/react/24/outline";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Task {
   id: number;
@@ -79,18 +80,18 @@ const MobileBar = () => {
           {" "}
           <Link
             to={`/tasks/create`}
-            className="lg:hidden fixed bottom-20 right-6 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
+            className="lg:hidden fixed bottom-[85px] right-6 bg-orange-500 w-[42px] h-[42px] rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
           >
-            +
+            <PlusIcon className="w-5 h-5" />
           </Link>
         </>
       ) : (
         <>
           <Link
             to={`/projects/create`}
-            className="lg:hidden fixed bottom-20 right-6 bg-orange-500 w-10 h-10 rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
+            className="lg:hidden fixed bottom-[85px] right-6 bg-orange-500 w-[42px] h-[42px] rounded-full drop-shadow-lg text-white text-2xl hover:drop-shadow-2xl hover:bg-orange-400 z-10 flex justify-center items-center"
           >
-            +
+            <PlusIcon className="w-5 h-5" />
           </Link>
         </>
       )}
