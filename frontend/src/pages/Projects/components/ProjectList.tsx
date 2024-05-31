@@ -68,7 +68,7 @@ function ProjectList({
             </>
           ) : (
             <>
-              <UserCircleIcon className="w-5 h-5 lg:w-8 lg:h-8" />
+              <UserCircleIcon className="w-5 h-5 lg:w-10 lg:h-10 text-gray-300" />
             </>
           )}
 
