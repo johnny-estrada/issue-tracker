@@ -1,9 +1,9 @@
+import sequelize from "../config/db.js";
+import bcrypt from "bcrypt";
 import User from "./userModel.js";
 import Project from "./projectModel.js";
 import Task from "./taskModel.js";
 import Attachment from "./attachmentModel.js";
-import sequelize from "../config/db.js";
-import bcrypt from "bcrypt";
 
 User.beforeCreate(async (user) => {
   try {
