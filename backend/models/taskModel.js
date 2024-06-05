@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
-import Project from "./projectModel.js";
-import User from "./userModel.js";
 
 const Task = sequelize.define(
   "Task",
@@ -45,20 +43,5 @@ const Task = sequelize.define(
     timestamps: true,
   }
 );
-
-const setupAssociations = () => {
-  Task.belongsTo(User, { foreignKey: "userId" });
-  Task.belongsTo(Project, { foreignKey: "projectId" });
-};
-
-export { setupAssociations };
-
-Task.sync()
-  .then(() => {
-    console.log("Task table created successfully!");
-  })
-  .catch((error) => {
-    console.error("Unable to create table : ", error);
-  });
 
 export default Task;
