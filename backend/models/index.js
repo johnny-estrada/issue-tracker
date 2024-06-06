@@ -5,6 +5,7 @@ import Project from "./projectModel.js";
 import Task from "./taskModel.js";
 import Attachment from "./attachmentModel.js";
 
+// Hooks for password hashing
 User.beforeCreate(async (user) => {
   try {
     const hashedPassword = await bcrypt.hash(user.password, 12);
@@ -22,12 +23,13 @@ User.beforeUpdate(async (user) => {
   }
 });
 
+// Method to compare passwords
 User.prototype.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
 // Define model relationships
-User.belongsTo(Project, { foreignKey: "userId" });
+User.belongsTo(Project, { foreignKey: "projectId" });
 User.belongsToMany(Project, { through: "Project_Team" });
 Project.belongsTo(User, { foreignKey: "userId" });
 Project.belongsToMany(User, { through: "Project_Team" });
@@ -36,6 +38,7 @@ Task.belongsTo(Project, { foreignKey: "projectId" });
 Attachment.belongsTo(Task, { foreignKey: "taskId" });
 Attachment.belongsTo(User, { foreignKey: "userId" });
 
+// Function to sync models with the database
 const setupModels = async () => {
   try {
     await sequelize.sync({ force: true });
