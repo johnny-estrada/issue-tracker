@@ -46,6 +46,7 @@ export default function Login() {
 
   return (
     <>
+      {isLoading && <Loader />}
       <div className="flex flex-1 min-h-screen">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -156,8 +157,6 @@ export default function Login() {
                   </div> */}
 
                   <div>
-                    {isLoading && <Loader />}
-
                     <button
                       type="submit"
                       className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
