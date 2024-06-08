@@ -213,9 +213,9 @@ const CreateTaskForm = () => {
                         onChange={handleStatusChange}
                         className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                       >
+                        <option value="Backlog">Backlog</option>
                         <option value="To do">To do</option>
                         <option value="In progress">In progress</option>
-                        <option value="Backlog">Backlog</option>
                         <option value="Done">Done</option>
                       </select>
                     </div>
