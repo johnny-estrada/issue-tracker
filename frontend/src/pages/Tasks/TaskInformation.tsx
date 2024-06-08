@@ -62,7 +62,7 @@ const TaskInformation = () => {
           <div className="flex-1 p-4 lg:p-0">
             <Information tasks={tasks} taskIndex={b} />
             <Subtasks />
-            <Comments b={b} tasks={tasks} />
+            {/* <Comments b={b} tasks={tasks} /> */}
           </div>
 
           <div className="flex-1 mb-20 p-4 lg:p-0">
