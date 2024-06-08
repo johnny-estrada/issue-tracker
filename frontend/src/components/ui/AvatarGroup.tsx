@@ -20,25 +20,25 @@ export default function AvatarGroup({ members }: Props) {
 
   return (
     <>
-      <div className="flex -space-x-2 overflow-hidden p-1">
+      <div className="flex -space-x-2 overflow-hidden p-1 items-center">
         {firstThreeMembers?.map((member) =>
           member?.photo ? (
             <img
               key={member.id} // Add a unique key for each mapped element
-              className="inline-block h-6 lg:w-8 w-6 lg:h-8 rounded-full ring-1 ring-white"
+              className="inline-block h-6 lg:w-7 w-6 lg:h-7 rounded-full ring-1 ring-white"
               src={member.photo}
               alt=""
             />
           ) : (
             <UserCircleIcon
               key={member.id} // Add a unique key for each mapped element
-              className="h-7 w-7 text-gray-300"
+              className="h-9 w-9 text-gray-300"
               aria-hidden="true"
             />
           ),
         )}
         {members.length > 3 && (
-          <div className="flex items-center justify-center h-6 w-6 rounded-full ring-1 ring-white bg-neutral-800 text-white text-xs">
+          <div className="flex items-center justify-center h-7 w-7 rounded-full ring-1 ring-white bg-neutral-800 text-white text-sm">
             <div>+{remainingMembersCount}</div>
           </div>
         )}
