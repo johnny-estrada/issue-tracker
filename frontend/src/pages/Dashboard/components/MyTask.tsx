@@ -36,9 +36,19 @@ interface Props {
   tasks: Task[];
   dates: object[];
   refetch: any;
+  userInfo: any;
+  toggleTasks: any;
 }
 
-const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
+const MyTask = ({
+  id,
+  projectIndex,
+  projects,
+  tasks,
+  refetch,
+  userInfo,
+  toggleTasks,
+}: Props) => {
   const NAV: Nav[] = [
     {
       name: "Edit",
@@ -78,9 +88,11 @@ const MyTask = ({ id, projectIndex, projects, tasks, refetch }: Props) => {
         </header>
 
         <ShowHideList
+          toggleTasks={toggleTasks}
           projectIndex={projectIndex}
           projects={projects}
           tasks={tasks}
+          userInfo={userInfo}
         />
       </section>
     </>
