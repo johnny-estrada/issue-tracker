@@ -83,7 +83,7 @@ export default function DataDisplay({ projects, projectIndex, tasks, userInfo }:
   ];
 
   return (
-    <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 lg:px-0">
+    <dl className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-2.5 lg:gap-10 lg:px-0 group tracking-wide">
       {stats.map((stat) => (
         <div
           key={stat.name}
@@ -96,15 +96,15 @@ export default function DataDisplay({ projects, projectIndex, tasks, userInfo }:
             <dd className="mt-1 text-base lg:text-3xl tracking-tight text-gray-900">
               {stat.stat}
               {stat.name === "Hours this week" && (
-                <span className="text-sm lg:text-base">
-                  {stat.stat === 1 ? " /Hr" : " /Hrs"}
+                <span className="text-sm lg:text-xl tracking-wide">
+                  {stat.stat === 1 ? " hr" : " hrs"}
                 </span>
               )}
               {stat.isPercentage && (
                 <span className="text-sm lg:text-xl"> %</span>
               )}
               {stat.isTask && (
-                <span className="text-sm lg:text-xl"> tasks</span>
+                <span className="text-sm lg:text-xl tracking-wide"> tasks</span>
               )}
             </dd>
             <stat.icon className="w-6 h-6 lg:w-10 lg:h-10 mt-auto rounded-md bg-gray-100 text-neutral-500 p-1 lg:p-2" />
