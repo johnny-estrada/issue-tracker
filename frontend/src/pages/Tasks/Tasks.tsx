@@ -1,4 +1,5 @@
 import { useState, useEffect, SyntheticEvent } from "react";
+import { Link } from "react-router-dom";
 import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
@@ -9,16 +10,17 @@ import TwoColumns from "../../layout/TwoColumns";
 import HeaderTitle from "../../components/ui/header/HeaderTitle";
 import SearchBar from "../../components/ui/header/SearchBar";
 import ButtonGroup from "../../components/ui/header/ButtonGroup";
-// import FilterButton from "../../components/ui/header/FilterButton";
+import FilterButton from "../../components/ui/header/FilterButton";
 
 import Loader from "../../components/ui/Loader";
 import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
-// import SortBy from "../../components/ui/header/SortBy";
+import SortBy from "../../components/ui/header/SortBy";
 
 import { useAppSelector } from "../../hooks/hooks";
 import CreateTaskIcon from "./components/CreateTaskIcon";
 import SelectItemIcon from "./components/SelectItemIcon";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 interface Task {
   id: number;
@@ -41,7 +43,7 @@ const Tasks = () => {
 
   const [taskIndex, setTaskIndex] = useState();
   const [taskId, setTaskId] = useState(0);
-  const [_formattedDates, setFormattedDates] = useState<FormattedDates[]>([]);
+  const [formattedDates, setFormattedDates] = useState<FormattedDates[]>([]);
 
   const { userInfo } = useAppSelector((state) => state.auth);
 
@@ -78,28 +80,28 @@ const Tasks = () => {
 
   return (
     <>
-      {!tasks?.length ? (
+      {!tasks?.length || !projects || !projects[0] ? (
         <Column>
-          <HeaderTitle title="Tasks" />
+          <HeaderTitle title="Tasks" active={true} />
           <SearchBar />
-          <div className="flex justify-between">
-            <div className="flex gap-6">
-              <ButtonGroup titles={buttonName} onFilter={() => {}} />
-              {/* <SortBy /> */}
-            </div>
-
-            {/* <FilterButton /> */}
-          </div>
-          <div className="flex justify-center m-auto lg:h-[780px]">
+          <></>
+          <div className="flex justify-center m-auto lg:h-[670px] pb-20 lg:pb-0">
             <div className="flex flex-col items-end justify-center">
               <div className="flex flex-col items-center justify-center">
                 <CreateTaskIcon />
-                <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
+                <p className="text-gray-600 text-sm lg:text-base mt-1">
                   No current active tasks
                 </p>
-                <p className="text-gray-500 text-sm lg:text-base lg:mt-2">
+                <p className="text-gray-600 text-sm lg:text-base lg:mt-2">
                   Create a task to get started
                 </p>
+                <Link
+                  to="/tasks/create"
+                  className="hidden lg:flex justify-center items-center rounded-md border border-dashed border-orange-500 px-16 py-4 text-sm lg:text-base text-orange-500 shadow-sm hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 mt-8"
+                >
+                  <PlusIcon className="w-5 h-5 mr-1" />
+                  <p>Create tasks</p>
+                </Link>
               </div>
             </div>
           </div>
@@ -107,15 +109,15 @@ const Tasks = () => {
       ) : (
         <>
           <TwoColumns>
-            <HeaderTitle title="Tasks" />
+            <HeaderTitle title="Tasks" active={true} />
             <SearchBar />
             <div className="flex justify-between">
               <div className="flex gap-6">
                 <ButtonGroup titles={buttonName} onFilter={() => {}} />
-                {/* <SortBy /> */}
+                <SortBy />
               </div>
 
-              {/* <FilterButton /> */}
+              <FilterButton />
             </div>
 
             <>
@@ -131,9 +133,9 @@ const Tasks = () => {
             </>
 
             {taskIndex === undefined ? (
-              <div className="hidden lg:flex flex-col items-center justify-center h-full">
+              <div className="hidden lg:flex flex-col items-center justify-center h-full pb-32">
                 <SelectItemIcon />
-                <p className="text-gray-500 text-base mt-2">
+                <p className="text-gray-600 text-base mt-6 tracking-wide">
                   Select a task to see it&apos;s details
                 </p>
               </div>

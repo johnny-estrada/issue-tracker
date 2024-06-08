@@ -24,19 +24,19 @@ function Settings() {
   return (
     <>
       <Column>
-        <HeaderTitle title={title} />
+        <HeaderTitle title={title} active={true} />
         <SearchBar />
         <></>
         <div className="grid grid-cols-1 lg:flex flex-col">
           <Tab.Group>
-            <Tab.List className="flex bg-gray-200 px-2 pb-4 lg:pb-5">
+            <Tab.List className="flex bg-slate-200 px-2 pb-4 lg:pb-5">
               <Tab
                 className={({ selected }) =>
                   classNames(
-                    "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md  px-3 py-1.5 text-stone-800  hover:bg-gray-50 focus:z-10 shadow-sm",
+                    "ml-4 lg:ml-12 text-sm leading-5 relative inline-flex items-center rounded-l-md  px-3 py-1.5 text-stone-800  hover:bg-slate-50 focus:z-10 shadow-sm",
                     selected
                       ? "bg-stone-800 text-white pointer-events-none"
-                      : "bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                      : "bg-white text-slate-500 hover:border-slate-300 hover:text-slate-700",
                     "whitespace-nowrap border-b-2 text-sm",
                   )
                 }
@@ -46,10 +46,10 @@ function Settings() {
               <Tab
                 className={({ selected }) =>
                   classNames(
-                    "text-sm leading-5 relative inline-flex items-center rounded-r-md px-3 py-1.5 text-stone-800 hover:bg-gray-50 focus:z-10 shadow-sm",
+                    "text-sm leading-5 relative inline-flex items-center rounded-r-md px-3 py-1.5 text-stone-800 hover:bg-slate-50 focus:z-10 shadow-sm",
                     selected
                       ? "bg-stone-800 text-white pointer-events-none"
-                      : "bg-white border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                      : "bg-white border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700",
                     "whitespace-nowrap border-b-2 text-sm",
                   )
                 }

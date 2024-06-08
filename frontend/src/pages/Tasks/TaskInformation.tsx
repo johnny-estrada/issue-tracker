@@ -3,12 +3,12 @@ import { useGetTaskQuery } from "../../state/redux/slices/tasksApiSlice";
 import { useGetProjectsQuery } from "../../state/redux/slices/projectsApiSlice";
 import { useGetUsersQuery } from "../../state/redux/slices/usersApiSlice";
 import HeaderTitle from "../../components/ui/header/HeaderTitle";
-// import ButtonGroup from "../../components/header/ButtonGroup";
+import ButtonGroup from "../../components/ui/header/ButtonGroup";
 import TwoColumns from "../../layout/TwoColumns";
-// import SortBy from "../../components/header/SortBy";
+import SortBy from "../../components/ui/header/SortBy";
 import SearchBar from "../../components/ui/header/SearchBar";
-// import Subtasks from "./components/Subtasks";
-// import Comments from "./components/comments";
+import Subtasks from "./components/Subtasks";
+import Comments from "./components/comments";
 import Information from "./components/Information";
 import Details from "./components/Details";
 import Loader from "../../components/ui/Loader";
@@ -44,42 +44,29 @@ const TaskInformation = () => {
 
       <div>
         <TwoColumns>
-          <HeaderTitle title={tasks[b].name} />
+          <HeaderTitle title={tasks[b].name} active={true} />
           <SearchBar />
           <div className="flex justify-between">
             <div className="flex gap-10">
-              {/* <SortBy />
+              <SortBy />
               <div>
                 priority:{" "}
                 <ButtonGroup
                   titles={["high", "medium", "low"]}
                   onFilter={() => {}}
                 />
-              </div> */}
+              </div>
             </div>
           </div>
 
           <div className="flex-1 p-4 lg:p-0">
             <Information tasks={tasks} taskIndex={b} />
-            {/* <Subtasks />
-            <Comments b={b} tasks={tasks} /> */}
+            <Subtasks />
+            <Comments b={b} tasks={tasks} />
           </div>
 
           <div className="flex-1 mb-20 p-4 lg:p-0">
             <section aria-labelledby="tasks">
-              {/* <header className="flex justify-between">
-              <h2 className="sr-only" id="tasks">
-                Task Details
-              </h2>
-
-              <div className="flex gap-5">
-                <h2 className="text-xl lg:text-2xl pb-4">Task Details</h2>
-                <FlatBadge priority={`ID LG-${id}`} />
-              </div>
-
-              <TaskMenu id={id} tasks={tasks} refetch={refetch} />
-            </header> */}
-
               <Details
                 userId={userInfo.id}
                 taskId={id || ""}
