@@ -3,7 +3,7 @@ const SortBy = () => {
     <div className="hidden lg:block">
       <label
         htmlFor="sort"
-        className="ml-10 lg:ml-0 mr-2 text-sm text-slate-500 my-auto"
+        className="ml-10 lg:ml-0 mr-2 text-sm text-slate-600 my-auto"
       >
         sort by:
       </label>
