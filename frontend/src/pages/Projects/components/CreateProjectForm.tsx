@@ -14,9 +14,9 @@ const CreateProjectForm = () => {
   const [title, setTitle] = useState("");
   const [client, setClient] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState<string>("");
-  const [startDate, setStartDate] = useState<string>("");
-  const [targetDate, setTargetDate] = useState<string>("");
+  const [status, setStatus] = useState<string>("active");
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [targetDate, setTargetDate] = useState<Date>(new Date());
   const [hours, setHours] = useState("");
   const [members, _setMembers] = useState<Member[]>();
 
@@ -61,15 +61,15 @@ const CreateProjectForm = () => {
   return (
     <>
       {loadingCreate && <Loader />}
-      <div className="space-y-10 divide-y divide-gray-900/10 border">
-        <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3 lg:mt-10">
-          <form className="bg-white mb-[72px] lg:mb-24" onSubmit={handleSubmit}>
-            <div className="px-6 py-6 sm:p-8 h-full">
+      <div className="space-y-10 divide-y divide-slate-800/10 border">
+        <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3">
+          <form className="bg-white mb-[72px] lg:mb-24 rounded shadow" onSubmit={handleSubmit}>
+            <div className="px-6 lg:px-8 py-6 lg:py-8 sm:p-8 h-full">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-4">
                   <label
                     htmlFor="client"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-slate-800"
                   >
                     Client name
                   </label>
@@ -81,14 +81,14 @@ const CreateProjectForm = () => {
                       autoComplete="off"
                       value={client}
                       onChange={(e) => setClient(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md  py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
                 <div>
                   <label
                     htmlFor="title"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-slate-800"
                   >
                     Project name
                   </label>
@@ -100,7 +100,7 @@ const CreateProjectForm = () => {
                       autoComplete="off"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const CreateProjectForm = () => {
                   <div className="flex-1">
                     <label
                       htmlFor="start-date"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Start date
                     </label>
@@ -123,7 +123,7 @@ const CreateProjectForm = () => {
                   <div className="flex-1">
                     <label
                       htmlFor="target-date"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Target date
                     </label>
@@ -138,7 +138,7 @@ const CreateProjectForm = () => {
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="description"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-slate-800"
                   >
                     Description
                   </label>
@@ -150,7 +150,7 @@ const CreateProjectForm = () => {
                       autoComplete="description"
                       defaultValue={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const CreateProjectForm = () => {
                   <div className="flex-1 sm:col-span-4">
                     <label
                       htmlFor="status"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Status
                     </label>
@@ -166,9 +166,8 @@ const CreateProjectForm = () => {
                       <select
                         id="status"
                         name="status"
-                        value={status}
                         onChange={handleStatusChange}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       >
                         <option value="Active">active</option>
                         <option value="Closed">closed</option>
@@ -179,7 +178,7 @@ const CreateProjectForm = () => {
                   <div className="flex-1 sm:col-span-2">
                     <label
                       htmlFor="region"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Time (hours)
                     </label>
@@ -191,7 +190,7 @@ const CreateProjectForm = () => {
                         defaultValue={0}
                         // value={hours}
                         onChange={(e) => setHours(e.target.defaultValue)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -200,7 +199,7 @@ const CreateProjectForm = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="postal-code"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm font-medium leading-6 text-slate-800"
                   >
                     Members
                   </label>
@@ -208,7 +207,7 @@ const CreateProjectForm = () => {
                     <div className="relative flex flex-grow items-stretch focus-within:z-10">
                       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                         <UsersIcon
-                          className="h-5 w-5 text-gray-400"
+                          className="h-5 w-5 text-slate-400"
                           aria-hidden="true"
                         />
                       </div>
@@ -216,16 +215,16 @@ const CreateProjectForm = () => {
                         type="email"
                         name="email"
                         id="email"
-                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="John Smith"
                       />
                     </div>
                     <button
                       type="button"
-                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-slate-800 ring-1 ring-inset ring-slate-300 hover:bg-white"
                     >
                       <BarsArrowUpIcon
-                        className="-ml-0.5 h-5 w-5 text-gray-400"
+                        className="-ml-0.5 h-5 w-5 text-slate-400"
                         aria-hidden="true"
                       />
                       Sort
@@ -234,17 +233,17 @@ const CreateProjectForm = () => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-end gap-x-6 border rounded-b-lg border-gray-900/10 px-4 py-4 sm:px-8">
+            <div className="flex items-center justify-end gap-x-6 border-t border-slate-800/10 px-5 py-5 lg:px-6 lg:py-6 mt-8  sm:px-8">
               <button
                 type="button"
-                className="text-sm  leading-6 text-gray-900"
+                className="text-sm font-semibold hover:text-slate-800 leading-6 text-slate-600"
                 onClick={() => navigate("/projects")}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-orange-600 px-3 py-2 text-sm  text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                className="rounded-md bg-orange-600 px-8 py-2 text-sm text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
               >
                 Create
               </button>

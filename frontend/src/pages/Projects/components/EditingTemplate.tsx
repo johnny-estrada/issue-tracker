@@ -100,7 +100,7 @@ const EditingTemplate = () => {
         <div className="space-y-10 divide-y divide-gray-900/10 border">
           <section className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
             <form
-              className="bg-white shadow-lg ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
+              className="bg-white shadow-lg ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 rounded"
               onSubmit={handleSubmit}
             >
               <div className="px-4 py-6 sm:p-8 w-[600px]">
@@ -260,16 +260,16 @@ const EditingTemplate = () => {
               <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
                 <button
                   type="button"
-                  className="text-sm font-semibold leading-6 text-gray-900"
+                  className="text-sm leading-6 text-slate-600 hover:text-slate-800"
                   onClick={() => navigate("/projects")}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                  className="rounded-md bg-orange-600 px-8 py-2 text-sm text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
                 >
-                  Save
+                  Update
                 </button>
               </div>
             </form>

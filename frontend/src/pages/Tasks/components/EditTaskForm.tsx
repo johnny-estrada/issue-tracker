@@ -102,7 +102,7 @@ const EditTaskForm = () => {
         <div className="space-y-10 divide-y divide-gray-900/10">
           <div className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
             <form
-              className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
+              className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 rounded"
               onSubmit={handleSubmit}
             >
               <div className="px-4 py-6 sm:p-8">
@@ -125,7 +125,7 @@ const EditTaskForm = () => {
                       >
                         {projects?.map((project: Project) => (
                           <option key={project.id} value={project.id}>
-                            {project.title}-{project.id}
+                            PJ {project.id} - {project.title}
                           </option>
                         ))}
                         <option>0</option>
@@ -267,16 +267,16 @@ const EditTaskForm = () => {
               <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 mt-8  sm:px-8">
                 <button
                   type="button"
-                  className="text-sm leading-6 text-gray-900"
+                  className="text-sm leading-6 text-gray-600 hover:text-gray-800"
                   onClick={() => navigate("/tasks")}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-md bg-orange-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                  className="rounded-md bg-orange-600 px-8 py-2 text-sm text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
                 >
-                  Save
+                  Update
                 </button>
               </div>
             </form>
