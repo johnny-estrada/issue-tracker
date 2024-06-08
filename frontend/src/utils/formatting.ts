@@ -23,5 +23,5 @@ export const formatNameDisplay = (fullName: string) => {
   const firstName = parts[0];
   const lastNameInitial =
     parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
-  return `${firstName} ${lastNameInitial}`;
+  return `${firstName} ${lastNameInitial.toUpperCase()}`;
 };
