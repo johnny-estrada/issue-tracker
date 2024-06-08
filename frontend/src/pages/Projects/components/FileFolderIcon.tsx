@@ -1,6 +1,6 @@
 const FileFolderIcon = () => {
   return (
-    <div className="w-32 lg:w-60">
+    <div className="w-44 lg:w-60">
       <svg data-name="Layer 1" viewBox="0 0 952 586">
         <path
           id="a163713d-a7fc-4807-a77b-111ad75719e9-1022"
