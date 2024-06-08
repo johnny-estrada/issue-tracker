@@ -17,7 +17,7 @@ const Greeting = () => {
 
   return (
     <div>
-      <h3 className="lg:text-base text-sm text-neutral-500">
+      <h3 className="lg:text-base text-sm text-slate-600 tracking-wide">
         {`Good ${timeOfDay}, ${firstName}!`}
       </h3>
     </div>
