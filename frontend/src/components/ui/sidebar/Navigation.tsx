@@ -23,7 +23,7 @@ export default function Navigation({ navigation, mobileNavigation }: Props) {
   return (
     <>
       <nav className="hidden lg:block">
-        <ul className="lg:flex justify-center lg:justify-between lg:flex-col">
+        <ul className="lg:flex justify-center lg:justify-between lg:flex-col group tracking-wide">
           {navigation.map((item) => (
             <li key={item.name} className="flex mx-4 mt-2 mb-4  lg:m-0">
               <NavLink
