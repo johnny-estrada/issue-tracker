@@ -67,12 +67,12 @@ const Details = ({
           </li>
           <li className="flex justify-center py-2 items-center w-full">
             <p className="w-44 text-sm text-neutral-500">Members</p>
-            <div className="flex-1 -space-x-2 overflow-hidden p-1">
+            <div className="flex-1 -space-x-2 overflow-hidden">
               {members ? (
                 <AvatarGroup members={members} />
               ) : (
                 <UserCircleIcon
-                  className="w-8 h-8 lg:h-12 lg:w-12 text-gray-300"
+                  className="w-8 h-8 lg:h-9 lg:w-9 text-gray-300"
                   aria-hidden="true"
                 />
               )}
