@@ -35,14 +35,14 @@ const Notifications = () => {
         </Column>
       ) : (
         <Column>
-          <HeaderTitle title="Notifications" />
+          <HeaderTitle title="Notifications" active={true} />
           <SearchBar />
           <div></div>
-          <div className="flex justify-center m-auto items-center h-screen -mt-36">
+          <div className="flex justify-center m-auto items-center lg:h-screen lg:-mt-36 pb-20 lg:pb-0">
             <div>
               <MailboxIcon />
 
-              <p className="text-gray-500 text-sm lg:text-base mt-1 lg:mt-2">
+              <p className="text-slate-600 text-sm lg:text-base mt-1 lg:mt-7">
                 No notifications yet
               </p>
             </div>

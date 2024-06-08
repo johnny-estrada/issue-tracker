@@ -7,7 +7,7 @@ const EditProject = () => {
     <>
       <main className="flex flex-col lg:flex-row flex-1 row-span-2 col-span-2 bg-gray-200">
         <Column>
-          <HeaderTitle title="Edit project" />
+          <HeaderTitle title="Edit project" active={true} />
           <></>
           <></>
           <EditingTemplate />
