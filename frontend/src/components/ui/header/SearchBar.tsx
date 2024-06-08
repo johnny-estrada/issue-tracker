@@ -28,7 +28,7 @@ const SearchBar = () => {
       <div className="flex mt-auto rounded-md z-10">
         <form>
           <div className="relative z-10">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
               <MagnifyingGlassIcon
                 className="hidden lg:inline h-5 w-5 text-slate-500"
                 aria-hidden="true"
@@ -41,18 +41,18 @@ const SearchBar = () => {
               type="text"
               name="desktop-search"
               id="desktop-search"
-              className="hidden lg:w-72 rounded-full py-1.5 pl-10 bg-white text-sm leading-6 text-gray-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-sky-600 outline-none lg:block shadow-sm h-12"
+              className="hidden lg:w-80 rounded-full py-4 pl-11 bg-white text-base leading-6 text-gray-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-sky-600 outline-none lg:block shadow-sm"
               placeholder="Search"
               value={search}
               onChange={handleChange}
               onSubmit={handleSubmit}
             />
             {search && searchResults.length === 0 ? (
-              <div className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 h-16 bg-white px-4 py-2">
-                <p>No results found</p>
-              </div>
+              <ul className="absolute flex justify-center items-center top-[57px] ring-1 ring-gray-200 rounded shadow-sm w-80 h-16 bg-white px-4 py-2">
+                <li>No results found</li>
+              </ul>
             ) : search && !isLoading ? (
-              <ul className="absolute top-[50px] ring-1 ring-gray-100 rounded shadow-sm w-72 bg-white">
+              <ul className="absolute top-[57px] ring-1 ring-gray-200 rounded shadow-sm w-80 bg-white">
                 {searchResults
                   .filter(
                     (task: Task) =>
@@ -78,7 +78,7 @@ const SearchBar = () => {
           <>
             <Link
               to={`/tasks/create`}
-              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10 w-44 h-12"
+              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-4 rounded-md bg-orange-500 hover:bg-orange-400 text-sm lg:text-base text-white shadow-sm z-10 w-60"
             >
               Create tasks
             </Link>
@@ -87,7 +87,7 @@ const SearchBar = () => {
           <>
             <Link
               to={`/projects/create`}
-              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-3 rounded-md bg-orange-500 hover:bg-orange-400 px-10 text-sm text-white shadow-sm z-10 w-44 h-12"
+              className="hidden lg:ml-3 lg:flex items-center justify-center lg:py-4 rounded-md bg-orange-500 hover:bg-orange-400 text-sm lg:text-base text-white shadow-sm z-10 w-60"
             >
               Create project
             </Link>
