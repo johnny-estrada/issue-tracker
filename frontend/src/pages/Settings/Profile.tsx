@@ -46,7 +46,7 @@ const Profile = ({
                 {photo ? (
                   <Image
                     style={{ width: 80, height: 80, borderRadius: 50 }}
-                    className="border-2 border-neutral-400 block"
+                    className="border-2 border-gray-300 block shadow"
                     cloudName={cloudName}
                     publicId={photo}
                   />
@@ -130,7 +130,7 @@ const Profile = ({
         <div className="flex justify-end gap-x-6 py-4 px-8">
           <button
             type="submit"
-            className="rounded-md border border-orange-500 px-3 py-2 text-sm text-orange-500 shadow-sm hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+            className="rounded-md border border-orange-500 px-6 lg:px-10 py-2 lg:py-3 text-sm lg:text-base text-orange-500 shadow-sm hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
           >
             Update profile
           </button>
