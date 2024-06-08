@@ -60,11 +60,11 @@ const TaskList = ({
         <section className="mb-24 lg:mb-0 relative">
           <header className="flex justify-between align-middle">
             <div className="lg:flex items-center my-4 lg:my-0 mt-4 lg:mt-0 hidden lg:absolute right-0 top-0">
-              <button className="hover:bg-gray-50 rounded-full p-3">
+              <button className="hover:bg-slate-50 rounded-full p-3">
                 <span className="sr-only">Previous</span>
                 <ChevronLeftIcon className="w-4 h-4" aria-hidden="true" />
               </button>
-              <button className="hover:bg-gray-50 rounded-full p-3">
+              <button className="hover:bg-slate-50 rounded-full p-3">
                 <span className="sr-only">Next</span>
                 <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -74,7 +74,7 @@ const TaskList = ({
           {Object?.keys(sortedTasks).map((status) => (
             <div
               key={status}
-              className="flex flex-col justify-center gap-3 pt-6 lg:pt-0 lg:m-0 lg:mb-8"
+              className="flex flex-col justify-center gap-3 pt-6 lg:pt-0 lg:m-0 lg:mb-8 z-0"
               style={{ marginTop: "0px" }}
             >
               <h2 className="sr-only" id="tasks">
@@ -98,16 +98,16 @@ const TaskList = ({
                   </div>
                   <div className="flex justify-center mr-4">
                     <div className="hidden lg:flex shrink-0 items-center gap-x-4 mr-3">
-                      {!team ? (
+                      {team ? (
                         <>
                           {" "}
-                          <AvatarGroup members={team} />
+                          <AvatarGroup members={projects[0].team} />
                         </>
                       ) : (
                         <>
                           {" "}
                           <UserCircleIcon
-                            className="h-6 w-6 lg:h-8 lg:w-8 text-gray-300"
+                            className="h-6 w-6 lg:h-9 lg:w-9 text-slate-300"
                             aria-hidden="true"
                           />
                         </>
