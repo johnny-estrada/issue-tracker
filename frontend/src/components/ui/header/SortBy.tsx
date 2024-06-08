@@ -5,7 +5,7 @@ const SortBy = () => {
         htmlFor="sort"
         className="ml-10 lg:ml-0 mr-2 text-sm text-slate-600 my-auto"
       >
-        sort by:
+        Sort by:
       </label>
       <select
         id="sort"

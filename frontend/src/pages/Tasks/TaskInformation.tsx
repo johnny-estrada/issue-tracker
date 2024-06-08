@@ -49,8 +49,8 @@ const TaskInformation = () => {
           <div className="flex justify-between">
             <div className="flex gap-10">
               <SortBy />
-              <div>
-                priority:{" "}
+              <div className="text-gray-600 text-sm">
+                Priority:{" "}
                 <ButtonGroup
                   titles={["high", "medium", "low"]}
                   onFilter={() => {}}
