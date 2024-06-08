@@ -67,7 +67,7 @@ const PeoplePicker = ({ members, onChange }: Props) => {
   };
 
   return (
-    <div>
+    <div className="relative z-50">
       <Select
         isMulti
         value={selectedPeople}
