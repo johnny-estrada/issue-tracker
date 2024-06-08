@@ -1,8 +1,8 @@
 const Loader = () => {
   return (
-    <div className="absolute bg-white z-50 w-screen h-screen p-96">
+    <main className="relative flex justify-center items-center flex-col bg-white z-50 w-screen h-screen lg:p-96">
+      <h1 className="text-4xl text-gray-800">Klarity is loading...</h1>
       <svg
-        className="m-auto block bg-white shape-auto"
         width="200"
         height="200"
         viewBox="0 0 100 100"
@@ -249,7 +249,7 @@ const Loader = () => {
           </rect>
         </g>
       </svg>
-    </div>
+    </main>
   );
 };
 
