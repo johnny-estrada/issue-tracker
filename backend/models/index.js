@@ -41,7 +41,7 @@ Attachment.belongsTo(User, { foreignKey: "userId" });
 // Function to sync models with the database
 const setupModels = async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync();
     console.log("All tables created successfully!");
   } catch (error) {
     console.error("Unable to create tables: ", error);
