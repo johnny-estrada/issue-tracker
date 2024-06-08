@@ -32,6 +32,7 @@ interface Props {
   refetch: any;
   toggleProjects: (e: SyntheticEvent) => void;
   formattedDates: Dates[];
+  userInfo: any;
 }
 
 const MyProjects = ({
@@ -40,6 +41,7 @@ const MyProjects = ({
   projects,
   tasks,
   refetch,
+  userInfo,
   toggleProjects,
   formattedDates,
 }: Props) => {
@@ -56,37 +58,42 @@ const MyProjects = ({
     },
   ];
 
-  const projectList = projects?.map((project, idx) => (
-    <SelectorList
-      key={project.id}
-      id={idx}
-      active={projectIndex === idx}
-      onClick={toggleProjects}
-    >
-      <div className="flex min-w-0 gap-x-4 text-left m-2">
-        <div className="flex h-12 w-12 justify-center items-center rounded-full bg-white text-black">
-          <p>BK</p>
-        </div>
-        <div className="">
-          <p className="text-base line-clamp-1">{project.client}</p>
-          <div className=" mt-1 flex text-xs leading-5 text-gray-400">
-            <span className="inset-x-0 -top-px bottom-0" />
-            <p className="flex flex-wrap text-xs lg:text-sm leading-5 text-gray-400">
-              <span className="inset-x-0 -top-px bottom-0" />9 tasks &#x2022; 2
-              overdue
-            </p>
-            {/* {project.tasksList.length} tasks &#x2022; {project.overdue} overdue */}
+  const projectList = projects
+    ?.filter((project) => project.userId === userInfo.id)
+    .map((project, idx) => (
+      <SelectorList
+        key={project.id}
+        id={idx}
+        active={projectIndex === idx}
+        onClick={toggleProjects}
+      >
+        <div className="flex min-w-0 gap-x-4 text-left m-2">
+          <div className="flex h-12 w-12 justify-center items-center rounded-full bg-white text-black">
+            <p>BK</p>
+          </div>
+          <div className="">
+            <p className="text-base line-clamp-1">{project.client}</p>
+            <div className="mt-1 flex text-xs leading-5 text-gray-400">
+              <span className="inset-x-0 -top-px bottom-0" />
+              <p className="flex flex-wrap text-xs lg:text-sm leading-5 text-gray-400">
+                <span className="inset-x-0 -top-px bottom-0" />9 tasks &#x2022;
+                2 overdue
+              </p>
+              {/* {project.tasksList.length} tasks &#x2022; {project.overdue} overdue */}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex shrink-0 items-center gap-x-10 m-2">
-        <AvatarGroup members={project.team} />
-        <p className="text-gray-400 text-sm">
-          {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
-        </p>
-      </div>
-    </SelectorList>
-  ));
+        <div className="flex shrink-0 items-center gap-x-10 m-2">
+          <AvatarGroup members={project.team} />
+          <p className="text-gray-400 text-sm">
+            {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
+          </p>
+        </div>
+      </SelectorList>
+    ));
+
+  // console.log(projects[projectIndex].userId === userInfo.id);
+  // console.log(projectList.length);
 
   return (
     <>
@@ -113,7 +120,12 @@ const MyProjects = ({
           />
         </header>
         <div className="flex flex-col gap-3 overflow-hidden rounded-lg">
-          {projectList}
+          {projectList.length ||
+          projects[projectIndex].userId === userInfo.id ? (
+            <> {projectList}</>
+          ) : (
+            <>No projects found</>
+          )}
         </div>
       </section>
     </>
