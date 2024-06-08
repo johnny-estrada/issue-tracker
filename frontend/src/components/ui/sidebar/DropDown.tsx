@@ -34,10 +34,10 @@ export default function DropDown() {
   };
 
   return (
-    <div className="fixed bottom-10 w-72">
+    <div className="fixed bottom-10 w-72 group tracking-wide">
       <Menu as="div">
         <div>
-          <Menu.Button className="hidden lg:flex w-full flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-600">
+          <Menu.Button className="hidden lg:flex w-full flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-slate-600">
             {userInfo.photo ? (
               <Image
                 style={{ width: 45, height: 45, borderRadius: 50 }}
@@ -47,7 +47,7 @@ export default function DropDown() {
               />
             ) : (
               <UserCircleIcon
-                className="h-12 w-12 text-gray-300"
+                className="h-12 w-12 text-slate-300"
                 aria-hidden="true"
               />
             )}
@@ -70,7 +70,7 @@ export default function DropDown() {
             </div>
 
             <ChevronDownIcon
-              className="h-5 w-5 text-gray-100"
+              className="h-5 w-5 text-slate-100"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -84,17 +84,17 @@ export default function DropDown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute -right-32 -top-14 mt-2 w-56 p-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute -right-32 -top-14 mt-2 w-56 p-2 origin-top-right divide-y divide-slate-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1">
               <Menu.Item>
                 {({ active }) => (
                   <Link
                     to="/settings"
                     className={`${
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-500"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      active ? "bg-slate-100 text-slate-800" : "text-slate-500"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm tracking-wide`}
                   >
-                    <UserIcon className=" w-4 h-4 mr-2" />
+                    <UserIcon className=" w-4 h-4 mr-2 text-slate-600" />
                     Profile
                   </Link>
                 )}
@@ -104,7 +104,7 @@ export default function DropDown() {
                   <Link
                     to="/settings"
                     className={`${
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-500"
+                      active ? "bg-slate-100 text-slate-900" : "text-slate-500"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <UsersIcon className=" w-4 h-4 mr-2" />
@@ -119,10 +119,10 @@ export default function DropDown() {
                   <button
                     onClick={logoutHandler}
                     className={`${
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-500"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      active ? "bg-slate-100 text-slate-800" : "text-slate-600 tracking-wide"
+                    } group hover:text-slate-800 flex w-full items-center rounded-md px-2 py-2 text-sm tracking-wide`}
                   >
-                    <ArrowRightOnRectangleIcon className=" w-4 h-4 mr-2" />
+                    <ArrowRightOnRectangleIcon className=" w-4 h-4 mr-2 text-slate-600 " />
                     Log out
                   </button>
                 )}
