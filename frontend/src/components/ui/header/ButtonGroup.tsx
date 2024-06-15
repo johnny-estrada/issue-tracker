@@ -21,8 +21,8 @@ export default function ButtonGroup({ titles, onFilter }: Props) {
           value={title}
           className={
             active === title
-              ? "relative inline-flex items-center first:rounded-l-md last:rounded-r-md bg-stone-800 px-2.5 py-0 lg:px-3 lg:py-2 text-sm text-white ring-1 ring-inset ring-stone-800 focus:z-10 shadow-sm w-fit h-8 pointer-events-none"
-              : "relative inline-flex items-center first:rounded-l-md last:rounded-r-md bg-white px-2.5 py-0 lg:px-3 lg:py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 shadow-sm w-fit h-8"
+              ? "relative inline-flex items-center first:rounded-l-md last:rounded-r-md bg-stone-800 px-2 py-0 lg:px-3 lg:py-2 text-xs lg:text-sm text-white ring-1 ring-inset ring-stone-800 focus:z-10 shadow-sm w-fit h-8 pointer-events-none"
+              : "relative inline-flex items-center first:rounded-l-md last:rounded-r-md bg-white px-2 py-0 lg:px-3 lg:py-2 text-xs lg:text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 shadow-sm w-fit h-8"
           }
         >
           {title}
