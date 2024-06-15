@@ -1,9 +1,10 @@
 interface ILabeledSelect {
   label: string;
   options: string[];
+  active: string;
 }
 
-const LabeledSelect = ({ label, options }: ILabeledSelect) => {
+const LabeledSelect = ({ label, options, active }: ILabeledSelect) => {
   return (
     <div className="lg:block">
       <label
@@ -24,7 +25,7 @@ const LabeledSelect = ({ label, options }: ILabeledSelect) => {
             defaultValue={option}
             className="w-12 truncate"
           >
-            {option}
+            {active}
           </option>
         ))}
       </select>
