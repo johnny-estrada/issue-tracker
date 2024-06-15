@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <main className="relative flex justify-center items-center flex-col bg-white z-50 w-screen h-screen lg:p-96">
+    <main className="absolute flex justify-center items-center flex-col bg-white z-50 w-screen h-full lg:p-96">
       <h1 className="text-4xl text-gray-800">Klarity is loading...</h1>
       <svg
         width="200"
