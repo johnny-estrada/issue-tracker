@@ -21,7 +21,10 @@ export default function Breadcrumbs() {
             {capitalizedCrumb}
           </Link>
           {!isLastCrumb && (
-            <ChevronRightIcon className="h-4 w-4 text-slate-600" aria-hidden="true" />
+            <ChevronRightIcon
+              className="h-4 w-4 text-slate-600"
+              aria-hidden="true"
+            />
           )}
         </div>
       );
