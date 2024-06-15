@@ -20,7 +20,7 @@ const Information = ({ taskIndex, tasks }: Props) => {
           <h2 className="text-xl lg:text-2xl">Task information</h2>
         </header>
 
-        <div className="flex flex-col gap-3 overflow-hidden py-4 text-slate-500 text-sm">
+        <div className="flex flex-col gap-3 overflow-hidden py-4 text-slate-500 text-xm">
           <p>{tasks?.[taskIndex]?.description}</p>
         </div>
       </section>
