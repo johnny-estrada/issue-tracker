@@ -15,7 +15,7 @@ import FilterButton from "../../components/ui/header/FilterButton";
 import Loader from "../../components/ui/Loader";
 import TaskList from "./components/TaskList";
 import TaskDetails from "./components/TaskDetails";
-import SortBy from "../../components/ui/header/SortBy";
+import LabeledSelect from "../../components/form/LabeledSelect";
 
 import { useAppSelector } from "../../hooks/hooks";
 import CreateTaskIcon from "./components/CreateTaskIcon";
@@ -114,7 +114,15 @@ const Tasks = () => {
             <div className="flex justify-between">
               <div className="flex gap-6">
                 <ButtonGroup titles={buttonName} onFilter={() => {}} />
-                <SortBy />
+                <LabeledSelect
+                  label="Sort by:"
+                  options={[
+                    "status",
+                    "priority",
+                    "name: a to z",
+                    "name: z to a",
+                  ]}
+                />
               </div>
 
               <FilterButton />
