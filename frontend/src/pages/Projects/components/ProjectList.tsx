@@ -54,7 +54,7 @@ function ProjectList({
         <h4 className="text-sm lg:text-base leading-6 line-clamp-1">
           {project.client}
         </h4>
-        <p className="flex flex-wrap text-xs lg:text-sm leading-5 text-gray-400">
+        <p className="flex flex-wrap text-xs lg:text-sm leading-5 text-gray-500">
           <span className="inset-x-0 -top-px bottom-0" />9 tasks &#x2022; 2
           overdue
         </p>
@@ -72,7 +72,7 @@ function ProjectList({
             </>
           )}
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-sm text-gray-500">
             {formattedDates[idx]?.startDate} - {formattedDates[idx]?.targetDate}
           </p>
         </div>
