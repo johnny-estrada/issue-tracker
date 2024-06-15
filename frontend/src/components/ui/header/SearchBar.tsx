@@ -23,6 +23,10 @@ const SearchBar = () => {
     setSearch(e.target.value);
   }
 
+  function handleClick() {
+    setSearch("");
+  }
+
   return (
     <>
       <div className="flex mt-auto rounded-md z-10">
@@ -61,7 +65,11 @@ const SearchBar = () => {
                       task.id.toString().includes(search),
                   )
                   .map((task: Task) => (
-                    <li key={task.id} className="hover:bg-gray-100 p-4">
+                    <li
+                      key={task.id}
+                      className="hover:bg-gray-100 p-4"
+                      onClick={handleClick}
+                    >
                       <Link className="text-sm" to={`/tasks/${task.id}`}>
                         <p className="line-clamp-1">
                           <span className="font-semibold">ID TK-{task.id}</span>{" "}
