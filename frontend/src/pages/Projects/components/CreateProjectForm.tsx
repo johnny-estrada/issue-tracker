@@ -63,7 +63,10 @@ const CreateProjectForm = () => {
       {loadingCreate && <Loader />}
       <div className="space-y-10 divide-y divide-slate-800/10 border">
         <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3">
-          <form className="bg-white mb-[72px] lg:mb-24 rounded shadow" onSubmit={handleSubmit}>
+          <form
+            className="bg-white mb-[72px] lg:mb-24 rounded shadow"
+            onSubmit={handleSubmit}
+          >
             <div className="px-6 lg:px-8 py-6 lg:py-8 sm:p-8 h-full">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-4">
