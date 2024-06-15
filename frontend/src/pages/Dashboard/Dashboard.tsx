@@ -86,7 +86,7 @@ const Dashboard = () => {
           <HeaderTitle title="Dashboard" active={true} />
           <SearchBar />
           <></>
-          <div className="flex justify-center m-auto lg:h-[670px] pb-20">
+          <div className="flex justify-center m-auto h-full lg:h-[670px] pb-20">
             <div className="flex flex-col items-end justify-center">
               <div className="flex flex-col items-center justify-center">
                 <h4 className="text-slate-800 font-semibold text-lg lg:text-xl mt-1 lg:mt-8 tracking-wide">
