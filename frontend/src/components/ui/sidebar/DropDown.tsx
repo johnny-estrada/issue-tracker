@@ -119,7 +119,9 @@ export default function DropDown() {
                   <button
                     onClick={logoutHandler}
                     className={`${
-                      active ? "bg-slate-100 text-slate-800" : "text-slate-600 tracking-wide"
+                      active
+                        ? "bg-slate-100 text-slate-800"
+                        : "text-slate-600 tracking-wide"
                     } group hover:text-slate-800 flex w-full items-center rounded-md px-2 py-2 text-sm tracking-wide`}
                   >
                     <ArrowRightOnRectangleIcon className=" w-4 h-4 mr-2 text-slate-600 " />
