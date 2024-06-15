@@ -40,7 +40,7 @@ const TasksList = ({ tasks, id }: Props) => {
               <Link key={item.id} to={`/tasks/${item.id}`}>
                 <li className="flex cursor-pointer justify-between mb-3 gap-x-6 px-2 py-2 hover:bg-gray-200 sm:px-6 bg-gray-100 rounded-lg shadow ring-1 ring-gray-200/5 mr-9">
                   <div className="flex flex-col justify-center min-w-0 m-1">
-                    <p className=" mt-1 flex text-sm text-gray-400">
+                    <p className=" mt-1 flex text-sm text-gray-500">
                       <span className="inset-x-0 -top-px bottom-0" />
                       TSK-
                       {item.id}
