@@ -5,7 +5,7 @@ export default function FilterButton() {
   return (
     <>
       <button type="button" className="lg:hidden">
-        <AdjustmentsVerticalIcon className="w-7 h-7 fill-gray-700" />
+        <AdjustmentsVerticalIcon className="w-6 h-6 fill-gray-700" />
       </button>
 
       <button
