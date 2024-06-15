@@ -57,7 +57,7 @@ const TaskInformation = () => {
               active={task.status}
             />
             <div>
-              <span className="text-gray-600 text-xs lg:text-sm lg:mr-2">
+              <span className="text-gray-600 text-sm lg:text-sm mr-1 lg:mr-2">
                 Priority:
               </span>
               <ButtonGroup
