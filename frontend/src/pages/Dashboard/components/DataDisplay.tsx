@@ -25,7 +25,12 @@ interface IDataDisplay {
   userInfo: { id: string };
 }
 
-export default function DataDisplay({ projects, projectIndex, tasks, userInfo }: IDataDisplay) {
+export default function DataDisplay({
+  projects,
+  projectIndex,
+  tasks,
+  userInfo,
+}: IDataDisplay) {
   const [projectHours, setProjectHours] = useState<number>(0);
   const [projectComplete, setProjectComplete] = useState(0);
   const [taskDue, setTaskDue] = useState<Task[]>([]);
@@ -36,9 +41,10 @@ export default function DataDisplay({ projects, projectIndex, tasks, userInfo }:
   useEffect(() => {
     const project = projects[projectIndex];
 
-    const userTasks = tasks.filter(
-      (task) => task.userId === userInfo.id && task.projectId === project.id
-    ) || [];
+    const userTasks =
+      tasks.filter(
+        (task) => task.userId === userInfo.id && task.projectId === project.id,
+      ) || [];
 
     const completedTasks = userTasks.filter((task) => task.status === "done");
     const incompleteTasks = userTasks.filter((task) => task.status !== "done");
@@ -46,7 +52,7 @@ export default function DataDisplay({ projects, projectIndex, tasks, userInfo }:
 
     const today = new Date();
     const dueTasks = userTasks.filter(
-      (task) => new Date(task.targetDate) >= today
+      (task) => new Date(task.targetDate) >= today,
     );
 
     setMyTask(userTasks);
@@ -56,7 +62,9 @@ export default function DataDisplay({ projects, projectIndex, tasks, userInfo }:
     setTaskDue(dueTasks);
 
     if (userTasks.length > 0) {
-      setProjectComplete(Math.ceil((completedTasks.length / userTasks.length) * 100));
+      setProjectComplete(
+        Math.ceil((completedTasks.length / userTasks.length) * 100),
+      );
     }
   }, [tasks, userInfo.id, projects, projectIndex]);
 
