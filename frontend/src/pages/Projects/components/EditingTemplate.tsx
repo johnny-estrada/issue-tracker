@@ -7,8 +7,8 @@ import {
 import { toast } from "react-toastify";
 import Loader from "../../../components/ui/Loader";
 import Datepicker from "../../../components/ui/Datepicker";
-
 import PeoplePicker from "../../../components/ui/PeoplePicker";
+import { BarsArrowUpIcon, UsersIcon } from "@heroicons/react/20/solid";
 
 type StatusOptions = {
   [key: string]: string[];
@@ -97,18 +97,37 @@ const EditingTemplate = () => {
       ) : error ? (
         <p>error</p>
       ) : (
-        <div className="space-y-10 divide-y divide-gray-900/10 border">
-          <section className="pl-0 lg:pl-14 max-w-2xl mb-[73px] lg:mb-0">
+        <div className="space-y-10 divide-y divide-slate-800/10 border">
+          <section className="lg:px-8 max-w-2xl m-auto lg:ml-4 mt-3">
             <form
-              className="bg-white shadow-lg ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 rounded"
+              className="bg-white mb-[72px] lg:mb-24 rounded shadow"
               onSubmit={handleSubmit}
             >
-              <div className="px-4 py-6 sm:p-8 w-[600px]">
-                <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="px-6 lg:px-8 py-6 lg:py-8 sm:p-8 h-full">
+                <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-4">
                     <label
+                      htmlFor="client"
+                      className="block text-sm font-medium leading-6 text-slate-800"
+                    >
+                      Client name
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="client"
+                        name="client"
+                        type="text"
+                        autoComplete="off"
+                        value={client}
+                        onChange={(e) => setClient(e.target.value)}
+                        className="block w-full rounded-md py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label
                       htmlFor="title"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Project name
                     </label>
@@ -120,17 +139,47 @@ const EditingTemplate = () => {
                         autoComplete="off"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
 
+                  <div className="flex gap-10 flex-wrap justify-between">
+                    <div className="flex-1">
+                      <label
+                        htmlFor="start-date"
+                        className="block text-sm font-medium leading-6 text-slate-800"
+                      >
+                        Start date
+                      </label>
+                      <div className="mt-2">
+                        <Datepicker
+                          startDate={startDate}
+                          setStartDate={setStartDate}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <label
+                        htmlFor="target-date"
+                        className="block text-sm font-medium leading-6 text-slate-800"
+                      >
+                        Target date
+                      </label>
+                      <div className="mt-2">
+                        <Datepicker
+                          startDate={targetDate}
+                          setStartDate={setTargetDate}
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <div className="sm:col-span-3">
                     <label
                       htmlFor="description"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
-                      Project description
+                      Description
                     </label>
                     <div className="mt-2">
                       <textarea
@@ -140,111 +189,63 @@ const EditingTemplate = () => {
                         autoComplete="description"
                         defaultValue={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
-
-                  <div className="sm:col-span-4">
-                    <label
-                      htmlFor="client"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Client
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        id="client"
-                        name="client"
-                        type="text"
-                        autoComplete="off"
-                        value={client}
-                        onChange={(e) => setClient(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-4">
-                    <label
-                      htmlFor="status"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Status
-                    </label>
-                    <div className="mt-2">
-                      <select
-                        id="status"
-                        name="status"
-                        defaultValue={status}
-                        onChange={handleStatusChange}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  <div className="flex gap-10 flex-wrap justify-between">
+                    <div className="flex-1 sm:col-span-4">
+                      <label
+                        htmlFor="status"
+                        className="block text-sm font-medium leading-6 text-slate-800"
                       >
-                        {statusOptions[status] ? (
-                          statusOptions[status].map((option: string) => (
-                            <option key={option} value={option}>
-                              {option}
-                            </option>
-                          ))
-                        ) : (
-                          <option value={status}>{status}</option>
-                        )}
-                      </select>
+                        Status
+                      </label>
+                      <div className="mt-2">
+                        <select
+                          id="status"
+                          name="status"
+                          defaultValue={status}
+                          onChange={handleStatusChange}
+                          className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                        >
+                          {statusOptions[status] ? (
+                            statusOptions[status].map((option: string) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))
+                          ) : (
+                            <option value={status}>{status}</option>
+                          )}
+                        </select>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="col-span-full">
-                    <label
-                      htmlFor="start-date"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Start date
-                    </label>
-                    <div className="mt-2">
-                      <Datepicker
-                        startDate={startDate}
-                        setStartDate={setStartDate}
-                      />
-                    </div>
-
-                    <label
-                      htmlFor="target-date"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Target date
-                    </label>
-                    <div className="mt-2">
-                      <Datepicker
-                        startDate={targetDate}
-                        setStartDate={setTargetDate}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Hours
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="number"
-                        name="hours"
-                        id="hours"
-                        defaultValue={0}
-                        value={hours}
-                        onChange={(e) => setHours(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <div className="flex-1 sm:col-span-2">
+                      <label
+                        htmlFor="region"
+                        className="block text-sm font-medium leading-6 text-slate-800"
+                      >
+                        Time (hours)
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          type="number"
+                          name="hours"
+                          id="hours"
+                          defaultValue={0}
+                          value={hours}
+                          onChange={(e) => setHours(e.target.value)}
+                          className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="postal-code"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-slate-800"
                     >
                       Members
                     </label>
@@ -257,10 +258,10 @@ const EditingTemplate = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+              <div className="flex items-center justify-end gap-x-6 border-t border-slate-800/10 px-5 py-5 lg:px-6 lg:py-6 mt-8 sm:px-8">
                 <button
                   type="button"
-                  className="text-sm leading-6 text-slate-600 hover:text-slate-800"
+                  className="text-sm font-semibold hover:text-slate-800 leading-6 text-slate-600"
                   onClick={() => navigate("/projects")}
                 >
                   Cancel
@@ -276,7 +277,6 @@ const EditingTemplate = () => {
           </section>
         </div>
       )}
-      <></>
     </>
   );
 };

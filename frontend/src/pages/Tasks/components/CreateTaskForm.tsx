@@ -94,7 +94,7 @@ const CreateTaskForm = () => {
                       autoComplete="project"
                       value={projectId}
                       onChange={(e) => setProjectId(e.target.value)}
-                      className="block w-full rounded-md border-0 py-1.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-2.5 px-3 bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                       {projects?.map((project: Project) => (
                         <option key={project.id} value={project.id}>
