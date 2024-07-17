@@ -18,7 +18,13 @@ const port = process.env.PORT || 5001;
 
 const app = express();
 
-app.use(cors());
+// Configure CORS options
+const corsOptions = {
+  origin: "http://localhost:3000", // Your frontend URL
+  credentials: true, // Allow credentials (cookies) to be included in the request
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
