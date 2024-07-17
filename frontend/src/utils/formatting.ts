@@ -25,3 +25,7 @@ export const formatNameDisplay = (fullName: string) => {
     parts.length > 1 ? parts[parts.length - 1].charAt(0) : "";
   return `${firstName} ${lastNameInitial.toUpperCase()}`;
 };
+
+export const capitalizeWords = (str: string) => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
