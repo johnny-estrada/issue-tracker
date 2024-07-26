@@ -1,6 +1,6 @@
 const CreateTaskIcon = () => {
   return (
-    <div className="w-48 lg:w-64">
+    <div className="w-48 lg:w-64 opacity-75">
       <svg
         version="1.1"
         id="Layer_1"
