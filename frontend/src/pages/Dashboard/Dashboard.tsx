@@ -90,7 +90,7 @@ const Dashboard = () => {
             <div className="flex flex-col items-end justify-center">
               <div className="flex flex-col items-center justify-center">
                 <h4 className="text-slate-800 font-semibold text-lg lg:text-xl mt-1 lg:mt-8 tracking-wide">
-                  Welcome to Klarity, {formatName(userInfo.name)}!
+                  Welcome to Klarity
                 </h4>
                 <p className="text-slate-600 text-sm lg:text-base mt-1 lg:mt-2 mb-8 tracking-wide">
                   Create a project to get started
@@ -116,10 +116,17 @@ const Dashboard = () => {
             projectIndex={projectIndex}
             tasks={tasks}
             userInfo={userInfo}
+            refetch={refetch}
           />
 
           <div>
-            <Tabs data={lineChartData} projectData={projects} tasks={tasks} />
+            <Tabs
+              data={lineChartData}
+              projectData={projects}
+              tasks={tasks}
+              toggleTasks={toggleTasks}
+              userInfo={userInfo}
+            />
             <MyTask
               id={tasks[taskIndex].id}
               refetch={refetch}
@@ -153,7 +160,6 @@ const Dashboard = () => {
               userInfo={userInfo}
             />
           </section>
-
           <MyProjects
             id={projects[projectIndex]?.id}
             userInfo={userInfo}
