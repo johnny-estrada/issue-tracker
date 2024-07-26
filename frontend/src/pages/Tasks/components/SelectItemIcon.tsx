@@ -1,6 +1,6 @@
 const SelectItemIcon = () => {
   return (
-    <div className="w-40 lg:w-60 opacity-90">
+    <div className="w-40 lg:w-60 opacity-75">
       <svg viewBox="0 0 747.62 526">
         <g id="Group_33" data-name="Group 33" transform="translate(-227 -187)">
           <path
