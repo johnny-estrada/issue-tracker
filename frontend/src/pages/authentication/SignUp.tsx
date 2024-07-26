@@ -60,15 +60,15 @@ export default function SignUp() {
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div className="">
               <NavLink to={"/"}>
-                <div className="flex shrink-0 items-center gap-3">
-                  <svg width="26" height="26">
+                <div className="flex shrink-0 items-center gap-2">
+                  <svg width="25" height="25">
                     <g fill="#FF7A50" fillRule="evenodd">
                       <rect width="6" height="25" rx="2" />
                       <rect opacity=".75" x="9" width="6" height="25" rx="2" />
                       <rect opacity=".5" x="18" width="6" height="25" rx="2" />
                     </g>
                   </svg>
-                  <span className="text-white text-2xl tracking-wide">
+                  <span className="text-orange-500 font-bold text-2xl tracking-wide">
                     Klarity
                   </span>
                 </div>
