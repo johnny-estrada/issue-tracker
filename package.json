@@ -10,7 +10,8 @@
     "client": "npm run dev --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "format": "prettier --write \"./backend/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint \"./backend/**/*.{js,ts,tsx}\" --quiet"
+    "lint": "eslint \"./backend/**/*.{js,ts,tsx}\" --quiet",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -30,11 +31,14 @@
     "sequelize": "^6.35.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-react": "^7.34.1",
-    "prettier": "3.2.5"
+    "happy-dom": "^7.6.0",
+    "prettier": "3.2.5",
+    "vitest": "^0.24.3"
   }
 }
