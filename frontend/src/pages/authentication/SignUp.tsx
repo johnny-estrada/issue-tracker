@@ -1,8 +1,8 @@
 import { useState, useEffect, SyntheticEvent } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useRegisterMutation } from "../../state/redux/slices/usersApiSlice";
-import { setCredentials } from "../../state/redux/slices/authSlice";
+import { useRegisterMutation } from "../../redux/slices/usersApiSlice";
+import { setCredentials } from "../../redux/slices/authSlice";
 import { toast } from "react-toastify";
 import Loader from "../../components/ui/Loader";
 import { useAppSelector } from "../../hooks/hooks";
