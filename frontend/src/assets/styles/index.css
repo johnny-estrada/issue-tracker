@@ -32,5 +32,6 @@ input[type="file"] {
   overflow-x: scroll;
   overflow-x: hidden;
   scrollbar-color: fff #ececec;
-  scrollbar-width: thin;
+  scrollbar-width: thin; 
+  padding-right: 4px
 }
