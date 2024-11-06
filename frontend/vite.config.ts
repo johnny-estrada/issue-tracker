@@ -14,6 +14,9 @@ export default defineConfig({
       ]
     }
   ],
+  test: {
+    environment: "happy-dom",
+  },
   server: {
     port: 3000,
     proxy: {
