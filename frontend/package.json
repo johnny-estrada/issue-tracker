@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "client": "vite",
-    "build": " vite build",
+    "build": "tsc && vite build",
     "server": "npm run server --prefix ../backend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
