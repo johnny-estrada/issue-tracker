@@ -12,6 +12,10 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "varsIgnorePattern": "^_" }
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
