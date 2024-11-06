@@ -1,4 +1,4 @@
-const WelcomeImg = () => {
+const WelcomeIcon = () => {
   return (
     <div className="w-48 lg:w-72 opacity-80">
       <svg viewBox="0 0 802.61127 507.21869">
@@ -535,4 +535,4 @@ const WelcomeImg = () => {
   );
 };
 
-export default WelcomeImg;
+export default WelcomeIcon;
